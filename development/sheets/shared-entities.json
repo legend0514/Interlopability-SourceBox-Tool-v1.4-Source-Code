@@ -1,0 +1,12 @@
+[
+  {
+    "id": "player:hl2",
+    "owner": "hl2",
+    "kind": "player"
+  },
+  {
+    "id": "player:tf2",
+    "owner": "tf2",
+    "kind": "player"
+  }
+]

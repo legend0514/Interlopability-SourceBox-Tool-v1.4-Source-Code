@@ -1,0 +1,20 @@
+{
+  "enabled": false,
+  "adapter": "gmod",
+  "hub": "sourcebox_room_001",
+  "mode": "isolated-native-map-excursion",
+  "destinations": [
+    {
+      "map": "sourcebox_room_001",
+      "label": "Shared Room"
+    },
+    {
+      "map": "gm_construct",
+      "label": "Construct"
+    },
+    {
+      "map": "gm_flatgrass",
+      "label": "Flatgrass"
+    }
+  ]
+}

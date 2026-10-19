@@ -1,0 +1,19 @@
+SourceBox source availability and licensing
+
+The original launcher C# code and engine-independent synchronization service
+(top-level .mjs files and their tests) are offered under licenses/MIT-SourceBox.txt.
+This does not relicense third-party code or assets.
+
+sdk/sourcebox-sdk.patch, sdk/overlay and the native Source 1 adapters are subject
+to the Source 1 SDK license. See licenses/source-sdk/LICENSE and the accompanying
+third-party notices. SDK-derived distributions must be free of charge.
+Other original SourceBox code is provided under the same Source 1 SDK terms
+unless a file has its own license notice. This archive as a whole is NOT an
+unrestricted MIT distribution or an OSI-open-source engine release.
+
+nlohmann/json retains its included MIT license in adapters/vendor/LICENSE.MIT.
+Separately acquired dependencies retain their own licenses. CounterStrikeSharp
+uses GPLv3 with a plugin licensing exception; Metamod:Source uses zlib/libpng.
+Their implementations are not bundled here.
+Game and Workshop assets are not included or licensed by this source release.
+The supplied launcher icon and intro are not covered by the code license.

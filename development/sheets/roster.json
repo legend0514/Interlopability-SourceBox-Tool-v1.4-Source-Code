@@ -1,0 +1,50 @@
+[
+  {
+    "id": "hl2",
+    "entity": "player:hl2",
+    "displayName": "Gordon Freeman",
+    "appId": 220,
+    "status": "EXISTING BUT UNVERIFIED",
+    "selection": "Focus native game window; use native model/class selection where supported"
+  },
+  {
+    "id": "tf2",
+    "entity": "player:tf2",
+    "displayName": "TF2 class (Heavy in current test)",
+    "appId": 440,
+    "status": "EXISTING BUT UNVERIFIED",
+    "selection": "Focus native game window; use native model/class selection where supported"
+  },
+  {
+    "id": "gmod",
+    "entity": "player:gmod",
+    "displayName": "DeGroot (Goblin)",
+    "appId": 4000,
+    "status": "EXISTING BUT UNVERIFIED",
+    "selection": "Focus native game window; use native model/class selection where supported"
+  },
+  {
+    "id": "hl1mp",
+    "entity": "player:hl1mp",
+    "displayName": "Gordon / native deathmatch model",
+    "appId": 360,
+    "status": "EXISTING BUT UNVERIFIED",
+    "selection": "Focus native game window; use native model/class selection where supported"
+  },
+  {
+    "id": "cs2",
+    "entity": "player:cs2",
+    "displayName": "Counter-Terrorist / Terrorist",
+    "appId": 730,
+    "status": "EXISTING BUT UNVERIFIED",
+    "selection": "Focus native game window; use native model/class selection where supported"
+  },
+  {
+    "id": "portal2",
+    "entity": "player:portal2",
+    "displayName": "Chell",
+    "appId": 620,
+    "status": "PARTIAL OR BLOCKED",
+    "selection": "Focus native game window; use native model/class selection where supported"
+  }
+]

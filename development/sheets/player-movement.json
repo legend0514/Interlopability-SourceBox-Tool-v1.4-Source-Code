@@ -1,0 +1,34 @@
+{
+  "status": "User confirmed both player directions; black materials and missing animations reported",
+  "sendHz": 20,
+  "interpolationMs": 100,
+  "directions": [
+    [
+      "hl2",
+      "tf2"
+    ],
+    [
+      "tf2",
+      "hl2"
+    ]
+  ],
+  "required": [
+    "entity",
+    "seq",
+    "timestamp",
+    "position",
+    "rotation",
+    "velocity",
+    "grounded"
+  ],
+  "clock": "Windows GetTickCount64 milliseconds; same host only",
+  "bodyRotation": "yaw only; eye pitch retained on wire",
+  "jumpPose": "HL2 stock player has no jump sequence; use idle while airborne",
+  "collision": {
+    "enabled": true,
+    "solid": 2,
+    "type": "model bounding box",
+    "status": "native test pending",
+    "localControls": "engine collision only; never set local player transform"
+  }
+}

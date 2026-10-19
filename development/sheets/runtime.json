@@ -1,0 +1,7 @@
+{
+  "host": "127.0.0.1",
+  "port": 27841,
+  "maxFrameBytes": 4096,
+  "timeoutMs": 5000,
+  "heartbeatMs": 1000
+}

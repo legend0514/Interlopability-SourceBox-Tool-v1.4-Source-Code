@@ -1,0 +1,22 @@
+{
+  "hl2": {
+    "scale": 1,
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "axes": "Source XYZ, Z up",
+    "rotation": "pitch yaw roll degrees"
+  },
+  "tf2": {
+    "scale": 1,
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "axes": "Source XYZ, Z up",
+    "rotation": "pitch yaw roll degrees"
+  }
+}

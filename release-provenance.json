@@ -1,0 +1,22 @@
+{
+  "version": "1.4.0-beta.1",
+  "sdkRepository": "https://github.com/ValveSoftware/source-sdk-2013",
+  "sdkCommit": "be57e3d01ac7d7aa6a2cacbfef187c0b46616db0",
+  "binaryZip": "sourcebox-beta-v1.4.2-candidate.zip",
+  "binaryZipSha256": "973cb7d1db8681ab726de747028ea1e1a28e0e4d2ce73cf4c2972332c9fba2a8",
+  "independentReproducibleBuild": false,
+  "independentSecurityAudit": false,
+  "sanitizedFiles": [
+    "outputs/sourcebox/build-hl1-preview.ps1",
+    "outputs/sourcebox/build-portal2.ps1",
+    "outputs/sourcebox/build.ps1",
+    "outputs/sourcebox/generated/generated_config.h",
+    "outputs/sourcebox/sheets/native-world-hosts.json",
+    "outputs/sourcebox/tools/build-cs2-world-map.ps1",
+    "outputs/sourcebox/tools/build-sdk-baseline.py",
+    "outputs/sourcebox/tools/build-source1-world-host.ps1"
+  ],
+  "sourceTests": "See source-validation.json when present",
+  "downloadLabel": "1.4.2",
+  "internalAppVersion": "1.4.0-beta.1"
+}

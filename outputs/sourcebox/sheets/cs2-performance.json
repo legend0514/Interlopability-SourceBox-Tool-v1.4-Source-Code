@@ -1,0 +1,10 @@
+{
+  "setting.gpu_level": "1",
+  "setting.videocfg_ao_detail": "0",
+  "setting.videocfg_texture_detail": "1",
+  "setting.msaa_samples": "0",
+  "setting.videocfg_shadow_quality": "1",
+  "setting.gpu_mem_level": "1",
+  "setting.videocfg_particle_detail": "1",
+  "setting.r_texturefilteringquality": "2"
+}

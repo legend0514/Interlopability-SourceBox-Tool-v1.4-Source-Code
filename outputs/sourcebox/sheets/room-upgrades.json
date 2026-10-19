@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "games": {
+    "hl2": [
+      {
+        "sha256": "8ff048295623da58cc9f6ea322c99cde14bdf1ec2f4e58a47d71496b51f24521",
+        "bytes": 172236
+      },
+      {
+        "sha256": "e538b19b30e7e405fdf9b3ddc90b7085937dbe1ee719117b3fc595e46cf260a0",
+        "bytes": 172236
+      }
+    ],
+    "tf2": [
+      {
+        "sha256": "a30c50774fafb34e7569842c43f7e3c44593958e22ff0d66fee3cdf01448fb88",
+        "bytes": 172148
+      },
+      {
+        "sha256": "8f44e05e0e122d0382a0210803eb4d6c926bafa34fa383ddf77ff74ab44f5f73",
+        "bytes": 172148
+      }
+    ],
+    "hl1mp": [
+      {
+        "sha256": "4a34dda732598267010b2eeaa78bf48fe18f75de7b2d4e27d061ec68c661d037",
+        "bytes": 173078
+      },
+      {
+        "sha256": "4f416c8f073a0cb41a4a60b43b8242e552cb6a9be7202a2e68f87852fe00e32e",
+        "bytes": 173078
+      }
+    ],
+    "gmod": [
+      {
+        "sha256": "9c6aecbd49820e3b7736b235f1e443fe215ee728a3359b12c2caadac106f02ab",
+        "bytes": 173073
+      },
+      {
+        "sha256": "0eeae1de2564ab1dcad43b630069e7c17e208ed0009bc4edfeff7ad3ec506319",
+        "bytes": 173073
+      }
+    ],
+    "portal2": [
+      {
+        "sha256": "255f8abfef99a7b7cbe804366df55c1e0b2856e14be2e3d2099606f333a89556",
+        "bytes": 140376
+      },
+      {
+        "sha256": "c0d94d0a2521bb8b046b0763c5cf54daf701e9eb69f61d623a6d3f0cebf870a3",
+        "bytes": 140376
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const project=fileURLToPath(new URL('../',import.meta.url));
+const workspace=path.resolve(project,'../..');
+const [game,gameDir]=process.argv.slice(2);
+if(!['hl1mp','portal2'].includes(game)||!gameDir)throw Error('Expected native game and game directory');
+const hosts=JSON.parse(fs.readFileSync(path.join(project,'sheets/native-world-hosts.json')));
+const host=hosts[game];
+if(!host?.enabled){console.log(`${game}: baseline room retained`);process.exit(0);}
+if(!fs.existsSync(host.map))throw Error('Missing compiled destination host');
+const infoPath=path.join(gameDir,'gameinfo.txt');
+let info=fs.readFileSync(infoPath,'utf8');
+const roots=['work/runtime-assets/worlds-source1','work/worlds/assets','work/worlds/scenery/source'].map(p=>path.join(workspace,p));
+for(const root of roots)if(!fs.existsSync(root))throw Error('Missing destination assets: '+root);
+const backup=path.join(project,'logs',game+'-world-gameinfo-original.txt');
+if(!fs.existsSync(backup))fs.copyFileSync(infoPath,backup);
+info=info.replace(/\s*\/\/ sourcebox-worlds-begin[\s\S]*?\/\/ sourcebox-worlds-end/g,'');
+const mount='\n// sourcebox-worlds-begin\n'+roots.map(p=>'Game "'+p.replaceAll('\\','/')+'"').join('\n')+'\n// sourcebox-worlds-end\n';
+const anchor=/((?:Game|mod\+mod_write\+default_write_path)\s+\|gameinfo_path\|\.)/i;
+if(!anchor.test(info))throw Error('Native game search path anchor not found');
+info=info.replace(anchor,'$1'+mount);
+if(game==='hl1mp'){
+ const compatibility=path.join(workspace,'work/runtime-assets/worlds-hl1-materials');
+ if(!fs.existsSync(path.join(compatibility,'materials')))throw Error('Prepare HL1 world material compatibility before installing the map');
+ info=info.replace(/\s*\/\/ sourcebox-legacy-materials-begin[\s\S]*?\/\/ sourcebox-legacy-materials-end/g,'');
+ info=info.replace(/(SearchPaths\s*\{)/i,'$1\n// sourcebox-legacy-materials-begin\nGame "'+compatibility.replaceAll('\\','/')+'"\n// sourcebox-legacy-materials-end\n');
+}
+fs.writeFileSync(infoPath,info);
+let bsp=fs.readFileSync(host.map);
+if(game==='hl1mp'){
+ const spawn=JSON.parse(fs.readFileSync(path.join(project,'sheets/hl1mp.json'))).spawn;
+ const offset=bsp.readInt32LE(8),length=bsp.readInt32LE(12);
+ let entities=bsp.toString('utf8',offset,offset+length).replace(/\0+$/,'');
+ entities=entities.replace(/\{[^{}]*"classname"\s*"info_player_deathmatch"[^{}]*\}/g,b=>b.replace(/"origin"\s*"[^"]*"/,`"origin" "${spawn.join(' ')}"`));
+ entities=entities.replace(/\{[^{}]*"classname"\s*"prop_physics"[^{}]*\}/g,'');
+ const data=Buffer.from(entities+'\0');bsp.writeInt32LE(bsp.length,8);bsp.writeInt32LE(data.length,12);bsp=Buffer.concat([bsp,data]);
+}
+fs.writeFileSync(path.join(gameDir,'maps/sourcebox_room_001.bsp'),bsp);
+console.log(`${game}: installed six-destination host and isolated model/material mounts`);

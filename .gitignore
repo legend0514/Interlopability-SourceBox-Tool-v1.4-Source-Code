@@ -1,0 +1,10 @@
+**/bin/
+**/obj/
+work/
+build/
+**/__pycache__/
+**/node_modules/
+*.mdmp
+*.dmp
+*.log
+settings.json

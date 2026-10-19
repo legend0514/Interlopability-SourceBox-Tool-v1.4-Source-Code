@@ -1,0 +1,142 @@
+[
+  {
+    "id": "A1",
+    "description": "TF2 real process connected",
+    "status": "passed real-game connectivity 2026-10-15"
+  },
+  {
+    "id": "A2",
+    "description": "HL2 real process connected",
+    "status": "passed real-game connectivity 2026-10-15"
+  },
+  {
+    "id": "A3",
+    "description": "Both live concurrently and heartbeat",
+    "status": "passed real-game connectivity 2026-10-15"
+  },
+  {
+    "id": "B1",
+    "description": "Actual HL2 movement visible in TF2",
+    "status": "User confirmed visible movement 2026-10-15; body pitch and A-pose defects found"
+  },
+  {
+    "id": "B2",
+    "description": "Upright animated installed HL2 player model in TF2",
+    "status": "candidate built; real-game retest pending"
+  },
+  {
+    "id": "C1",
+    "description": "Actual TF2 movement displayed by Soldier in HL2",
+    "status": "candidate built; real-game test pending"
+  },
+  {
+    "id": "D1",
+    "description": "HL2-owned barrel/crate movement and breakage visible in TF2",
+    "status": "candidate deployed; actual interaction validation pending"
+  },
+  {
+    "id": "D2",
+    "description": "TF2-owned barrel/crate movement and breakage visible in HL2",
+    "status": "candidate deployed; actual interaction validation pending"
+  },
+  {
+    "id": "W1",
+    "description": "HL2 equipped world weapon visible in TF2",
+    "status": "candidate deployed; actual interaction validation pending"
+  },
+  {
+    "id": "AM1",
+    "description": "Native reserve ammunition replenishes; normal reload remains",
+    "status": "candidate deployed; actual interaction validation pending"
+  },
+  {
+    "id": "F1",
+    "description": "Physics persists during player absence; late join receives current props; disconnect cleanup",
+    "status": "automated TCP test passed; native validation pending"
+  },
+  {
+    "id": "E1",
+    "description": "Native shared cube handoff HL2 to TF2 and back, each engine interacting with same cube",
+    "status": "deployed; awaiting native interaction acceptance; 4 automated cube tests passed"
+  },
+  {
+    "id": "E2",
+    "description": "Repeated handoff, old-owner removal, cooldown and timeout safety",
+    "status": "automated state-machine and TCP checks pass; native repetition pending"
+  },
+  {
+    "id": "F2",
+    "description": "Player walking, turning, jumping and weapon appearance remain intact after ownership update",
+    "status": "previous movement user-confirmed; current full regression pending"
+  },
+  {
+    "id": "G1",
+    "description": "Melty release recipe, installation and one-click validation",
+    "status": "blocked: no callable Melty services; no publication authorized"
+  },
+  {
+    "id": "E3",
+    "description": "E ownership interaction and destroyed-prop respawn",
+    "status": "user confirmed yes on 2026-10-15; HL2->TF2 native creation logged; return transfer still needs separate evidence"
+  },
+  {
+    "id": "COM1",
+    "description": "Native hits on remote proxy reduce other live player health",
+    "status": "protocol routing/rate tests passed; native candidate deployed, awaiting both-direction acceptance"
+  },
+  {
+    "id": "COM2",
+    "description": "Lethal cross-game damage immediately restores health and returns player to spawn with one-second protection",
+    "status": "candidate deployed; native acceptance pending; environmental deaths unchanged"
+  },
+  {
+    "id": "GMOD1",
+    "description": "Actual GMod displays HL2 and correct TF2 class with movement",
+    "status": "user confirmed after class-key correction"
+  },
+  {
+    "id": "GMOD2",
+    "description": "GMod movement appears as separate labeled proxy in actual HL2 and TF2",
+    "status": "user confirmed GMod proxy visible in HL2 and TF2"
+  },
+  {
+    "id": "GMOD3",
+    "description": "GMod E claims blue cube, physgun moves it in all games, E returns it to HL2/TF2",
+    "status": "native GMod ownership and movement logged; user broadly confirmed E and collision test"
+  },
+  {
+    "id": "GMOD4",
+    "description": "Three-game disconnect and reconnect removes stale replicas and restores ownership",
+    "status": "native acceptance pending"
+  },
+  {
+    "id": "GMOD5",
+    "description": "Spawn, move and undo standard props in GMod; reflected in HL2/TF2",
+    "status": "user confirmed yes to in-game test"
+  },
+  {
+    "id": "GMOD6",
+    "description": "GMod weapons damage the correct remote player; lethal hit instantly resets that player",
+    "status": "user confirmed in-game: GMod shots damage both HL2 and TF2 players; lethal hits immediately restore health and return victim to spawn"
+  },
+  {
+    "id": "SCENE1",
+    "description": "Spawn stock crate in GMod; E pushes and shooting moves/damages original from HL2, TF2 and HL1MP; undo removes all replicas",
+    "status": "awaiting actual gameplay acceptance"
+  },
+  {
+    "id": "NPC1",
+    "description": "Spawn regular zombie in GMod; all native games show movement/animation and hits damage the original; death removes live NPC replica",
+    "status": "awaiting actual gameplay acceptance"
+  },
+  {
+    "id": "CS2_COLLISION_DAMAGE",
+    "description": "Walk into remote players and shoot them from CS2 and GMod; collision blocks movement and corresponding game health drops",
+    "status": "User confirmed: it works. Broad combined acceptance; not an individually observed 20-direction gameplay matrix."
+  },
+  {
+    "id": "CS2_GOBLIN_PLAYER",
+    "description": "Select Goblin player model in GMod and verify its appearance in CS2",
+    "status": "User confirmed: it works, in reply to combined collision/damage/Goblin check."
+  }
+]

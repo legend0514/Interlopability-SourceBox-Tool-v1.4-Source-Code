@@ -1,0 +1,356 @@
+diff --git a/src/game/client/tf/vgui/tf_spectatorgui.cpp b/src/game/client/tf/vgui/tf_spectatorgui.cpp
+index 68a7a41..1fb60f8 100644
+--- a/src/game/client/tf/vgui/tf_spectatorgui.cpp
++++ b/src/game/client/tf/vgui/tf_spectatorgui.cpp
+@@ -836,7 +836,7 @@ void CTFSpectatorGUI::ShowPanel(bool bShow)
+ 			int &nDisplaySaveReplay = CPlayerSpawnCache::Instance().m_Data.m_nDisplaySaveReplay;
+ 			extern IReplayManager *g_pReplayManager;
+ 			CReplay *pCurLifeReplay = ( g_pReplayManager ) ? g_pReplayManager->GetReplayForCurrentLife() : NULL;
+-			if ( g_pReplay->IsRecording() &&
++			if ( g_pReplay && g_pReplay->IsRecording() &&
+ 				 !engine->IsPlayingDemo() &&
+ 				 !::input->IsSteamControllerActive() &&
+ 				 nDisplaySaveReplay &&
+diff --git a/src/game/client/viewrender.cpp b/src/game/client/viewrender.cpp
+index b4011e2..f925bb2 100644
+--- a/src/game/client/viewrender.cpp
++++ b/src/game/client/viewrender.cpp
+@@ -2025,8 +2025,11 @@ const char *COM_GetModDirectory();
+ //			whatToDraw - 
+ //-----------------------------------------------------------------------------
+ // This renders the entire 3D view.
++#include "sourcebox_portal_client.inc"
++
+ void CViewRender::RenderView( const CViewSetup &viewRender, int nClearFlags, int whatToDraw )
+ {
++	SourceboxRenderViews(this, viewRender);
+ 	m_UnderWaterOverlayMaterial.Shutdown();					// underwater view will set
+ 
+ 	m_CurrentView = viewRender;
+@@ -2116,7 +2119,7 @@ void CViewRender::RenderView( const CViewSetup &viewRender, int nClearFlags, int
+ 		// Render world and all entities, particles, etc.
+ 		if( !g_pIntroData )
+ 		{
+-			ViewDrawScene( bDrew3dSkybox, nSkyboxVisible, viewRender, nClearFlags, VIEW_MAIN, whatToDraw & RENDERVIEW_DRAWVIEWMODEL );
++			ViewDrawScene( bDrew3dSkybox, nSkyboxVisible, viewRender, nClearFlags, VIEW_MAIN, whatToDraw & RENDERVIEW_DRAWVIEWMODEL, 0, sbPortalVisibility );
+ 		}
+ 		else
+ 		{
+@@ -2156,6 +2159,8 @@ void CViewRender::RenderView( const CViewSetup &viewRender, int nClearFlags, int
+ 
+ 		GetClientModeNormal()->DoPostScreenSpaceEffects( &viewRender );
+ 
++		SourceboxCompositePortals(viewRender, GetFrustum());
++
+ 		// Now actually draw the viewmodel
+ 		DrawViewModels( viewRender, whatToDraw & RENDERVIEW_DRAWVIEWMODEL );
+ 
+diff --git a/src/game/server/entity_tools_server.cpp b/src/game/server/entity_tools_server.cpp
+index b08d075..f3c34d0 100644
+--- a/src/game/server/entity_tools_server.cpp
++++ b/src/game/server/entity_tools_server.cpp
+@@ -131,7 +131,7 @@ IServerEntity *CServerTools::GetIServerEntity( IClientEntity *pClientEntity )
+ bool CServerTools::GetPlayerPosition( Vector &org, QAngle &ang, IClientEntity *pClientPlayer )
+ {
+ 	IServerEntity *pServerPlayer = GetIServerEntity( pClientPlayer );
+-	CBasePlayer *pPlayer = pServerPlayer ? ( CBasePlayer* )pServerPlayer : UTIL_GetLocalPlayer();
++	CBasePlayer *pPlayer = pServerPlayer ? ( CBasePlayer* )pServerPlayer : (gpGlobals->maxClients > 1 && !engine->IsDedicatedServer() ? UTIL_GetListenServerHost() : UTIL_GetLocalPlayer());
+ 	if ( pPlayer == NULL )
+ 		return false;
+ 
+@@ -143,7 +143,7 @@ bool CServerTools::GetPlayerPosition( Vector &org, QAngle &ang, IClientEntity *p
+ bool CServerTools::SnapPlayerToPosition( const Vector &org, const QAngle &ang, IClientEntity *pClientPlayer )
+ {
+ 	IServerEntity *pServerPlayer = GetIServerEntity( pClientPlayer );
+-	CBasePlayer *pPlayer = pServerPlayer ? ( CBasePlayer* )pServerPlayer : UTIL_GetLocalPlayer();
++	CBasePlayer *pPlayer = pServerPlayer ? ( CBasePlayer* )pServerPlayer : (gpGlobals->maxClients > 1 && !engine->IsDedicatedServer() ? UTIL_GetListenServerHost() : UTIL_GetLocalPlayer());
+ 	if ( pPlayer == NULL )
+ 		return false;
+ 
+@@ -159,7 +159,7 @@ bool CServerTools::SnapPlayerToPosition( const Vector &org, const QAngle &ang, I
+ int CServerTools::GetPlayerFOV( IClientEntity *pClientPlayer )
+ {
+ 	IServerEntity *pServerPlayer = GetIServerEntity( pClientPlayer );
+-	CBasePlayer *pPlayer = pServerPlayer ? ( CBasePlayer* )pServerPlayer : UTIL_GetLocalPlayer();
++	CBasePlayer *pPlayer = pServerPlayer ? ( CBasePlayer* )pServerPlayer : (gpGlobals->maxClients > 1 && !engine->IsDedicatedServer() ? UTIL_GetListenServerHost() : UTIL_GetLocalPlayer());
+ 	if ( pPlayer == NULL )
+ 		return 0;
+ 
+@@ -169,7 +169,7 @@ int CServerTools::GetPlayerFOV( IClientEntity *pClientPlayer )
+ bool CServerTools::SetPlayerFOV( int fov, IClientEntity *pClientPlayer )
+ {
+ 	IServerEntity *pServerPlayer = GetIServerEntity( pClientPlayer );
+-	CBasePlayer *pPlayer = pServerPlayer ? ( CBasePlayer* )pServerPlayer : UTIL_GetLocalPlayer();
++	CBasePlayer *pPlayer = pServerPlayer ? ( CBasePlayer* )pServerPlayer : (gpGlobals->maxClients > 1 && !engine->IsDedicatedServer() ? UTIL_GetListenServerHost() : UTIL_GetLocalPlayer());
+ 	if ( pPlayer == NULL )
+ 		return false;
+ 
+@@ -181,7 +181,7 @@ bool CServerTools::SetPlayerFOV( int fov, IClientEntity *pClientPlayer )
+ bool CServerTools::IsInNoClipMode( IClientEntity *pClientPlayer )
+ {
+ 	IServerEntity *pServerPlayer = GetIServerEntity( pClientPlayer );
+-	CBasePlayer *pPlayer = pServerPlayer ? ( CBasePlayer* )pServerPlayer : UTIL_GetLocalPlayer();
++	CBasePlayer *pPlayer = pServerPlayer ? ( CBasePlayer* )pServerPlayer : (gpGlobals->maxClients > 1 && !engine->IsDedicatedServer() ? UTIL_GetListenServerHost() : UTIL_GetLocalPlayer());
+ 	if ( pPlayer == NULL )
+ 		return true;
+ 
+diff --git a/src/game/server/point_camera.cpp b/src/game/server/point_camera.cpp
+index a711cc8..289dd1c 100644
+--- a/src/game/server/point_camera.cpp
++++ b/src/game/server/point_camera.cpp
+@@ -269,3 +269,5 @@ IMPLEMENT_SERVERCLASS_ST( CPointCamera, DT_PointCamera )
+ 	SendPropInt( SENDINFO( m_bActive ), 1, SPROP_UNSIGNED ),
+ 	SendPropInt( SENDINFO( m_bUseScreenAspectRatio ), 1, SPROP_UNSIGNED ),
+ END_SEND_TABLE()
++
++#include "sourcebox_portal_server.inc"
+diff --git a/src/game/server/tf/tf_player.cpp b/src/game/server/tf/tf_player.cpp
+index c030951..5739b6f 100644
+--- a/src/game/server/tf/tf_player.cpp
++++ b/src/game/server/tf/tf_player.cpp
+@@ -5163,6 +5163,17 @@ void CTFPlayer::ValidateWeapons( TFPlayerClassData_t *pData, bool bResetWeapons
+ 		if ( !pWeapon )
+ 			continue;
+ 
++		// Sourcebox: reject weapons without schema data before loadout lookup.
++		if ( !pWeapon->GetAttributeContainer()->GetItem()->GetStaticData() )
++		{
++			Warning( "[Sourcebox] Removing weapon without item definition during loadout validation: %s\n", pWeapon->GetClassname() );
++			if ( GetActiveTFWeapon() == pWeapon )
++				SwitchToNextBestWeapon( pWeapon );
++			Weapon_Detach( pWeapon );
++			UTIL_Remove( pWeapon );
++			continue;
++		}
++
+ 		int iLoadoutSlot = pWeapon->GetAttributeContainer()->GetItem()->GetStaticData()->GetLoadoutSlot( GetPlayerClass()->GetClassIndex() );
+ 		CEconItemView *pItem = GetLoadoutItem( GetPlayerClass()->GetClassIndex(), iLoadoutSlot );
+ 
+diff --git a/src/game/server/weapon_cubemap.cpp b/src/game/server/weapon_cubemap.cpp
+index 212023e..04b6b99 100644
+--- a/src/game/server/weapon_cubemap.cpp
++++ b/src/game/server/weapon_cubemap.cpp
+@@ -46,3 +46,5 @@ void CWeaponCubemap::Spawn( void )
+ 	//Since this is just a dev tool I made this quick hack so level designers can use it again asap. - Adrian
+ 	UTIL_SetSize( this, Vector( -16, -16, -16 ),  Vector( 16, 16, 16 ) );
+ }
++
++#include "sourcebox_portal_gun.inc"
+diff --git a/src/game/shared/tf/tf_weapon_grapplinghook.cpp b/src/game/shared/tf/tf_weapon_grapplinghook.cpp
+index c3adfec..8d3fdf4 100644
+--- a/src/game/shared/tf/tf_weapon_grapplinghook.cpp
++++ b/src/game/shared/tf/tf_weapon_grapplinghook.cpp
+@@ -225,6 +225,9 @@ CTFGrapplingHook::CTFGrapplingHook()
+ 
+ void CTFGrapplingHook::Precache()
+ {
++	// Sourcebox portal model precache
++	PrecacheModel("models/sourcebox/portal2/v_portalgun.mdl");
++	PrecacheModel("models/sourcebox/portal2/w_portalgun.mdl");
+ 	BaseClass::Precache();
+ 
+ #ifdef GAME_DLL
+@@ -253,62 +256,14 @@ CBaseEntity *CTFGrapplingHook::FireProjectile( CTFPlayer *pPlayer )
+ //-----------------------------------------------------------------------------
+ void CTFGrapplingHook::ItemPostFrame( void )
+ {
+-	CTFPlayer *pOwner = GetTFPlayerOwner();
+-	if (!pOwner)
+-		return;
+-
+-#ifdef CLIENT_DLL
+-	static bool bFired = false;
+-#endif // CLIENT_DLL
+-
+-	CBaseEntity *pHookTarget = pOwner->GetGrapplingHookTarget();
+-	bool bJump = ( pOwner->m_nButtons & IN_JUMP ) > 0;
+-	bool bForceReleaseHook = pHookTarget != NULL && bJump;
+-
+-	if ( !bForceReleaseHook && ( pOwner->m_nButtons & IN_ATTACK || pOwner->IsUsingActionSlot() ) )
+-	{
+-#ifdef CLIENT_DLL
+-		if ( !bFired )
+-		{
+-			PrimaryAttack();
+-			bFired = true;
+-		}
+-#else
+-		PrimaryAttack();
+-#endif // CLIENT_DLL
+-
+-		if ( pOwner->GetGrapplingHookTarget() )
+-		{
+-			SendWeaponAnim( ACT_GRAPPLE_PULL_START );
+-		}
+-		else if ( m_hProjectile )
+-		{
+-			SendWeaponAnim( ACT_VM_PRIMARYATTACK );
+-		}
+-		else
+-		{
+-			SendWeaponAnim( ACT_GRAPPLE_IDLE );
+-		}
+-	}
+-	else
+-	{
+-#ifdef CLIENT_DLL
+-		bFired = false;
+-#endif // CLIENT_DLL
+ 
+-		OnHookReleased( bForceReleaseHook );
+-	}
+-
+-	if ( pOwner->GetViewModel(0) )
+-	{
+-		pOwner->GetViewModel(0)->SetPlaybackRate( 1.f );
+-	}
+-	if ( pOwner->GetViewModel(1) )
+-	{
+-		pOwner->GetViewModel(1)->SetPlaybackRate( 1.f );
+-	}
+-
+-	BaseClass::ItemPostFrame();
++  auto*p=GetTFPlayerOwner();if(!p)return;
++  if((p->m_nButtons&(IN_ATTACK|IN_ATTACK2))&&gpGlobals->curtime>=m_flTimeWeaponIdle){
++   SendWeaponAnim(ACT_VM_PRIMARYATTACK);m_flTimeWeaponIdle=gpGlobals->curtime+0.3f;
++  }else if(gpGlobals->curtime>=m_flTimeWeaponIdle){
++   SendWeaponAnim(ACT_VM_IDLE);m_flTimeWeaponIdle=gpGlobals->curtime+2.0f;
++  }
++  // Canonical placement is handled by Sourcebox; never launch a hook projectile.
+ }
+ 
+ 
+@@ -442,82 +397,14 @@ float CTFGrapplingHook::GetProjectileSpeed()
+ //-----------------------------------------------------------------------------
+ bool CTFGrapplingHook::SendWeaponAnim( int actBase )
+ {
+-	CTFPlayer *pPlayer = GetTFPlayerOwner();
+-	if ( !pPlayer )
+-		return BaseClass::SendWeaponAnim( actBase );
+-
+-	if ( actBase == ACT_VM_DRAW )
+-	{
+-		actBase = ACT_GRAPPLE_DRAW;
+-	}
+-	else if ( pPlayer->GetGrapplingHookTarget() )
+-	{
+-		if ( GetActivity() != ACT_GRAPPLE_PULL_START && GetActivity() != ACT_GRAPPLE_PULL_IDLE )
+-		{
+-			bool bResult = BaseClass::SendWeaponAnim( ACT_GRAPPLE_PULL_START );
+-			//DevMsg("pull start %f\n", gpGlobals->curtime );
+-
+-			m_startPullingTimer.Start( SequenceDuration() );
+-
+-			return bResult;
+-		}
+-		else
+-		{
+-			if ( GetActivity() == ACT_GRAPPLE_PULL_IDLE )
+-				return true;
+-
+-			if ( GetActivity() == ACT_GRAPPLE_PULL_START && m_startPullingTimer.HasStarted() && !m_startPullingTimer.IsElapsed() )
+-				return true;
+-
+-			actBase = ACT_GRAPPLE_PULL_IDLE;
+-			//DevMsg("pull idle %f\n", gpGlobals->curtime );
+-
+-			m_startPullingTimer.Invalidate();
+-		}
+-	}
+-	else if ( actBase == ACT_VM_PRIMARYATTACK )
+-	{
+-		if ( GetActivity() != ACT_GRAPPLE_FIRE_START && GetActivity() != ACT_GRAPPLE_FIRE_IDLE )
+-		{
+-			bool bResult = BaseClass::SendWeaponAnim( ACT_GRAPPLE_FIRE_START );
+-			//DevMsg("fire start %f\n", gpGlobals->curtime );
+-
+-			m_startFiringTimer.Start( SequenceDuration() );
+-
+-			return bResult;
+-		}
+-		else
+-		{
+-			if ( GetActivity() == ACT_GRAPPLE_FIRE_IDLE )
+-				return true;
+-
+-			if ( GetActivity() == ACT_GRAPPLE_FIRE_START && m_startFiringTimer.HasStarted() && !m_startFiringTimer.IsElapsed() )
+-				return true;
+-
+-			actBase = ACT_GRAPPLE_FIRE_IDLE;
+-			//DevMsg("fire idle %f\n", gpGlobals->curtime );
+-
+-			m_startFiringTimer.Invalidate();
+-		}
+-	}
+-	else
+-	{
+-		if ( GetActivity() == ACT_GRAPPLE_PULL_IDLE )
+-		{
+-			actBase = ACT_GRAPPLE_PULL_END;
+-			//DevMsg("pull end %f\n", gpGlobals->curtime );
+-		}
+-		else
+-		{
+-			if ( GetActivity() == ACT_GRAPPLE_IDLE )
+-				return true;
+-
+-			actBase = ACT_GRAPPLE_IDLE;
+-			//DevMsg("grapple idle %f\n", gpGlobals->curtime );
+-		}
+-	}
+ 
+-	return BaseClass::SendWeaponAnim( actBase );
++  auto*p=GetTFPlayerOwner();if(!p)return false;
++  auto*vm=p->GetViewModel(0);if(!vm)return false;
++  vm->SetWeaponModel(GetViewModel(),this);
++  const char*clip=actBase==ACT_VM_DRAW?"draw":actBase==ACT_VM_PRIMARYATTACK?"fire":"idle";
++  int sequence=vm->LookupSequence(clip);if(sequence<0)sequence=vm->LookupSequence("idle");
++  if(sequence<0)return false;
++  vm->SendViewModelMatchingSequence(sequence);return true;
+ }
+ 
+ 
+diff --git a/src/game/shared/tf/tf_weapon_grapplinghook.h b/src/game/shared/tf/tf_weapon_grapplinghook.h
+index c6bae2d..7724bfa 100644
+--- a/src/game/shared/tf/tf_weapon_grapplinghook.h
++++ b/src/game/shared/tf/tf_weapon_grapplinghook.h
+@@ -31,6 +31,12 @@ public:
+ #endif // GAME_DLL
+ 
+ 	CTFGrapplingHook();
++	// Sourcebox native Portal Gun
++	const char *GetViewModel(int = 0) const OVERRIDE { return "models/sourcebox/portal2/v_portalgun.mdl"; }
++	const char *GetWorldModel() const OVERRIDE { return "models/sourcebox/portal2/w_portalgun.mdl"; }
++	const char *GetPrintName() const OVERRIDE { return "Portal Gun"; }
++	bool HasAnyAmmo() OVERRIDE { return true; }
++	int GetSlot() const OVERRIDE { return 5; }
+ 
+ 	virtual void	Precache() OVERRIDE;
+ 	virtual CBaseEntity *FireProjectile( CTFPlayer *pPlayer ) OVERRIDE;
+diff --git a/src/vpc_scripts/projects.vgc b/src/vpc_scripts/projects.vgc
+index 2a62976..304585f 100644
+--- a/src/vpc_scripts/projects.vgc
++++ b/src/vpc_scripts/projects.vgc
+@@ -15,6 +15,7 @@ $Project "captioncompiler"
+ 
+ $Project "client"
+ {
++	"game\client\client_hl2.vpc" [$HL2]
+ 	"game\client\client_tf.vpc"			[$TF]
+ 	"game\client\client_hl2mp.vpc"		[$HL2MP]
+ }
+@@ -50,12 +51,14 @@ $Project "height2normal"
+ 
+ $Project "server"
+ {
++	"game\server\server_hl2.vpc" [$HL2]
+ 	"game\server\server_tf.vpc"			[$TF]
+ 	"game\server\server_hl2mp.vpc"		[$HL2MP]
+ }
+ 
+ $Project "launcher_main"
+ {
++	"launcher_main\launcher_main_mod_hl2.vpc" [$HL2]
+ 	"launcher_main\launcher_main_mod_hl2mp.vpc" [$HL2MP]
+ 	"launcher_main\launcher_main_mod_tf.vpc" [$TF]
+ }

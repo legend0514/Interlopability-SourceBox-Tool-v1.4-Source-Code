@@ -1,0 +1,76 @@
+{
+  "hello": {
+    "protocol": "integer",
+    "game": "gameId",
+    "pid": "positiveInteger"
+  },
+  "heartbeat": {
+    "seq": "positiveInteger",
+    "timestamp": "nonnegativeNumber",
+    "props": "optionalOwnedPropArray"
+  },
+  "state": {
+    "entity": "ownedEntityId",
+    "seq": "positiveInteger",
+    "timestamp": "nonnegativeNumber",
+    "position": "vector3",
+    "rotation": "vector3",
+    "velocity": "vector3",
+    "grounded": "boolean",
+    "classId": "tf2ClassIdWhenTF2",
+    "team": "tf2TeamWhenTF2",
+    "weapon": "optionalNativeWeaponName",
+    "props": "optionalOwnedPropArray",
+    "health": "optionalNonnegativeIntegerTelemetry",
+    "world": "serverDerivedWorldIdInReplicatedState"
+  },
+  "prop": {
+    "id": "configuredSharedPropId",
+    "alive": "boolean",
+    "position": "vector3WhenAlive",
+    "rotation": "vector3WhenAlive",
+    "velocity": "vector3WhenAlive",
+    "angularVelocity": "vector3WhenAlive"
+  },
+  "remove": {
+    "scope": "playerOrGame",
+    "game": "gameId"
+  },
+  "physics": {
+    "game": "ownerGameId",
+    "session": "connectionSessionId",
+    "state": "sequencedTimestampedOwnedPropArray"
+  },
+  "cube": {
+    "capability": 1,
+    "request": "cube_take",
+    "freeze": "cube_freeze",
+    "acknowledge": "cube_frozen",
+    "grant": "cube_owner",
+    "snapshot": "cube_state",
+    "resync": "cube_sync",
+    "epoch": "positive integer; old epochs discarded",
+    "handoff": "delete old physical entity, acknowledge deletion, increment epoch, grant new owner",
+    "disconnect": "no offline takeover; ownership retained"
+  },
+  "combat": {
+    "request": "player_hit",
+    "delivery": "player_damage",
+    "amount": "serverConfiguredDamagePerHit",
+    "rateLimit": "perSourceSessionPerSecond",
+    "target": "HL2/TF2 native adapters retain opposite-game routing; GMod must explicitly target hl2 or tf2; live peers only"
+  },
+  "scene": {
+    "owner": "gmod",
+    "generation": "adapterLifetimeId",
+    "live": "unique positive integer IDs; maximum 32",
+    "objects": "up to 4 installed-model transforms with velocity and angular velocity",
+    "cleanup": "absent from live IDs; disconnected game; expired receive timeout",
+    "authority": "GMod; kinematic replicas in HL2/TF2"
+  },
+  "portal_world_ready": {
+    "authority": "permitted adapter games only; empty list revokes access",
+    "worlds": "uniqueRegisteredWorldIdsWithLoadedGeometry",
+    "session": "currentConnectionSession"
+  }
+}

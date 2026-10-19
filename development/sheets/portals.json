@@ -1,0 +1,99 @@
+{
+  "enabled": true,
+  "inventoryMode": "native-slot",
+  "preserveLoadout": true,
+  "weaponClasses": {
+    "hl2": [
+      "weapon_sourcebox_portalgun"
+    ],
+    "tf2": [
+      "tf_weapon_grapplinghook"
+    ],
+    "hl1mp": [
+      "weapon_sourcebox_portalgun"
+    ],
+    "cs2": [
+      "weapon_sourcebox_portalgun"
+    ],
+    "gmod": [
+      "weapon_sourcebox_portalgun"
+    ],
+    "portal2": [
+      "weapon_portalgun"
+    ]
+  },
+  "stage": "enabled-development-candidate",
+  "environment": "sourcebox_room_001",
+  "owners": [
+    "hl2",
+    "tf2",
+    "gmod",
+    "hl1mp",
+    "cs2",
+    "portal2"
+  ],
+  "bounds": [
+    [
+      -512,
+      -512,
+      0
+    ],
+    [
+      512,
+      512,
+      256
+    ]
+  ],
+  "aperture": {
+    "halfWidth": 32,
+    "halfHeight": 64
+  },
+  "surfaces": "six static room planes with aperture edge adjustment",
+  "maxRange": 2048,
+  "playerRadius": 25,
+  "playerHalfHeight": 41,
+  "exitMargin": 4,
+  "contactMargin": 2,
+  "floorSnapDistance": 18,
+  "fireIntervalMs": 250,
+  "ackTimeoutMs": 1500,
+  "rendering": "HL1 SDK-tool linked-camera renderer: live portal view and local body visually verified. CS2 native monitor probe remains unverified. Other existing renderers unchanged.",
+  "nativePortal2Authority": "native prop_portal traversal; canonical Sourcebox placement; core player traversal disabled for Portal 2 to avoid double teleport",
+  "physicsTraversal": "Native tested: GMod spawned props; SDK HL2/TF2 shared crates; authoritative shared cube in HL1 Source, CS2 and Portal 2. Each owner traverses and publishes the same entity transform. Portal 2 uses its installed metal_box physics asset. Native floor-to-wall checks passed; not every model, aperture orientation or ownership sequence is covered.",
+  "equipment": {
+    "gmod": "native SWEP; firing and travel candidate",
+    "hl2": "SDK native weapon_sourcebox_portalgun; wall-pair placement, live view and walking traversal verified",
+    "tf2": "SDK native inventory slot 6; wall-pair traversal verified; held-pose repair awaiting visual acceptance",
+    "hl1mp": "Native Egon carrier in slot 3; Portal Gun model and both placement buttons verified in actual HL1; replaces Egon, preserves crowbar and pistol",
+    "cs2": "native additional healthshot carrier; Portal Gun visuals pending",
+    "portal2": "native gun; canonical authority candidate"
+  },
+  "inventoryRequirement": "Normal weapon inventory slot in every game; preserve ordinary loadout; no F9 toggle substitute",
+  "activationPolicy": "capability-gated",
+  "requireNativeTrace": true,
+  "requireExitClearance": true,
+  "gmodBackend": {
+    "workshopId": "1800764828",
+    "backend": "successor",
+    "traversal": "native-addon",
+    "redistribute": false
+  },
+  "playerHulls": {
+    "hl1mp": {
+      "playerHalfHeight": 36,
+      "playerRadius": 16
+    },
+    "cs2": {
+      "playerHalfHeight": 36,
+      "playerRadius": 16
+    }
+  },
+  "momentumRecoveryMs": 100,
+  "destinationPreview": {
+    "cs2": "native-monitor-probe-unverified",
+    "hl1": "sdk-tool-linked-camera",
+    "resolution": 512,
+    "maxRecursion": 0,
+    "drawLocalPlayer": true
+  }
+}

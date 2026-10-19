@@ -1,0 +1,38 @@
+{
+  "repository": "https://github.com/ValveSoftware/source-sdk-2013",
+  "revision": "be57e3d01ac7d7aa6a2cacbfef187c0b46616db0",
+  "checkout": "work/sourcebox-sdk",
+  "approvedGames": [
+    "hl2",
+    "tf2"
+  ],
+  "runtimeAppId": 243750,
+  "preserveRetailAdapters": true,
+  "targets": {
+    "hl2": {
+      "solution": "sourcebox-hl2.sln",
+      "mod": "mod_hl2",
+      "clientAndServer": true,
+      "status": "live-hl2-native-gun-wall-pair-render-and-traversal-verified"
+    },
+    "tf2": {
+      "solution": "sourcebox-tf2.sln",
+      "mod": "mod_tf",
+      "clientAndServer": true,
+      "status": "live-tf2-inventory-selection-under-diagnosis"
+    }
+  },
+  "portalImplementation": {
+    "status": "native-renderer-and-hl2-gun-implemented-partial-runtime-acceptance",
+    "referenceDependency": "1800764828",
+    "required": [
+      "live portal rendering and clipping",
+      "predicted player crossing",
+      "velocity and view transformation",
+      "physics object crossing",
+      "native inventory weapon",
+      "Sourcebox canonical pair replication"
+    ],
+    "acceptance": "Actual SDK game clients must pass rendering and traversal tests before replacing retail launchers"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "enabled": true,
+  "damagePerHit": 10,
+  "maxHitsPerSecond": 20,
+  "respawnProtectionMs": 1000,
+  "respawnMode": "immediate health restore and spawn teleport before native death on lethal cross-game hit",
+  "damageDetection": "native proxy OnTakeDamage via logic_branch; simultaneous pellet events coalesced per frame; fixed damage",
+  "spawns": {
+    "hl2": [
+      -128,
+      0,
+      8
+    ],
+    "tf2": [
+      128,
+      128,
+      8
+    ]
+  },
+  "scope": "cross-game hits; native environmental deaths unchanged",
+  "status": "Six adapters wired; SDK health input bypasses self-damage filtering. Native damage verification in progress.",
+  "gmodTargets": [
+    "hl2",
+    "tf2",
+    "hl1mp",
+    "cs2",
+    "portal2"
+  ],
+  "gmodDetection": "native EntityTakeDamage on remote proxy; local player attacker; coalesced per target per engine tick",
+  "games": [
+    "hl2",
+    "tf2",
+    "gmod",
+    "hl1mp",
+    "cs2",
+    "portal2"
+  ]
+}

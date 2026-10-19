@@ -1,0 +1,11 @@
+{
+  "maxLightsPerWorld":96,
+  "minimumLightSpacing":96,
+  "sourceBrightnessDivisor":800,
+  "minimumBrightness":0.1,
+  "maximumBrightness":1.25,
+  "interiorRange":768,
+  "outdoorBrightness":1.5,
+  "arrivalBrightness":0.5,
+  "note":"Approximate static Source 2 lights. Source 1 light positions and colors retained; intensity uses a bounded conversion rather than Source 1 raw brightness."
+}

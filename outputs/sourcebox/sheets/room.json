@@ -1,0 +1,38 @@
+{
+  "name": "sourcebox_room_001",
+  "bounds": [
+    [
+      -512,
+      -512,
+      0
+    ],
+    [
+      512,
+      512,
+      256
+    ]
+  ],
+  "thickness": 32,
+  "hl2Spawn": [
+    -128,
+    0,
+    8
+  ],
+  "tf2Spawn": [
+    128,
+    0,
+    8
+  ],
+  "floorMaterial": "DEV/DEV_MEASUREGENERIC01B",
+  "wallMaterial": "DEV/DEV_MEASUREWALL01A",
+  "cubeReservedPosition": [
+    0,
+    128,
+    32
+  ],
+  "gmodSpawn": [
+    -320,
+    0,
+    8
+  ]
+}

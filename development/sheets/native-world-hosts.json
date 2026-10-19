@@ -1,0 +1,22 @@
+{
+  "hl2": {
+    "enabled": true,
+    "map": "C:/SourceBox-dev/Documents/Codex/2026-10-15/project-sourcebox-prototype-001-half-life/work/worlds/source1-host/hl2/sourcebox_room_001.bsp",
+    "acceptance": "pending native gameplay"
+  },
+  "tf2": {
+    "acceptance": "pending native gameplay",
+    "map": "C:/SourceBox-dev\\Documents\\Codex\\2026-10-15\\project-sourcebox-prototype-001-half-life/work/worlds/source1-host/tf2/sourcebox_room_001.bsp",
+    "enabled": true
+  },
+  "hl1mp": {
+    "acceptance": "pending native gameplay",
+    "map": "C:/SourceBox-dev\\Documents\\Codex\\2026-10-15\\project-sourcebox-prototype-001-half-life/work/worlds/source1-host/hl1mp/sourcebox_room_001.bsp",
+    "enabled": true
+  },
+  "portal2": {
+    "map": "C:/SourceBox-dev\\Documents\\Codex\\2026-10-15\\project-sourcebox-prototype-001-half-life/work/worlds/source1-host/portal2/sourcebox_room_001.bsp",
+    "enabled": true,
+    "acceptance": "pending native gameplay; compiler allocator fallback warning retained"
+  }
+}

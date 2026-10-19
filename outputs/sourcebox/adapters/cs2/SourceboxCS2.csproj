@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+ <PropertyGroup><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
+ <ItemGroup><Reference Include="CounterStrikeSharp.API"><HintPath>../../../../work/cs2/css/addons/counterstrikesharp/api/CounterStrikeSharp.API.dll</HintPath><Private>false</Private></Reference></ItemGroup>
+ <ItemGroup><Compile Remove="WorldDestinations.g.cs"/><Compile Include="WorldDestinations.g.cs"/></ItemGroup>
+ <ItemGroup><Compile Remove="WorldBounds.g.cs"/><Compile Include="WorldBounds.g.cs"/></ItemGroup>
+ <Target Name="SourceboxPreflight" BeforeTargets="BeforeBuild">
+  <Exec Command="node &quot;$(MSBuildProjectDirectory)/../../preflight.mjs&quot;" />
+  <Exec Command="node &quot;$(MSBuildProjectDirectory)/../../tools/generate-cs2-models.cjs&quot;" />
+ </Target>
+</Project>
+

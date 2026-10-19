@@ -1,0 +1,20 @@
+{
+  "requested": "2026-10-15",
+  "status": "in progress; not complete",
+  "requirements": [
+    "Half-Life Deathmatch Source as fourth native game, retaining native HUD, viewmodels, weapons and controls",
+    "Bidirectional player models, weapons and damage across all four games",
+    "GMod NPC visibility, animation, damage and AI-driven movement across all clients",
+    "Extend spawn-menu support by entity type; unsupported Lua behavior must not be presented as replicated",
+    "Every shared physics prop interactable from every client through explicit single-owner handoff",
+    "Retain existing confirmed movement, prop creation/removal and GMod outgoing damage",
+    "Next launch: four game windows arranged in a 2x2 grid"
+  ],
+  "knownGaps": [
+    "Only blue cube currently supports ownership handoff",
+    "Existing GMod-created props are kinematic replicas outside GMod",
+    "NPC and scripted entity replication not yet implemented",
+    "Four-game movement and weapon rendering awaiting native acceptance",
+    "HL1 world weapon hand alignment and TF2 pose blending in HL1 require visual validation"
+  ]
+}

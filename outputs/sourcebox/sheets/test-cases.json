@@ -1,0 +1,142 @@
+[
+  {
+    "id": "A1",
+    "description": "TF2 real process connected",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "A2",
+    "description": "HL2 real process connected",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "A3",
+    "description": "Both live concurrently and heartbeat",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "B1",
+    "description": "Actual HL2 movement visible in TF2",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "B2",
+    "description": "Upright animated installed HL2 player model in TF2",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "C1",
+    "description": "Actual TF2 movement displayed by Soldier in HL2",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "D1",
+    "description": "HL2-owned barrel/crate movement and breakage visible in TF2",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "D2",
+    "description": "TF2-owned barrel/crate movement and breakage visible in HL2",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "W1",
+    "description": "HL2 equipped world weapon visible in TF2",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "AM1",
+    "description": "Native reserve ammunition replenishes; normal reload remains",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "F1",
+    "description": "Physics persists during player absence; late join receives current props; disconnect cleanup",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "E1",
+    "description": "Native shared cube handoff HL2 to TF2 and back, each engine interacting with same cube",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "E2",
+    "description": "Repeated handoff, old-owner removal, cooldown and timeout safety",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "F2",
+    "description": "Player walking, turning, jumping and weapon appearance remain intact after ownership update",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "G1",
+    "description": "Melty release recipe, installation and one-click validation",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "E3",
+    "description": "E ownership interaction and destroyed-prop respawn",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "COM1",
+    "description": "Native hits on remote proxy reduce other live player health",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "COM2",
+    "description": "Lethal cross-game damage immediately restores health and returns player to spawn with one-second protection",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "GMOD1",
+    "description": "Actual GMod displays HL2 and correct TF2 class with movement",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "GMOD2",
+    "description": "GMod movement appears as separate labeled proxy in actual HL2 and TF2",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "GMOD3",
+    "description": "GMod E claims blue cube, physgun moves it in all games, E returns it to HL2/TF2",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "GMOD4",
+    "description": "Three-game disconnect and reconnect removes stale replicas and restores ownership",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "GMOD5",
+    "description": "Spawn, move and undo standard props in GMod; reflected in HL2/TF2",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "GMOD6",
+    "description": "GMod weapons damage the correct remote player; lethal hit instantly resets that player",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "SCENE1",
+    "description": "Spawn stock crate in GMod; E pushes and shooting moves/damages original from HL2, TF2 and HL1MP; undo removes all replicas",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "NPC1",
+    "description": "Spawn regular zombie in GMod; all native games show movement/animation and hits damage the original; death removes live NPC replica",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "CS2_COLLISION_DAMAGE",
+    "description": "Walk into remote players and shoot them from CS2 and GMod; collision blocks movement and corresponding game health drops",
+    "status": "not-run-portable-beta"
+  },
+  {
+    "id": "CS2_GOBLIN_PLAYER",
+    "description": "Select Goblin player model in GMod and verify its appearance in CS2",
+    "status": "not-run-portable-beta"
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "requested": "2026-10-15",
+  "apply": "next launch",
+  "layout": "five windows on one monitor: three top, two bottom",
+  "monitor": "Primary display, 1920x1080, origin 0,0",
+  "preserveSeparateProcesses": true,
+  "cells": [
+    [
+      "tf2",
+      "hl2",
+      "hl1mp"
+    ],
+    [
+      "gmod",
+      "cs2"
+    ]
+  ],
+  "windows": {
+    "tf2": {
+      "x": 0,
+      "y": 0,
+      "width": 640,
+      "height": 540
+    },
+    "hl2": {
+      "x": 640,
+      "y": 0,
+      "width": 640,
+      "height": 540
+    },
+    "hl1mp": {
+      "x": 1280,
+      "y": 0,
+      "width": 640,
+      "height": 540
+    },
+    "gmod": {
+      "x": 0,
+      "y": 540,
+      "width": 960,
+      "height": 540
+    },
+    "cs2": {
+      "x": 960,
+      "y": 540,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "status": "saved for next launch; actual five-window placement not yet verified"
+}

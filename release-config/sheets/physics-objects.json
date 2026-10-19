@@ -1,0 +1,96 @@
+{
+  "status": "Native shared cube ownership transfers verified across selected routes; six-game prop portal traversal verified for supported shared objects. Arbitrary engine-local entities are not automatically exported.",
+  "rule": "exactly one owner; transfer requires old-owner freeze acknowledgement before grant",
+  "objects": [
+    {
+      "id": "sourcebox_hl2_barrel",
+      "owner": "hl2",
+      "model": "models/props_c17/oildrum001.mdl",
+      "position": [
+        -240,
+        -180,
+        40
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "sourcebox_hl2_crate",
+      "owner": "hl2",
+      "model": "models/props_junk/wood_crate001a.mdl",
+      "position": [
+        -240,
+        180,
+        40
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "sourcebox_tf2_barrel",
+      "owner": "tf2",
+      "model": "models/props_c17/oildrum001.mdl",
+      "position": [
+        240,
+        -180,
+        40
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "sourcebox_tf2_crate",
+      "owner": "tf2",
+      "model": "models/props_junk/wood_crate001a.mdl",
+      "position": [
+        240,
+        180,
+        40
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "ammo": {
+    "mode": "unlimited reserve; reloads remain",
+    "interval": 0.5,
+    "command": "givecurrentammo"
+  },
+  "recovery": {
+    "independentOfPlayer": true,
+    "lateJoin": "latest snapshot of connected owner",
+    "disconnect": "remove remote replicas; keep local owned physics",
+    "resetCommand": "cmd sourcebox_resetprops",
+    "resetScope": "own pair only",
+    "transfer": "not implemented"
+  },
+  "cube": {
+    "id": "sourcebox_shared_cube",
+    "owner": "hl2",
+    "model": "models/props_junk/wood_crate001a.mdl",
+    "position": [
+      0,
+      128,
+      32
+    ],
+    "claimDistance": 160,
+    "cooldownMs": 2000,
+    "freezeTimeoutMs": 3000,
+    "control": "E (native use plus claim), F7 fallback",
+    "handoff": "old physical entity removed and acknowledged before new owner spawns; momentum deliberately stopped",
+    "status": "implementation candidate; native tests required"
+  },
+  "respawnMs": 5000
+}

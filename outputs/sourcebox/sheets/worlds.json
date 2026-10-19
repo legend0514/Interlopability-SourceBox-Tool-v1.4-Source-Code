@@ -1,0 +1,116 @@
+{
+  "enabled": false,
+  "portalGames": [
+    "hl2",
+    "tf2",
+    "hl1mp",
+    "gmod",
+    "cs2",
+    "portal2"
+  ],
+  "host": "gmod",
+  "nativeMap": "sourcebox_room_001",
+  "worlds": [
+    {
+      "id": "gm_construct",
+      "label": "Construct",
+      "source": "installed-content/gm_construct.bsp",
+      "offset": [
+        0,
+        0,
+        3500
+      ],
+      "sourceZ": [
+        -2000,
+        5000
+      ],
+      "spawn": [
+        704,
+        132,
+        3357
+      ],
+      "yaw": 180
+    },
+    {
+      "id": "gm_flatgrass",
+      "label": "Flatgrass",
+      "source": "installed-content/gm_flatgrass.bsp",
+      "offset": [
+        0,
+        0,
+        21000
+      ],
+      "sourceZ": [
+        -14000,
+        -10000
+      ],
+      "spawn": [
+        -512,
+        576,
+        8713
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "ctf_2fort",
+      "label": "TF2 \u00e2\u20ac\u201d 2Fort",
+      "source": "installed-content/ctf_2fort.bsp",
+      "offset": [
+        9000,
+        0,
+        3500
+      ],
+      "sourceZ": [
+        -700,
+        1900
+      ],
+      "spawn": [
+        7112,
+        -1280,
+        3776
+      ],
+      "yaw": 90
+    },
+    {
+      "id": "portal_triple_laser",
+      "label": "Portal 2 \u00e2\u20ac\u201d Triple Laser chamber",
+      "source": "installed-content/sp_a2_triple_laser.bsp",
+      "offset": [
+        -7500,
+        5500,
+        12500
+      ],
+      "sourceZ": [
+        -512,
+        900
+      ],
+      "spawn": [
+        300,
+        -100,
+        12508
+      ],
+      "yaw": 180
+    },
+    {
+      "id": "hl1_frenzy",
+      "label": "Half-Life: Source \u00e2\u20ac\u201d Frenzy",
+      "source": "installed-content/frenzy.bsp",
+      "offset": [
+        -9000,
+        0,
+        4000
+      ],
+      "sourceZ": [
+        200,
+        1000
+      ],
+      "spawn": [
+        -9048,
+        8,
+        4272
+      ],
+      "yaw": 180
+    }
+  ],
+  "nativeGeometry": false
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "hl2",
+    "role": "companion",
+    "appId": 220,
+    "architecture": "x86",
+    "adapter": "sourcebox_hl2.dll"
+  },
+  {
+    "id": "tf2",
+    "role": "primary",
+    "appId": 440,
+    "architecture": "x64",
+    "adapter": "sourcebox_tf2.dll"
+  }
+]

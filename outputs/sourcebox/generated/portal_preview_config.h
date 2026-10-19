@@ -1,0 +1,4 @@
+// Generated from portal sheets.
+#define SOURCEBOX_PREVIEW_SIZE 512
+#define SOURCEBOX_PREVIEW_HALF_WIDTH 32.0f
+#define SOURCEBOX_PREVIEW_HALF_HEIGHT 64.0f

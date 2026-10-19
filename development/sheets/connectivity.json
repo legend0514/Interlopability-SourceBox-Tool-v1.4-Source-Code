@@ -1,0 +1,27 @@
+{
+  "protocol": 1,
+  "phase": "C",
+  "sheets": {
+    "games": "games-adapters.json",
+    "messages": "network-messages.json",
+    "entities": "shared-entities.json",
+    "movement": "player-movement.json",
+    "physics": "physics-objects.json",
+    "coordinates": "coordinate-mappings.json",
+    "assets": "asset-references.json",
+    "tests": "test-cases.json",
+    "runtime": "runtime.json",
+    "hl2Gameplay": "hl2-gameplay.json",
+    "combat": "combat.json",
+    "gmod": "gmod.json",
+    "gmodScene": "gmod-scene.json",
+    "hl1mp": "hl1mp.json",
+    "cs2": "cs2.json",
+    "portal2": "portal2.json",
+    "roster": "roster.json",
+    "portals": "portals.json",
+    "mapTravel": "map-travel.json",
+    "worlds": "worlds.json",
+    "destinationWorlds": "worlds-expanded.json"
+  }
+}

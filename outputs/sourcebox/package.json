@@ -1,0 +1,1 @@
+{"name":"sourcebox-core","version":"0.0.1","private":true,"type":"module","scripts":{"preflight":"node preflight.mjs","test":"node --test test/*.test.mjs","start":"node preflight.mjs && node core.mjs"}}

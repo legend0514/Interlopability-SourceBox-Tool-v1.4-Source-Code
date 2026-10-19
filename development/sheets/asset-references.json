@@ -1,0 +1,444 @@
+{
+  "redistribute": false,
+  "proxies": {
+    "hl2": {
+      "model": "models/player/soldier.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "label": "",
+      "limitation": "TF2 materials and pose blending require real HL2 validation",
+      "sha256": "62bc48c0fa4ac4166151633087feadef103a2d86d4412639fe1adddba91de219",
+      "sequences": {
+        "idle": {
+          "name": "stand_PRIMARY",
+          "index": 150
+        },
+        "walk": {
+          "name": "run_PRIMARY",
+          "index": 201
+        },
+        "run": {
+          "name": "run_PRIMARY",
+          "index": 201
+        },
+        "air": {
+          "name": "jump_float_PRIMARY",
+          "index": 164
+        }
+      },
+      "bones": 86
+    },
+    "tf2": {
+      "model": "models/player.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/hl2/hl2_misc_dir.vpk",
+      "label": "HL2 PLAYER - STOCK MODEL",
+      "limitation": "Stock basic third-person player model; not a finished textured Gordon; no jump animation",
+      "sha256": "6c2f5069e3ee684d7bbff428cc3e9014776f27e848bf47c631ff64d7f5041f65",
+      "sequences": {
+        "idle": {
+          "name": "Idle01",
+          "index": 0
+        },
+        "walk": {
+          "name": "walk",
+          "index": 2
+        },
+        "run": {
+          "name": "run",
+          "index": 1
+        },
+        "air": {
+          "name": "Idle01",
+          "index": 0
+        }
+      },
+      "bones": 34
+    }
+  },
+  "tf2Classes": {
+    "1": {
+      "model": "models/player/scout.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "label": "",
+      "className": "scout",
+      "sha256": "603c8fc56450b383ccb5952420d850044a6eff98e0df810171ffa5182d76f478",
+      "sequences": {
+        "idle": {
+          "index": 175,
+          "name": "stand_PRIMARY"
+        },
+        "walk": {
+          "index": 212,
+          "name": "run_PRIMARY"
+        },
+        "run": {
+          "index": 212,
+          "name": "run_PRIMARY"
+        },
+        "air": {
+          "index": 253,
+          "name": "airwalk_PRIMARY"
+        }
+      },
+      "bones": 78
+    },
+    "2": {
+      "model": "models/player/sniper.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "label": "",
+      "className": "sniper",
+      "sha256": "be405f065d9db840fb1de1f35fbfac3f33921d0acf2d576529b014bd632edb19",
+      "sequences": {
+        "idle": {
+          "index": 143,
+          "name": "stand_PRIMARY"
+        },
+        "walk": {
+          "index": 213,
+          "name": "run_PRIMARY"
+        },
+        "run": {
+          "index": 213,
+          "name": "run_PRIMARY"
+        },
+        "air": {
+          "index": 159,
+          "name": "a_jumpfloat_PRIMARY"
+        }
+      },
+      "bones": 74
+    },
+    "3": {
+      "model": "models/player/soldier.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "label": "",
+      "className": "soldier",
+      "sha256": "62bc48c0fa4ac4166151633087feadef103a2d86d4412639fe1adddba91de219",
+      "sequences": {
+        "idle": {
+          "index": 150,
+          "name": "stand_PRIMARY"
+        },
+        "walk": {
+          "index": 201,
+          "name": "run_PRIMARY"
+        },
+        "run": {
+          "index": 201,
+          "name": "run_PRIMARY"
+        },
+        "air": {
+          "index": 164,
+          "name": "jump_float_PRIMARY"
+        }
+      },
+      "bones": 86
+    },
+    "4": {
+      "model": "models/player/demo.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "label": "",
+      "className": "demo",
+      "sha256": "b8fe45619b062197a975798310d703ec59f8c1ab53f901c462eed5e0fd34ef93",
+      "sequences": {
+        "idle": {
+          "index": 94,
+          "name": "stand_PRIMARY"
+        },
+        "walk": {
+          "index": 147,
+          "name": "run_PRIMARY"
+        },
+        "run": {
+          "index": 147,
+          "name": "run_PRIMARY"
+        },
+        "air": {
+          "index": 107,
+          "name": "a_jumpfloat_PRIMARY"
+        }
+      },
+      "bones": 84
+    },
+    "5": {
+      "model": "models/player/medic.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "label": "",
+      "className": "medic",
+      "sha256": "485dd564325839863d9d9593e9beb1d64ca24bb59576240ac5ce6ccf05196d04",
+      "sequences": {
+        "idle": {
+          "index": 60,
+          "name": "stand_PRIMARY"
+        },
+        "walk": {
+          "index": 80,
+          "name": "run_PRIMARY"
+        },
+        "run": {
+          "index": 80,
+          "name": "run_PRIMARY"
+        },
+        "air": {
+          "index": 91,
+          "name": "jump_float_PRIMARY"
+        }
+      },
+      "bones": 92
+    },
+    "6": {
+      "model": "models/player/heavy.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "label": "",
+      "className": "heavy",
+      "sha256": "503258d6009595bcdfa6bf518956b7a518b916f98d9447ffe540d7e84741db54",
+      "sequences": {
+        "idle": {
+          "index": 65,
+          "name": "stand_PRIMARY"
+        },
+        "walk": {
+          "index": 115,
+          "name": "run_PRIMARY"
+        },
+        "run": {
+          "index": 115,
+          "name": "run_PRIMARY"
+        },
+        "air": {
+          "index": 131,
+          "name": "airwalk_PRIMARY"
+        }
+      },
+      "bones": 79
+    },
+    "7": {
+      "model": "models/player/pyro.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "label": "",
+      "className": "pyro",
+      "sha256": "bcd17a24d213e7946deb3a0773bc626774aca295310d822971426b8843ddde89",
+      "sequences": {
+        "idle": {
+          "index": 89,
+          "name": "stand_PRIMARY"
+        },
+        "walk": {
+          "index": 141,
+          "name": "run_PRIMARY"
+        },
+        "run": {
+          "index": 141,
+          "name": "run_PRIMARY"
+        },
+        "air": {
+          "index": 102,
+          "name": "a_jumpfloat_PRIMARY"
+        }
+      },
+      "bones": 76
+    },
+    "8": {
+      "model": "models/player/spy.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "label": "",
+      "className": "spy",
+      "sha256": "772b9e751f09f7bbc576e3193050f2ee5d72b13c67050fe4ced7ab1720029c17",
+      "sequences": {
+        "idle": {
+          "index": 83,
+          "name": "stand_SECONDARY"
+        },
+        "walk": {
+          "index": 145,
+          "name": "run_SECONDARY"
+        },
+        "run": {
+          "index": 145,
+          "name": "run_SECONDARY"
+        },
+        "air": {
+          "index": 98,
+          "name": "a_jumpfloat_SECONDARY"
+        }
+      },
+      "bones": 84
+    },
+    "9": {
+      "model": "models/player/engineer.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "label": "",
+      "className": "engineer",
+      "sha256": "533049f35bf1e7310e55ac9b0d8e60f689d0ddd671befdad4021fe6863f283e7",
+      "sequences": {
+        "idle": {
+          "index": 176,
+          "name": "stand_PRIMARY"
+        },
+        "walk": {
+          "index": 265,
+          "name": "run_PRIMARY"
+        },
+        "run": {
+          "index": 265,
+          "name": "run_PRIMARY"
+        },
+        "air": {
+          "index": 197,
+          "name": "a_jumpfloat_PRIMARY"
+        }
+      },
+      "bones": 73
+    }
+  },
+  "weapons": {
+    "tf_weapon_scattergun": {
+      "model": "models/weapons/w_models/w_scattergun.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "af5c2e6abfdeb6badb0c0cff8de0ea5a50155b0a73ae3a3fc41deee3737a2223"
+    },
+    "tf_weapon_rocketlauncher": {
+      "model": "models/weapons/w_models/w_rocketlauncher.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "3363a1c12e90378e24fbb2238b314e16cfe2420a729e2df026fd5a00cd760b00"
+    },
+    "tf_weapon_grenadelauncher": {
+      "model": "models/weapons/w_models/w_grenadelauncher.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "941b562f3d841497b1a6bd9f9e54707aec3fef5f7f15b11753647c64f95e34de"
+    },
+    "tf_weapon_pipebomblauncher": {
+      "model": "models/weapons/w_models/w_stickybomb_launcher.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "3cd85413267ab3ad70d75172416a05718e56f973d529c26ac33b5f1979ffcdd4"
+    },
+    "tf_weapon_minigun": {
+      "model": "models/weapons/w_models/w_minigun.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "90695a6505edde167f364ddd43f7e3230cd63c1707637da2395394e941779276"
+    },
+    "tf_weapon_sniperrifle": {
+      "model": "models/weapons/w_models/w_sniperrifle.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "1797b7602e77d091acc45838f3313a5cdf1a8ff7b8a3992f644b71abeb3f1b9d"
+    },
+    "tf_weapon_smg": {
+      "model": "models/weapons/w_models/w_smg.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "6822a5e046297ade24e4332f2decc8d47bf878f7de4e6236164841c45d89c7cc"
+    },
+    "tf_weapon_syringegun_medic": {
+      "model": "models/weapons/w_models/w_syringegun.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "ff1865ef0ec11f1855f45e69e059af271efaaadd84670e53b0a688efd3579456"
+    },
+    "tf_weapon_medigun": {
+      "model": "models/weapons/w_models/w_medigun.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "6a1432b3a5a4533ff0339cd0a87f4ce01ba1a3a2dff71febda713538b09e8ccb"
+    },
+    "tf_weapon_revolver": {
+      "model": "models/weapons/w_models/w_revolver.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "b4d8d153496828f65bf13e0f44d8885dcb9e3b32a5bc4cc10afdff8278a72020"
+    },
+    "tf_weapon_knife": {
+      "model": "models/weapons/w_models/w_knife.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "d730e12401faa25a1294dcc4f75738051ab5fec1481deda9b5d26c49d9a65df6"
+    },
+    "tf_weapon_bat": {
+      "model": "models/weapons/w_models/w_bat.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "d58e5d7423ee1ca7890ce12203d9f188206a6cd4f6dbaed483c799d30d566902"
+    },
+    "tf_weapon_bottle": {
+      "model": "models/weapons/w_models/w_bottle.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "2d2c08761b4ffaec4e620847a5f1471a77f41032e79a451b18894d9e5d27ebac"
+    },
+    "tf_weapon_fireaxe": {
+      "model": "models/weapons/w_models/w_fireaxe.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "2823b8c2c0d986af3b16fe7829ab686ee2a6583a1a7ea4d3787d7631d6eae31d"
+    },
+    "tf_weapon_shovel": {
+      "model": "models/weapons/w_models/w_shovel.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "ebf5a5c3ee309d3c70c936f5f2a09428371e2f60ec1120b2fac0a187bc9b9939"
+    },
+    "tf_weapon_bonesaw": {
+      "model": "models/weapons/w_models/w_bonesaw.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "f2e04a3d9a1c3ce7d5a0048446f773cfb1fed5036c2d16a5b981e1c4e68cc680"
+    },
+    "tf_weapon_wrench": {
+      "model": "models/weapons/w_models/w_wrench.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "6599c1e441a22f85a00ef7523706cda552515940179354d41f76855b804ea719"
+    },
+    "tf_weapon_pistol": {
+      "model": "models/weapons/w_models/w_pistol.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "ef1de0b6dddb1a4b7f5f782ac2b0ae8704e353af60fde1bd5da5d82a206f45f6"
+    },
+    "tf_weapon_pistol_scout": {
+      "model": "models/weapons/w_models/w_pistol.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "ef1de0b6dddb1a4b7f5f782ac2b0ae8704e353af60fde1bd5da5d82a206f45f6"
+    },
+    "tf_weapon_shotgun_primary": {
+      "model": "models/weapons/w_models/w_shotgun.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "4328c3122119eb8ab459da4831563029347aee5564837a142aa6047229d86a23"
+    },
+    "tf_weapon_shotgun_soldier": {
+      "model": "models/weapons/w_models/w_shotgun.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "4328c3122119eb8ab459da4831563029347aee5564837a142aa6047229d86a23"
+    },
+    "tf_weapon_shotgun_hwg": {
+      "model": "models/weapons/w_models/w_shotgun.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "4328c3122119eb8ab459da4831563029347aee5564837a142aa6047229d86a23"
+    },
+    "tf_weapon_shotgun_pyro": {
+      "model": "models/weapons/w_models/w_shotgun.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "4328c3122119eb8ab459da4831563029347aee5564837a142aa6047229d86a23"
+    },
+    "tf_weapon_flamethrower": {
+      "model": "models/weapons/c_models/c_flamethrower/c_flamethrower.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "e1c6ce36cb1ef80d0853e04b007a6bbb9997473a6ec5a1415ba76b5caf9ca126"
+    },
+    "tf_weapon_builder": {
+      "model": "models/weapons/w_models/w_builder.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "a2fdd5766f5928b0c91145867d5debfe13bb7616b85a82ac5749eae140b6cea6"
+    },
+    "tf_weapon_pda_engineer_build": {
+      "model": "models/weapons/w_models/w_pda_engineer.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "9ef6ee61891ed310bf3642dccc3c60217dabe4a9b7767a551e8831332b368fdc"
+    },
+    "tf_weapon_pda_engineer_destroy": {
+      "model": "models/weapons/w_models/w_pda_engineer.mdl",
+      "archive": "C:/Program Files (x86)/Steam/steamapps/common/Team Fortress 2/tf/tf2_misc_dir.vpk",
+      "sha256": "9ef6ee61891ed310bf3642dccc3c60217dabe4a9b7767a551e8831332b368fdc"
+    }
+  },
+  "hl2Weapons": {
+    "weapon_crowbar": "models/weapons/w_crowbar.mdl",
+    "weapon_pistol": "models/weapons/w_pistol.mdl",
+    "weapon_357": "models/weapons/w_357.mdl",
+    "weapon_smg1": "models/weapons/w_smg1.mdl",
+    "weapon_ar2": "models/weapons/w_irifle.mdl",
+    "weapon_shotgun": "models/weapons/w_shotgun.mdl",
+    "weapon_crossbow": "models/weapons/w_crossbow.mdl",
+    "weapon_frag": "models/weapons/w_grenade.mdl",
+    "weapon_rpg": "models/weapons/w_rocket_launcher.mdl",
+    "weapon_physcannon": "models/weapons/w_physics.mdl",
+    "weapon_bugbait": "models/weapons/w_bugbait.mdl",
+    "weapon_sourcebox_portalgun": "models/sourcebox/portal2/w_portalgun.mdl"
+  }
+}

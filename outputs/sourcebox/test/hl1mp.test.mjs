@@ -1,0 +1,6 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import net from 'node:net';import {once} from 'node:events';import {createCore} from '../core.mjs';
+test('HL1MP fourth identity broadcasts native model and weapon to all three peers',{timeout:5000},async()=>{const c=createCore({log:()=>{}});c.server.listen(0,'127.0.0.1');await once(c.server,'listening');const sockets=[];
+ async function join(game){const s=net.connect(c.server.address().port,'127.0.0.1');sockets.push(s);await once(s,'connect');const p=once(s,'data');s.write(JSON.stringify({type:'hello',protocol:1,game,pid:1})+'\n');await p;return s;}
+ try{const peers=[];for(const game of ['hl2','tf2','gmod'])peers.push(await join(game));const h=await join('hl1mp');assert.equal(c.clients.size,4);const received=peers.map(p=>once(p,'data'));h.write(JSON.stringify({type:'state',entity:'player:hl1mp',seq:1,timestamp:1,position:[0,0,0],rotation:[0,30,0],velocity:[1,2,3],grounded:true,model:'models/player/mp/gordon/gordon.mdl',weapon:'weapon_glock'})+'\n');for(const p of received){const m=JSON.parse((await p)[0]);assert.equal(m.game,'hl1mp');assert.equal(m.state.weapon,'weapon_glock');assert.equal(m.state.model,'models/player/mp/gordon/gordon.mdl');}}
+ finally{for(const s of sockets)s.destroy();await c.close();}
+});

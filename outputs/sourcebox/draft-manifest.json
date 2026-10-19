@@ -1,0 +1,16 @@
+{
+  "kind": "sourcebox-local-draft",
+  "prototype": "001",
+  "status": "native-acceptance-in-progress",
+  "published": false,
+  "requiredGames": [
+    {"id":"tf2","steamAppId":440,"role":"primary"},
+    {"id":"hl2","steamAppId":220,"role":"companion"}
+  ],
+  "runtime": {"node":"required; not bundled","transport":"loopback TCP","port":27841},
+  "entrypoint": "launch-phase-a.ps1",
+  "localOnly": true,
+  "assets": "Read installed Valve assets locally; do not include extracted caches or labs in a release",
+  "meltyRecipe": "not generated or validated: service capabilities unavailable",
+  "releaseGate": "all native acceptance tests plus explicit user publication approval"
+}

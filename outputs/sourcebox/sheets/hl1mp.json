@@ -1,0 +1,316 @@
+{
+  "id": "hl1mp",
+  "appId": 360,
+  "architecture": "x64",
+  "enabled": true,
+  "adapter": "sourcebox_hl1mp.dll",
+  "nativeUI": true,
+  "nativeViewmodels": true,
+  "origin": [
+    0,
+    0,
+    0
+  ],
+  "scale": 1,
+  "peers": [
+    "hl2",
+    "tf2",
+    "gmod"
+  ],
+  "archives": [
+    "installed-content/hl1_pak_dir.vpk",
+    "installed-content/hl1mp_pak_dir.vpk"
+  ],
+  "models": {
+    "models/player/mp/zombie/zombie.mdl": {
+      "model": "models/player/mp/zombie/zombie.mdl",
+      "sha256": "7136e1f6ece1d1a00a6a5502e471059b74579d3051c3c50c64281728ab3b502d",
+      "version": 44,
+      "sequences": {
+        "idle": {
+          "index": 2,
+          "name": "idle"
+        },
+        "walk": {
+          "index": 14,
+          "name": "walk"
+        },
+        "run": {
+          "index": 13,
+          "name": "run"
+        },
+        "air": {
+          "index": 9,
+          "name": "jump"
+        }
+      }
+    },
+    "models/player/mp/scientist/scientist.mdl": {
+      "model": "models/player/mp/scientist/scientist.mdl",
+      "sha256": "9d0530ba7645a2658e166ae0bd557023671972fb4eb62cb01d0678b866dcdd98",
+      "version": 44,
+      "sequences": {
+        "idle": {
+          "index": 2,
+          "name": "idle"
+        },
+        "walk": {
+          "index": 14,
+          "name": "walk"
+        },
+        "run": {
+          "index": 13,
+          "name": "run"
+        },
+        "air": {
+          "index": 9,
+          "name": "jump"
+        }
+      }
+    },
+    "models/player/mp/robo/robo.mdl": {
+      "model": "models/player/mp/robo/robo.mdl",
+      "sha256": "bad407ecd77f4ac546561820ebff2363ea6757115e4c0a581bdc74dc5a8f86cc",
+      "version": 44,
+      "sequences": {
+        "idle": {
+          "index": 2,
+          "name": "idle"
+        },
+        "walk": {
+          "index": 14,
+          "name": "walk"
+        },
+        "run": {
+          "index": 13,
+          "name": "run"
+        },
+        "air": {
+          "index": 9,
+          "name": "jump"
+        }
+      }
+    },
+    "models/player/mp/hgrunt/hgrunt.mdl": {
+      "model": "models/player/mp/hgrunt/hgrunt.mdl",
+      "sha256": "fbe57f8f5cf9fee1c08abd3501ca72f6248d0f92a73afee31bd930a6479d76d3",
+      "version": 44,
+      "sequences": {
+        "idle": {
+          "index": 2,
+          "name": "idle"
+        },
+        "walk": {
+          "index": 14,
+          "name": "walk"
+        },
+        "run": {
+          "index": 13,
+          "name": "run"
+        },
+        "air": {
+          "index": 9,
+          "name": "jump"
+        }
+      }
+    },
+    "models/player/mp/helmet/helmet.mdl": {
+      "model": "models/player/mp/helmet/helmet.mdl",
+      "sha256": "089296ad2eb5721cb7ec16dde8f02f7dea4de39e00158152a6cd5a2153d21f03",
+      "version": 44,
+      "sequences": {
+        "idle": {
+          "index": 2,
+          "name": "idle"
+        },
+        "walk": {
+          "index": 14,
+          "name": "walk"
+        },
+        "run": {
+          "index": 13,
+          "name": "run"
+        },
+        "air": {
+          "index": 9,
+          "name": "jump"
+        }
+      }
+    },
+    "models/player/mp/gordon/gordon.mdl": {
+      "model": "models/player/mp/gordon/gordon.mdl",
+      "sha256": "11c09dd7868ea4b27a2ea6009f4843bf725c88303c7381cea25dcbfd1aa2e7df",
+      "version": 44,
+      "sequences": {
+        "idle": {
+          "index": 2,
+          "name": "idle"
+        },
+        "walk": {
+          "index": 14,
+          "name": "walk"
+        },
+        "run": {
+          "index": 13,
+          "name": "run"
+        },
+        "air": {
+          "index": 9,
+          "name": "jump"
+        }
+      }
+    },
+    "models/player/mp/gman/gman.mdl": {
+      "model": "models/player/mp/gman/gman.mdl",
+      "sha256": "83e9b59a6b62866da081d1a1019a20c2bfc87c2dcec9a86f9c39dc44589ff8d0",
+      "version": 44,
+      "sequences": {
+        "idle": {
+          "index": 2,
+          "name": "idle"
+        },
+        "walk": {
+          "index": 14,
+          "name": "walk"
+        },
+        "run": {
+          "index": 13,
+          "name": "run"
+        },
+        "air": {
+          "index": 9,
+          "name": "jump"
+        }
+      }
+    },
+    "models/player/mp/gina/gina.mdl": {
+      "model": "models/player/mp/gina/gina.mdl",
+      "sha256": "ac462c0acda089e94c751a09750e21ff3adbdd6fe679e660e57e314c28a5ef8c",
+      "version": 44,
+      "sequences": {
+        "idle": {
+          "index": 2,
+          "name": "idle"
+        },
+        "walk": {
+          "index": 14,
+          "name": "walk"
+        },
+        "run": {
+          "index": 13,
+          "name": "run"
+        },
+        "air": {
+          "index": 9,
+          "name": "jump"
+        }
+      }
+    },
+    "models/player/mp/barney/barney.mdl": {
+      "model": "models/player/mp/barney/barney.mdl",
+      "sha256": "f1f15463d69f7203ca22380e9ffe963fca9522d45b899add2b68bc0472e2037e",
+      "version": 44,
+      "sequences": {
+        "idle": {
+          "index": 2,
+          "name": "idle"
+        },
+        "walk": {
+          "index": 14,
+          "name": "walk"
+        },
+        "run": {
+          "index": 13,
+          "name": "run"
+        },
+        "air": {
+          "index": 9,
+          "name": "jump"
+        }
+      }
+    }
+  },
+  "weapons": {
+    "weapon_tripmine": {
+      "world": "models/w_tripmine.mdl",
+      "view": "models/v_tripmine.mdl"
+    },
+    "weapon_snark": {
+      "world": "models/w_squeak.mdl",
+      "view": "models/v_squeak.mdl"
+    },
+    "weapon_shotgun": {
+      "world": "models/w_shotgun.mdl",
+      "view": "models/v_shotgun.mdl"
+    },
+    "weapon_satchel": {
+      "world": "models/w_satchel.mdl",
+      "view": "models/v_satchel.mdl"
+    },
+    "weapon_rpg": {
+      "world": "models/w_rpg.mdl",
+      "view": "models/v_rpg.mdl"
+    },
+    "weapon_physgun": {
+      "world": "models/weapons/w_Physics.mdl",
+      "view": "models/weapons/v_Physics.mdl"
+    },
+    "weapon_mp5": {
+      "world": "models/w_9mmAR.mdl",
+      "view": "models/v_9mmAR.mdl"
+    },
+    "weapon_hornetgun": {
+      "world": "models/w_hgun.mdl",
+      "view": "models/v_hgun.mdl"
+    },
+    "weapon_handgrenade": {
+      "world": "models/w_grenade.mdl",
+      "view": "models/v_grenade.mdl"
+    },
+    "weapon_glock": {
+      "world": "models/w_9mmhandgun.mdl",
+      "view": "models/v_9mmhandgun.mdl"
+    },
+    "weapon_gauss": {
+      "world": "models/w_gauss.mdl",
+      "view": "models/v_gauss.mdl"
+    },
+    "weapon_egon": {
+      "world": "models/w_egon.mdl",
+      "view": "models/v_egon.mdl"
+    },
+    "weapon_crowbar": {
+      "world": "models/w_crowbar.mdl",
+      "view": "models/v_crowbar.mdl"
+    },
+    "weapon_crossbow": {
+      "world": "models/w_crossbow.mdl",
+      "view": "models/v_crossbow.mdl"
+    },
+    "weapon_357": {
+      "world": "models/w_357.mdl",
+      "view": "models/v_357.mdl"
+    },
+    "weapon_sourcebox_portalgun": {
+      "world": "models/sourcebox/portal2/w_portalgun.mdl",
+      "view": "models/sourcebox/portal2/v_portalgun.mdl"
+    }
+  },
+  "spawn": [
+    0,
+    -128,
+    8
+  ],
+  "status": "implementation in progress; native acceptance pending",
+  "portalInventory": {
+    "carrier": "weapon_egon",
+    "displayName": "Sourcebox Portal Gun",
+    "slot": 3,
+    "replaces": "Egon",
+    "preserves": [
+      "weapon_crowbar",
+      "weapon_glock"
+    ],
+    "status": "native model, both placement buttons, and one walking wall-pair traversal verified"
+  }
+}

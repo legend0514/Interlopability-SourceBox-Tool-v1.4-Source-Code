@@ -1,0 +1,33 @@
+{
+  "id": "gmod",
+  "appId": 4000,
+  "enabled": true,
+  "stage": "bidirectional-movement-and-cube-candidate",
+  "transport": "local-data-files-to-tcp",
+  "pollMs": 50,
+  "performance": {
+    "portalTextureScale": 0.5,
+    "dynamicPortalLights": false,
+    "portalPreviewHz": 30
+  },
+  "timeoutMs": 2000,
+  "origin": [
+    0,
+    0,
+    0
+  ],
+  "scale": 1,
+  "map": "sourcebox_room_001",
+  "inbound": [
+    "hl2",
+    "tf2"
+  ],
+  "outbound": [
+    "hl2",
+    "tf2"
+  ],
+  "physicsOwnership": true,
+  "remoteModel": "models/player.mdl",
+  "remoteModelStatus": "green labeled temporary model",
+  "bridgeLeasePort": 27842
+}

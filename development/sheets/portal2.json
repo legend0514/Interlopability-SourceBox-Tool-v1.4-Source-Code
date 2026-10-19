@@ -1,0 +1,35 @@
+{
+  "id": "portal2",
+  "enabled": true,
+  "appId": 620,
+  "architecture": "x86",
+  "adapter": "sourcebox_portal2.dll",
+  "port": 27020,
+  "map": "sourcebox_room_001",
+  "origin": [
+    0,
+    0,
+    0
+  ],
+  "scale": 1,
+  "spawn": [
+    0,
+    320,
+    8
+  ],
+  "model": "models/player/chell/player.mdl",
+  "stage": "integration-probe",
+  "portalAuthority": "core placement; native Portal 2 rendering and traversal",
+  "rendering": {
+    "fastPath": 0,
+    "stencilDepth": 2
+  },
+  "peers": [
+    "hl2",
+    "tf2",
+    "gmod",
+    "hl1mp",
+    "cs2"
+  ],
+  "sharedCubeModel": "models/props/metal_box.mdl"
+}

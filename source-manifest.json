@@ -1,0 +1,1762 @@
+[
+  {
+    "path": ".gitattributes",
+    "sha256": "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992",
+    "bytes": 9
+  },
+  {
+    "path": ".gitignore",
+    "sha256": "f38b0372d9c47a1eefdfa59f3dbea4d24f67ae33d35572c615e14a522178f53b",
+    "bytes": 105
+  },
+  {
+    "path": "BUILD.md",
+    "sha256": "fc5baba9aac0b395d09daf66443807790bff86dee4aa4fcfd25f66b1303d6a47",
+    "bytes": 3315
+  },
+  {
+    "path": "LICENSE.txt",
+    "sha256": "6c7466e6e36b89bebb18139252cd2dd8cd3ed32e522805a24f14340b052d5cb8",
+    "bytes": 1168
+  },
+  {
+    "path": "README.md",
+    "sha256": "98aa66147c70b6183ff5945e011a6145964c63996941a6682bb8c7b7ffd74726",
+    "bytes": 1865
+  },
+  {
+    "path": "SECURITY.md",
+    "sha256": "259e915289459354426c971cad9a37c4b6a7e0084027691b9b130c3911a04c20",
+    "bytes": 2657
+  },
+  {
+    "path": "development/sheets/asset-references.json",
+    "sha256": "85fd5d0d9275736ad4cf42586690e6e58796777a48132103e3c055cfc5ac106f",
+    "bytes": 16900
+  },
+  {
+    "path": "development/sheets/combat.json",
+    "sha256": "5b904f89b9b7893fb094da2ba0ba81b4a185a6c63c393536d998f312be6b0b9f",
+    "bytes": 1022
+  },
+  {
+    "path": "development/sheets/connectivity.json",
+    "sha256": "2014a3edb4e576149cac06f1d58cac1f46fee3015505b705425029c911e68d71",
+    "bytes": 838
+  },
+  {
+    "path": "development/sheets/coordinate-mappings.json",
+    "sha256": "a617828f72d9a254d7972946d5b1dc6cd5efa155705ced77b37899a8425508aa",
+    "bytes": 333
+  },
+  {
+    "path": "development/sheets/cs2-models.json",
+    "sha256": "d52203a027f414dacf8837d3135ae7eaf22d156187444f9d1de95461b1bbd3d1",
+    "bytes": 1937
+  },
+  {
+    "path": "development/sheets/cs2-performance.json",
+    "sha256": "705a67d365c52ca3e5f22321f9c1566e9fccd17b62a0f24760f853573fc16080",
+    "bytes": 322
+  },
+  {
+    "path": "development/sheets/cs2-scene-assets.json",
+    "sha256": "ca2368775ec2f6db567d1f97e4bc84b38360091463467e167ce63485325b03fb",
+    "bytes": 160353
+  },
+  {
+    "path": "development/sheets/cs2-world-lighting.json",
+    "sha256": "c384dfbeb36eaed04846f61370ff7c78c4c41e062e535af7df4591661f1e0739",
+    "bytes": 401
+  },
+  {
+    "path": "development/sheets/cs2-world-material-overrides.json",
+    "sha256": "d1972fd90f7f32707eae2738a7414130625f708a25d4200bb37347d3c0a1d1f9",
+    "bytes": 58016
+  },
+  {
+    "path": "development/sheets/cs2-world-materials.json",
+    "sha256": "f2a7d17a57a1f2134ccda36e684b17d418035f206560a3f2fad3759174e155a0",
+    "bytes": 774
+  },
+  {
+    "path": "development/sheets/cs2-world-scenery-assets.json",
+    "sha256": "88aa71f7d67a62b8363fc8b069be19d2cd4ff35d7d71374e175d8cd0c188a972",
+    "bytes": 37298
+  },
+  {
+    "path": "development/sheets/cs2.json",
+    "sha256": "47e91ee51265abba90eb3c4982df72d14b6deac555939d0bfa0d683f3aec2bd0",
+    "bytes": 2731
+  },
+  {
+    "path": "development/sheets/expansion-requirements.json",
+    "sha256": "612613db30117e8f9962dd9a98bc9d63e0f8485ce4a1d29e85a9aca9d780d5b4",
+    "bytes": 1141
+  },
+  {
+    "path": "development/sheets/games-adapters.json",
+    "sha256": "4f3882b4f2dc24693eb9ffdb002f201795c65f9be6774bb76cc8ed3f7b86271c",
+    "bytes": 279
+  },
+  {
+    "path": "development/sheets/gmod-scene.json",
+    "sha256": "13c874d7c562cae95bc647b56d3d23de7f890bd794281bbcd780c595db807ee9",
+    "bytes": 86153
+  },
+  {
+    "path": "development/sheets/gmod.json",
+    "sha256": "960c01161d928b8bfa774b8aa123723e1509a83a6340b7a1c14a48a63264c560",
+    "bytes": 688
+  },
+  {
+    "path": "development/sheets/hl1mp.json",
+    "sha256": "99b8b7bba8c0bea4d2762f3f687fb031fd8ac2b928b14647089d960ff7786fad",
+    "bytes": 8174
+  },
+  {
+    "path": "development/sheets/hl2-gameplay.json",
+    "sha256": "8e3b8b8c9f86fa71dc41b6187f90b62332e5107672680e92c3b9fc678567ccf7",
+    "bytes": 1330
+  },
+  {
+    "path": "development/sheets/map-travel.json",
+    "sha256": "cd8aaa7cf9650e20535ff9c08b3b53734d40800fc3940032124a34dcea83c467",
+    "bytes": 397
+  },
+  {
+    "path": "development/sheets/native-world-hosts.json",
+    "sha256": "8810f1eb5e3d791599183533def41dbbb59ac96c66d5f5dc160aaf0fafcd412a",
+    "bytes": 1049
+  },
+  {
+    "path": "development/sheets/network-messages.json",
+    "sha256": "98a9ee8c20371f771d33cc097f66adaa7ac3d5f9134b7b420277496f1edf5d56",
+    "bytes": 2584
+  },
+  {
+    "path": "development/sheets/physics-objects.json",
+    "sha256": "9115a49474037bf86042ac7666d2282bdf15be4e6a12a0a0c587bf848224d16a",
+    "bytes": 2464
+  },
+  {
+    "path": "development/sheets/player-movement.json",
+    "sha256": "6e1c082666f987f951ccefe98b2ab146d9291399214c223cba57afd4b59a31df",
+    "bytes": 818
+  },
+  {
+    "path": "development/sheets/portal-hub-roadmap.json",
+    "sha256": "2aae0d6d394d2a56e0c24798c92d746dbc1f5f564da9d505901548c5b4cdc2a7",
+    "bytes": 1020
+  },
+  {
+    "path": "development/sheets/portal2.json",
+    "sha256": "ee500aed9940a9a5c65ac049762fb99618d46cc953da59e24a8002985e6b74ea",
+    "bytes": 677
+  },
+  {
+    "path": "development/sheets/portals.json",
+    "sha256": "a10dfc1ff344fcfe16d0ad5aef7ca0be95373a79ba8ee37aa3194624a28d0da1",
+    "bytes": 3317
+  },
+  {
+    "path": "development/sheets/room-upgrades.json",
+    "sha256": "ea89ceedeb21b3d55b5bdf02f6ce766b261758d20c834e9d5a6f82b0e007a017",
+    "bytes": 1518
+  },
+  {
+    "path": "development/sheets/room.json",
+    "sha256": "037f3f563f6c663a099878ff6f70257f8244a1fabd775b863fe6759cc3188964",
+    "bytes": 480
+  },
+  {
+    "path": "development/sheets/roster.json",
+    "sha256": "6835d58dae91c05f259fa2e911366ea750aae1d8a8b4ff665766bca165c51c24",
+    "bytes": 1572
+  },
+  {
+    "path": "development/sheets/runtime.json",
+    "sha256": "235bd3791e16e4d243a14af5abb9974ab02eba6b719ba9c87bb3dcec93ca1f2d",
+    "bytes": 119
+  },
+  {
+    "path": "development/sheets/sdk-builds.json",
+    "sha256": "eee8f83bd5055171458dd160bbf1fef029b91d88e05aa588bfe1ccaa67256188",
+    "bytes": 1268
+  },
+  {
+    "path": "development/sheets/shared-entities.json",
+    "sha256": "89e49829f1422e51d2d0defe636955e9d090b9b2380e8f979e3a3ae772e0d9b6",
+    "bytes": 161
+  },
+  {
+    "path": "development/sheets/test-cases.json",
+    "sha256": "64ffbe7c2f71783cb633e3e6290b8dbac6e8770d55d4e8abb668f1eb02b3ba39",
+    "bytes": 5698
+  },
+  {
+    "path": "development/sheets/window-layout.json",
+    "sha256": "39cae705764c68daacf36619ec021974aab895faa7a13bcccd8e994c9956ed90",
+    "bytes": 933
+  },
+  {
+    "path": "development/sheets/worlds-expanded.json",
+    "sha256": "9d33e2ffa583c9ff0f9cea475e98c41e80f4a7847d5171794999def63ed4ea7f",
+    "bytes": 2259
+  },
+  {
+    "path": "development/sheets/worlds.json",
+    "sha256": "4115d8318140bb4aee7a3f3d21c4cb4aeaa9e3a204710495ce09d64d9f911587",
+    "bytes": 2446
+  },
+  {
+    "path": "licenses/MIT-SourceBox.txt",
+    "sha256": "a401dd97e09498f7d6a934095ba132907fd5c6da5f2975b80e1a97516e8e5051",
+    "bytes": 1100
+  },
+  {
+    "path": "licenses/source-sdk/LICENSE",
+    "sha256": "02377c317bda3a13e2e6eb1b61fed0703f824e62673b5e155205610ed8677cef",
+    "bytes": 1926
+  },
+  {
+    "path": "licenses/source-sdk/README.md",
+    "sha256": "12d0a96361ab427db534304107aab106ec51f2be8779462e179d4c35fc355407",
+    "bytes": 2529
+  },
+  {
+    "path": "licenses/source-sdk/thirdpartylegalnotices.txt",
+    "sha256": "5c19116d965d2a5b883e78530b2b69ea9f92b59414b7ab06d151a80f0cc0356b",
+    "bytes": 50995
+  },
+  {
+    "path": "outputs/sourcebox-launcher/build-beta-runtime.py",
+    "sha256": "53fa86a3d869e97f9093220ec536cec76011914a172b0f51b80a96ffd9d5a3b4",
+    "bytes": 9714
+  },
+  {
+    "path": "outputs/sourcebox-launcher/build.ps1",
+    "sha256": "65f338ff3004051dc11012f936a7473061c8075a66f3c8ee5eccfc6a9b3168eb",
+    "bytes": 296
+  },
+  {
+    "path": "outputs/sourcebox-launcher/finalize-source.py",
+    "sha256": "e5226c0a8787470f00675131a7092ba1cfec6261b65256d3de223cda904de79e",
+    "bytes": 2804
+  },
+  {
+    "path": "outputs/sourcebox-launcher/installer-beta.ps1",
+    "sha256": "f56098d9bc036f2afb36e4abcae57aa16553f06b16dad02a72076807e4b6f0a4",
+    "bytes": 3759
+  },
+  {
+    "path": "outputs/sourcebox-launcher/package-beta.ps1",
+    "sha256": "c6631cc73ed9fd55c637f2431652b86d55268c68651747583cbc5d714d68b35b",
+    "bytes": 6435
+  },
+  {
+    "path": "outputs/sourcebox-launcher/package-small.ps1",
+    "sha256": "43900e8cd96222cb0568190f83f72663f6c6dfe23d91edeea2b1a11195edacc6",
+    "bytes": 4034
+  },
+  {
+    "path": "outputs/sourcebox-launcher/package-source.py",
+    "sha256": "288a06ffdd9b90073a98e55c902ea2f11e8d318c61afda9ae0163a7156341bed",
+    "bytes": 14622
+  },
+  {
+    "path": "outputs/sourcebox-launcher/package.ps1",
+    "sha256": "e600a8e9718f271ddee30f0a147cad52a5a9b6f47479fe4f8e97f0402591c069",
+    "bytes": 3562
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/Assets/sourcebox-intro.mp4",
+    "sha256": "618498f956c4dfad20cbd568f46acd200ee70ddd9e2647a37709ed2a93034e8f",
+    "bytes": 165130
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/Assets/sourcebox.ico",
+    "sha256": "ce5dfdda6b231e6fa9c9ec8262cfd7d86ece11ead07a15b5ef88f2b32641c62f",
+    "bytes": 85818
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/AutoDiscovery.cs",
+    "sha256": "4cb77f97276808aecebd2382d9f42e661060b84dafe3ba2e83e2ff13ba62e832",
+    "bytes": 3649
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/ConfigProtection.cs",
+    "sha256": "527a8674ae19f4bbe00f0f50424d0bfea5ccaf2c842687cb0ee172ce67049b09",
+    "bytes": 3290
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/CrossplaySetup.cs",
+    "sha256": "241c76fc07e2aa63169f340c7267191b6400482812cc620b0ff86a26bf63b4ab",
+    "bytes": 13706
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/CsBootstrap.cs",
+    "sha256": "7b73633195b896e6ec8ba183ae2dc1c3afa2b20aa90ca33fee933c58e8bd7866",
+    "bytes": 4011
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/CsContentPreparation.cs",
+    "sha256": "215f734c4df9588724956e833c0af82161c6aca42b6e642a6db536b72b456fde",
+    "bytes": 5778
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/CsLoaderPreparation.cs",
+    "sha256": "5e4029d2201c58621c0924e789eae240755e96b5faaa9b61dddb8574eac607e7",
+    "bytes": 1100
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/DesktopInstall.cs",
+    "sha256": "5da7be929ece0cc0391c5efa80f6a7103b38cf0284eecd9b896c4edd16d05278",
+    "bytes": 6794
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/Destinations.cs",
+    "sha256": "feb206cfd08484fac94b0414e88f96e7196056cab8e8a4f39e01df85e63f3a97",
+    "bytes": 2216
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/FallbackAssets.cs",
+    "sha256": "7c21bec4d6c3441f85e93c50a9f94610a02d9a23ea4ef9a993cab35321122318",
+    "bytes": 2153
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/GameWindowLayout.cs",
+    "sha256": "8460487054a6ba51b0faf67f38b70e1ba754f0e7451329dcfdf60ac68ed34755",
+    "bytes": 5409
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/GlobalUsings.cs",
+    "sha256": "7588689c551d3b43bad9777d20be635cedfe3f6d3652c8a9fe97f91d25ab0fd9",
+    "bytes": 26
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/LocalAssetPreparation.cs",
+    "sha256": "05860ddbf94f88225e820054b4fbaa700063d9abd447298cddba1236b437a3be",
+    "bytes": 3360
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/MainForm.cs",
+    "sha256": "ca2a5895c56f07137ad666409278fbe5d19ffd6af6e2de6cff452d8a5e80e606",
+    "bytes": 21678
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/Models.cs",
+    "sha256": "63454932db852fb61215f1c30d396cd7c093b9aedb7dc3ef393212ca253d11c9",
+    "bytes": 11312
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/PortalPeerPreparation.cs",
+    "sha256": "85af697b24e35f0112012dc513a0a489daefc08048cad5c6bcbbc369f5ebec28",
+    "bytes": 3845
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/Program.cs",
+    "sha256": "f3a41355168fc9c85689ab5572067e1bf0bb80be56ca82079c576b5436361376",
+    "bytes": 4399
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/ReleaseRequirements.cs",
+    "sha256": "a2511121b6456c8887e0f225375893fb25e2b0a8830bf13abdc1436cad0751f9",
+    "bytes": 817
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/Runtime.cs",
+    "sha256": "704d7e5e68fefe2f0927c5c3617e0e1bd020b05fadc116f22239f728a6e87292",
+    "bytes": 21676
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/SceneCanvas.cs",
+    "sha256": "52ce595d6bf8a2333674f71efb99538128463d2399c9aee63eadd9b5fd4dc14e",
+    "bytes": 9942
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/SdkConfiguration.cs",
+    "sha256": "bce985ec2a68b079d325d91b839478138856b61263720a45a74b366902ffc0ad",
+    "bytes": 3924
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/ServiceHost.cs",
+    "sha256": "dff84348a9699c8dbf5777c9dc57a61331c3b934d267b5394dda19869a3a61a3",
+    "bytes": 2093
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/SetupDownloads.cs",
+    "sha256": "7ccb8e795ee2c516bc5526f0ba8ac12dfccaf1c5f26b22bbf588bdbb74726ecb",
+    "bytes": 4299
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/SharedAssetPreparation.cs",
+    "sha256": "2fb888786c582f2d9b142cd8641922166cfc6ab3ef257ccf38470ec6aed77284",
+    "bytes": 7351
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/SharedContent.cs",
+    "sha256": "c71220d8ab6fcc66db08fb0aa7808acfeedd0e61ec2fef273397049c80ea0682",
+    "bytes": 1707
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/SourceBox.csproj",
+    "sha256": "85fc8db1760ccc781e961cbe0dca8645ddbb9bf4fe16366caa003edb5f2fb307",
+    "bytes": 865
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/SplashForm.cs",
+    "sha256": "0c33f76e449cfbbc7ca9b0a79c50c80d8a6a83ba31f7b3851b856d2be632c356",
+    "bytes": 2059
+  },
+  {
+    "path": "outputs/sourcebox-launcher/src/Tests.cs",
+    "sha256": "edf994486efbf0cd25f323e59de7fa5b15f47910c4de859ee855ada7cabf24dc",
+    "bytes": 30719
+  },
+  {
+    "path": "outputs/sourcebox-launcher/verify-beta-package.py",
+    "sha256": "4d7e4b84238a16b8a6103f591cefd05722788caee379e44032799d65fd932c05",
+    "bytes": 3035
+  },
+  {
+    "path": "outputs/sourcebox/adapters/combat.inc",
+    "sha256": "84ac5c0a6586f1d26b77826dcfd69b47fe077152ac3d85726394d971f256af56",
+    "bytes": 2174
+  },
+  {
+    "path": "outputs/sourcebox/adapters/connectivity.cpp",
+    "sha256": "47da01673eb8d86c03411434264b655fe11237d6f08b41aecbd69f81e835487b",
+    "bytes": 3348
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/CubePhysics.cs",
+    "sha256": "572ac271a964c3b65eaae1125a530364e707289bf8c213edec83c6595f4b04b4",
+    "bytes": 4832
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/HeldWeapons.cs",
+    "sha256": "c7099090520aa84f9dc61f7346e829f045d3cee7855f0c87249f702f16642976",
+    "bytes": 1106
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/LocalContent.cs",
+    "sha256": "bf6d6f72b737a4f0f4a0376c3ae62ee472c6de8ae2a1a65a41ec3afe2e70026e",
+    "bytes": 684
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/MonitorProbe.cs",
+    "sha256": "43948d82674b3365f284fbad39a4f6a6dc39c32215feee9f8ee5b1e08d4245a2",
+    "bytes": 1442
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/PlayerModels.g.cs",
+    "sha256": "36b3b7a9886706eaba2fe188666ef736d31e309fbdebc9d7f1d7bad0e68c5db5",
+    "bytes": 866
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/PortalMomentumProbe.cs",
+    "sha256": "2243b09269bb0a51d042ab05622755d13209d32bd234540136b1b00d79ceca58",
+    "bytes": 1511
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/PortalPreviews.cs",
+    "sha256": "dfd49c42b2ccd85ffb0916b4ec7cc457f77400c5bb64a9c5ff2d8fc11a1a6014",
+    "bytes": 4175
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/Portals.cs",
+    "sha256": "b3d1baecd457adab0fc324a1c2c17e9a741669248b5fbe666bb4edd3ef84ef75",
+    "bytes": 7934
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/PropPortals.cs",
+    "sha256": "bd3a65231c4bf73926e28e16d40ec16bdbb45bc8edcadb7ce2f8b4ef0d0cd204",
+    "bytes": 7183
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/SceneAssets.g.cs",
+    "sha256": "754ac9fed88d6dc57b5cc51e51817b0110d98e24e3c794087c0192e73987048e",
+    "bytes": 192860
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/SharedProps.cs",
+    "sha256": "050a126e7e4e0f9bfefa13b615f3b1d5998583f8d053d11afa96d4a3ccc923eb",
+    "bytes": 3870
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/SourceboxCS2.cs",
+    "sha256": "9a94522a5922efd67d7753a1ce4c02ca7c712fdcd7aeb1a2510967457aa812f6",
+    "bytes": 11251
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/SourceboxCS2.csproj",
+    "sha256": "cc57fe8d5dbc51004808de823adc34a7a53dc7fc3647d3e9b5517a3f68112222",
+    "bytes": 876
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/WorldBounds.g.cs",
+    "sha256": "a4fa8ef4dd542ea8c9fcb65884bce572bb9a8d60fc51c7549673278fda7ca135",
+    "bytes": 707
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/WorldDestinations.cs",
+    "sha256": "3e5e5a550fd56827db0d22ee8b07fb8d5ed98a51c930155c4c1d563b6272a712",
+    "bytes": 1696
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/WorldDestinations.g.cs",
+    "sha256": "77c459b8a6333c25b05b3728badac5207d4aabcb4613918d98fff5f016ab5f92",
+    "bytes": 360
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cs2/WorldTravelProbe.cs",
+    "sha256": "95abfaff4b8f1a6f1925c18684bcc26482e262fa807c35f104e3fccc6cc312b2",
+    "bytes": 5203
+  },
+  {
+    "path": "outputs/sourcebox/adapters/cube.inc",
+    "sha256": "380965786d30e3b9e22795ebf1321ddfc0ced5814bb8fb3a2d17d3b6f9f7b520",
+    "bytes": 7562
+  },
+  {
+    "path": "outputs/sourcebox/adapters/extra-players.inc",
+    "sha256": "26f280680d0e47370a9ed534ea765a1ed15fe6f3df205103ecb6cfb8894edc89",
+    "bytes": 6909
+  },
+  {
+    "path": "outputs/sourcebox/adapters/gmod-scene.inc",
+    "sha256": "d210f4b579722df9964f5adcdd47a7530e6b948b105ec3cd8b14b2d625c9a2ea",
+    "bytes": 3969
+  },
+  {
+    "path": "outputs/sourcebox/adapters/gmod.inc",
+    "sha256": "63e9e8928927425aee3dd27ee679f23b21676cf7706385396f5060b2a9716a61",
+    "bytes": 4374
+  },
+  {
+    "path": "outputs/sourcebox/adapters/gmod/lua/autorun/client/sourcebox_performance.lua",
+    "sha256": "b494ba47bc6e694c09f943649a9faac70e15db933099a06b211fd757114382ad",
+    "bytes": 4181
+  },
+  {
+    "path": "outputs/sourcebox/adapters/gmod/lua/autorun/server/sourcebox.lua",
+    "sha256": "4f40beab8323638c39b3b604f67c9b9ef86289da39d6e6ff46559e0392d0b32d",
+    "bytes": 12694
+  },
+  {
+    "path": "outputs/sourcebox/adapters/gmod/lua/autorun/sourcebox_maptravel.lua",
+    "sha256": "4c5b4a62757c1b151d6a5bc12df593536c504f52777d02c7800bc2cb875bec38",
+    "bytes": 8447
+  },
+  {
+    "path": "outputs/sourcebox/adapters/gmod/lua/autorun/sourcebox_portal_momentum.lua",
+    "sha256": "803c85a0feafcf9c94aa61b3155a3926b9649b74c860d03a03010120b0811f7d",
+    "bytes": 1128
+  },
+  {
+    "path": "outputs/sourcebox/adapters/gmod/lua/autorun/sourcebox_worlds.lua",
+    "sha256": "11b0c21d08580e8859a2928f4bff27964be43a88e60711337a145046ab15e3ed",
+    "bytes": 10095
+  },
+  {
+    "path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/physics.lua",
+    "sha256": "1d560b4ffa18a59580d28389517b9a8a15a5313b17270c90c6e72df38d1c40bf",
+    "bytes": 6637
+  },
+  {
+    "path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/portal-acceptance.lua",
+    "sha256": "264b567d6d62a5066ba945c7f1871c8ff5b7034e37cb5930b4dadc9961c064fa",
+    "bytes": 9185
+  },
+  {
+    "path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/portal-successor.lua",
+    "sha256": "c6154855d43679cf5620c46895cddb6e252f9b7702310826ec49888b8c82dc38",
+    "bytes": 5831
+  },
+  {
+    "path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/portals.lua",
+    "sha256": "cc2e2cc1207aadb922e77d761d680dd09155576d1ea2f4fa72e47037dfdeedbe",
+    "bytes": 1693
+  },
+  {
+    "path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/scene.lua",
+    "sha256": "7e73ea48fd095fe441c2b695c3be0d2febc211272583b696da3450de93fd2b85",
+    "bytes": 3580
+  },
+  {
+    "path": "outputs/sourcebox/adapters/gmod/lua/weapons/weapon_sourcebox_portalgun.lua",
+    "sha256": "08ffb39d6432176271abc2e3232197d97609e86e474fc3a2633045b68f9c5c73",
+    "bytes": 2326
+  },
+  {
+    "path": "outputs/sourcebox/adapters/hl1-preview-renderer.inc",
+    "sha256": "1f2d0f6f1e94b305ec03af95a97eed8c3a67da191568f3a189d0e8fbf377d2bd",
+    "bytes": 6235
+  },
+  {
+    "path": "outputs/sourcebox/adapters/hl1-preview.cpp",
+    "sha256": "a286a5b278e2853cce3b0cca330c7d1447d7e21907467d5084d3f2d3ba2b72e5",
+    "bytes": 4577
+  },
+  {
+    "path": "outputs/sourcebox/adapters/hl1mp/sourcebox_prop_portals.nut",
+    "sha256": "3eb92a2213bd023a579f3218264a0528ea98f930e18e9eec825ad390a75a547d",
+    "bytes": 2720
+  },
+  {
+    "path": "outputs/sourcebox/adapters/movement.cpp",
+    "sha256": "c5dd9a454a9398599ffbd4038e48e1e15817583f5cd03dced6f76d59aea9d33a",
+    "bytes": 38381
+  },
+  {
+    "path": "outputs/sourcebox/adapters/portal-preview-wire.h",
+    "sha256": "8866161dcc4e9ef7877f1e0cce1ed12ae337eaf48b03f0794cffa03068f7e41a",
+    "bytes": 390
+  },
+  {
+    "path": "outputs/sourcebox/adapters/portal2/adapter.cpp",
+    "sha256": "fe34ba4dda808024fe9a28a2f52454fff80df1cd94d9e638ce10d580ab464abb",
+    "bytes": 14546
+  },
+  {
+    "path": "outputs/sourcebox/adapters/portal2/interactions.inc",
+    "sha256": "2adca65e0ee294a941f1e2d4e3e835933852ae5aad25278adc8f981a271c9681",
+    "bytes": 7091
+  },
+  {
+    "path": "outputs/sourcebox/adapters/portal2/iplayerinfo.h",
+    "sha256": "ab64eaccaf54ce31d1805046e1651bf162cb85e2de4db161c4b67f071c480273",
+    "bytes": 5673
+  },
+  {
+    "path": "outputs/sourcebox/adapters/portal2/iserverplugin.h",
+    "sha256": "f5f8654e174dcd6102752f7e216dcc932130b41ba5161ef0dad4f112a3564a77",
+    "bytes": 7085
+  },
+  {
+    "path": "outputs/sourcebox/adapters/portal2/native-portals.inc",
+    "sha256": "393cb087476379d7ce897c77e122b9e1c6d5e80653ea2f26213a484f59f9d911",
+    "bytes": 2732
+  },
+  {
+    "path": "outputs/sourcebox/adapters/portal2/tools-prefix.h",
+    "sha256": "684240128505e9945a3a2e1601886998a877b300fd56fd23c11958b845745cc3",
+    "bytes": 1021
+  },
+  {
+    "path": "outputs/sourcebox/adapters/portal2/trace-prefix.h",
+    "sha256": "3354c46fa72ad473f7be966869f615ad6bc5ac2c9a1384d10bcf7a5fa7f20b10",
+    "bytes": 1317
+  },
+  {
+    "path": "outputs/sourcebox/adapters/portals.inc",
+    "sha256": "6edf11d12ee8eeb06644ff0f1521241705848ecf654d0c45effc8cc84ad129cf",
+    "bytes": 10175
+  },
+  {
+    "path": "outputs/sourcebox/adapters/sdk/sourcebox_portal_client.inc",
+    "sha256": "1b42dee707c2566aa40e30ee01795bb53f591a078c777b2eb0966c647157afee",
+    "bytes": 8701
+  },
+  {
+    "path": "outputs/sourcebox/adapters/sdk/sourcebox_portal_gun.inc",
+    "sha256": "660017924221ef517d816941c236a805753eafdbf6cb86f63b1595c70a90a489",
+    "bytes": 574
+  },
+  {
+    "path": "outputs/sourcebox/adapters/sdk/sourcebox_portal_server.inc",
+    "sha256": "a7925b0559b2000043130686e435d309b8568327b4127c4b18c94d69f7efc03c",
+    "bytes": 6311
+  },
+  {
+    "path": "outputs/sourcebox/adapters/sdk/sourcebox_prop_portals.inc",
+    "sha256": "7821b4deda2cbea165a6a378b77c00b1d6b3bfed6f65d21b96ddd98c82001c62",
+    "bytes": 6502
+  },
+  {
+    "path": "outputs/sourcebox/adapters/tf2/sourcebox_portals.nut",
+    "sha256": "67a8a0d65e0abdbae8eb79e7c44fd88306f9782371e7e398cb6177892d9e4695",
+    "bytes": 2726
+  },
+  {
+    "path": "outputs/sourcebox/adapters/transport.h",
+    "sha256": "c1e3c80868273dd3f7e9f839487053a4c9f8de20084d4eefbf20139a787231a3",
+    "bytes": 6199
+  },
+  {
+    "path": "outputs/sourcebox/adapters/vendor/LICENSE.MIT",
+    "sha256": "b9715282b2f1db1359a919bb3a542dd4362fd9e38ae72d421367eb11abe62eec",
+    "bytes": 1097
+  },
+  {
+    "path": "outputs/sourcebox/adapters/vendor/json.hpp",
+    "sha256": "5f09d1eebe9b3557f21df155869af13bcde79b74a0748f82ca946e8cc088aaa0",
+    "bytes": 978962
+  },
+  {
+    "path": "outputs/sourcebox/adapters/weapon-factory.h",
+    "sha256": "2123fb65368797efae891168162aff34de905612f7bf006a410162c2b5daf017",
+    "bytes": 700
+  },
+  {
+    "path": "outputs/sourcebox/bridge-lease.mjs",
+    "sha256": "5e12d1de9790c2e25548267e0076f0ab08b979a3a0553b30eef5110049108178",
+    "bytes": 423
+  },
+  {
+    "path": "outputs/sourcebox/build-cs2-room.ps1",
+    "sha256": "ef164daea192f5b6ed16344824bf349a2f10299f050de36cf5a8fdb8c14904c7",
+    "bytes": 3199
+  },
+  {
+    "path": "outputs/sourcebox/build-hl1-preview.ps1",
+    "sha256": "60142094b27ebc8d4271fa4dc1c3ebfc6c9ccc9b75945a6d6a3914c2a5671004",
+    "bytes": 1154
+  },
+  {
+    "path": "outputs/sourcebox/build-portal2-room.ps1",
+    "sha256": "668abed9c8b0255679cf688362d7f3d6a84b032f2917fd7e242455eefe67c3a5",
+    "bytes": 891
+  },
+  {
+    "path": "outputs/sourcebox/build-portal2.ps1",
+    "sha256": "a02ebaea8265a2724fb1a10ea897d88d325f25f3a8cda6cb0d9aa3646134d740",
+    "bytes": 1106
+  },
+  {
+    "path": "outputs/sourcebox/build.ps1",
+    "sha256": "68a11cb6f7a9172a6eb3fbe9964f1afc73770641393a83260c2a883fab35dad2",
+    "bytes": 2106
+  },
+  {
+    "path": "outputs/sourcebox/compile-rooms.ps1",
+    "sha256": "0471d8091fea62ac78ddefc99028ed724efb9280b4dbb9b5d96e156a467386e3",
+    "bytes": 762
+  },
+  {
+    "path": "outputs/sourcebox/core.mjs",
+    "sha256": "e5d8a8568ddd132cc3445348a9813c34a934433ea18d0f548421a0cf51a03c9f",
+    "bytes": 13201
+  },
+  {
+    "path": "outputs/sourcebox/cube.mjs",
+    "sha256": "484e06cc636feaad2d455f534fa95d5b0ae3529a505aa964ee4dc20541911b0b",
+    "bytes": 3318
+  },
+  {
+    "path": "outputs/sourcebox/draft-manifest.json",
+    "sha256": "f8d22b29d07a1e4ad25d6948762106ce35c2d4a03243d18002ba9ec35e18f6ad",
+    "bytes": 695
+  },
+  {
+    "path": "outputs/sourcebox/generate.mjs",
+    "sha256": "d8361cce42448b0c0630363ec41a1ac9cd16db5639746bb1fba67cb320218a43",
+    "bytes": 5330
+  },
+  {
+    "path": "outputs/sourcebox/generated/combat_config.h",
+    "sha256": "d3cc511e0fccda238d82b17581781ff3b373f53666b559a4196dd36fe37e3486",
+    "bytes": 141
+  },
+  {
+    "path": "outputs/sourcebox/generated/generated_config.h",
+    "sha256": "5bc0ba8ae309459d3b6a14c4c3d4f9b75ea5253af6b8f989fc75c4600fa8ad4a",
+    "bytes": 630
+  },
+  {
+    "path": "outputs/sourcebox/generated/hl1mp_config.h",
+    "sha256": "c0d09806701675282b9411874bef07c35ec7f8de8f143e46751f72537c4ba8dd",
+    "bytes": 4922
+  },
+  {
+    "path": "outputs/sourcebox/generated/physics_config.h",
+    "sha256": "ff40f458064bb0f098f459cc9378469ac39e5c589a4c691e49f7c6fa518a0531",
+    "bytes": 698
+  },
+  {
+    "path": "outputs/sourcebox/generated/portal_preview_config.h",
+    "sha256": "e6b5e99e432fccf8ab22e4fd1a45896ac2db6fee1dfaf1561e90ee5dca8971b3",
+    "bytes": 159
+  },
+  {
+    "path": "outputs/sourcebox/generated/proxy_config.h",
+    "sha256": "d4f87a17239dbfeda6b47782b391ae364fa765c04f9161e6316c266c72dbf03a",
+    "bytes": 1507
+  },
+  {
+    "path": "outputs/sourcebox/generated/weapon_config.h",
+    "sha256": "5065889bc07cd43ee38696ebebe2cb1955ac71eea49922142e2bffdc269d7b48",
+    "bytes": 2590
+  },
+  {
+    "path": "outputs/sourcebox/generated/world_destinations.h",
+    "sha256": "83a5e95d476221851804fd695ec831132f2e1ed2d14a502e943b551814c9ec7c",
+    "bytes": 392
+  },
+  {
+    "path": "outputs/sourcebox/gmod-bridge.mjs",
+    "sha256": "2cd0b836ec1a0f5ac252e4cb6b7b9ae9a03286e0a9a65ea49bae5ecf486d6763",
+    "bytes": 7317
+  },
+  {
+    "path": "outputs/sourcebox/gmod-commands.mjs",
+    "sha256": "0e6d9d90410533c4ce3a78a1b2bcc4d24d2e39a31607cf93ae3c6567a19f98ed",
+    "bytes": 533
+  },
+  {
+    "path": "outputs/sourcebox/launch-cs2.ps1",
+    "sha256": "1975b91f0cc41807285b998cb62332a843f25a5c04e18cbb045584a237dc2aeb",
+    "bytes": 2459
+  },
+  {
+    "path": "outputs/sourcebox/launch-gmod.ps1",
+    "sha256": "85ce3a2f32b2c9172ad8a901be086c3dcef8fa8999cb0d75cfe25d411251d0e0",
+    "bytes": 9384
+  },
+  {
+    "path": "outputs/sourcebox/launch-hl1mp.ps1",
+    "sha256": "30eb0e232061cfdcad9c028db2fcae4ea2a6fdeb0fc567c33d2f37b6ef4e5042",
+    "bytes": 5021
+  },
+  {
+    "path": "outputs/sourcebox/launch-phase-a.ps1",
+    "sha256": "9446d1a2e28cc025146cd3947629b8d1a949712c0cea2bd2128112e0abe84684",
+    "bytes": 3183
+  },
+  {
+    "path": "outputs/sourcebox/launch-portal2.ps1",
+    "sha256": "8346d1d70f3194e6615b0f45a5affc2dcae7db1f1f65452ca2a3031406a0886d",
+    "bytes": 3994
+  },
+  {
+    "path": "outputs/sourcebox/launch-sdk.ps1",
+    "sha256": "6f6aa461977aa23d645b35f316e9e3e9154073503dea0eccd92f4825f98b2d67",
+    "bytes": 2876
+  },
+  {
+    "path": "outputs/sourcebox/map-travel.mjs",
+    "sha256": "43d0bcc2fa6d4c2b4fdacc2044243e30fbb78b3004cd7150192b8d49c1584243",
+    "bytes": 527
+  },
+  {
+    "path": "outputs/sourcebox/maps/cs2/sourcebox_room_001.vmf",
+    "sha256": "83efb44bffbc1a4130156de580e9e7153f4947b1eeadfb8406f92952c616fba8",
+    "bytes": 9001
+  },
+  {
+    "path": "outputs/sourcebox/maps/hl2/sourcebox_room_001.vmf",
+    "sha256": "889ac393c978f0523fec0e8269c10690724573305b5cdd67ac5bf482592ff30b",
+    "bytes": 9882
+  },
+  {
+    "path": "outputs/sourcebox/maps/portal2/sourcebox_room_001.vmf",
+    "sha256": "a0f4fb8422518296ad1c5f954b542cfcf09e8d556d3510a34bb0ec1181bec268",
+    "bytes": 9005
+  },
+  {
+    "path": "outputs/sourcebox/maps/tf2/sourcebox_room_001.vmf",
+    "sha256": "272a075d1be9df2b594aca3b04c11105660129903eb700a67c24f737b2fdcba0",
+    "bytes": 9764
+  },
+  {
+    "path": "outputs/sourcebox/measure.mjs",
+    "sha256": "3f4fdeafebdf4a8c2e1018b02604d5c05569654b5cb5db181825ea616fe34ec2",
+    "bytes": 1461
+  },
+  {
+    "path": "outputs/sourcebox/package.json",
+    "sha256": "01de50437ec7c7b17ce2ac6bf45e43f653b3a9173120bd95931130a483dd745a",
+    "bytes": 204
+  },
+  {
+    "path": "outputs/sourcebox/portal-math.mjs",
+    "sha256": "61e4c0c9653b873246354645c1ed19e9aa1fcf5ca788ba16abdc98546bfe0593",
+    "bytes": 5211
+  },
+  {
+    "path": "outputs/sourcebox/portal-snapshot.mjs",
+    "sha256": "a97ef73ec7fe9e2662a435a1d91a5dbf31578d5339b4a059034ae4ab9ff94362",
+    "bytes": 1299
+  },
+  {
+    "path": "outputs/sourcebox/portals.mjs",
+    "sha256": "06515d7da1dc5eccce6005132ec77cc16938164d1d4422b6068dba8db55beb86",
+    "bytes": 9474
+  },
+  {
+    "path": "outputs/sourcebox/preflight.mjs",
+    "sha256": "a80a03298597da6413fac34a92909654c481027fcca8f2a9bfd660cba398a9a5",
+    "bytes": 13832
+  },
+  {
+    "path": "outputs/sourcebox/prepare-hl1mp-assets.cjs",
+    "sha256": "bcbf1604cc8edea3a507ce6e5c04576f5f4c6ba0d0fc249686eec83abf844108",
+    "bytes": 5869
+  },
+  {
+    "path": "outputs/sourcebox/prepare-hl1mp-room.mjs",
+    "sha256": "072741a668d779466aaca150c78303fc898787b5eea97db6ab9f587ab6c3849b",
+    "bytes": 1207
+  },
+  {
+    "path": "outputs/sourcebox/prepare-hl2-hud.cjs",
+    "sha256": "67bb3cffcf4c0208bd6bfb827646e12f4b24866ae0f0db018047cde088f3a598",
+    "bytes": 753
+  },
+  {
+    "path": "outputs/sourcebox/prepare-labs.ps1",
+    "sha256": "1072256be7a205ee19f6c9c430bc3f8496e081ff6034dc63e09d08a46fe83a8e",
+    "bytes": 4821
+  },
+  {
+    "path": "outputs/sourcebox/prepare-portal-inventory.mjs",
+    "sha256": "a249a5b5cb5e2e7aef80fbc4f290e81d0f4fabe2254addc46cdac4d460b9f08e",
+    "bytes": 1760
+  },
+  {
+    "path": "outputs/sourcebox/prepare-portal2-assets.cjs",
+    "sha256": "a59ecc94abe89894f2f3e09de8624507fa4a7da035af2e2d17521c6cf328afac",
+    "bytes": 2811
+  },
+  {
+    "path": "outputs/sourcebox/prepare-soldier-assets.cjs",
+    "sha256": "7b4c1648f9979110f901bcbb140db388bec97fe480302bdd3737e01b68f91371",
+    "bytes": 3571
+  },
+  {
+    "path": "outputs/sourcebox/relaunch-cs2-client.ps1",
+    "sha256": "652de9788e9f14f8b9e247c055e59ee5c8b15cad2506497567ccc9948c40ae7e",
+    "bytes": 171
+  },
+  {
+    "path": "outputs/sourcebox/report-acceptance.mjs",
+    "sha256": "965f281064d4baada170ce28df81aeb688b442c4938445e63a459c907baea8e8",
+    "bytes": 1566
+  },
+  {
+    "path": "outputs/sourcebox/room.mjs",
+    "sha256": "0c3cb22af3b82151f00ab2dc80a04980863dda95224ddbaf1f59492094101da1",
+    "bytes": 3486
+  },
+  {
+    "path": "outputs/sourcebox/sheets/asset-references.json",
+    "sha256": "a82d9b1cfbbdf2445a6b8036ec04495e97981927aaeb3e82f69815bdb6498646",
+    "bytes": 14667
+  },
+  {
+    "path": "outputs/sourcebox/sheets/combat.json",
+    "sha256": "e577116ab2d4d2bb2e9c7ea281102141d046e8121af8a86be4d8fe516f1f4a7b",
+    "bytes": 982
+  },
+  {
+    "path": "outputs/sourcebox/sheets/connectivity.json",
+    "sha256": "dadd6b0af7521403cc11e08450c2611c27fbbfa0d18f88991eb6acc7b335dd3c",
+    "bytes": 809
+  },
+  {
+    "path": "outputs/sourcebox/sheets/coordinate-mappings.json",
+    "sha256": "f9f31c74c0ffa7025b1e5fcadc86410584bee8d79a21383630fe4e0c299cd7c0",
+    "bytes": 331
+  },
+  {
+    "path": "outputs/sourcebox/sheets/cs2-models.json",
+    "sha256": "696d40b32982e9b5c2cb7867f0849243fe48935008119ca9098de63db9512daa",
+    "bytes": 1935
+  },
+  {
+    "path": "outputs/sourcebox/sheets/cs2-performance.json",
+    "sha256": "705a67d365c52ca3e5f22321f9c1566e9fccd17b62a0f24760f853573fc16080",
+    "bytes": 322
+  },
+  {
+    "path": "outputs/sourcebox/sheets/cs2-scene-assets.json",
+    "sha256": "ca2368775ec2f6db567d1f97e4bc84b38360091463467e167ce63485325b03fb",
+    "bytes": 160353
+  },
+  {
+    "path": "outputs/sourcebox/sheets/cs2-world-lighting.json",
+    "sha256": "c384dfbeb36eaed04846f61370ff7c78c4c41e062e535af7df4591661f1e0739",
+    "bytes": 401
+  },
+  {
+    "path": "outputs/sourcebox/sheets/cs2-world-material-overrides.json",
+    "sha256": "d1972fd90f7f32707eae2738a7414130625f708a25d4200bb37347d3c0a1d1f9",
+    "bytes": 58016
+  },
+  {
+    "path": "outputs/sourcebox/sheets/cs2-world-materials.json",
+    "sha256": "f2a7d17a57a1f2134ccda36e684b17d418035f206560a3f2fad3759174e155a0",
+    "bytes": 774
+  },
+  {
+    "path": "outputs/sourcebox/sheets/cs2-world-scenery-assets.json",
+    "sha256": "88aa71f7d67a62b8363fc8b069be19d2cd4ff35d7d71374e175d8cd0c188a972",
+    "bytes": 37298
+  },
+  {
+    "path": "outputs/sourcebox/sheets/cs2.json",
+    "sha256": "6a0d53d578780d4f141a1f5aeb026c20e449352b5e4858cad2feef2051ec4e58",
+    "bytes": 2541
+  },
+  {
+    "path": "outputs/sourcebox/sheets/expansion-requirements.json",
+    "sha256": "612613db30117e8f9962dd9a98bc9d63e0f8485ce4a1d29e85a9aca9d780d5b4",
+    "bytes": 1141
+  },
+  {
+    "path": "outputs/sourcebox/sheets/games-adapters.json",
+    "sha256": "b38e44e4ed8fc09a7ec843d59acc745a746a903f19181979e0e10bbe004682e3",
+    "bytes": 277
+  },
+  {
+    "path": "outputs/sourcebox/sheets/gmod-scene.json",
+    "sha256": "4181bf851a840ada1a76ba332b7edd03ce04ea43deae61b4ce6260d3494ad2d2",
+    "bytes": 86005
+  },
+  {
+    "path": "outputs/sourcebox/sheets/gmod.json",
+    "sha256": "fee494fbd66d9f2a564f74a60c38f4afda3b9d4322c76d02db3bacb2e5cec96b",
+    "bytes": 653
+  },
+  {
+    "path": "outputs/sourcebox/sheets/hl1mp.json",
+    "sha256": "8ca24a8f7253b276feeaa9ad7b96f8f26857b595fdc83e542c3ed567845c4281",
+    "bytes": 7730
+  },
+  {
+    "path": "outputs/sourcebox/sheets/hl2-gameplay.json",
+    "sha256": "b1de40adedcaacd8c9ed08f19232944ec75e7f597e8131a6d9f034912cea8757",
+    "bytes": 1338
+  },
+  {
+    "path": "outputs/sourcebox/sheets/map-travel.json",
+    "sha256": "e889752231985fd7fc823382c5b4710a95bf1d97844707ba7adff60979e6b7c4",
+    "bytes": 375
+  },
+  {
+    "path": "outputs/sourcebox/sheets/native-world-hosts.json",
+    "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "bytes": 2
+  },
+  {
+    "path": "outputs/sourcebox/sheets/network-messages.json",
+    "sha256": "aec4cbb14e147869186efcaf16cd0bd7e62bfbba19eb573d8f2829a82aebc143",
+    "bytes": 2506
+  },
+  {
+    "path": "outputs/sourcebox/sheets/physics-objects.json",
+    "sha256": "205a8b0f90807d82be8c07f2ad3c6bbb71a86905a00f6cdcb94b83f7f5ea908b",
+    "bytes": 2366
+  },
+  {
+    "path": "outputs/sourcebox/sheets/player-movement.json",
+    "sha256": "bf9ab7b0b72b1f95954e12433d655397889402d7bedceed68fc52e24995c69f7",
+    "bytes": 816
+  },
+  {
+    "path": "outputs/sourcebox/sheets/portal-hub-roadmap.json",
+    "sha256": "2aae0d6d394d2a56e0c24798c92d746dbc1f5f564da9d505901548c5b4cdc2a7",
+    "bytes": 1020
+  },
+  {
+    "path": "outputs/sourcebox/sheets/portal2.json",
+    "sha256": "c24e65c4ea8c47c3287fe45876b131b3aed86750ff69efc11cf41e8e72decdb6",
+    "bytes": 640
+  },
+  {
+    "path": "outputs/sourcebox/sheets/portals.json",
+    "sha256": "d73a2082049519448dcec97c465a4507bf92f5dc1d57de4771dc0164d575323e",
+    "bytes": 3216
+  },
+  {
+    "path": "outputs/sourcebox/sheets/room-upgrades.json",
+    "sha256": "afe2ed906d11745e1726b22e8783d95ceee1862318ed7c48c3c856accdaed1c0",
+    "bytes": 1461
+  },
+  {
+    "path": "outputs/sourcebox/sheets/room.json",
+    "sha256": "037f3f563f6c663a099878ff6f70257f8244a1fabd775b863fe6759cc3188964",
+    "bytes": 480
+  },
+  {
+    "path": "outputs/sourcebox/sheets/roster.json",
+    "sha256": "e99839c7a9238dc70c1c8e29ea7c9d840490723aeb6670a46497cda0a0a7f8df",
+    "bytes": 1570
+  },
+  {
+    "path": "outputs/sourcebox/sheets/runtime.json",
+    "sha256": "f427af8a1a41cdef391fa3585eb7651c1a4886255f7f3c90299762cc7332c0fa",
+    "bytes": 117
+  },
+  {
+    "path": "outputs/sourcebox/sheets/sdk-builds.json",
+    "sha256": "eee8f83bd5055171458dd160bbf1fef029b91d88e05aa588bfe1ccaa67256188",
+    "bytes": 1268
+  },
+  {
+    "path": "outputs/sourcebox/sheets/shared-entities.json",
+    "sha256": "89e49829f1422e51d2d0defe636955e9d090b9b2380e8f979e3a3ae772e0d9b6",
+    "bytes": 161
+  },
+  {
+    "path": "outputs/sourcebox/sheets/test-cases.json",
+    "sha256": "a9d55711dff373b786a3ab945d8e26131eb6368f25f1cdbe49b4a006e324fe2c",
+    "bytes": 4538
+  },
+  {
+    "path": "outputs/sourcebox/sheets/window-layout.json",
+    "sha256": "39cae705764c68daacf36619ec021974aab895faa7a13bcccd8e994c9956ed90",
+    "bytes": 933
+  },
+  {
+    "path": "outputs/sourcebox/sheets/worlds-expanded.json",
+    "sha256": "a90652da81604c7a5bab51de80cdf2fbd2d4e57aa853caac00dc30954d52a34e",
+    "bytes": 2028
+  },
+  {
+    "path": "outputs/sourcebox/sheets/worlds.json",
+    "sha256": "bcc0a881c9e83f1c621c956e15c98f3f6042d7f22c4d41981672cc417fb9f928",
+    "bytes": 2056
+  },
+  {
+    "path": "outputs/sourcebox/test/bridge-lease.test.mjs",
+    "sha256": "8c900882ae07a25026bbfbf8bb0f648c79f9b60546cfc2e6fb3955ed3b1f38e5",
+    "bytes": 511
+  },
+  {
+    "path": "outputs/sourcebox/test/classes.test.mjs",
+    "sha256": "fa74c9b5413f918670777b816490f36bd24c06e7c9328dab8fa3b4b259bbda30",
+    "bytes": 1600
+  },
+  {
+    "path": "outputs/sourcebox/test/combat.test.mjs",
+    "sha256": "98746c53ac1366669b0c2304a280f61c29eaf274dc93d098573a5d5cedeb1b4a",
+    "bytes": 2418
+  },
+  {
+    "path": "outputs/sourcebox/test/core.test.mjs",
+    "sha256": "1e543fa722869064af87d7a5ce0314d30ec60cd4de14fd7ed49d3ecc401ac1c9",
+    "bytes": 1529
+  },
+  {
+    "path": "outputs/sourcebox/test/cs2-movement.test.mjs",
+    "sha256": "ae123dd0a3e3a31c09da854c4ad89316081bc442582efd09bb947fa3003480b8",
+    "bytes": 2821
+  },
+  {
+    "path": "outputs/sourcebox/test/cs2.test.mjs",
+    "sha256": "926ffe439be49ff600052362af5edd10180c645dbe972e6326f2002fa9b37414",
+    "bytes": 1193
+  },
+  {
+    "path": "outputs/sourcebox/test/cube-tcp.test.mjs",
+    "sha256": "75c6afbf8365757b996e17f1b9fd4df2244f8a5b8b884eceb2776404da8425a5",
+    "bytes": 1967
+  },
+  {
+    "path": "outputs/sourcebox/test/cube.test.mjs",
+    "sha256": "f4edcdbda47b9b8e048ca825104c2e5263ca8547a106f602bf24989afe6334a0",
+    "bytes": 4873
+  },
+  {
+    "path": "outputs/sourcebox/test/five-game-combat.test.mjs",
+    "sha256": "d58b8f6bf010605b439c4c0313ad608436e837b7ee9b3252cff23250d0876d0a",
+    "bytes": 2166
+  },
+  {
+    "path": "outputs/sourcebox/test/framing.test.mjs",
+    "sha256": "639c0c0dcc24fca6e0d5c08b49383e3e11b8bcd9c163d5a8d4f482e06b3c2f84",
+    "bytes": 711
+  },
+  {
+    "path": "outputs/sourcebox/test/gmod-commands.test.mjs",
+    "sha256": "8a3f8d9d9c883b510f18bda377d89f6454d45a3c07a82909605ef213a599c7ec",
+    "bytes": 926
+  },
+  {
+    "path": "outputs/sourcebox/test/gmod-scene.test.mjs",
+    "sha256": "f014904dd04f3b9025bf9c331ce4610367c6ecd55b8631a8850058a039c630eb",
+    "bytes": 1528
+  },
+  {
+    "path": "outputs/sourcebox/test/gmod.test.mjs",
+    "sha256": "57e8a8385caf0854add0109cfb6c4fc4247fdeaf2fc404b7e714020cc4322a96",
+    "bytes": 1716
+  },
+  {
+    "path": "outputs/sourcebox/test/hl1mp.test.mjs",
+    "sha256": "96050f609342b440f9bab901993b55e180453894e395ce31b28f3f959c76678e",
+    "bytes": 1306
+  },
+  {
+    "path": "outputs/sourcebox/test/map-travel.test.mjs",
+    "sha256": "6672562c277f13b05d6313ddfdb98f1df14a3c497b4a89b026e06ae6ea7d2017",
+    "bytes": 1770
+  },
+  {
+    "path": "outputs/sourcebox/test/movement.test.mjs",
+    "sha256": "91d97e65ba1deb8ebdf9214181c6368f3f9e9a00c7f86c5f454d9937c7af24dd",
+    "bytes": 1288
+  },
+  {
+    "path": "outputs/sourcebox/test/physics.test.mjs",
+    "sha256": "99fc8639b65ae9f46a630ad78a89bfa04dbd90cd2aea2834bf6eade4afe7a990",
+    "bytes": 1626
+  },
+  {
+    "path": "outputs/sourcebox/test/portal-authority.test.mjs",
+    "sha256": "cd284e774ac5e3643e9531bd2140a2793dc5e9f952ea190113300b82391da9e4",
+    "bytes": 8397
+  },
+  {
+    "path": "outputs/sourcebox/test/portal-math.test.mjs",
+    "sha256": "3be2c71298e0488eea5bb6500b8c0e137bf5d0ce646b86a93720a5269a46f18c",
+    "bytes": 4345
+  },
+  {
+    "path": "outputs/sourcebox/test/portal-worlds.test.mjs",
+    "sha256": "f0ffa842fec5e83141e57c0042d16b642a51b50cbbf63ed4990b8b14f3889ab5",
+    "bytes": 3499
+  },
+  {
+    "path": "outputs/sourcebox/test/portal2-movement.test.mjs",
+    "sha256": "44bb2d6c5ef50f8ce6fe7f44dd3fc929b1ed25db6eeb0061559d7fc111b5802b",
+    "bytes": 2645
+  },
+  {
+    "path": "outputs/sourcebox/test/preflight.test.mjs",
+    "sha256": "14f2f7a8c8f1559af054239e94dc97835d6d4ddd478d106643cf92d1ef7cb166",
+    "bytes": 481
+  },
+  {
+    "path": "outputs/sourcebox/test/recovery.test.mjs",
+    "sha256": "54a67fe96c010b9561aec824bc50818467f381b6bc981767f9554247a3558f76",
+    "bytes": 2320
+  },
+  {
+    "path": "outputs/sourcebox/test/scene-interactions.test.mjs",
+    "sha256": "5c0be2bc4ae8edf00c72a70bfc758ee303f5b5d64bfad1b811bc5e090ec379b1",
+    "bytes": 3661
+  },
+  {
+    "path": "outputs/sourcebox/test/six-game-combat.test.mjs",
+    "sha256": "70b09b90f8578902b869a186410af5b62b127f2f8e4aedb8436e628a5c7602c5",
+    "bytes": 2179
+  },
+  {
+    "path": "outputs/sourcebox/test/world-data.test.mjs",
+    "sha256": "500ba6ce13388331c60b74b09bf570e820da44064359e1d344fc419166012819",
+    "bytes": 1302
+  },
+  {
+    "path": "outputs/sourcebox/test/world-placement.test.mjs",
+    "sha256": "c57e55902fdcfa622522b3ff92fc6140dd8b8b06c856cce98db505bef990b546",
+    "bytes": 1347
+  },
+  {
+    "path": "outputs/sourcebox/test/world-routing.test.mjs",
+    "sha256": "31fe5ae4d9a131f4d00538a057a79e223bd7d962bb5ae9f0108f66643a6361ec",
+    "bytes": 854
+  },
+  {
+    "path": "outputs/sourcebox/tools/build-cs2-world-map.ps1",
+    "sha256": "62351f9c12b4942c5fccc04ce78dd8ac664ea62734bf948fe122407245e4183e",
+    "bytes": 1510
+  },
+  {
+    "path": "outputs/sourcebox/tools/build-cs2-worlds.ps1",
+    "sha256": "51124e96346f9a71d7ecd71354c7e054a8fe75a493ef6cc8e45caaf9d1770960",
+    "bytes": 2571
+  },
+  {
+    "path": "outputs/sourcebox/tools/build-fallback-models.py",
+    "sha256": "fe0fab83021096d2a56a1f53e15036a09c37cf453c7fb87c3e3fd58971402d80",
+    "bytes": 4648
+  },
+  {
+    "path": "outputs/sourcebox/tools/build-sdk-baseline.py",
+    "sha256": "41e0740b3780d5625d7aa5043500c4937f78c8160b91c6af14c145bdce1a05bd",
+    "bytes": 1222
+  },
+  {
+    "path": "outputs/sourcebox/tools/build-source1-world-host.ps1",
+    "sha256": "ef7dc4b270f56499b9775075c99ddebc459b2bb0b888e7d6ff2b8fa39cc4f910",
+    "bytes": 4107
+  },
+  {
+    "path": "outputs/sourcebox/tools/combine-source-worlds.py",
+    "sha256": "0ef9bf4f3f8d58455c977d724a0d2dbb4287c5d1c1e53ec6acd2a6cb0911f95a",
+    "bytes": 9977
+  },
+  {
+    "path": "outputs/sourcebox/tools/convert-chell-textures.py",
+    "sha256": "c4b0ded5fbca687d982dfeeeda313d97bf31813ec3cba9d0bc166440e02bd66c",
+    "bytes": 2071
+  },
+  {
+    "path": "outputs/sourcebox/tools/convert-cs2-catalog.cjs",
+    "sha256": "85a320c9b1541b12e4481b3c0a8c3fc28376bf60f30c7383e929725d545a2951",
+    "bytes": 5074
+  },
+  {
+    "path": "outputs/sourcebox/tools/convert-cs2-world-materials.py",
+    "sha256": "927516df994b666c6b857de816cb13436b272c4e4522b885ab9b2d31b78b15a6",
+    "bytes": 2484
+  },
+  {
+    "path": "outputs/sourcebox/tools/convert-cs2-world-scenery.cjs",
+    "sha256": "b62351cb0c5d91818dca9d6084ed523fb81eb6385d9dcc1b4843fba97ebc7172",
+    "bytes": 4779
+  },
+  {
+    "path": "outputs/sourcebox/tools/convert-world-legacy-textures.py",
+    "sha256": "2650b7819fb1b9432d201346152c78104c8694d3adde9be53d6fe43f298f6e9e",
+    "bytes": 4180
+  },
+  {
+    "path": "outputs/sourcebox/tools/create-cs2-world-probe.mjs",
+    "sha256": "838ff393e14c189cd517fa58c5307004b4b9d2999f36ceb5c4b0df2188e5ced9",
+    "bytes": 6197
+  },
+  {
+    "path": "outputs/sourcebox/tools/cs2-room-native.cjs",
+    "sha256": "2589a5acafd07a6576a3a75585c1f3882ee7697bda22af8b6ee1b106a0529ec8",
+    "bytes": 1915
+  },
+  {
+    "path": "outputs/sourcebox/tools/cs2-worldprobe/Probe.cs",
+    "sha256": "2ae8869327e05d63ec1cc4598382c68acbdd9edbd6aed4f61d39fa6abb67ebfe",
+    "bytes": 3781
+  },
+  {
+    "path": "outputs/sourcebox/tools/cs2-worldprobe/SourceboxWorldProbe.csproj",
+    "sha256": "938cdeba4cdb8202238055ec2b59ab72f150b95638e8ebce428b25a814942ed8",
+    "bytes": 397
+  },
+  {
+    "path": "outputs/sourcebox/tools/deploy-world-lighting-repair.ps1",
+    "sha256": "7a074d59e972b70a8c08a97a0f6a06e0e032d49c115f575e700fb54d58f0c521",
+    "bytes": 3616
+  },
+  {
+    "path": "outputs/sourcebox/tools/enable-sdk-hl2.mjs",
+    "sha256": "4fa56b57c0bc3ee0cf48b3873f62a9d0079e8b97bff152c05e50b08af9c0a159",
+    "bytes": 851
+  },
+  {
+    "path": "outputs/sourcebox/tools/export-chell.py",
+    "sha256": "2210470ec61e649133b03077c4cf49ab1c771d782da3600fb3344629dae1f380",
+    "bytes": 4561
+  },
+  {
+    "path": "outputs/sourcebox/tools/export-cs2-arm-fallback.py",
+    "sha256": "e2072b3351c1734b06c7b449702dbf3ef4704493b079ee2eb18c79de1432286d",
+    "bytes": 1902
+  },
+  {
+    "path": "outputs/sourcebox/tools/export-cs2-gmod.py",
+    "sha256": "e277407f23ac15d356113ecdb906d1f933a047cb1d3d7eb038f1940d829d6898",
+    "bytes": 1937
+  },
+  {
+    "path": "outputs/sourcebox/tools/export-cs2-goblin.py",
+    "sha256": "09be1ae1033a572d268137eecc9b8411b846c5e6d76bd9031c68b882b1141843",
+    "bytes": 1943
+  },
+  {
+    "path": "outputs/sourcebox/tools/export-cs2-heavy.py",
+    "sha256": "6b07c742354caa0aa24c4b5c776a30452f19555efc3383ea4a9be49a4ef66fa0",
+    "bytes": 1924
+  },
+  {
+    "path": "outputs/sourcebox/tools/export-cs2-world-lights.py",
+    "sha256": "7c548ac868b60d2a462134e6b6b5456dbdba2422c4e1c274b6e87fba9b32efe8",
+    "bytes": 3203
+  },
+  {
+    "path": "outputs/sourcebox/tools/export-cs2-worlds-fbx.py",
+    "sha256": "d6ca363b453c8b221de952e3432bb01c0a2a33b190f7cd02e2cffc5ad12587cc",
+    "bytes": 3524
+  },
+  {
+    "path": "outputs/sourcebox/tools/export-cs2-worlds.mjs",
+    "sha256": "61e8f2924c09c98e5977606c0052726adf1ec615a08144015ee501f0379248be",
+    "bytes": 3495
+  },
+  {
+    "path": "outputs/sourcebox/tools/export-p2-tf-players.py",
+    "sha256": "65a61b15332fbb3a6279b18da664a8a66c2d7ca0049b04da9d8e77ca85ffe43d",
+    "bytes": 3186
+  },
+  {
+    "path": "outputs/sourcebox/tools/export-source1-detail-models.py",
+    "sha256": "e5774e26b764f6d41c5a966b97214300d0dab8ead925d7567a0e874816b983f0",
+    "bytes": 5531
+  },
+  {
+    "path": "outputs/sourcebox/tools/export-world-scenery.py",
+    "sha256": "9df7b1f1e1c1b112950e70bb786383a397842e6da3e1a19b448e76d4887d82a4",
+    "bytes": 3906
+  },
+  {
+    "path": "outputs/sourcebox/tools/export-worlds.py",
+    "sha256": "02eb7669b901f14e1cfdbedeab2c5ee6ac29017dd4c8b309429f12bc949b2b72",
+    "bytes": 8731
+  },
+  {
+    "path": "outputs/sourcebox/tools/extract-cs2-world-materials.cjs",
+    "sha256": "d51d61a035121b824d6de3af1dd5f7a09221b09a011f4d1a94b6687b0334cd57",
+    "bytes": 2581
+  },
+  {
+    "path": "outputs/sourcebox/tools/extract-world-legacy-textures.cjs",
+    "sha256": "f8af959d1ae306582f58d9044b8aed9946fe2a2bb9a35608e3d67fc9f5eb7ffe",
+    "bytes": 3586
+  },
+  {
+    "path": "outputs/sourcebox/tools/generate-cs2-models.cjs",
+    "sha256": "90b301a9dd1795eda31f79c3405d28e84031fedafa8799bdb96c50ce395ce039",
+    "bytes": 3741
+  },
+  {
+    "path": "outputs/sourcebox/tools/install-sdk-portals.mjs",
+    "sha256": "396e2e1d8f667d965844fe915f81d3880502fb58afdef4b125d3e3a79ff1611d",
+    "bytes": 5203
+  },
+  {
+    "path": "outputs/sourcebox/tools/installed-assets.cjs",
+    "sha256": "ab67122bdb3160e7e7238bb48c78f313c6afd01612e23dc3b5b67eca582f600b",
+    "bytes": 1688
+  },
+  {
+    "path": "outputs/sourcebox/tools/make-portal-ring.mjs",
+    "sha256": "2174ea68e5d7ef50c44dfaacb4153fee96af78e0919e21b97848982f7b97bb12",
+    "bytes": 1262
+  },
+  {
+    "path": "outputs/sourcebox/tools/measure-portal-momentum.mjs",
+    "sha256": "53c72c53b4bcc231db04a006ef6abdf0f2c26dc225f5d8b0d7f146720d8fd30f",
+    "bytes": 2105
+  },
+  {
+    "path": "outputs/sourcebox/tools/patch-sdk-tools.mjs",
+    "sha256": "c7e714db4e78c4e520350ee11a71041764b45f6a5dd5ef87d3e62c5ce5fa5a68",
+    "bytes": 532
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-cs2-hand-attachments.ps1",
+    "sha256": "02a57a1552c6b4b2ea5c4908b6fd45a35015d4f656695e917bff2737715af85e",
+    "bytes": 1871
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-gmod-native-host.mjs",
+    "sha256": "a266d65eea30e0f4c83d76c5d2069c0fac4f074e3e86e443a3e5b72d248f655b",
+    "bytes": 1207
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-gmod-world-metadata.mjs",
+    "sha256": "49f588db9fa1eef2daf2b5093e153157c4f727ead3eef3bb445322dfd53584f2",
+    "bytes": 745
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-hl1-portal-carrier.cjs",
+    "sha256": "c4f55550c11932e24c94305fb524f8ef9507b904a4ea1bdf6849936f3a690c9d",
+    "bytes": 1305
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-hl1-world-materials.py",
+    "sha256": "b701b3300afb7959539a00bba4b38e8cc655040f8c9093377ee7c542934760ff",
+    "bytes": 3718
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-native-world-host.mjs",
+    "sha256": "82f3b8715f46a18dd456f1e6bb1a4f71be4546645e6ea64f69bf10f947083a16",
+    "bytes": 2975
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-portable-chell-input.cjs",
+    "sha256": "0a05a12759c3006722b237916bc16729170d4179762afe07b71e6ea893e36eda",
+    "bytes": 1846
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-portable-cs2-models.cjs",
+    "sha256": "66f2d3e3c997c96072b5b781ca2cf728895d1e312691a243533da309da62a5fe",
+    "bytes": 8928
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-portable-cs2-portal-surfaces.py",
+    "sha256": "aed46b981a7d186794413f971718c419df5152b52c70f73eb9ffabf8291b48a5",
+    "bytes": 1420
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-portable-cs2-room.ps1",
+    "sha256": "6d77246432346695fe8e5f8a9aea2abd920ac7c005a3a90be09108e0d1a8009e",
+    "bytes": 3337
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-portable-cs2-textures.py",
+    "sha256": "c1558d0f04d7f970b23a470fcff5b195885c12b97bef2bcec5d3720f258c147d",
+    "bytes": 2255
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-portable-hl1-assets.cjs",
+    "sha256": "6e957703b3802e79b1e96c55161797e45bd00132b763a2dfcdcc324000a0d45d",
+    "bytes": 8229
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-portable-p2-peers.py",
+    "sha256": "ef3c45a867b1d39848299364b3658a4a92963e33bea81baaf7b13b729b7a762a",
+    "bytes": 7562
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-portable-portal-assets.mjs",
+    "sha256": "41fc6b533c74efe72e2c06eee9fd30f1fe72063e5b1f93a8cc1dce0e9f029f09",
+    "bytes": 2698
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-portable-room-materials.cjs",
+    "sha256": "0ca70ad10130f19f88348c0b0a178ab177812e8e09cf720a0a3cfc6765642b14",
+    "bytes": 989
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-portable-tf-assets.cjs",
+    "sha256": "0ed8e45e705054b4c9e7447a5ccf58714e314eafaeb107524d556ff03981373b",
+    "bytes": 4833
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-sdk-mods.mjs",
+    "sha256": "3dfb997f56eb0a9de09d95b325574d9d60507db7e4257ad2080fa295ab82c5f5",
+    "bytes": 4523
+  },
+  {
+    "path": "outputs/sourcebox/tools/prepare-successor-gun.mjs",
+    "sha256": "b028c963ef17fd9998c509248d343e1682ab5435308ed1e4d4d705c1cae07187",
+    "bytes": 2627
+  },
+  {
+    "path": "outputs/sourcebox/tools/repair-cs2-catalog.cjs",
+    "sha256": "181bff211728be059b7697f4693a7d08c2d02edcc28d3cfdd717e5f65c6d2d6a",
+    "bytes": 3464
+  },
+  {
+    "path": "outputs/sourcebox/tools/report-damage-props.mjs",
+    "sha256": "67e9fd1e01cfc7e5339a7dd2f553241e6ed687375412a494ccd5677372e32720",
+    "bytes": 3447
+  },
+  {
+    "path": "outputs/sourcebox/tools/test-world-lighting.py",
+    "sha256": "f7e49fe01d376d66ede82b6839bf81b82f27a506f4d4db72b3b113fe53b7961a",
+    "bytes": 3230
+  },
+  {
+    "path": "outputs/sourcebox/tools/verify-portal-ring.mjs",
+    "sha256": "7ed869a930a4ad90ec8c23e243f1a2506b8cad2210dfbdf08970139e970bbaed",
+    "bytes": 1084
+  },
+  {
+    "path": "outputs/sourcebox/tools/verify-world-lighting.py",
+    "sha256": "cdb1ececd8e12b576d48c9e7ebce21ebb30bade50e14df585d9c86b1b9b4c2b9",
+    "bytes": 1907
+  },
+  {
+    "path": "outputs/sourcebox/tools/write-world-probe.mjs",
+    "sha256": "c3d5d7ba06cac57fc3d3d7392f1a5bf1715068d470725671da183ac1c87d8aa9",
+    "bytes": 1386
+  },
+  {
+    "path": "outputs/sourcebox/verify-assets.mjs",
+    "sha256": "f2b40b60684f57dcada2d9bd33bb1c535c8e354c940d12ab84cee45a63564412",
+    "bytes": 2161
+  },
+  {
+    "path": "outputs/sourcebox/verify-model-aliases.cjs",
+    "sha256": "7be35355a87ac635455cd2c543730f871a1d8e1d82e5706abdf77c7fc109ed0e",
+    "bytes": 1346
+  },
+  {
+    "path": "outputs/sourcebox/world-portal-placement.mjs",
+    "sha256": "8568ccec2f07b2c4865528d1b38a27cd2beb1fa4f21062d6639c680efb48739a",
+    "bytes": 2216
+  },
+  {
+    "path": "outputs/sourcebox/world-preflight.mjs",
+    "sha256": "f7b0f454622d51f421f3f61a62bee7266be23245d11626124776c3fa4f70ea6a",
+    "bytes": 2113
+  },
+  {
+    "path": "outputs/sourcebox/world-routing.mjs",
+    "sha256": "4e863b9b0eb1d8ffcc259492f597b77045b2b928705fb7db56a0e4a7ab17c249",
+    "bytes": 719
+  },
+  {
+    "path": "release-config/sheets/asset-references.json",
+    "sha256": "a82d9b1cfbbdf2445a6b8036ec04495e97981927aaeb3e82f69815bdb6498646",
+    "bytes": 14667
+  },
+  {
+    "path": "release-config/sheets/combat.json",
+    "sha256": "e577116ab2d4d2bb2e9c7ea281102141d046e8121af8a86be4d8fe516f1f4a7b",
+    "bytes": 982
+  },
+  {
+    "path": "release-config/sheets/connectivity.json",
+    "sha256": "dadd6b0af7521403cc11e08450c2611c27fbbfa0d18f88991eb6acc7b335dd3c",
+    "bytes": 809
+  },
+  {
+    "path": "release-config/sheets/coordinate-mappings.json",
+    "sha256": "f9f31c74c0ffa7025b1e5fcadc86410584bee8d79a21383630fe4e0c299cd7c0",
+    "bytes": 331
+  },
+  {
+    "path": "release-config/sheets/cs2-models.json",
+    "sha256": "696d40b32982e9b5c2cb7867f0849243fe48935008119ca9098de63db9512daa",
+    "bytes": 1935
+  },
+  {
+    "path": "release-config/sheets/cs2-scene-assets.json",
+    "sha256": "ca2368775ec2f6db567d1f97e4bc84b38360091463467e167ce63485325b03fb",
+    "bytes": 160353
+  },
+  {
+    "path": "release-config/sheets/cs2.json",
+    "sha256": "6a0d53d578780d4f141a1f5aeb026c20e449352b5e4858cad2feef2051ec4e58",
+    "bytes": 2541
+  },
+  {
+    "path": "release-config/sheets/games-adapters.json",
+    "sha256": "b38e44e4ed8fc09a7ec843d59acc745a746a903f19181979e0e10bbe004682e3",
+    "bytes": 277
+  },
+  {
+    "path": "release-config/sheets/gmod-scene.json",
+    "sha256": "4181bf851a840ada1a76ba332b7edd03ce04ea43deae61b4ce6260d3494ad2d2",
+    "bytes": 86005
+  },
+  {
+    "path": "release-config/sheets/gmod.json",
+    "sha256": "fee494fbd66d9f2a564f74a60c38f4afda3b9d4322c76d02db3bacb2e5cec96b",
+    "bytes": 653
+  },
+  {
+    "path": "release-config/sheets/hl1mp.json",
+    "sha256": "8ca24a8f7253b276feeaa9ad7b96f8f26857b595fdc83e542c3ed567845c4281",
+    "bytes": 7730
+  },
+  {
+    "path": "release-config/sheets/hl2-gameplay.json",
+    "sha256": "b1de40adedcaacd8c9ed08f19232944ec75e7f597e8131a6d9f034912cea8757",
+    "bytes": 1338
+  },
+  {
+    "path": "release-config/sheets/map-travel.json",
+    "sha256": "e889752231985fd7fc823382c5b4710a95bf1d97844707ba7adff60979e6b7c4",
+    "bytes": 375
+  },
+  {
+    "path": "release-config/sheets/native-world-hosts.json",
+    "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "bytes": 2
+  },
+  {
+    "path": "release-config/sheets/network-messages.json",
+    "sha256": "aec4cbb14e147869186efcaf16cd0bd7e62bfbba19eb573d8f2829a82aebc143",
+    "bytes": 2506
+  },
+  {
+    "path": "release-config/sheets/physics-objects.json",
+    "sha256": "205a8b0f90807d82be8c07f2ad3c6bbb71a86905a00f6cdcb94b83f7f5ea908b",
+    "bytes": 2366
+  },
+  {
+    "path": "release-config/sheets/player-movement.json",
+    "sha256": "bf9ab7b0b72b1f95954e12433d655397889402d7bedceed68fc52e24995c69f7",
+    "bytes": 816
+  },
+  {
+    "path": "release-config/sheets/portal2.json",
+    "sha256": "c24e65c4ea8c47c3287fe45876b131b3aed86750ff69efc11cf41e8e72decdb6",
+    "bytes": 640
+  },
+  {
+    "path": "release-config/sheets/portals.json",
+    "sha256": "d73a2082049519448dcec97c465a4507bf92f5dc1d57de4771dc0164d575323e",
+    "bytes": 3216
+  },
+  {
+    "path": "release-config/sheets/room-upgrades.json",
+    "sha256": "afe2ed906d11745e1726b22e8783d95ceee1862318ed7c48c3c856accdaed1c0",
+    "bytes": 1461
+  },
+  {
+    "path": "release-config/sheets/roster.json",
+    "sha256": "e99839c7a9238dc70c1c8e29ea7c9d840490723aeb6670a46497cda0a0a7f8df",
+    "bytes": 1570
+  },
+  {
+    "path": "release-config/sheets/runtime.json",
+    "sha256": "f427af8a1a41cdef391fa3585eb7651c1a4886255f7f3c90299762cc7332c0fa",
+    "bytes": 117
+  },
+  {
+    "path": "release-config/sheets/shared-entities.json",
+    "sha256": "89e49829f1422e51d2d0defe636955e9d090b9b2380e8f979e3a3ae772e0d9b6",
+    "bytes": 161
+  },
+  {
+    "path": "release-config/sheets/test-cases.json",
+    "sha256": "a9d55711dff373b786a3ab945d8e26131eb6368f25f1cdbe49b4a006e324fe2c",
+    "bytes": 4538
+  },
+  {
+    "path": "release-config/sheets/worlds-expanded.json",
+    "sha256": "a90652da81604c7a5bab51de80cdf2fbd2d4e57aa853caac00dc30954d52a34e",
+    "bytes": 2028
+  },
+  {
+    "path": "release-config/sheets/worlds.json",
+    "sha256": "bcc0a881c9e83f1c621c956e15c98f3f6042d7f22c4d41981672cc417fb9f928",
+    "bytes": 2056
+  },
+  {
+    "path": "release-provenance.json",
+    "sha256": "24dbf0d53f0ec99b95ab2a7c049b58f2b4cbbb69436b30dd855f4867982f74ee",
+    "bytes": 960
+  },
+  {
+    "path": "sdk/overlay/src/game/client/sourcebox_portal_client.inc",
+    "sha256": "1b42dee707c2566aa40e30ee01795bb53f591a078c777b2eb0966c647157afee",
+    "bytes": 8701
+  },
+  {
+    "path": "sdk/overlay/src/game/server/sourcebox_portal_gun.inc",
+    "sha256": "660017924221ef517d816941c236a805753eafdbf6cb86f63b1595c70a90a489",
+    "bytes": 574
+  },
+  {
+    "path": "sdk/overlay/src/game/server/sourcebox_portal_server.inc",
+    "sha256": "a7925b0559b2000043130686e435d309b8568327b4127c4b18c94d69f7efc03c",
+    "bytes": 6311
+  },
+  {
+    "path": "sdk/overlay/src/game/server/sourcebox_prop_portals.inc",
+    "sha256": "7821b4deda2cbea165a6a378b77c00b1d6b3bfed6f65d21b96ddd98c82001c62",
+    "bytes": 6502
+  },
+  {
+    "path": "sdk/overlay/src/launcher_main/launcher_main_mod_hl2.vpc",
+    "sha256": "27c613513594bb5cf5378bfd64db79a96bd6d96795d584c3be9616cc4c3401d4",
+    "bytes": 449
+  },
+  {
+    "path": "sdk/sourcebox-sdk.patch",
+    "sha256": "5795ea704dcbf2bf2e672b9a23fbeadc51439df5aa99e0a0be31ead24a54e560",
+    "bytes": 13771
+  },
+  {
+    "path": "source-validation.json",
+    "sha256": "6eb1d114caf1555ce3ec5be953603b922f41e6cbb68f717f6b9803b539bd8f0d",
+    "bytes": 345
+  }
+]

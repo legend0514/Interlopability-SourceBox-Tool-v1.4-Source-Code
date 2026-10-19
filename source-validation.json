@@ -1,0 +1,10 @@
+{
+  "tf2SdkBuild": "passed",
+  "launcherPackageChecks": "33/33 passed",
+  "sdkPatchApplyAndCompareFiles": 9,
+  "tf2PackagedBinariesMatchBuild": true,
+  "gameplayClassSelection": "not tested",
+  "priorUnchangedCoreTests": "11/11 passed before this fix",
+  "independentSecurityAudit": false,
+  "windowLayoutVisualGameplay": "not tested"
+}

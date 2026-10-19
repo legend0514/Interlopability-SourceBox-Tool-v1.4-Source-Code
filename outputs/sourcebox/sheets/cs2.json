@@ -1,0 +1,83 @@
+{
+  "id": "cs2",
+  "appId": 730,
+  "enabled": true,
+  "stage": "bidirectional-movement-candidate",
+  "transport": "loopback TCP NDJSON",
+  "serverPort": 27019,
+  "nativeMap": "sourcebox_room_001",
+  "coordinates": {
+    "origin": [
+      0,
+      0,
+      0
+    ],
+    "scale": 1,
+    "status": "identity mapping in sourcebox_room_001; fallback spawn-relative only on other maps"
+  },
+  "models": "Local converted rigs: HL2 stock player, TF2 Heavy, HL1MP Gordon, GMod Kleiner",
+  "acceptance": "Not tested in the portable beta",
+  "dependencies": {
+    "metamod": "2.0.0.1481",
+    "counterStrikeSharp": "1.0.376",
+    "dotnetSDK": "10.0.402"
+  },
+  "peers": [
+    "hl2",
+    "tf2",
+    "hl1mp",
+    "gmod"
+  ],
+  "proxyModel": "See cs2-models.json",
+  "proxyStatus": "Converted models and idle/movement clips deployed; final lighting and animation gameplay validation pending",
+  "source1Teams": {
+    "2": {
+      "model": "models/player/phoenix.mdl"
+    },
+    "3": {
+      "model": "models/player/gasmask.mdl"
+    }
+  },
+  "source1Sequences": {
+    "idle": "idle_all_01",
+    "run": "run_all_01",
+    "air": "jump_pistol"
+  },
+  "sharedRoom": {
+    "name": "sourcebox_room_001",
+    "status": "Original floor/wall textures compiled; light-probe bake completed; final live verification pending",
+    "sourceFormat": "VMF for Valve Source 1 import tool, not a runnable CS2 map",
+    "terroristSpawn": [
+      320,
+      -128,
+      8
+    ],
+    "counterTerroristSpawn": [
+      320,
+      128,
+      8
+    ],
+    "coordinateMapping": "identity after compiled room loads; remove first-spawn offset",
+    "source2Compiled": true
+  },
+  "idlePolicy": {
+    "mp_autokick": 0,
+    "applyAt": [
+      "dedicated server launch",
+      "plugin load or hot reload",
+      "two seconds after map start"
+    ],
+    "verification": "Compiled and deployed DLL hashes match; live server plugin reload recorded 21:00:01. Extended idle gameplay acceptance pending."
+  },
+  "props": {
+    "compiledCatalog": "cs2-scene-assets.json",
+    "counts": {
+      "props": 181,
+      "npcs": 24,
+      "weapons": 10
+    },
+    "status": "compiled resources validated; per-model gameplay acceptance pending",
+    "authority": "GMod owns scene physics and NPC AI; CS2 E/use and hits routed to GMod; shared cube supports explicit CS2 ownership",
+    "remaining": "86 attempted catalog assets did not compile; unconverted addon content and untested interactions remain unsupported"
+  }
+}

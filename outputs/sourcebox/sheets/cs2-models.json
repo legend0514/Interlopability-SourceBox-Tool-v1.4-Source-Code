@@ -1,0 +1,66 @@
+{
+  "hl2": {
+    "model": "models/sourcebox/hl2/player.vmdl",
+    "idle": "idle01",
+    "walk": "walk",
+    "run": "run",
+    "air": "idle01",
+    "weaponAttachment": "sourcebox_hand",
+    "weaponBone": "bip01_r_hand"
+  },
+  "tf2": {
+    "model": "models/sourcebox/tf2/heavy/heavy.vmdl",
+    "idle": "idle",
+    "walk": "run",
+    "run": "run",
+    "air": "air",
+    "supportedClass": 6,
+    "fbxExportScale": 0.01,
+    "sourceUnits": "Source units preserved through Blender meter-to-centimeter FBX export",
+    "weaponAttachment": "sourcebox_hand",
+    "weaponBone": "weapon_bone"
+  },
+  "hl1mp": {
+    "model": "models/sourcebox/hl1mp/gordon.vmdl",
+    "idle": "idle",
+    "walk": "walk",
+    "run": "run",
+    "air": "jump",
+    "weaponAttachment": "sourcebox_hand",
+    "weaponBone": "bip01_r_hand"
+  },
+  "gmod": {
+    "model": "models/sourcebox/gmod/kleiner/kleiner.vmdl",
+    "idle": "idle",
+    "walk": "run",
+    "run": "run",
+    "air": "air",
+    "sourceModel": "models/player/kleiner.mdl",
+    "fbxExportScale": 0.01,
+    "sourceUnits": "Source units preserved through Blender meter-to-centimeter FBX export",
+    "weaponAttachment": "sourcebox_hand",
+    "weaponBone": "bip01_r_hand"
+  },
+  "goblin": {
+    "model": "models/sourcebox/gmod/goblin/goblin.vmdl",
+    "idle": "idle",
+    "walk": "run",
+    "run": "run",
+    "air": "air",
+    "sourceModel": "models/goblin/playerm/goblin.mdl",
+    "fbxExportScale": 0.01,
+    "weaponAttachment": "sourcebox_hand",
+    "weaponBone": "bip01_r_hand"
+  },
+  "portal2": {
+    "model": "models/sourcebox/portal2/chell/chell.vmdl",
+    "idle": "idle",
+    "walk": "run",
+    "run": "run",
+    "air": "air",
+    "fbxExportScale": 0.01,
+    "animationStatus": "Converted standing pose; external walking animation import remains incomplete",
+    "weaponAttachment": "sourcebox_hand",
+    "weaponBone": "weapon_bone"
+  }
+}

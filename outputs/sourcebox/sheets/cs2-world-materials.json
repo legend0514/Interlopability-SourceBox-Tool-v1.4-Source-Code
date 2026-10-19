@@ -1,0 +1,18 @@
+{
+ "fallback":"concrete",
+ "materials":{
+  "grass":"materials/de_inferno/background/inferno_background_grass_dry_01.vmat",
+  "brick":"materials/de_inferno/brick/inferno_brick_01.vmat",
+  "wood":"materials/de_dust/hr_dust/hr_dust_wood_ceiling01_color.vmat",
+  "metal":"materials/de_nuke/nuke_metalfloor_01.vmat",
+  "tile":"materials/de_inferno/tile/inferno_tile_floor_04.vmat",
+  "concrete":"materials/de_nuke/hr_nuke/nuke_concrete_wall_001.vmat"
+ },
+ "rules":[
+  {"pattern":"grass|dirt|ground|nature/","material":"grass"},
+  {"pattern":"brick","material":"brick"},
+  {"pattern":"wood|plank|timber","material":"wood"},
+  {"pattern":"metal|grate|rail|steel","material":"metal"},
+  {"pattern":"tile|white_wall|white_floor|black_floor","material":"tile"}
+ ]
+}

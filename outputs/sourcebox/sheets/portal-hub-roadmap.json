@@ -1,0 +1,18 @@
+{
+  "feature": "Shared portal hub",
+  "requested": "2026-10-15",
+  "status": "planned after reliable three-game movement and physics",
+  "experience": "Spawn in a shared hub and use portals to visit TF2, HL2, and Garry's Mod maps.",
+  "requirements": [
+    "Map and destination registry with installed-game requirements",
+    "Coordinated transitions with loading status and reconnect recovery",
+    "World-instance identifiers so entities never leak between maps",
+    "Per-map origin and coordinate mappings",
+    "Supported collision geometry and asset availability in each receiving game",
+    "Keep actual games as separate running applications",
+    "Read proprietary assets from installed games; do not redistribute them"
+  ],
+  "firstMilestone": "One shared hub and one tested destination per game, with return portals",
+  "openDesignQuestion": "Which destination maps can run equivalently in every game, and which require visitors to switch their active game?",
+  "notYetImplemented": true
+}
