@@ -266,7 +266,7 @@ public:
  void Pause()override{}void UnPause()override{}
  const char*GetPluginDescription()override{return "SOURCEBOX C candidate: animated installed player models; stock HL2 model is unfinished";}
  void LevelInit(const char*)override{portalWorldsReady=false;portalWorldSelection=0;portalWorldCheck=0;portalScriptStarted=false;hl1PortalGranted=false;player=nullptr;proxy=nullptr;label=nullptr;samples.clear();remoteSeq=0;remoteSession.clear();animation=-1;physicsSamples.clear();physicsSession.clear();physicsSeq=0;bridge.PublishProps(nullptr);bridge.Publish(nullptr);}
- void ServerActivate(edict_t*list,int count,int)override{edictBase=list;edictCount=count;bridge.Command({{"type","cube_sync"}});bridge.Command({{"type","portal_sync"}});}
+ void ServerActivate(edict_t*list,int count,int)override{edictBase=list;edictCount=count;if(SOURCEBOX_CUBE_ENABLED)bridge.Command({{"type","cube_sync"}});bridge.Command({{"type","portal_sync"}});}
  void GameFrame(bool simulating)override{
   auto now=GetTickCount64();
   // The initial snapshot may arrive before ServerActivate; a sync command sent
@@ -307,7 +307,7 @@ public:
      if(!strcmp(SOURCEBOX_GAME,"hl1mp")&&localWeapon&&!strcmp(localWeapon,"weapon_egon"))state["weapon"]="weapon_sourcebox_portalgun";
      if(classId){state["classId"]=classId;state["team"]=p->GetTeamIndex();const char*w=p->GetWeaponName();state["weapon"]=w?w:"";}bridge.Publish(state);
     }else bridge.Publish(nullptr);
-   }else {bridge.Publish(nullptr);hl1PortalGranted=false;}lastSample=now;
+   }else {if(p&&(p->IsDead()||p->IsObserver()))bridge.Publish({{"type","heartbeat"},{"timestamp",now},{"playerUnavailable",true}});else bridge.Publish(nullptr);hl1PortalGranted=false;}lastSample=now;
   }
   std::deque<Json> messages;messages.swap(pendingMessages);
   for(auto&j:messages){
@@ -413,7 +413,7 @@ public:
  void ClientPutInServer(edict_t*e,const char*)override{Track(e);}void SetCommandClient(int)override{}
  void ClientSettingsChanged(edict_t*)override{}
  PLUGIN_RESULT ClientConnect(bool*,edict_t*,const char*,const char*,char*,int)override{return PLUGIN_CONTINUE;}
- PLUGIN_RESULT ClientCommand(edict_t*e,const CCommand&args)override{if(args.ArgC()&&!strcmp(args[0],"sourcebox_take")){if(e==player&&!SceneUse())bridge.Command({{"type","cube_take"}});return PLUGIN_STOP;}if(args.ArgC()&& !strcmp(args[0],"sourcebox_resetprops")){auto now=GetTickCount64();if(e==player&&now-lastReset>1000){ResetProps();ResetCube();lastReset=now;}return PLUGIN_STOP;}return PLUGIN_CONTINUE;}
+ PLUGIN_RESULT ClientCommand(edict_t*e,const CCommand&args)override{if(args.ArgC()&&!strcmp(args[0],"sourcebox_take")){if(e==player){auto*p=players->GetPlayerInfo(player);if(p&&!PortalWeaponEquipped(p)&&!SceneUse()&&SOURCEBOX_CUBE_ENABLED)bridge.Command({{"type","cube_take"}});}return PLUGIN_STOP;}if(args.ArgC()&& !strcmp(args[0],"sourcebox_resetprops")){auto now=GetTickCount64();if(e==player&&now-lastReset>1000){ResetProps();ResetCube();lastReset=now;}return PLUGIN_STOP;}return PLUGIN_CONTINUE;}
  PLUGIN_RESULT NetworkIDValidated(const char*,const char*)override{return PLUGIN_CONTINUE;}
  void OnQueryCvarValueFinished(QueryCvarCookie_t,edict_t*,EQueryCvarValueStatus,const char*,const char*)override{}
  void OnEdictAllocated(edict_t*e)override{if(edictBase&&e>=edictBase&&e-edictBase<8192){int count=int(e-edictBase)+1;if(count>edictCount)edictCount=count;}}void OnEdictFreed(const edict_t*e)override{if(e==player)player=nullptr;}

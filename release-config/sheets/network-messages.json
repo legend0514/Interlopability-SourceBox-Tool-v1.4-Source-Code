@@ -5,6 +5,7 @@
     "pid": "positiveInteger"
   },
   "heartbeat": {
+    "playerUnavailable": "optionalBooleanExplicitDeathOrObserver",
     "seq": "positiveInteger",
     "timestamp": "nonnegativeNumber",
     "props": "optionalOwnedPropArray"

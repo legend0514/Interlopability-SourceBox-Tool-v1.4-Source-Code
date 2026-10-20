@@ -9,6 +9,8 @@ if(manifest.sheets)for(const [key,path]of Object.entries(manifest.sheets)){
 }
 export function validate(s){
  const errors=[];
+ if(s.physics?.cube?.enabled!==undefined&&typeof s.physics.cube.enabled!=='boolean')errors.push('physics cube enabled must be boolean');
+ if(s.runtime?.playerGraceMs!==undefined&&(!Number.isInteger(s.runtime.playerGraceMs)||s.runtime.playerGraceMs<0||s.runtime.playerGraceMs>s.runtime.timeoutMs))errors.push('player grace must be bounded by connection timeout');
  const check=(v,m)=>{if(!v)errors.push(m)};
  if(!s||typeof s!=='object')return ['Missing sheet configuration'];
  if(s.destinationWorlds){const w=s.destinationWorlds;check(typeof w.enabled==='boolean'&&Array.isArray(w.portalGames)&&w.portalGames.every(g=>['hl2','tf2','hl1mp','gmod','cs2','portal2'].includes(g)),'Destination capability registry');check(Array.isArray(w.worlds)&&w.worlds.length>0&&w.worlds.length<=32&&new Set(w.worlds.map(d=>d.id)).size===w.worlds.length&&w.worlds.every(d=>/^[a-z0-9_]+$/.test(d.id)&&typeof d.label==='string'&&d.label.length<80&&Number.isFinite(d.yaw)&&d.spawn?.length===3&&d.spawn.every(v=>Number.isFinite(v)&&Math.abs(v)<16000)),'Destination portal definitions');}
@@ -39,7 +41,7 @@ export function validate(s){
   check(g?.[0]?.adapter===`sourcebox_${id}.dll`,`adapter ${id}`);
   check(s.coordinates?.[id]?.scale===1&&s.coordinates[id].origin?.length===3&&s.coordinates[id].origin.every(Number.isFinite),`coordinate mapping ${id}`);
  }
- check(JSON.stringify(s.messages?.hello)===JSON.stringify({protocol:'integer',game:'gameId',pid:'positiveInteger'})&&JSON.stringify(s.messages?.heartbeat)===JSON.stringify({seq:'positiveInteger',timestamp:'nonnegativeNumber',props:'optionalOwnedPropArray'}),'message schema mismatch');
+ check(JSON.stringify(s.messages?.hello)===JSON.stringify({protocol:'integer',game:'gameId',pid:'positiveInteger'})&&JSON.stringify(s.messages?.heartbeat)===JSON.stringify({playerUnavailable:'optionalBooleanExplicitDeathOrObserver',seq:'positiveInteger',timestamp:'nonnegativeNumber',props:'optionalOwnedPropArray'}),'message schema mismatch');
  check(Array.isArray(s.entities)&&(s.phase==='A'?s.entities.length===0:s.entities.length===2&&new Set(s.entities.map(e=>e?.id)).size===2&&s.entities.every(e=>e&&e.id==='player:'+e.owner&&games.some(g=>g.id===e.owner)&&e.kind==='player')),'entity definitions');
  check(s.assets?.redistribute===false,'asset redistribution disabled');
  check(s.physics?.rule==='exactly one owner; transfer requires old-owner freeze acknowledgement before grant','ownership rule');

@@ -3,5 +3,6 @@
   "port": 27841,
   "maxFrameBytes": 4096,
   "timeoutMs": 5000,
-  "heartbeatMs": 1000
+  "heartbeatMs": 1000,
+  "playerGraceMs": 2500
 }

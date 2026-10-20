@@ -84,6 +84,7 @@ void PortalFire(IPlayerInfo*p,int endpoint){
  if(portalWorldsReady&&portalWorldSelection>0)shot["destination"]=worldDestinations[portalWorldSelection-1].id;
  bridge.Command(shot);
 }
+bool PortalWeaponEquipped(IPlayerInfo*p){const char*w=p?p->GetWeaponName():nullptr;return w&&((!strcmp(SOURCEBOX_GAME,"hl2")&&(!strcmp(w,"weapon_cubemap")||!strcmp(w,"weapon_sourcebox_portalgun")))||(!strcmp(SOURCEBOX_GAME,"hl1mp")&&!strcmp(w,"weapon_egon"))||(!strcmp(SOURCEBOX_GAME,"tf2")&&!strcmp(w,"tf_weapon_grapplinghook"))||(!strcmp(SOURCEBOX_GAME,"portal2")&&!strcmp(w,"weapon_portalgun")));}
 void PortalInput(IPlayerInfo*p){PortalWorldReadiness();
  static unsigned long long probeCheck=0;
  if(portalWorldsReady&&helpers&&GetTickCount64()>probeCheck){probeCheck=GetTickCount64()+1000;
@@ -91,13 +92,15 @@ void PortalInput(IPlayerInfo*p){PortalWorldReadiness();
   if(FILE*f=fopen(path.c_str(),"r")){fclose(f);remove(path.c_str());helpers->ClientCommand(player,"exec sourcebox_world_probe.cfg");}
  }
  const int buttons=p->GetLastUserCommand().buttons,pressed=buttons&~portalButtons;portalButtons=buttons; if(pressed){if(FILE*f=fopen(SOURCEBOX_DIAGNOSTIC_PATH,"a")){fprintf(f,"portal_input game=%s buttons=%d enabled=%d weapon=%s\n",SOURCEBOX_GAME,pressed,portalEnabled,p->GetWeaponName()?p->GetWeaponName():"none");fclose(f);}}
- if(!portalEnabled)return;const char*w=p->GetWeaponName();const bool equipped=w&&((!strcmp(SOURCEBOX_GAME,"hl2")&&(!strcmp(w,"weapon_cubemap")||!strcmp(w,"weapon_sourcebox_portalgun")))||(!strcmp(SOURCEBOX_GAME,"hl1mp")&&!strcmp(w,"weapon_egon"))||(!strcmp(SOURCEBOX_GAME,"tf2")&&!strcmp(w,"tf_weapon_grapplinghook"))||(!strcmp(SOURCEBOX_GAME,"portal2")&&!strcmp(w,"weapon_portalgun")));if(!equipped)return;
- if((buttons&(1<<5))&&(pressed&(1<<13))){
+ if(!PortalWeaponEquipped(p))return;
+ if((buttons&(1<<5))&&(buttons&(1<<13))&&(pressed&((1<<5)|(1<<13)))){
+  if(!portalEnabled){PortalNotice("Portal connection unavailable. Check SourceBox connection status.");return;}
   if(!portalWorldsReady){PortalNotice("Destination maps are not loaded in this session.");return;}
   portalWorldSelection=(portalWorldSelection+1)%(int(sizeof(worldDestinations)/sizeof(worldDestinations[0]))+1);
   PortalNotice(std::string("Portal destination: ")+(portalWorldSelection?worldDestinations[portalWorldSelection-1].label:"Normal portals"));
   return;
  }
+ if(!portalEnabled)return;
  if(pressed&1)PortalFire(p,0);
  if(pressed&(1<<11))PortalFire(p,1);
  if(pressed&(1<<13))bridge.Command({{"type","portal_clear"}});

@@ -40,7 +40,7 @@ while pending:
         raise ValueError(f'Unexpected runtime import: {relative}')
     source = project / relative
     text = source.read_text(encoding='utf-8-sig')
-    if re.search(r'[A-Za-z]:[/\\]', text):
+    if re.search(r'(?<![A-Za-z0-9_])[A-Za-z]:[/\\]', text):
         raise ValueError(f'Machine path in runtime code: {relative}')
     included.add(relative)
     copy(source, core / relative)

@@ -1,16 +1,20 @@
-# SourceBox beta v1.4 source
+# SourceBox beta v1.5 source
 
 Source snapshot for reviewing the six-game crossplay prototype. This is source
-code, not the playable download. Browse the folders below directly on GitHub.
+code, not the playable download. Browse the source folders below on GitHub.
 
-This snapshot includes the TF2 class-selection and window-proportion fixes.
-The matching download is named v1.4.2; its internal app version remains v1.4.
-Game testing for those fixes is still pending.
+[Download SourceBox beta v1.5](https://github.com/legend0514/Interlopability-SourceBox-Tool/releases/tag/v1.5)
+
+Version 1.5 includes verified GMod bridge reuse, player lifecycle fixes, E+R
+feedback improvements and disabled Share Cube. Ordinary prop synchronization
+and portals remain. The portable package includes the Shared Room; expanded
+map destinations are not bundled. Deathmatch portal rendering and missing audio
+remain under investigation. Fresh-PC gameplay is not independently verified.
 
 - [outputs/sourcebox-launcher/src](outputs/sourcebox-launcher/src): desktop launcher and its automated tests.
-- [outputs/sourcebox](outputs/sourcebox): coordinator, adapters, portable v1.4 sheets and tools.
+- [outputs/sourcebox](outputs/sourcebox): coordinator, adapters, portable v1.5 sheets and tools.
 - [development/sheets](development/sheets): sanitized expanded-world development configuration.
-- [release-config/sheets](release-config/sheets): the actual portable v1.4 configuration. Expanded
+- [release-config/sheets](release-config/sheets): the actual portable v1.5 configuration. Expanded
   worlds are disabled in that download.
 - [sdk](sdk): pinned Valve SDK patch and added source files.
 - [BUILD.md](BUILD.md): build prerequisites and current reproducibility limits.

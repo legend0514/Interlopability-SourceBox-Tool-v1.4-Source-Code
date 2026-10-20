@@ -1,6 +1,7 @@
 // Engine-independent, fail-closed ownership handoff for the prototype cube.
 import {randomUUID} from 'node:crypto';
 export function createCube({definition,clients,emit,log,now=Date.now}){
+ if(definition.enabled===false)return {welcome(){},disconnect(){},tick(){},handle(c,m){return m.type?.startsWith('cube_')===true;},inspect(){return {enabled:false};}};
  let owner=definition.owner,epoch=1,pending=null,lastTransfer=-Infinity,lastTelemetry=0;
  let state={alive:true,position:definition.position,rotation:[0,0,0],velocity:[0,0,0],angularVelocity:[0,0,0],solid:true,timestamp:0};
  const vector=v=>Array.isArray(v)&&v.length===3&&v.every(n=>Number.isFinite(n)&&Math.abs(n)<1000000);

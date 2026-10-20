@@ -1,4 +1,4 @@
-param([Parameter(Mandatory=$true)][string]$DotNet,[Parameter(Mandatory=$true)][string]$Python,[ValidatePattern('^[a-zA-Z0-9.-]+$')][string]$CandidateName='sourcebox-beta-v1.4-candidate')
+param([Parameter(Mandatory=$true)][string]$DotNet,[Parameter(Mandatory=$true)][string]$Python,[ValidatePattern('^[a-zA-Z0-9.-]+$')][string]$CandidateName='sourcebox-beta-v1.5',[switch]$ReleaseApproved)
 $ErrorActionPreference='Stop'
 $root=$PSScriptRoot
 $runtimeJson=& $Python "$root/build-beta-runtime.py"
@@ -36,8 +36,8 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0Install SourceBox.
 if errorlevel 1 pause
 '@ | Set-Content "$stage/Install SourceBox.cmd" -Encoding ascii
 @'
-SOURCEBOX BETA v1.4 CANDIDATE - SHARED ROOM
-Windows x64. Testing build; not approved for public release.
+SOURCEBOX BETA v1.5 - SHARED ROOM
+Windows x64. Experimental beta. See release-readiness.json for publication status.
 
 Extract the whole ZIP and run Install SourceBox.cmd.
 Setup installs .NET Desktop Runtime 8 and Node.js through Windows Package
@@ -46,11 +46,16 @@ Open SourceBox from the desktop and select installed games under Characters.
 Games tile across the monitor containing SourceBox. Ctrl+Alt+Space releases
 the mouse to the launcher. Ctrl+Alt+Right switches to the next game.
 
-This v1.4 update includes LDR and HDR lighting in the original Shared Room.
+This v1.5 update includes LDR and HDR lighting in the original Shared Room.
 It also repairs the Portal Gun's TF2 item definition and guards class-change
 loadout validation against missing item definitions. In-game retesting pending.
 The expanded-map lighting repairs are local development content and are not
 included in this portable download.
+
+Changes in 1.5: verified GMod bridge reuse, bounded player visibility recovery,
+unknown weapon visual fallback, improved E+R feedback and Share Cube disabled.
+Ordinary props and player synchronization remain. Deathmatch portal visuals and
+missing audio still need external verification.
 
 Included: launcher, synchronization service, six adapter implementations,
 modified HL2/TF2 SDK binaries and original Shared Room geometry.
@@ -71,9 +76,9 @@ A missing dependency
 blocks launch rather than being reported as ready. The expanded imported worlds
 are not included in this Shared Room candidate.
 
-Fresh-PC gameplay acceptance has not passed. Do not advertise this package as
-a complete plug-and-play public beta. Existing configured installations retain
-their settings and maps. Keep the old working download until acceptance passes.
+Fresh-PC gameplay acceptance has not passed. This is an experimental public beta,
+not a guarantee of compatibility on every PC. Existing configured installations
+retain their settings and maps. Back up your configuration before upgrading.
 Missing character sources use original cyan debug figures. Portal 2 no longer
 requires TF2, GMod or HL1 just to prepare its peer models. Real converted models
 take priority. Placeholders are static and are not finished character integrations.
@@ -83,7 +88,7 @@ unverified. Source SDK Base tools are required for CS2 conversion without HL2.
 Source SDK license and third-party notices are in runtime/licenses.
 SDK-derived distribution must be free of charge. SourceBox is unsigned.
 '@ | Set-Content "$stage/READ ME FIRST.txt" -Encoding utf8
-@{publishable=$false;status='candidate';scope='shared-room';freshPcGameplay='not-tested';gameAssetPreparation='partial';supportedGames=@('hl2','tf2','hl1mp','gmod','portal2','cs2');missingCharacterFallback='original-static-figures';reducedInstallGameplay='not-tested'}|ConvertTo-Json|Set-Content "$stage/release-readiness.json" -Encoding utf8
+@{publishable=[bool]$ReleaseApproved;publicationApproved=[bool]$ReleaseApproved;version='1.5.0-beta.1';status=$(if($ReleaseApproved){'public-beta'}else{'candidate'});scope='shared-room';freshPcGameplay='not-tested';gameAssetPreparation='partial';supportedGames=@('hl2','tf2','hl1mp','gmod','portal2','cs2');missingCharacterFallback='original-static-figures';reducedInstallGameplay='not-tested'}|ConvertTo-Json|Set-Content "$stage/release-readiness.json" -Encoding utf8
 $entries=@(Get-ChildItem -LiteralPath $stage -Recurse -File | Sort-Object FullName | ForEach-Object {@{Path=[IO.Path]::GetRelativePath($stage,$_.FullName);Sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash}})
 ConvertTo-Json -InputObject $entries -Depth 3 | Set-Content "$stage/package-manifest.json" -Encoding utf8NoBOM
 $zip=Join-Path $root ("release-candidates/"+$CandidateName+".zip")
@@ -92,4 +97,4 @@ if((Get-Item $zip).Length -ge 25000000){throw 'Candidate exceeds the 25 MB uploa
 & $Python "$root/verify-beta-package.py" $zip | Set-Content "$zip.audit.json" -Encoding utf8
 if($LASTEXITCODE -ne 0){throw 'Package integrity or distribution audit failed'}
 "$((Get-FileHash $zip).Hash.ToLowerInvariant())  $([IO.Path]::GetFileName($zip))"|Set-Content "$zip.sha256" -Encoding ascii
-@{stage=$stage;zip=$zip;bytes=(Get-Item $zip).Length;publishable=$false}|ConvertTo-Json
+@{stage=$stage;zip=$zip;bytes=(Get-Item $zip).Length;publishable=[bool]$ReleaseApproved}|ConvertTo-Json

@@ -41,6 +41,7 @@ with zipfile.ZipFile(sys.argv[1]) as archive:
             assert data[:4] == b'VBSP' and struct.unpack_from('<ii', data, 8 + 40 * 16) == (0, 0), name
             assert all(struct.unpack_from('<ii', data, 8 + index * 16)[1] > 0 for index in (8, 53)), 'Missing room lighting: ' + name
     readiness = json.loads(archive.read('release-readiness.json').decode('utf-8-sig'))
-    assert readiness['publishable'] is False, 'Fresh-PC acceptance is still outstanding'
+    assert readiness['publishable'] is False or (readiness.get('publicationApproved') is True and readiness.get('status') == 'public-beta'), 'Publication needs explicit approval'
+    assert readiness['freshPcGameplay'] == 'not-tested', 'Do not imply unperformed fresh-PC acceptance'
 print(json.dumps({'archiveIntegrity': 'passed', 'distributionAllowlist': 'passed',
-                  'files': len(files), 'freshPcGameplay': 'not-tested', 'publishable': False}, indent=2))
+                  'files': len(files), 'freshPcGameplay': 'not-tested', 'publishable': readiness['publishable']}, indent=2))

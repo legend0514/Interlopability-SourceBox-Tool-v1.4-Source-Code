@@ -77,6 +77,7 @@
     "transfer": "not implemented"
   },
   "cube": {
+    "enabled": false,
     "id": "sourcebox_shared_cube",
     "owner": "hl2",
     "model": "models/props_junk/wood_crate001a.mdl",

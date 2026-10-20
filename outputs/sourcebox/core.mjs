@@ -77,7 +77,7 @@ export function createCore({config=preflight(),log=console.log}={}){
       if(client.game==='tf2'&&m.weapon!==undefined&&(typeof m.weapon!=='string'||m.weapon.length>96||!/^([a-z0-9_]+)?$/.test(m.weapon))){reject('invalid weapon name');return;}
       client.seq=m.seq;send({type:'ack',seq:m.seq});
       if(m.timestamp===client.lastTimestamp)continue;
-      client.lastTimestamp=m.timestamp;client.hasState=true;client.position=m.position;client.rotation=m.rotation;client.lastStateAt=Date.now();
+      client.lastTimestamp=m.timestamp;client.hasState=true;client.playerVisible=true;client.position=m.position;client.rotation=m.rotation;client.lastStateAt=Date.now();
       const world=resolveWorld(m.position);if(world!==client.world)event('player_world',{game:client.game,from:client.world??null,to:world});client.world=world;
       const state={entity:m.entity,seq:m.seq,timestamp:m.timestamp,position:m.position,rotation:m.rotation,velocity:m.velocity,grounded:m.grounded,world};
       if(m.health!==undefined){
@@ -89,7 +89,11 @@ export function createCore({config=preflight(),log=console.log}={}){
       if(m.props!==undefined){
        state.props=m.props;client.physics={type:"physics",game:client.game,session:client.session,state:{seq:m.seq,timestamp:m.timestamp,props:m.props}};
       }
-      if((client.game==='hl2'||client.game==='gmod')&&m.weapon!==undefined){if(typeof m.weapon!=='string'||(m.weapon!==''&&!config.assets.hl2Weapons?.[m.weapon])){reject('invalid HL2 weapon');return;}state.weapon=m.weapon;}
+      if((client.game==='hl2'||client.game==='gmod')&&m.weapon!==undefined){
+       if(typeof m.weapon!=='string'||m.weapon.length>128){reject('invalid HL2 weapon');return;}
+       state.weapon=config.assets.hl2Weapons?.[m.weapon]?m.weapon:'';
+       if(m.weapon&&state.weapon===''&&client.unsupportedWeapon!==m.weapon){client.unsupportedWeapon=m.weapon;event('weapon_visual_unavailable',{game:client.game,weapon:m.weapon});}
+      }
       if(client.game==='gmod'&&(m.model==='models/player/kleiner.mdl'||config.gmodScene.addon?.playerModels.includes(m.model))){
        state.model=m.model;if(typeof m.sequence==='string'&&/^[a-zA-Z0-9_ .-]{0,96}$/.test(m.sequence))state.sequence=m.sequence;
       }
@@ -100,7 +104,8 @@ export function createCore({config=preflight(),log=console.log}={}){
       for(const [from,to]of [...config.movement.directions,...(config.portal2?.enabled?config.portal2.peers.flatMap(p=>[['portal2',p],[p,'portal2']]):[]),...(config.cs2?.enabled?(config.cs2.peers??[]).flatMap(p=>[['cs2',p],[p,'cs2']]):[]),...(config.hl1mp?.enabled?config.hl1mp.peers.flatMap(p=>[['hl1mp',p],[p,'hl1mp']]):[]),...(config.gmod?.enabled?[...config.gmod.inbound.map(from=>[from,'gmod']),...config.gmod.outbound.map(to=>['gmod',to])]:[])])if(from===client.game){const peer=clients.get(to);if(peer){if(peer.socket.writableLength>65536)peer.socket.destroy();else peer.socket.write(JSON.stringify({type:'remote',game:client.game,session:client.session,state})+'\n');}}
       client.weapon=state.weapon??'';portals?.sample(client,state);event('state',{game:client.game,...state});
      }else{
-      if(client.hasState){broadcast({type:'remove',game:client.game,entity:'player:'+client.game,scope:'player'});client.hasState=false;portals?.reset(client);}
+      client.hasState=false;
+      if(client.playerVisible&&(m.playerUnavailable===true||Date.now()-client.lastStateAt>(config.runtime.playerGraceMs??2500))){broadcast({type:'remove',game:client.game,entity:'player:'+client.game,scope:'player'});client.playerVisible=false;portals?.reset(client);event('player_expired',{game:client.game,reason:'no live player state',ageMs:Date.now()-client.lastStateAt});}
       if(m.props!==undefined){client.physics={type:'physics',game:client.game,session:client.session,state:{seq:m.seq,timestamp:m.timestamp,props:m.props}};broadcast(client.physics);}
       client.seq=m.seq;send({type:'ack',seq:m.seq});event('heartbeat',{game:client.game,seq:m.seq,sourceTimestamp:m.timestamp,simultaneous:clients.size>=2});
      }

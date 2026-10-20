@@ -8,3 +8,5 @@ static const SharedProp sharedProps[]={{"sourcebox_hl2_barrel","hl2","models/pro
 #define SOURCEBOX_CUBE_INITIAL "[0,128,32]"
 
 #define SOURCEBOX_PORTAL2_CUBE_MODEL "models/props/metal_box.mdl"
+
+#define SOURCEBOX_CUBE_ENABLED 0

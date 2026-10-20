@@ -35,3 +35,5 @@ for(const key of ['idle','run','air'])if(!cs2.source1Sequences[key])throw Error(
 fs.appendFileSync(new URL('./generated/generated_config.h',import.meta.url),'static const char* cs2TeamConfig='+JSON.stringify(JSON.stringify(cs2.source1Teams))+';\nstatic const char* cs2SequenceConfig='+JSON.stringify(JSON.stringify(cs2.source1Sequences))+';\n');
 
 if(s.portal2)fs.appendFileSync(new URL("./generated/physics_config.h",import.meta.url),"\n#define SOURCEBOX_PORTAL2_CUBE_MODEL "+JSON.stringify(s.portal2.sharedCubeModel)+"\n");
+
+fs.appendFileSync(new URL('./generated/physics_config.h',import.meta.url),'\n#define SOURCEBOX_CUBE_ENABLED '+(s.physics.cube.enabled===false?0:1)+'\n');
