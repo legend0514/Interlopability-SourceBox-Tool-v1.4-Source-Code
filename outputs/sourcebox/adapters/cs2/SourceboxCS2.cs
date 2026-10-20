@@ -24,6 +24,10 @@ public partial class SourceboxCS2 : BasePlugin {
   RegisterListener<Listeners.OnServerPrecacheResources>(manifest=>{foreach(var kind in new[]{"view","world","ring","monitor"})manifest.AddResource($"models/sourcebox/portals/{kind}/{kind}.vmdl");foreach(var model in PlayerModels.Values)if(HasLocalModel(model.Model))manifest.AddResource(model.Model);foreach(var model in PropModels.Values)if(HasLocalModel(model))manifest.AddResource(model);});
   RegisterListener<Listeners.OnMapStart>(_=>{Clear();anchor=null;AddTimer(2.0f,()=>{ApplyIdlePolicy();ProbePortalRendering();CreateMonitorProbe();});});
   RegisterListener<Listeners.OnTick>(Tick);
+  RegisterListener<Listeners.OnServerPrecacheResources>(manifest=>{
+   foreach(var model in new[]{Model,"characters/models/tm_phoenix/tm_phoenix.vmdl","models/sourcebox/ragdolls/hl2.vmdl","models/sourcebox/ragdolls/chell.vmdl"})
+    if(!model.StartsWith("models/sourcebox/")||HasLocalModel(model))manifest.AddResource(model);
+  });
   RegisterListener<Listeners.CheckTransmit>(TransmitPortalPreviews);
   HookEntityOutput("prop_dynamic","OnTakeDamage",(output,name,activator,caller,value,delay)=>{
    if(caller==null||activator==null||!activator.DesignerName.Contains("player"))return HookResult.Continue;
@@ -41,7 +45,7 @@ public partial class SourceboxCS2 : BasePlugin {
   Server.ExecuteCommand("mp_autokick 0; mp_autokick");
   Console.WriteLine("[Sourcebox] Idle kick disabled for local crossplay");
  }
- private void Clear(){ClearPortals();ClearCube();ClearProps();foreach(var id in peers.Keys.ToArray())Remove(id);}
+ private void Clear(){ClearRagdolls();ClearPortals();ClearCube();ClearProps();foreach(var id in peers.Keys.ToArray())Remove(id);}
  private void Remove(string id){if(!peers.Remove(id,out var p))return;if(p.WeaponEntity?.IsValid==true)p.WeaponEntity.Remove();if(p.Entity?.IsValid==true)p.Entity.Remove();if(p.Label?.IsValid==true)p.Label.Remove();}
  private void Tick(){
   var now=Environment.TickCount64;
@@ -49,6 +53,7 @@ public partial class SourceboxCS2 : BasePlugin {
    try{using var doc=JsonDocument.Parse(line);var m=doc.RootElement;var type=m.GetProperty("type").GetString();
     if(PortalMessage(m,type))continue;
     if(type=="disconnect"){Clear();continue;}
+    if(type=="player_ragdoll"){DeathMessage(m);continue;}
     if(type=="player_damage"){ApplyPlayerDamage(m);continue;}
     if(CubeMessage(m,type!))continue;
     ReadProps(m,type!);
@@ -97,7 +102,7 @@ public partial class SourceboxCS2 : BasePlugin {
   var pawn=Utilities.GetPlayers().FirstOrDefault(c=>c.IsValid&&!c.IsBot&&c.TeamNum>=2)?.PlayerPawn.Value;
   if(pawn?.IsValid!=true||pawn.Health<=0)return;
   var damage=Math.Clamp(message.GetProperty("amount").GetInt32(),0,100);
-  if(damage>=pawn.Health){pawn.Health=Math.Max(100,pawn.MaxHealth);pawn.Teleport(new Vector(320,pawn.TeamNum==2?-128:128,8),new QAngle(0,180,0),new Vector(0,0,0));protectedUntil=now+1000;}else pawn.Health-=damage;
+  if(damage>=pawn.Health){Command(new{type="player_death"});pawn.Health=Math.Max(100,pawn.MaxHealth);pawn.Teleport(new Vector(320,pawn.TeamNum==2?-128:128,8),new QAngle(0,180,0),new Vector(0,0,0));protectedUntil=now+1000;}else pawn.Health-=damage;
   Utilities.SetStateChanged(pawn,"CBaseEntity","m_iHealth");
  }
  private async Task NetworkLoop(){
@@ -107,7 +112,7 @@ public partial class SourceboxCS2 : BasePlugin {
    await writer.WriteLineAsync(JsonSerializer.Serialize(new{type="hello",protocol=1,game="cs2",pid=Environment.ProcessId,cubeProtocol=1,portalProtocol=1,portalTraverse=true}));
    var welcome=await reader.ReadLineAsync(stop.Token);if(welcome==null)throw new IOException("No welcome");
    incoming.Enqueue(welcome);Console.WriteLine("[Sourcebox] Core connected "+welcome);
-   var drain=Task.Run(async()=>{while(!stop.IsCancellationRequested){var line=await reader.ReadLineAsync(stop.Token);if(line==null)break;using(var parsed=JsonDocument.Parse(line)){var kind=parsed.RootElement.GetProperty("type").GetString();if(!(kind?.StartsWith("portal_")??false)&&kind!="player_damage"&&kind!="remote"&&kind!="remove"&&kind!="physics"&&kind!="scene"&&kind!="cube_state"&&kind!="cube_owner"&&kind!="cube_freeze"&&kind!="cube_denied")continue;}if(incoming.Count>=256)throw new IOException("Incoming queue exceeded");incoming.Enqueue(line);}},stop.Token);
+   var drain=Task.Run(async()=>{while(!stop.IsCancellationRequested){var line=await reader.ReadLineAsync(stop.Token);if(line==null)break;using(var parsed=JsonDocument.Parse(line)){var kind=parsed.RootElement.GetProperty("type").GetString();if(!(kind?.StartsWith("portal_")??false)&&kind!="player_ragdoll"&&kind!="player_damage"&&kind!="remote"&&kind!="remove"&&kind!="physics"&&kind!="scene"&&kind!="cube_state"&&kind!="cube_owner"&&kind!="cube_freeze"&&kind!="cube_denied")continue;}if(incoming.Count>=256)throw new IOException("Incoming queue exceeded");incoming.Enqueue(line);}},stop.Token);
    long seq=0;
    while(!stop.IsCancellationRequested&&!drain.IsCompleted){
     for(int n=0;n<32&&commands.TryDequeue(out var command);n++){var cmd=JsonSerializer.Deserialize<Dictionary<string,object>>(command)!;cmd["seq"]=++seq;cmd["timestamp"]=Environment.TickCount64;await writer.WriteLineAsync(JsonSerializer.Serialize(cmd));}

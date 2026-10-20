@@ -185,7 +185,7 @@ public sealed class Runtime {
   }finally{gate.Release();Changed?.Invoke();}
  }
  public async Task RestartFailed(string id,CancellationToken ct){if(!Owned.Any(p=>p.Component==id)||Owned.Any(p=>p.Component==id&&p.Matches()))throw new Exception("Restart applies only to a failed component this launcher started.");if(id=="core")await Start(Settings.SelectedGames,ct);else await Start(new[]{id=="cs2-server"?"cs2":id=="gmod-bridge"?"gmod":id},ct);}
- public string Diagnostics()=>Telemetry.Redact("SourceBox 1.5.0-beta.1 | "+State+" | "+CoreStatus+"\n"+string.Join("\n",Games.Select(g=>g.Def.Title+": "+(g.Ready?"prepared":"setup needed")+"; "+(Live.GetValueOrDefault(g.Def.Id)?.State??"No telemetry")))+"\n"+string.Join("\n",Lines()),Settings);
+ public string Diagnostics()=>Telemetry.Redact("SourceBox 1.5.1-beta.1 | "+State+" | "+CoreStatus+"\n"+string.Join("\n",Games.Select(g=>g.Def.Title+": "+(g.Ready?"prepared":"setup needed")+"; "+(Live.GetValueOrDefault(g.Def.Id)?.State??"No telemetry")))+"\n"+string.Join("\n",Lines()),Settings);
  public string Export(){
   var path=Path.Combine(Settings.Home,"support-"+DateTime.Now.ToString("yyyyMMdd-HHmmssfff")+".zip");
   using var zip=ZipFile.Open(path,ZipArchiveMode.Create);

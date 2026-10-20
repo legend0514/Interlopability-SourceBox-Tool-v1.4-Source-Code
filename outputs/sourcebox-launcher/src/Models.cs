@@ -10,6 +10,7 @@ public sealed class Settings {
  public string SteamRoot {get;set;}="";
  public string NodePath {get;set;}="";
  public string WeaponArtFolder {get;set;}="";
+ public string Language {get;set;}="auto";
  public string PreferredGame {get;set;}="hl2";
  public int FpsLimit {get;set;}=60;
  public bool ScanOnOpen {get;set;}=true;

@@ -73,5 +73,18 @@
     "authority": "permitted adapter games only; empty list revokes access",
     "worlds": "uniqueRegisteredWorldIdsWithLoadedGeometry",
     "session": "currentConnectionSession"
+  },
+  "player_death": {
+    "seq": "positiveInteger",
+    "timestamp": "nonnegativeNumber",
+    "direction": "victim to core; core assigns identity and last valid pose"
+  },
+  "player_ragdoll": {
+    "event": "serverUniqueId",
+    "game": "victimGameId",
+    "session": "victimSession",
+    "state": "lastValidatedPlayerState",
+    "lifetimeMs": "boundedPositiveInteger",
+    "maxBodies": "boundedPositiveInteger"
   }
 }

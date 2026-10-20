@@ -18,7 +18,7 @@ public sealed class MainForm:Form {
   base.WndProc(ref m);
  }
  public MainForm(Runtime r,bool autoStart=false){
-  runtime=r;runtime.Log("Ctrl+Alt+Space releases the mouse to SourceBox. Ctrl+Alt+Right switches games.");foreach(var id in r.Settings.SelectedGames)selected.Add(id);
+  runtime=r;Localization.Set(r.Settings.Language);runtime.Log("Ctrl+Alt+Space releases the mouse to SourceBox. Ctrl+Alt+Right switches games.");foreach(var id in r.Settings.SelectedGames)selected.Add(id);
   Icon=Icon.ExtractAssociatedIcon(Environment.ProcessPath!);
   Text="SourceBox";Size=new(1120,780);MinimumSize=new(950,650);StartPosition=FormStartPosition.CenterScreen;BackColor=Color.FromArgb(20,22,25);ForeColor=ink;Font=new("Segoe UI",10);
   var outer=new TableLayoutPanel{Dock=DockStyle.Fill,RowCount=3,ColumnCount=1,Padding=new(20)};outer.RowStyles.Add(new(SizeType.Absolute,76));outer.RowStyles.Add(new(SizeType.Percent,100));outer.RowStyles.Add(new(SizeType.Absolute,42));Controls.Add(outer);
@@ -43,15 +43,18 @@ public sealed class MainForm:Form {
   var sb=new FlowLayoutPanel{Dock=DockStyle.Fill};sp.Controls.Add(sb,0,1);stop.Text="Stop session";Style(stop);stop.Click+=async(_,_)=>{operation?.Cancel();await Run(async ct=>await runtime.Stop());};sb.Controls.Add(stop);cancel.Text="Cancel launch";Style(cancel);cancel.Click+=(_,_)=>operation?.Cancel();sb.Controls.Add(cancel);
   Add(sb,"Restart stopped game",async()=>{if(processes.SelectedItem is ComponentItem item)await Run(ct=>runtime.RestartFailed(item.Id,ct));else throw new Exception("Select an owned failed component.");});
   var settings=Page("SETTINGS");var table=new TableLayoutPanel{Dock=DockStyle.Top,AutoSize=true,ColumnCount=3,Padding=new(14)};table.ColumnStyles.Add(new(SizeType.Absolute,180));table.ColumnStyles.Add(new(SizeType.Percent,100));table.ColumnStyles.Add(new(SizeType.Absolute,95));settings.Controls.Add(table);
-  int index=0;foreach(var pair in new[]{("ProjectRoot","SourceBox folder"),("SdkRoot","Game runtime folder"),("SteamRoot","Steam folder"),("NodePath","Node.js"),("WeaponArtFolder","Menu artwork")}){
+  int index=0;
+  var language=new ComboBox{DropDownStyle=ComboBoxStyle.DropDownList,DisplayMember="Name",ValueMember="Id",DataSource=Localization.Languages,Width=240};language.SelectedValue=Localization.Languages.Any(l=>l.Id==runtime.Settings.Language)?runtime.Settings.Language:"auto";table.Controls.Add(new Label{Text="Language",AutoSize=true},0,index);table.Controls.Add(language,1,index++);
+  language.SelectedValueChanged+=(_,_)=>{runtime.Settings.Language=language.SelectedValue?.ToString()??"auto";runtime.Settings.Save();Localization.Set(runtime.Settings.Language);ApplyLanguage();Render();};
+  foreach(var pair in new[]{("ProjectRoot","SourceBox folder"),("SdkRoot","Game runtime folder"),("SteamRoot","Steam folder"),("NodePath","Node.js"),("WeaponArtFolder","Menu artwork")}){
    table.Controls.Add(new Label{Text=pair.Item2,AutoSize=true,Margin=new(3,10,3,10)},0,index);var box=new TextBox{Dock=DockStyle.Fill,Text=GetSetting(pair.Item1),BackColor=panel,ForeColor=ink,BorderStyle=BorderStyle.FixedSingle};settingsFields[pair.Item1]=box;table.Controls.Add(box,1,index);var browse=new Button{Text="Browse",AutoSize=true};var key=pair.Item1;browse.Click+=(_,_)=>{if(key=="NodePath"){using var d=new OpenFileDialog{Filter="Node.js|node.exe"};if(d.ShowDialog()==DialogResult.OK)box.Text=d.FileName;}else{using var d=new FolderBrowserDialog();if(d.ShowDialog()==DialogResult.OK)box.Text=d.SelectedPath;}};table.Controls.Add(browse,2,index++);
   }
-  var pathControls=table.Controls.Cast<Control>().ToArray();var showPaths=new CheckBox{Text="File locations",AutoSize=true,Checked=!File.Exists(Path.Combine(runtime.Settings.ProjectRoot,"core.mjs"))};foreach(var control in pathControls)control.Visible=showPaths.Checked;showPaths.CheckedChanged+=(_,_)=>{foreach(var control in pathControls)control.Visible=showPaths.Checked;};table.Controls.Add(showPaths,1,index++);preferred.DropDownStyle=ComboBoxStyle.DropDownList;preferred.DisplayMember="Title";preferred.ValueMember="Id";preferred.DataSource=Discovery.Defs;preferred.SelectedValue=runtime.Settings.PreferredGame;table.Controls.Add(new Label{Text="Preferred game",AutoSize=true},0,index);table.Controls.Add(preferred,1,index++);fps.Minimum=30;fps.Maximum=240;fps.Value=Math.Clamp(runtime.Settings.FpsLimit,30,240);table.Controls.Add(new Label{Text="Frame limit",AutoSize=true},0,index);table.Controls.Add(fps,1,index++);
+  var pathControls=table.Controls.Cast<Control>().Where(c=>table.GetRow(c)>0).ToArray();var showPaths=new CheckBox{Text="File locations",AutoSize=true,Checked=!File.Exists(Path.Combine(runtime.Settings.ProjectRoot,"core.mjs"))};foreach(var control in pathControls)control.Visible=showPaths.Checked;showPaths.CheckedChanged+=(_,_)=>{foreach(var control in pathControls)control.Visible=showPaths.Checked;};table.Controls.Add(showPaths,1,index++);preferred.DropDownStyle=ComboBoxStyle.DropDownList;preferred.DisplayMember="Title";preferred.ValueMember="Id";preferred.DataSource=Discovery.Defs;preferred.SelectedValue=runtime.Settings.PreferredGame;table.Controls.Add(new Label{Text="Preferred game",AutoSize=true},0,index);table.Controls.Add(preferred,1,index++);fps.Minimum=30;fps.Maximum=240;fps.Value=Math.Clamp(runtime.Settings.FpsLimit,30,240);table.Controls.Add(new Label{Text="Frame limit",AutoSize=true},0,index);table.Controls.Add(fps,1,index++);
   scan.Text="Scan games on startup";scan.AutoSize=true;scan.Checked=true;verbose.Text="Detailed logs";verbose.AutoSize=true;verbose.Checked=runtime.Settings.VerboseLogging;table.Controls.Add(verbose,1,index++);reduced.Text="Reduced motion — keep floating scenes still";reduced.AutoSize=true;reduced.Checked=runtime.Settings.ReducedMotion;table.Controls.Add(reduced,1,index++);
   var limits=new Label{Text="Closing SourceBox leaves your games running.\nNetwork ports: 27841, 27842 and 27015–27020.",AutoSize=true,MaximumSize=new(700,0),Margin=new(3,14,3,14)};table.Controls.Add(limits,1,index++);
-  var setButtons=new FlowLayoutPanel{AutoSize=true};table.Controls.Add(setButtons,1,index++);Add(setButtons,"Save settings",async()=>{SaveSettings();await RefreshAsync();});Add(setButtons,"Reset defaults",async()=>{if(File.Exists(Settings.FilePath))File.Copy(Settings.FilePath,Settings.FilePath+".before-reset",true);runtime.Settings=Settings.Defaults();runtime.Settings.Save();foreach(var p in settingsFields)p.Value.Text=GetSetting(p.Key);fps.Value=60;preferred.SelectedValue=runtime.Settings.PreferredGame;scan.Checked=true;verbose.Checked=false;reduced.Checked=false;await RefreshAsync();});
+  var setButtons=new FlowLayoutPanel{AutoSize=true};table.Controls.Add(setButtons,1,index++);Add(setButtons,"Save settings",async()=>{SaveSettings();await RefreshAsync();});Add(setButtons,"Reset defaults",async()=>{if(File.Exists(Settings.FilePath))File.Copy(Settings.FilePath,Settings.FilePath+".before-reset",true);runtime.Settings=Settings.Defaults();runtime.Settings.Save();Localization.Set(runtime.Settings.Language);language.SelectedValue=runtime.Settings.Language;ApplyLanguage();foreach(var p in settingsFields)p.Value.Text=GetSetting(p.Key);fps.Value=60;preferred.SelectedValue=runtime.Settings.PreferredGame;scan.Checked=true;verbose.Checked=false;reduced.Checked=false;await RefreshAsync();});
   Add(setButtons,"Export app ZIP",async()=>{
-   var output=Path.Combine(Settings.Home,"exports","SourceBox-1.5.0-beta.1-"+DateTime.Now.ToString("yyyyMMdd-HHmmssfff")+".zip");
+   var output=Path.Combine(Settings.Home,"exports","SourceBox-1.5.1-beta.1-"+DateTime.Now.ToString("yyyyMMdd-HHmmssfff")+".zip");
    await Run(async ct=>{runtime.Log("Packaging SourceBox for sharing…");await Task.Run(()=>DesktopInstall.ExportZip(AppContext.BaseDirectory,output),ct);runtime.Log("Shareable app ZIP saved: "+output);});
    if(File.Exists(output))OpenFolder(Path.GetDirectoryName(output)!);
   });
@@ -65,7 +68,23 @@ public sealed class MainForm:Form {
     if(!selected.Add(id))selected.Remove(id);runtime.Layout.Monitor=Screen.FromHandle(Handle).Bounds;runtime.Settings.SelectedGames=selected.ToArray();runtime.Settings.Save();Render();
    }
   };
+  ApplyLanguage();
   runtime.Changed+=()=>{if(IsHandleCreated&&!IsDisposed)BeginInvoke(new Action(Render));};timer.Tick+=async(_,_)=>{if(!busy)await RefreshAsync();};Shown+=async(_,_)=>{await RefreshAsync();if(!File.Exists(Path.Combine(runtime.Settings.ProjectRoot,"core.mjs"))){runtime.Log("Installed games detected automatically. Crossplay runtime installation is still required.");}timer.Start();if(autoStart)await StartSelected();};FormClosing+=(_,_)=>{timer.Stop();operation?.Cancel();};
+ }
+ readonly Dictionary<Control,string> originalText=new();
+ void ApplyLanguage(){
+  void Visit(Control control){
+   if(control is Button or Label or CheckBox or TabPage){
+    if(!originalText.ContainsKey(control))originalText[control]=control.Text;
+    control.Text=Localization.T(originalText[control]);
+   }
+   foreach(Control child in control.Controls)Visit(child);
+  }
+  Visit(this);
+  foreach(DataGridViewColumn column in library.Columns)column.HeaderText=Localization.T(column.Name);
+  string[] headers={"Destination","Map file","Content","Here now"};
+  for(int i=0;i<headers.Length;i++)destinations.Columns[i].Text=Localization.T(headers[i]);
+  scene.Invalidate();
  }
  TabPage Page(string name){var p=new TabPage(name){Name=name,BackColor=panel,ForeColor=ink,Padding=new(12)};tabs.TabPages.Add(p);return p;}
  void Style(Button b){b.AutoSize=true;b.FlatStyle=FlatStyle.Flat;b.ForeColor=ink;b.BackColor=Color.FromArgb(64,44,29);b.Padding=new(10,6,10,6);b.Margin=new(4);}
@@ -74,18 +93,18 @@ public sealed class MainForm:Form {
  void SaveSettings(){var proposed=System.Text.Json.JsonSerializer.Deserialize<Settings>(System.Text.Json.JsonSerializer.Serialize(runtime.Settings))!;foreach(var p in settingsFields)typeof(Settings).GetProperty(p.Key)!.SetValue(proposed,p.Value.Text.Trim());proposed.FpsLimit=(int)fps.Value;proposed.PreferredGame=preferred.SelectedValue?.ToString()??runtime.Settings.PreferredGame;proposed.ScanOnOpen=scan.Checked;proposed.VerboseLogging=verbose.Checked;proposed.ReducedMotion=reduced.Checked;proposed.SelectedGames=selected.ToArray();proposed.Save();runtime.Settings=proposed;runtime.CoreLog="";runtime.Log("Settings saved. Existing sessions unchanged.");}
  string? SelectedGame()=>library.SelectedRows.Count>0?library.SelectedRows[0].Tag as string:null;
  void UpdateDetails(){var g=runtime.Games.FirstOrDefault(x=>x.Def.Id==SelectedGame());details.Text=g==null?"":g.Exe+Environment.NewLine+g.Detail;}
- internal async Task StartSelected(){if(selected.Count==0){MessageBox.Show(this,"Select at least one game first.","SourceBox");return;}runtime.Layout.Monitor=Screen.FromHandle(Handle).Bounds;runtime.Settings.SelectedGames=selected.ToArray();runtime.Settings.Save();await Run(ct=>runtime.Start(selected.ToArray(),ct));}
- async Task Run(Func<CancellationToken,Task> action){if(busy){runtime.Log("Wait for the current session action, or cancel it first.");return;}busy=true;operation=new();Render();try{await Task.Run(()=>action(operation.Token));}catch(OperationCanceledException){}catch(Exception e){runtime.Log(e.Message);MessageBox.Show(this,e.Message,"Unable to start session",MessageBoxButtons.OK,MessageBoxIcon.Information);}finally{busy=false;operation.Dispose();operation=null;await RefreshAsync();}}
+ internal async Task StartSelected(){if(selected.Count==0){MessageBox.Show(this,Localization.T("Select at least one game first."),"SourceBox");return;}runtime.Layout.Monitor=Screen.FromHandle(Handle).Bounds;runtime.Settings.SelectedGames=selected.ToArray();runtime.Settings.Save();await Run(ct=>runtime.Start(selected.ToArray(),ct));}
+ async Task Run(Func<CancellationToken,Task> action){if(busy){runtime.Log("Wait for the current session action, or cancel it first.");return;}busy=true;operation=new();Render();try{await Task.Run(()=>action(operation.Token));}catch(OperationCanceledException){}catch(Exception e){runtime.Log(e.Message);MessageBox.Show(this,e.Message,Localization.T("Unable to start session"),MessageBoxButtons.OK,MessageBoxIcon.Information);}finally{busy=false;operation.Dispose();operation=null;await RefreshAsync();}}
  async Task RefreshAsync(){if(refreshing)return;refreshing=true;try{await Task.Run(runtime.Refresh);Render();}catch(Exception e){status.Text=e.Message;}finally{refreshing=false;}}
  void Render(){
   bool old=refreshing;refreshing=true;try{
-   scene.Selected.Clear();scene.Selected.UnionWith(selected);scene.Installed=runtime.Games.Where(g=>g.Installed).Select(g=>g.Def.Id).ToHashSet();scene.Available=runtime.Games.Where(g=>g.Ready).Select(g=>g.Def.Id).ToHashSet();scene.Connection=runtime.Live.ToDictionary(x=>x.Key,x=>x.Value.State);scene.Busy=busy;scene.ReducedMotion=runtime.Settings.ReducedMotion;scene.LoadWeaponArt(runtime.Settings.WeaponArtFolder);scene.LiveSummary=runtime.State+"  ·  "+runtime.Live.Values.Count(x=>x.State.StartsWith("Connected"))+" connected";scene.Invalidate();
-   status.Text="1.5.0-beta.1  ·  "+runtime.State+"  ·  Server: "+runtime.CoreStatus;
+   scene.Selected.Clear();scene.Selected.UnionWith(selected);scene.Installed=runtime.Games.Where(g=>g.Installed).Select(g=>g.Def.Id).ToHashSet();scene.Available=runtime.Games.Where(g=>g.Ready).Select(g=>g.Def.Id).ToHashSet();scene.Connection=runtime.Live.ToDictionary(x=>x.Key,x=>x.Value.State);scene.Busy=busy;scene.ReducedMotion=runtime.Settings.ReducedMotion;scene.LoadWeaponArt(runtime.Settings.WeaponArtFolder);scene.LiveSummary=runtime.State+"  ·  "+Localization.Format("{0} connected",runtime.Live.Values.Count(x=>x.State.StartsWith("Connected")));scene.Invalidate();
+   status.Text="1.5.1-beta.1  ·  "+runtime.State+"  ·  "+Localization.T("Server")+": "+runtime.CoreStatus;
    RenderDestinations();
-   int connected=runtime.Live.Values.Count(x=>x.State.StartsWith("Connected"));hero.Text=connected>0?$"{connected} clients connected":"SourceBox";
-   engines.Text="Source 1  ·  "+runtime.Games.Count(g=>g.Def.Engine=="Source 1"&&g.Ready)+" games ready     |     Source 2  ·  Counter-Strike 2\n"+runtime.CoreStatus;
-   var id=SelectedGame();library.Rows.Clear();foreach(var g in runtime.Games){var l=runtime.Live.GetValueOrDefault(g.Def.Id);var i=library.Rows.Add(selected.Contains(g.Def.Id),g.Def.Title,g.Def.Engine,g.Installed?"Installed":"Missing",g.Ready?"Ready":"Setup needed",l?.State??"Not connected",l?.World??"Unknown");library.Rows[i].Tag=g.Def.Id;if(g.Def.Id==id)library.Rows[i].Selected=true;}
-   UpdateDetails();var prior=(processes.SelectedItem as ComponentItem)?.Id;processes.Items.Clear();foreach(var group in runtime.Owned.GroupBy(p=>p.Component)){var alive=group.Any(p=>p.Matches());var item=new ComponentItem(group.Key,group.Key+" — "+(alive?"Running":"Stopped"));processes.Items.Add(item);if(prior==item.Id)processes.SelectedItem=item;}if(runtime.Owned.Count==0)processes.Items.Add("No games started by SourceBox this session.");
+   int connected=runtime.Live.Values.Count(x=>x.State.StartsWith("Connected"));hero.Text=connected>0?Localization.Format("{0} clients connected",connected):"SourceBox";
+   engines.Text="Source 1  ·  "+Localization.Format("{0} games ready",runtime.Games.Count(g=>g.Def.Engine=="Source 1"&&g.Ready))+"     |     Source 2  ·  Counter-Strike 2\n"+runtime.CoreStatus;
+   var id=SelectedGame();library.Rows.Clear();foreach(var g in runtime.Games){var l=runtime.Live.GetValueOrDefault(g.Def.Id);var i=library.Rows.Add(selected.Contains(g.Def.Id),g.Def.Title,g.Def.Engine,g.Installed?Localization.T("Installed"):Localization.T("Missing"),g.Ready?Localization.T("Ready"):Localization.T("Setup needed"),Localization.T(l?.State??"Not connected"),l?.World??Localization.T("Unknown"));library.Rows[i].Tag=g.Def.Id;if(g.Def.Id==id)library.Rows[i].Selected=true;}
+   UpdateDetails();var prior=(processes.SelectedItem as ComponentItem)?.Id;processes.Items.Clear();foreach(var group in runtime.Owned.GroupBy(p=>p.Component)){var alive=group.Any(p=>p.Matches());var item=new ComponentItem(group.Key,group.Key+" — "+(alive?Localization.T("Running"):Localization.T("Stopped")));processes.Items.Add(item);if(prior==item.Id)processes.SelectedItem=item;}if(runtime.Owned.Count==0)processes.Items.Add(Localization.T("No games started by SourceBox this session."));
    timeline.Text=string.Join(Environment.NewLine,runtime.Lines());timeline.SelectionStart=timeline.TextLength;timeline.ScrollToCaret();start.Enabled=!busy;stop.Enabled=!busy;cancel.Enabled=busy;
   }finally{refreshing=old;}
  }
@@ -98,11 +117,11 @@ public sealed class MainForm:Form {
     foreach(var d in group){
      var players=runtime.Live.Where(p=>p.Value.State=="Connected"&&p.Value.World==d.Id).Select(p=>Discovery.Defs.FirstOrDefault(g=>g.Id==p.Key)?.Title??p.Key);
      var plan=runtime.Content.Worlds.FirstOrDefault(w=>w.Id==d.Id);
-     var mode=plan?.Mode=="topology-placeholder"?(plan.TopologyCached?"Fallback not ready":"Map unavailable"):"Installed assets";
-     var item=new ListViewItem(new[]{d.Title,d.Source.Length==0?"Built-in":d.SourcePresent?"Found":"Missing",mode,string.Join(" / ",players)},heading){Tag=d.Id};destinations.Items.Add(item);if(d.Id==chosen)item.Selected=true;
+     var mode=plan?.Mode=="topology-placeholder"?(plan.TopologyCached?Localization.T("Fallback not ready"):Localization.T("Map unavailable")):Localization.T("Installed assets");
+     var item=new ListViewItem(new[]{d.Title,d.Source.Length==0?Localization.T("Built-in"):d.SourcePresent?Localization.T("Found"):Localization.T("Missing"),mode,string.Join(" / ",players)},heading){Tag=d.Id};destinations.Items.Add(item);if(d.Id==chosen)item.Selected=true;
     }
    }
-   destinationStatus.Text=runtime.Catalog.Error.Length>0?runtime.Catalog.Error:!runtime.Catalog.Enabled?"World destinations are disabled in the project.":"Choose a destination with the portal gun in-game. Map quality varies by game.";
+   destinationStatus.Text=runtime.Catalog.Error.Length>0?runtime.Catalog.Error:!runtime.Catalog.Enabled?Localization.T("World destinations are disabled in the project."):Localization.T("Choose a destination with the portal gun in-game. Map quality varies by game.");
   }finally{destinations.EndUpdate();}
  }
  public void SavePreview(string path){

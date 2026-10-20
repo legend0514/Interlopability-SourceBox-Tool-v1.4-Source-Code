@@ -3,7 +3,7 @@ from pathlib import Path
 import hashlib, json, re, zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
-stage = ROOT / 'work/source-publication/sourcebox-beta-v1.5-source'
+stage = ROOT / 'work/source-publication/sourcebox-beta-v1.5.1-source'
 allowed = {'.cs', '.csproj', '.cpp', '.c', '.h', '.hpp', '.inc', '.lua', '.nut',
            '.mjs', '.cjs', '.js', '.py', '.ps1', '.json', '.vpc', '.fx', '.hlsl',
            '.vmf', '.md', '.txt', '.patch', '.ico', '.mp4', '.mit'}
@@ -27,7 +27,7 @@ manifest = [{'path': name, 'sha256': digest(data), 'bytes': len(data)} for name,
 manifest_data = json.dumps(manifest, indent=2).encode()
 (stage / 'source-manifest.json').write_bytes(manifest_data)
 files.append(('source-manifest.json', manifest_data))
-out = ROOT / 'outputs/sourcebox-launcher/release-candidates/sourcebox-beta-v1.5-source.zip'
+out = ROOT / 'outputs/sourcebox-launcher/release-candidates/sourcebox-beta-v1.5.1-source.zip'
 with zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
     for name, data in files: archive.writestr(name, data)
 with zipfile.ZipFile(out) as archive:

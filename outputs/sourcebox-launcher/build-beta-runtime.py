@@ -62,6 +62,8 @@ manifest = json.loads((project / 'sheets/connectivity.json').read_text())
 sheet_names = {'room-upgrades.json', 'connectivity.json', 'cs2-scene-assets.json', 'cs2-models.json', *manifest['sheets'].values()}
 for name in sorted(sheet_names):
     data = scrub(json.loads((project / 'sheets' / name).read_text()))
+    if name == 'combat.json':
+        data['ragdolls']['enabled'] = False
     if name == 'test-cases.json':
         for test in data:
             test['status'] = 'not-run-portable-beta'

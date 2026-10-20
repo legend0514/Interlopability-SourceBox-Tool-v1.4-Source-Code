@@ -43,7 +43,11 @@ function entity(node,origin,properties,angles='0 0 0'){
  "entity_properties" "EditGameClassProps" { "id" "elementid" "${randomUUID()}" ${Object.entries(properties).map(([k,v])=>`"${k}" "string" "${v}"`).join('\n')} }
  "origin" "vector3" "${origin.join(' ')}" "angles" "qangle" "${angles}" "scales" "vector3" "1 1 1" }`;
 }
-entities.push(entity(12000,[0,0,0],{classname:'env_sky',targetname:'sourcebox_world_sky',skyname:'materials/skybox/sky_de_dust2.vmat',tint_color:'255 255 255',brightnessscale:'1',fog_type:'0'}));
+const skyPrefab='maps/sourcebox_world_skies.vmap';
+if(!fs.existsSync(path.join(content,skyPrefab)))throw Error('Prepare native sky enclosures before compiling destination worlds');
+entities.push(`"CMapPrefab" { "id" "elementid" "${randomUUID()}" "nodeID" "int" "12003" "referenceID" "uint64" "0x0" "children" "element_array" [] "origin" "vector3" "0 0 0" "angles" "qangle" "0 0 0" "scales" "vector3" "1 1 1" "targetMapPath" "string" "${skyPrefab}" "fixupEntityNames" "bool" "0" "force_hidden" "bool" "0" "editorOnly" "bool" "0" }`);
+entities.push(entity(12000,[0,0,0],{classname:'env_sky',targetname:'sourcebox_world_sky',skyname:'materials/skybox/sky_de_dust2.vmat',tint_color:'255 255 255',brightnessscale:'1',StartDisabled:'0'}));
+entities.push(entity(12004,[0,0,1024],{classname:'light_environment',targetname:'sourcebox_world_daylight',enabled:'1',color:'255 244 230',brightness:'1.5',directlight:'3',castshadows:'1',skytexture:'sourcebox_world_sky',skytexturescale:'0.65',skybouncescale:'1',bouncescale:'1'},'45 135 0'));
 entities.push(entity(12002,[0,0,32],{classname:'info_target',targetname:'sourcebox_worlds_ready'}));
 const sceneryFile=new URL('../../../work/worlds/scenery.json',import.meta.url);
 const assetsFile=new URL('../sheets/cs2-world-scenery-assets.json',import.meta.url);
@@ -64,9 +68,8 @@ if(fs.existsSync(sceneryFile)){
  fs.writeFileSync(new URL('../../../work/worlds/scenery-map-report.json',import.meta.url),JSON.stringify(sceneryReport,null,2));
  if(sceneryReport.missing.length)throw Error(`${sceneryReport.missing.length} scenery instances lack converted models; inspect scenery-map-report.json`);
 }
-// Vertically stacked worlds cannot share an unshadowed directional sun:
-// it illuminates sealed chamber interiors. Outdoor maps already have bounded
-// fill lights from export-cs2-world-lights.py; retain those and local lights.
+// Native sky enclosures separate stacked worlds. Use shadowed daylight and
+// baked sky illumination; retain local interior and arrival fill lights.
 for(const [i,w] of worlds.entries()){
  const center=w.bounds[0].map((n,a)=>(n+w.bounds[1][a])/2);
  const half=w.bounds[0].map((n,a)=>(w.bounds[1][a]-n)/2+128);

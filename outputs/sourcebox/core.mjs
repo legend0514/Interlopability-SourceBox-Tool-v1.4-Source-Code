@@ -38,7 +38,7 @@ export function createCore({config=preflight(),log=console.log}={}){
      client={game:m.game,pid:m.pid,session:randomUUID(),seq:0,socket,cubeProtocol:m.cubeProtocol,portalProtocol:m.portalProtocol,portalTraverse:m.portalTraverse===true};clients.set(m.game,client);
      send({type:'welcome',protocol:config.protocol,session:client.session,portalsEnabled:config.portals?.enabled===true});for(const peer of clients.values())if(peer!==client&&peer.physics)send(peer.physics);event('connected',{game:m.game,pid:m.pid,session:client.session,portalTraverse:client.portalTraverse});cube.welcome(client);portals?.welcome(client);
     }else{
-     if(!['heartbeat','state','cube_take','cube_frozen','cube_state','cube_sync','cube_ready','player_hit','scene','scene_interact','portal_sync','portal_fire','portal_clear','portal_ack','portal_world_ready'].includes(m.type)||!Number.isSafeInteger(m.seq)||m.seq<=client.seq||!Number.isFinite(m.timestamp)||m.timestamp<0){reject('invalid or stale heartbeat');return;}
+     if(!['heartbeat','state','cube_take','cube_frozen','cube_state','cube_sync','cube_ready','player_hit','player_death','scene','scene_interact','portal_sync','portal_fire','portal_clear','portal_ack','portal_world_ready'].includes(m.type)||!Number.isSafeInteger(m.seq)||m.seq<=client.seq||!Number.isFinite(m.timestamp)||m.timestamp<0){reject('invalid or stale heartbeat');return;}
      if(m.type.startsWith('portal_')){client.seq=m.seq;portals?.handle(client,m);send({type:'ack',seq:m.seq});continue;}
      if(m.type==='scene'){
       const cfg=config.gmodScene,ids=m.live;
@@ -59,10 +59,17 @@ export function createCore({config=preflight(),log=console.log}={}){
       emit(host,{type:'scene_interact',generation:host.sceneGeneration,id:m.id,action:m.action,source:client.game,position:client.position,event:randomUUID()});
       event('scene_interaction',{from:client.game,id:m.id,action:m.action});continue;
      }
+     if(m.type==='player_death'){
+      client.seq=m.seq;send({type:'ack',seq:m.seq});const at=Date.now();
+      if(!config.combat.ragdolls.enabled||!client.lastPlayerState||at-client.lastStateAt>2000||at-(client.lastDeathAt??0)<config.combat.respawnProtectionMs||at-(client.lastDamageAt??0)>2000)continue;
+      client.lastDeathAt=at;client.lastDamageAt=0;
+      const body={type:'player_ragdoll',event:randomUUID(),game:client.game,session:client.session,state:client.lastPlayerState,lifetimeMs:config.combat.ragdolls.lifetimeMs,maxBodies:config.combat.ragdolls.maxBodies};
+      for(const c of clients.values())emit(c,body);event('player_death',{game:client.game,event:body.event,position:body.state.position});continue;
+     }
      if(m.type==='player_hit'){
       client.seq=m.seq;send({type:'ack',seq:m.seq});const target=(['hl2','tf2','gmod','hl1mp','cs2','portal2'].includes(m.target)&&m.target!==client.game)?m.target:((client.game==='gmod'||client.game==='hl1mp'||client.game==='cs2'||client.game==='portal2')?null:(client.game==='hl2'?'tf2':'hl2'));const peer=clients.get(target);const at=Date.now();
       if(at-(client.hitWindow??0)>=1000){client.hitWindow=at;client.hitCount=0;}
-      if(config.combat.enabled&&client.hasState&&peer?.hasState&&canInteractInWorld(client.world,peer.world)&&(client.hitCount??0)<config.combat.maxHitsPerSecond){client.hitCount=(client.hitCount??0)+1;emit(peer,{type:'player_damage',source:client.game,sourceSession:client.session,seq:m.seq,amount:config.combat.damagePerHit});event('player_hit',{from:client.game,to:peer.game,amount:config.combat.damagePerHit});}
+      if(config.combat.enabled&&client.hasState&&peer?.hasState&&canInteractInWorld(client.world,peer.world)&&(client.hitCount??0)<config.combat.maxHitsPerSecond){client.hitCount=(client.hitCount??0)+1;peer.lastDamageAt=at;emit(peer,{type:'player_damage',source:client.game,sourceSession:client.session,seq:m.seq,amount:config.combat.damagePerHit});event('player_hit',{from:client.game,to:peer.game,amount:config.combat.damagePerHit});}
       continue;
      }
      if(m.type.startsWith('cube_')){client.seq=m.seq;if(m.type==='cube_sync')cube.welcome(client);else cube.handle(client,m);send({type:'ack',seq:m.seq});continue;}
@@ -102,7 +109,7 @@ export function createCore({config=preflight(),log=console.log}={}){
       if(client.game==='cs2'){if(m.weapon==='weapon_sourcebox_portalgun')state.weapon=m.weapon;state.team=[2,3].includes(m.team)?m.team:3;}
       if(client.game==='tf2'){state.classId=m.classId;state.team=m.team;state.weapon=m.weapon??'';}
       for(const [from,to]of [...config.movement.directions,...(config.portal2?.enabled?config.portal2.peers.flatMap(p=>[['portal2',p],[p,'portal2']]):[]),...(config.cs2?.enabled?(config.cs2.peers??[]).flatMap(p=>[['cs2',p],[p,'cs2']]):[]),...(config.hl1mp?.enabled?config.hl1mp.peers.flatMap(p=>[['hl1mp',p],[p,'hl1mp']]):[]),...(config.gmod?.enabled?[...config.gmod.inbound.map(from=>[from,'gmod']),...config.gmod.outbound.map(to=>['gmod',to])]:[])])if(from===client.game){const peer=clients.get(to);if(peer){if(peer.socket.writableLength>65536)peer.socket.destroy();else peer.socket.write(JSON.stringify({type:'remote',game:client.game,session:client.session,state})+'\n');}}
-      client.weapon=state.weapon??'';portals?.sample(client,state);event('state',{game:client.game,...state});
+      client.lastPlayerState=structuredClone(state);client.weapon=state.weapon??'';portals?.sample(client,state);event('state',{game:client.game,...state});
      }else{
       client.hasState=false;
       if(client.playerVisible&&(m.playerUnavailable===true||Date.now()-client.lastStateAt>(config.runtime.playerGraceMs??2500))){broadcast({type:'remove',game:client.game,entity:'player:'+client.game,scope:'player'});client.playerVisible=false;portals?.reset(client);event('player_expired',{game:client.game,reason:'no live player state',ageMs:Date.now()-client.lastStateAt});}

@@ -10,6 +10,7 @@ static class Program {
   if(args.Length==2&&args[0]=="--service-host"){ServiceHost.Run(args[1]).GetAwaiter().GetResult();return;}
   if(args.Length==2&&args[0]=="--protect-config"){ConfigProtection.Run(args[1]).GetAwaiter().GetResult();return;}
   if(args.Length==2&&args[0]=="--cs-bootstrap"){CsBootstrap.Run(args[1]).GetAwaiter().GetResult();return;}
+  if(args.Contains("--translation-check")){Localization.Validate();return;}
   if(args.Contains("--fixture")){Thread.Sleep(60000);return;}
   if(args.Contains("--live-check")){Environment.ExitCode=Tests.LiveCheck().GetAwaiter().GetResult();return;}
   if(args.Length==2&&args[0]=="--launch-check"){Environment.ExitCode=Tests.LaunchCheck(args[1].Split(',')).GetAwaiter().GetResult();return;}

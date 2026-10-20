@@ -13,7 +13,7 @@ public partial class SourceboxCS2 {
   var p=c.PlayerPawn.Value;if(p?.IsValid!=true||p.AbsOrigin==null||p.Health<=0||portalGun?.IsValid!=true)return;
   var now=Environment.TickCount64;
   void Finish(string status){
-   File.WriteAllText(Path.Combine(ModuleDirectory,"world-travel-result.json"),JsonSerializer.Serialize(new{status,results=worldProbeResults,nativeMap=Server.MapName,fixture="Native pawn motion, adapter placement, core crossing and native teleport; not manual controls or preview acceptance"}));
+   File.WriteAllText(Path.Combine(ModuleDirectory,"world-travel-result.json"),JsonSerializer.Serialize(new{status,finishedUtc=DateTime.UtcNow,results=worldProbeResults,nativeMap=Server.MapName,fixture="Native pawn motion, adapter placement, core crossing and native teleport; not manual controls or preview acceptance"}));
    if(worldProbeOriginal!=null)p.Teleport(worldProbeOriginal,worldProbeLook,new Vector());
    Command(new{type="portal_clear",session=portalSession});selectedWorld=-1;File.Delete(marker);worldProbeStage=worldProbeIndex=0;worldProbeResults.Clear();
    Server.ExecuteCommand("mp_warmup_pausetimer 0; mp_ignore_round_win_conditions 0");
@@ -30,15 +30,20 @@ public partial class SourceboxCS2 {
    var trace=Trace.TraceShape(eye,p.EyeAngles,p,PortalTraceOptions());if(!trace.DidHit()||trace.IsAllSolid){Finish("native-shot-missed");return;}
    Command(new{type="portal_fire",session=portalSession,endpoint=0,destination=ShotDestination(),eye=new[]{eye.X,eye.Y,eye.Z},hit=new[]{trace.EndPos.X,trace.EndPos.Y,trace.EndPos.Z}});worldProbeAt=now;worldProbeStage=2;return;
   }
-  var pair=propPortalPairs.FirstOrDefault(q=>q.TryGetProperty("destination",out var d)&&d.GetString()==WorldDestinations[worldProbeIndex].Id);
-  if(worldProbeStage==2&&pair.ValueKind==JsonValueKind.Object&&now-worldProbeAt>500){p.Teleport(new Vector(450,0,0),new QAngle(),new Vector(220,0,0));worldProbeStage=3;worldProbeAt=now;return;}
+  var pair=propPortalPairs.FirstOrDefault(q=>q.TryGetProperty("id",out var id)&&id.GetString()=="pair:cs2"&&q.TryGetProperty("destination",out var d)&&d.GetString()==WorldDestinations[worldProbeIndex].Id);
+  if(worldProbeStage==2&&pair.ValueKind==JsonValueKind.Object&&now-worldProbeAt>500){
+   var entry=pair.GetProperty("endpoints")[0];var o=PV(entry.GetProperty("position"));var n=PV(entry.GetProperty("normal"));
+   // Use the actual traced opening, not a presumed +X wall. Native input may
+   // update eye yaw after Teleport while the client settles into the test.
+   p.Teleport(new Vector(o.X+n.X*65,o.Y+n.Y*65,o.Z-36),null,new Vector(-n.X*220,-n.Y*220,0));worldProbeStage=3;worldProbeAt=now;return;
+  }
   var expectedBounds=WorldBounds[WorldDestinations[worldProbeIndex].Id];
   var actual=new[]{p.AbsOrigin.X,p.AbsOrigin.Y,p.AbsOrigin.Z};
   var inExpectedWorld=Enumerable.Range(0,3).All(i=>actual[i]>=expectedBounds[0][i]-192&&actual[i]<=expectedBounds[1][i]+192);
   if(worldProbeStage==3&&inExpectedWorld){
    worldProbeResults.Add(new{id=WorldDestinations[worldProbeIndex].Id,direction="outbound",position=new[]{p.AbsOrigin.X,p.AbsOrigin.Y,p.AbsOrigin.Z},passed=true});Console.WriteLine("[Sourcebox world travel] viewing "+WorldDestinations[worldProbeIndex].Id);worldProbeStage=4;worldProbeAt=now;return;
   }
-  if(worldProbeStage==3){p.Teleport(null,null,new Vector(220,0,p.AbsVelocity.Z));return;}
+  if(worldProbeStage==3&&pair.ValueKind==JsonValueKind.Object){var n=PV(pair.GetProperty("endpoints")[0].GetProperty("normal"));p.Teleport(null,null,new Vector(-n.X*220,-n.Y*220,p.AbsVelocity.Z));return;}
   if(worldProbeStage==4&&now-worldProbeAt>8000&&pair.ValueKind==JsonValueKind.Object){
    if(peers.TryGetValue("gmod",out var remote)&&remote.Entity?.IsValid==true&&remote.Entity.AbsOrigin!=null){var q=remote.Entity.AbsOrigin;worldProbeResults.Add(new{id=WorldDestinations[worldProbeIndex].Id,check="native-gmod-proxy",position=new[]{q.X,q.Y,q.Z},distance=Math.Sqrt(Math.Pow(q.X-p.AbsOrigin.X,2)+Math.Pow(q.Y-p.AbsOrigin.Y,2)+Math.Pow(q.Z-p.AbsOrigin.Z,2))});}
    var e=pair.GetProperty("endpoints")[1];var o=PV(e.GetProperty("position"));var n=PV(e.GetProperty("normal"));
@@ -48,6 +53,7 @@ public partial class SourceboxCS2 {
    worldProbeResults.Add(new{id=WorldDestinations[worldProbeIndex].Id,direction="return",position=new[]{p.AbsOrigin.X,p.AbsOrigin.Y,p.AbsOrigin.Z},passed=true});
    if(++worldProbeIndex>=WorldDestinations.Length){Finish("completed");return;}worldProbeStage=0;return;
   }
+  if(worldProbeStage==5&&pair.ValueKind==JsonValueKind.Object){var n=PV(pair.GetProperty("endpoints")[1].GetProperty("normal"));p.Teleport(null,null,new Vector(-n.X*220,-n.Y*220,p.AbsVelocity.Z));}
  }
 }
 

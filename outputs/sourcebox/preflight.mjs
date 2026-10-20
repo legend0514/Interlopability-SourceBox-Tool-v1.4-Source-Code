@@ -71,6 +71,7 @@ export function validate(s){
  const cube=s.physics?.cube;
  check(cube?.id==='sourcebox_shared_cube'&&cube.owner==='hl2'&&cube.model==='models/props_junk/wood_crate001a.mdl'&&cube.position?.length===3&&cube.position.every(Number.isFinite)&&cube.claimDistance===160&&cube.cooldownMs>=2000&&cube.freezeTimeoutMs===3000,'shared cube ownership configuration');
  check(s.messages?.cube?.capability===1&&s.messages.cube.acknowledge==='cube_frozen'&&s.messages.cube.grant==='cube_owner','cube handoff protocol');
+ check(typeof s.combat?.ragdolls?.enabled==='boolean'&&s.combat.ragdolls.lifetimeMs===12000&&s.combat.ragdolls.maxBodies===6,'bounded cosmetic ragdolls');
  check(s.combat?.enabled===true&&Number.isInteger(s.combat.damagePerHit)&&s.combat.damagePerHit>0&&s.combat.damagePerHit<=100&&s.combat.maxHitsPerSecond===20&&s.combat.respawnProtectionMs===1000&&['hl2','tf2'].every(g=>s.combat.spawns?.[g]?.length===3&&s.combat.spawns[g].every(Number.isFinite)),'combat damage and respawn configuration');
  check(Number.isInteger(s.physics?.respawnMs)&&s.physics.respawnMs>=1000&&s.physics.respawnMs<=60000,'prop respawn interval');
  check(s.hl2Gameplay?.bindings?.e==='+sourcebox_use'&&s.hl2Gameplay.commands.includes('alias +sourcebox_use "+use; cmd sourcebox_take"')&&s.hl2Gameplay.commands.includes('alias -sourcebox_use "-use"'),'native Use and ownership interaction binding');

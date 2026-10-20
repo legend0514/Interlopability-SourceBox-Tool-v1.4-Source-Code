@@ -34,5 +34,11 @@
     "hl1mp",
     "cs2",
     "portal2"
-  ]
+  ],
+  "ragdolls": {
+    "enabled": true,
+    "lifetimeMs": 12000,
+    "maxBodies": 6,
+    "scope": "crossplay lethal hits; cosmetic local physics, not shared interactable props"
+  }
 }

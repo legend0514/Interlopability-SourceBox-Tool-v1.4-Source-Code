@@ -1,0 +1,500 @@
+{
+  "HOME": {
+    "es": "INICIO",
+    "fr": "ACCUEIL",
+    "de": "START",
+    "pt": "INÍCIO"
+  },
+  "LIBRARY": {
+    "es": "BIBLIOTECA",
+    "fr": "BIBLIOTHÈQUE",
+    "de": "BIBLIOTHEK",
+    "pt": "BIBLIOTECA"
+  },
+  "DESTINATIONS": {
+    "es": "DESTINOS",
+    "fr": "DESTINATIONS",
+    "de": "ZIELE",
+    "pt": "DESTINOS"
+  },
+  "SESSIONS": {
+    "es": "SESIONES",
+    "fr": "SESSIONS",
+    "de": "SITZUNGEN",
+    "pt": "SESSÕES"
+  },
+  "SETTINGS": {
+    "es": "AJUSTES",
+    "fr": "PARAMÈTRES",
+    "de": "EINSTELLUNGEN",
+    "pt": "CONFIGURAÇÕES"
+  },
+  "LOGS": {
+    "es": "REGISTROS",
+    "fr": "JOURNAUX",
+    "de": "PROTOKOLLE",
+    "pt": "REGISTROS"
+  },
+  "CHARACTERS": {
+    "es": "PERSONAJES",
+    "fr": "PERSONNAGES",
+    "de": "CHARAKTERE",
+    "pt": "PERSONAGENS"
+  },
+  "CONTROL CENTER": {
+    "es": "CONTROLES",
+    "fr": "COMMANDES",
+    "de": "STEUERUNG",
+    "pt": "CONTROLES"
+  },
+  "GAME LIBRARY": {
+    "es": "BIBLIOTECA",
+    "fr": "BIBLIOTHÈQUE",
+    "de": "SPIELEBIBLIOTHEK",
+    "pt": "BIBLIOTECA"
+  },
+  "ENTER SOURCEBOX": {
+    "es": "ENTRAR EN SOURCEBOX",
+    "fr": "ENTRER DANS SOURCEBOX",
+    "de": "SOURCEBOX STARTEN",
+    "pt": "ENTRAR NO SOURCEBOX"
+  },
+  "ENTER SOURCEBOX   →": {
+    "es": "ENTRAR EN SOURCEBOX   →",
+    "fr": "ENTRER DANS SOURCEBOX   →",
+    "de": "SOURCEBOX STARTEN   →",
+    "pt": "ENTRAR NO SOURCEBOX   →"
+  },
+  "Select your games and start a session.": {
+    "es": "Selecciona tus juegos e inicia una sesión.",
+    "fr": "Sélectionnez vos jeux et démarrez une session.",
+    "de": "Wähle deine Spiele und starte eine Sitzung.",
+    "pt": "Selecione seus jogos e inicie uma sessão."
+  },
+  "Select": {
+    "es": "Elegir",
+    "fr": "Choisir",
+    "de": "Auswahl",
+    "pt": "Selecionar"
+  },
+  "Game": {
+    "es": "Juego",
+    "fr": "Jeu",
+    "de": "Spiel",
+    "pt": "Jogo"
+  },
+  "Engine": {
+    "es": "Motor",
+    "fr": "Moteur",
+    "de": "Engine",
+    "pt": "Motor"
+  },
+  "Installation": {
+    "es": "Instalación",
+    "fr": "Installation",
+    "de": "Installation",
+    "pt": "Instalação"
+  },
+  "Setup": {
+    "es": "Configuración",
+    "fr": "Configuration",
+    "de": "Einrichtung",
+    "pt": "Configuração"
+  },
+  "Connection": {
+    "es": "Conexión",
+    "fr": "Connexion",
+    "de": "Verbindung",
+    "pt": "Conexão"
+  },
+  "World": {
+    "es": "Mundo",
+    "fr": "Monde",
+    "de": "Welt",
+    "pt": "Mundo"
+  },
+  "Scan installed games": {
+    "es": "Buscar juegos instalados",
+    "fr": "Rechercher les jeux installés",
+    "de": "Installierte Spiele suchen",
+    "pt": "Buscar jogos instalados"
+  },
+  "Choose executable": {
+    "es": "Elegir ejecutable",
+    "fr": "Choisir un exécutable",
+    "de": "Programm auswählen",
+    "pt": "Escolher executável"
+  },
+  "Open game folder": {
+    "es": "Abrir carpeta del juego",
+    "fr": "Ouvrir le dossier du jeu",
+    "de": "Spielordner öffnen",
+    "pt": "Abrir pasta do jogo"
+  },
+  "Start selected": {
+    "es": "Iniciar seleccionados",
+    "fr": "Démarrer la sélection",
+    "de": "Auswahl starten",
+    "pt": "Iniciar selecionados"
+  },
+  "Set up crossplay": {
+    "es": "Configurar juego cruzado",
+    "fr": "Configurer le crossplay",
+    "de": "Crossplay einrichten",
+    "pt": "Configurar crossplay"
+  },
+  "Destination": {
+    "es": "Destino",
+    "fr": "Destination",
+    "de": "Ziel",
+    "pt": "Destino"
+  },
+  "Map file": {
+    "es": "Archivo del mapa",
+    "fr": "Fichier de carte",
+    "de": "Kartendatei",
+    "pt": "Arquivo do mapa"
+  },
+  "Content": {
+    "es": "Contenido",
+    "fr": "Contenu",
+    "de": "Inhalt",
+    "pt": "Conteúdo"
+  },
+  "Here now": {
+    "es": "Aquí ahora",
+    "fr": "Présents",
+    "de": "Hier aktiv",
+    "pt": "Aqui agora"
+  },
+  "Stop session": {
+    "es": "Detener sesión",
+    "fr": "Arrêter la session",
+    "de": "Sitzung beenden",
+    "pt": "Encerrar sessão"
+  },
+  "Cancel launch": {
+    "es": "Cancelar inicio",
+    "fr": "Annuler le lancement",
+    "de": "Start abbrechen",
+    "pt": "Cancelar início"
+  },
+  "Restart stopped game": {
+    "es": "Reiniciar juego detenido",
+    "fr": "Relancer le jeu arrêté",
+    "de": "Beendetes Spiel neu starten",
+    "pt": "Reiniciar jogo parado"
+  },
+  "SourceBox folder": {
+    "es": "Carpeta de SourceBox",
+    "fr": "Dossier SourceBox",
+    "de": "SourceBox-Ordner",
+    "pt": "Pasta do SourceBox"
+  },
+  "Game runtime folder": {
+    "es": "Carpeta del entorno del juego",
+    "fr": "Dossier du moteur de jeu",
+    "de": "Spielruntime-Ordner",
+    "pt": "Pasta do ambiente do jogo"
+  },
+  "Steam folder": {
+    "es": "Carpeta de Steam",
+    "fr": "Dossier Steam",
+    "de": "Steam-Ordner",
+    "pt": "Pasta do Steam"
+  },
+  "Menu artwork": {
+    "es": "Imágenes del menú",
+    "fr": "Images du menu",
+    "de": "Menügrafiken",
+    "pt": "Imagens do menu"
+  },
+  "Browse": {
+    "es": "Examinar",
+    "fr": "Parcourir",
+    "de": "Durchsuchen",
+    "pt": "Procurar"
+  },
+  "File locations": {
+    "es": "Ubicaciones de archivos",
+    "fr": "Emplacements des fichiers",
+    "de": "Dateispeicherorte",
+    "pt": "Locais dos arquivos"
+  },
+  "Preferred game": {
+    "es": "Juego preferido",
+    "fr": "Jeu préféré",
+    "de": "Bevorzugtes Spiel",
+    "pt": "Jogo preferido"
+  },
+  "Frame limit": {
+    "es": "Límite de FPS",
+    "fr": "Limite d’images par seconde",
+    "de": "FPS-Limit",
+    "pt": "Limite de FPS"
+  },
+  "Detailed logs": {
+    "es": "Registros detallados",
+    "fr": "Journaux détaillés",
+    "de": "Ausführliche Protokolle",
+    "pt": "Registros detalhados"
+  },
+  "Reduced motion — keep floating scenes still": {
+    "es": "Reducir movimiento — mantener las escenas quietas",
+    "fr": "Réduire les animations des scènes",
+    "de": "Bewegung reduzieren — Szenen stillhalten",
+    "pt": "Reduzir movimento — manter cenas paradas"
+  },
+  "Save settings": {
+    "es": "Guardar ajustes",
+    "fr": "Enregistrer les paramètres",
+    "de": "Einstellungen speichern",
+    "pt": "Salvar configurações"
+  },
+  "Reset defaults": {
+    "es": "Restablecer valores",
+    "fr": "Rétablir les paramètres",
+    "de": "Standard wiederherstellen",
+    "pt": "Restaurar padrões"
+  },
+  "Export app ZIP": {
+    "es": "Exportar aplicación ZIP",
+    "fr": "Exporter l’application en ZIP",
+    "de": "App als ZIP exportieren",
+    "pt": "Exportar aplicativo ZIP"
+  },
+  "Language": {
+    "es": "Idioma",
+    "fr": "Langue",
+    "de": "Sprache",
+    "pt": "Idioma"
+  },
+  "Installed": {
+    "es": "Instalado",
+    "fr": "Installé",
+    "de": "Installiert",
+    "pt": "Instalado"
+  },
+  "Missing": {
+    "es": "Falta",
+    "fr": "Absent",
+    "de": "Fehlt",
+    "pt": "Ausente"
+  },
+  "Ready": {
+    "es": "Listo",
+    "fr": "Prêt",
+    "de": "Bereit",
+    "pt": "Pronto"
+  },
+  "Setup needed": {
+    "es": "Configuración necesaria",
+    "fr": "Configuration requise",
+    "de": "Einrichtung nötig",
+    "pt": "Configuração necessária"
+  },
+  "Not connected": {
+    "es": "Sin conexión",
+    "fr": "Non connecté",
+    "de": "Nicht verbunden",
+    "pt": "Desconectado"
+  },
+  "Unknown": {
+    "es": "Desconocido",
+    "fr": "Inconnu",
+    "de": "Unbekannt",
+    "pt": "Desconhecido"
+  },
+  "Running": {
+    "es": "En ejecución",
+    "fr": "En cours",
+    "de": "Läuft",
+    "pt": "Em execução"
+  },
+  "Stopped": {
+    "es": "Detenido",
+    "fr": "Arrêté",
+    "de": "Beendet",
+    "pt": "Parado"
+  },
+  "Built-in": {
+    "es": "Integrado",
+    "fr": "Intégré",
+    "de": "Integriert",
+    "pt": "Integrado"
+  },
+  "Found": {
+    "es": "Encontrado",
+    "fr": "Trouvé",
+    "de": "Gefunden",
+    "pt": "Encontrado"
+  },
+  "Installed assets": {
+    "es": "Recursos instalados",
+    "fr": "Ressources installées",
+    "de": "Installierte Inhalte",
+    "pt": "Recursos instalados"
+  },
+  "Map unavailable": {
+    "es": "Mapa no disponible",
+    "fr": "Carte indisponible",
+    "de": "Karte nicht verfügbar",
+    "pt": "Mapa indisponível"
+  },
+  "Fallback not ready": {
+    "es": "Alternativa no preparada",
+    "fr": "Remplacement non prêt",
+    "de": "Ersatz nicht bereit",
+    "pt": "Alternativa não pronta"
+  },
+  "CONNECTED": {
+    "es": "CONECTADO",
+    "fr": "CONNECTÉ",
+    "de": "VERBUNDEN",
+    "pt": "CONECTADO"
+  },
+  "AVAILABLE": {
+    "es": "DISPONIBLE",
+    "fr": "DISPONIBLE",
+    "de": "VERFÜGBAR",
+    "pt": "DISPONÍVEL"
+  },
+  "INSTALLED · SETUP REQUIRED": {
+    "es": "INSTALADO · REQUIERE CONFIGURACIÓN",
+    "fr": "INSTALLÉ · CONFIGURATION REQUISE",
+    "de": "INSTALLIERT · EINRICHTUNG NÖTIG",
+    "pt": "INSTALADO · REQUER CONFIGURAÇÃO"
+  },
+  "NOT INSTALLED": {
+    "es": "NO INSTALADO",
+    "fr": "NON INSTALLÉ",
+    "de": "NICHT INSTALLIERT",
+    "pt": "NÃO INSTALADO"
+  },
+  "ARTWORK UNAVAILABLE": {
+    "es": "IMAGEN NO DISPONIBLE",
+    "fr": "IMAGE INDISPONIBLE",
+    "de": "GRAFIK NICHT VERFÜGBAR",
+    "pt": "IMAGEM INDISPONÍVEL"
+  },
+  "←  BACK": {
+    "es": "←  VOLVER",
+    "fr": "←  RETOUR",
+    "de": "←  ZURÜCK",
+    "pt": "←  VOLTAR"
+  },
+  "CONNECTING…": {
+    "es": "CONECTANDO…",
+    "fr": "CONNEXION…",
+    "de": "VERBINDEN…",
+    "pt": "CONECTANDO…"
+  },
+  "SELECT A CHARACTER": {
+    "es": "ELIGE UN PERSONAJE",
+    "fr": "CHOISIR UN PERSONNAGE",
+    "de": "CHARAKTER WÄHLEN",
+    "pt": "ESCOLHA UM PERSONAGEM"
+  },
+  "{0} clients connected": {
+    "es": "{0} clientes conectados",
+    "fr": "{0} clients connectés",
+    "de": "{0} Clients verbunden",
+    "pt": "{0} clientes conectados"
+  },
+  "No games started by SourceBox this session.": {
+    "es": "SourceBox no ha iniciado juegos en esta sesión.",
+    "fr": "Aucun jeu lancé par SourceBox dans cette session.",
+    "de": "SourceBox hat in dieser Sitzung keine Spiele gestartet.",
+    "pt": "Nenhum jogo iniciado pelo SourceBox nesta sessão."
+  },
+  "Choose a destination with the portal gun in-game. Map quality varies by game.": {
+    "es": "Elige un destino con la pistola de portales. La calidad del mapa varía según el juego.",
+    "fr": "Choisissez une destination avec le générateur de portails. La qualité varie selon le jeu.",
+    "de": "Wähle im Spiel ein Ziel mit der Portalkanone. Die Kartenqualität variiert je nach Spiel.",
+    "pt": "Escolha um destino com a arma de portais. A qualidade do mapa varia por jogo."
+  },
+  "World destinations are disabled in the project.": {
+    "es": "Los destinos están desactivados en el proyecto.",
+    "fr": "Les destinations sont désactivées dans le projet.",
+    "de": "Weltziele sind im Projekt deaktiviert.",
+    "pt": "Os destinos estão desativados no projeto."
+  },
+  "Select at least one game first.": {
+    "es": "Selecciona al menos un juego.",
+    "fr": "Sélectionnez au moins un jeu.",
+    "de": "Wähle zuerst mindestens ein Spiel.",
+    "pt": "Selecione pelo menos um jogo primeiro."
+  },
+  "Unable to start session": {
+    "es": "No se pudo iniciar la sesión",
+    "fr": "Impossible de démarrer la session",
+    "de": "Sitzung konnte nicht starten",
+    "pt": "Não foi possível iniciar a sessão"
+  },
+  "Open session logs": {
+    "es": "Abrir registros de sesión",
+    "fr": "Ouvrir les journaux de session",
+    "de": "Sitzungsprotokolle öffnen",
+    "pt": "Abrir registros da sessão"
+  },
+  "Open game logs": {
+    "es": "Abrir registros del juego",
+    "fr": "Ouvrir les journaux du jeu",
+    "de": "Spielprotokolle öffnen",
+    "pt": "Abrir registros do jogo"
+  },
+  "Copy diagnostics": {
+    "es": "Copiar diagnóstico",
+    "fr": "Copier le diagnostic",
+    "de": "Diagnose kopieren",
+    "pt": "Copiar diagnóstico"
+  },
+  "Save support report": {
+    "es": "Guardar informe de soporte",
+    "fr": "Enregistrer le rapport d’assistance",
+    "de": "Supportbericht speichern",
+    "pt": "Salvar relatório de suporte"
+  },
+  "Server": {
+    "es": "Servidor",
+    "fr": "Serveur",
+    "de": "Server",
+    "pt": "Servidor"
+  },
+  "Connected": {
+    "es": "Conectado",
+    "fr": "Connecté",
+    "de": "Verbunden",
+    "pt": "Conectado"
+  },
+  "{0} connected": {
+    "es": "{0} conectados",
+    "fr": "{0} connectés",
+    "de": "{0} verbunden",
+    "pt": "{0} conectados"
+  },
+  "{0} games ready": {
+    "es": "{0} juegos listos",
+    "fr": "{0} jeux prêts",
+    "de": "{0} Spiele bereit",
+    "pt": "{0} jogos prontos"
+  },
+  "Closing SourceBox leaves your games running.\nNetwork ports: 27841, 27842 and 27015–27020.": {
+    "es": "Cerrar SourceBox deja los juegos en ejecución.\nPuertos de red: 27841, 27842 y 27015–27020.",
+    "fr": "Fermer SourceBox laisse vos jeux ouverts.\nPorts réseau : 27841, 27842 et 27015–27020.",
+    "de": "Beim Schließen von SourceBox laufen deine Spiele weiter.\nNetzwerkports: 27841, 27842 und 27015–27020.",
+    "pt": "Fechar o SourceBox mantém seus jogos abertos.\nPortas de rede: 27841, 27842 e 27015–27020."
+  },
+  "LAUNCH {0} GAME   →": {
+    "es": "INICIAR {0} JUEGO   →",
+    "fr": "LANCER {0} JEU   →",
+    "de": "{0} SPIEL STARTEN   →",
+    "pt": "INICIAR {0} JOGO   →"
+  },
+  "LAUNCH {0} GAMES   →": {
+    "es": "INICIAR {0} JUEGOS   →",
+    "fr": "LANCER {0} JEUX   →",
+    "de": "{0} SPIELE STARTEN   →",
+    "pt": "INICIAR {0} JOGOS   →"
+  }
+}

@@ -1,4 +1,5 @@
 #include "transport.h"
+#include "filesystem.h"
 #include "engine/iserverplugin.h"
 #include "game/server/iplayerinfo.h"
 #include "toolframework/itoolentity.h"
@@ -124,6 +125,7 @@ class SourceboxAdapter final:public IServerPluginCallbacks{
  #include "cube.inc"
  #include "extra-players.inc"
  #include "combat.inc"
+ #include "ragdolls.inc"
  unsigned long long missingPropSince[4]{};
  void RespawnProps(unsigned long long now){int index=0;for(const auto&d:sharedProps){auto&missing=missingPropSince[index++];if(strcmp(d.owner,SOURCEBOX_GAME))continue;if(Named(d.id)){missing=0;continue;}if(!missing){missing=now;continue;}if(now-missing<SOURCEBOX_RESPAWN_MS)continue;auto*e=entities->CreateEntityByName("prop_physics");if(e){entities->SetKeyValue(e,"targetname",d.id);entities->SetKeyValue(e,"model",d.model);entities->SetKeyValue(e,"origin",d.spawn);entities->SetKeyValue(e,"spawnflags","256");entities->DispatchSpawn(e);}missing=now;}}
  void Track(edict_t*e){if(players&&e){auto*p=players->GetPlayerInfo(e);if(p&&p->IsPlayer()&&!p->IsFakeClient())player=e;}}
@@ -311,6 +313,8 @@ public:
   }
   std::deque<Json> messages;messages.swap(pendingMessages);
   for(auto&j:messages){
+   // HLDM retail cannot safely network these custom ragdolls yet. Consume without spawning.
+   if(j.value("type","")=="player_ragdoll"){if(strcmp(SOURCEBOX_GAME,"hl1mp"))DeathMessage(j);continue;}
    if(j.value("type",std::string()).find("portal_")==0||j.value("type","")=="welcome"){PortalMessage(j);continue;}
    if(j.value("game","")=="portal2"||j.value("game","")=="cs2"||j.value("game","")=="hl1mp"||(!strcmp(SOURCEBOX_GAME,"hl1mp")&&(j.value("game","")=="hl2"||j.value("game","")=="tf2"))){ExtraMessage(j,now);continue;}
    if(j.value("game","")=="gmod"){if(j.value("type","")=="scene")SceneMessage(j,now);else{if(j.value("type","")=="remove"&&j.value("scope","game")=="game")ClearScene();GmodMessage(j,now);}continue;}

@@ -1,11 +1,12 @@
 #include "../transport.h"
+#include "filesystem.h"
 #include "iserverplugin.h"
 #include "iplayerinfo.h"
 #include "tools-prefix.h"
 #include "trace-prefix.h"
 #include "proxy_config.h"
 #include "hl1mp_config.h"
-#include "physics_config.h"
+#include "physics_config.h"
 #include "world_destinations.h"
 #include <cmath>
 #include <algorithm>
@@ -69,6 +70,10 @@ class PortalAdapter final:public IServerPluginCallbacks {
  #undef Ray_t
  #undef IEngineTrace
  #include "native-portals.inc"
+ #define SOURCEBOX_PORTAL2_RAGDOLLS
+ #define entities tools
+ #include "../ragdolls.inc"
+ #undef entities
 
 public:
  bool Load(CreateInterfaceFn engine,CreateInterfaceFn game)override{
@@ -98,10 +103,12 @@ public:
   static unsigned long long diagnostic=0;if(now-diagnostic>5000){char msg[256];snprintf(msg,sizeof(msg),"native sample %.2f %.2f %.2f velocity_read=%d flags_read=%d",pos.x,pos.y,pos.z,velocityOK,flagsOK);Log(msg);diagnostic=now;}
   if(local)tools->SetKeyValue(local,"targetname","sourcebox_local_player");
   for(auto&m:bridge.Drain()){
+   // Keep retail Portal 2 stable until custom corpse replication is validated.
+   if(m.value("type","")=="player_ragdoll"){continue;}
    if(m.value("type",std::string()).find("portal_")==0||m.value("type","")=="welcome"){PortalMessage(m);continue;}
    if(m.value("type",std::string()).find("cube_")==0){CubeMessage(m);continue;}
    if(m.value("type","")=="scene"){SceneMessage(m);continue;}
-   if(m.value("type","")=="player_damage"){if(now>=protectedUntil){int health=info->GetHealth()-m.value("amount",10);if(health<=0){health=100;tools->SnapPlayerToPosition(Vector(0,320,72),QAngle(0,-90,0));protectedUntil=now+1000;}crossplayHealthCeiling=health;if(local)tools->SetKeyValue(local,"health",std::to_string(health).c_str());Log("applied remote player damage");}continue;}
+   if(m.value("type","")=="player_damage"){if(now>=protectedUntil){int health=info->GetHealth()-m.value("amount",10);if(health<=0){bridge.Command({{"type","player_death"}});health=100;tools->SnapPlayerToPosition(Vector(0,320,72),QAngle(0,-90,0));protectedUntil=now+1000;}crossplayHealthCeiling=health;if(local)tools->SetKeyValue(local,"health",std::to_string(health).c_str());Log("applied remote player damage");}continue;}
    auto type=m.value("type",std::string()),id=m.value("game",std::string());if(type=="remove"){if(id.empty())Clear();else Remove(id);continue;}if(type!="remote")continue;
    if(id!="hl2"&&id!="tf2"&&id!="gmod"&&id!="hl1mp"&&id!="cs2")continue;
    auto session=m.value("session",std::string());if(peers.count(id)&&peers[id].session!=session)Remove(id);auto&s=m["state"];auto&peer=peers[id];auto seq=s.value("seq",0ULL);if(seq<=peer.seq)continue;peer.seq=seq;peer.session=session;peer.received=now;

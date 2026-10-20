@@ -13,8 +13,8 @@ public sealed class SceneCanvas:Control {
  public SceneCanvas(){SetStyle(ControlStyles.AllPaintingInWmPaint|ControlStyles.UserPaint|ControlStyles.OptimizedDoubleBuffer|ControlStyles.Selectable,true);TabStop=true;BackColor=Color.Black;AccessibleName="SourceBox";AccessibleDescription="Use arrow keys to choose an item and Enter to activate it. Escape returns home.";animation.Tick+=(_,_)=>{if(Visible&&!ReducedMotion&&FindForm()?.WindowState!=FormWindowState.Minimized)Invalidate();};animation.Start();}
  public void LoadWeaponArt(string directory){if(artDirectory==directory&&weaponArt.Count==6)return;if(artDirectory!=directory){foreach(var image in weaponArt.Values)image.Dispose();weaponArt.Clear();}artDirectory=directory;foreach(var id in Discovery.Defs.Select(g=>g.Id)){if(weaponArt.ContainsKey(id))continue;var file=Path.Combine(directory,id+".png");if(File.Exists(file))try{using var image=Image.FromFile(file);weaponArt[id]=new Bitmap(image);}catch{}}}
  protected override void Dispose(bool disposing){if(disposing){animation.Dispose();foreach(var image in weaponArt.Values)image.Dispose();}base.Dispose(disposing);}
- void TextAt(Graphics g,string text,float x,float y,float size,Color color,bool bold=false){using var f=new Font("Segoe UI",size,bold?FontStyle.Bold:FontStyle.Regular,GraphicsUnit.Pixel);using var b=new SolidBrush(color);g.DrawString(text,f,b,x,y);}
- void CenterText(Graphics g,string text,float x,float y,float size,Color color){using var f=new Font("Segoe UI",size,FontStyle.Regular,GraphicsUnit.Pixel);using var b=new SolidBrush(color);var sz=g.MeasureString(text,f);g.DrawString(text,f,b,x-sz.Width/2,y);}
+ void TextAt(Graphics g,string text,float x,float y,float size,Color color,bool bold=false){using var f=new Font("Segoe UI",size,bold?FontStyle.Bold:FontStyle.Regular,GraphicsUnit.Pixel);using var b=new SolidBrush(color);g.DrawString(Localization.T(text),f,b,x,y);}
+ void CenterText(Graphics g,string text,float x,float y,float size,Color color){using var f=new Font("Segoe UI",size,FontStyle.Regular,GraphicsUnit.Pixel);using var b=new SolidBrush(color);text=Localization.T(text);var sz=g.MeasureString(text,f);g.DrawString(text,f,b,x-sz.Width/2,y);}
  protected override void OnPaint(PaintEventArgs e){
   base.OnPaint(e);var g=e.Graphics;g.SmoothingMode=SmoothingMode.AntiAlias;g.TextRenderingHint=System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;g.Clear(Color.Black);
   scale=Math.Min(Width/1200f,Height/720f);offsetX=(Width-1200*scale)/2;offsetY=(Height-720*scale)/2;
@@ -26,10 +26,10 @@ public sealed class SceneCanvas:Control {
   Nav(g,"HOME","home",782,42);Nav(g,"CHARACTERS","characters",855,42);Nav(g,"CONTROL CENTER","controls",982,42);
   double t=ReducedMotion?0:clock.Elapsed.TotalSeconds;
   if(Characters)DrawCharacters(g,t);else DrawHome(g,t);
-  TextAt(g,LiveSummary,46,680,11,muted);TextAt(g,"0.2.0-beta.1",996,680,10,muted);
+  TextAt(g,LiveSummary,46,680,11,muted);TextAt(g,"1.5.1-beta.1",996,680,10,muted);
   if(Focused&&!string.IsNullOrEmpty(focus)&&regions.TryGetValue(focus,out var box)){using var p=new Pen(Color.FromArgb(150,cyan),1){DashStyle=DashStyle.Dot};g.DrawRectangle(p,box.X,box.Y,box.Width,box.Height);}
  }
- void Nav(Graphics g,string label,string id,float x,float y){regions[id]=new(x-5,y-6,label.Length*7+13,30);TextAt(g,label,x,y,11,hover==id?cyan:muted);}
+ void Nav(Graphics g,string label,string id,float x,float y){regions[id]=new(x-5,y-6,Math.Max(label.Length,Localization.T(label).Length)*7+13,30);TextAt(g,label,x,y,11,hover==id?cyan:muted);}
  float Bob(double t,int phase)=>(float)Math.Sin(t*.7+phase)*7;
  void DrawHome(Graphics g,double t){
   
@@ -55,7 +55,7 @@ public sealed class SceneCanvas:Control {
   }
   TextAt(g,"←  BACK",47,624,12,hover=="home"?cyan:muted);regions["back"]=new(42,613,100,35);
   
-  string action=Busy?"CONNECTING…":Selected.Count==0?"SELECT A CHARACTER":$"LAUNCH {Selected.Count} GAME"+(Selected.Count>1?"S":"")+"   →";
+  string action=Busy?"CONNECTING…":Selected.Count==0?"SELECT A CHARACTER":Localization.Format(Selected.Count==1?"LAUNCH {0} GAME   →":"LAUNCH {0} GAMES   →",Selected.Count);
   regions["launch"]=new(905,615,250,48);using(var p=new Pen(Color.FromArgb(hover=="launch"?180:75,cyan),1))g.DrawRectangle(p,905,615,250,48);CenterText(g,action,1030,630,13,Busy||Selected.Count==0?muted:cyan);
  }
  static Color Shade(Color c,float k)=>Color.FromArgb(Math.Clamp((int)(c.R*k),0,255),Math.Clamp((int)(c.G*k),0,255),Math.Clamp((int)(c.B*k),0,255));

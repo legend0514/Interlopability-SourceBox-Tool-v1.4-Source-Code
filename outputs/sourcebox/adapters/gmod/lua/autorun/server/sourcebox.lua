@@ -7,6 +7,7 @@ for _,ent in ipairs(ents.FindByName("sourcebox_remote_*")) do ent:Remove() end
 local physics=include("sourcebox/physics.lua")
 local scene=include("sourcebox/scene.lua")
 local portals=include("sourcebox/portals.lua")
+local ragdolls=include("sourcebox/ragdolls.lua")
 -- Grant after Sandbox's loadout finishes, independently of core connectivity.
 -- Keep the ordinary weapons; use the normal inventory and selection controls.
 local function portalStarter(ply,select)
@@ -145,10 +146,11 @@ timer.Create("SourceboxExchange",0.05,0,function()
     if #damageAck>128 then damageSeen[table.remove(damageAck,1)]=nil end
     if IsValid(player) and player:Alive() and SysTime()>=protectedUntil then
      local health=player:Health()-math.Clamp(tonumber(hit.amount) or 0,0,100)
-     if health<=0 then player:SetHealth(player:GetMaxHealth()) player:SetPos(Vector(-128,128,8)) player:SetLocalVelocity(Vector(0,0,0)) protectedUntil=SysTime()+1 else player:SetHealth(health) end
+     if health<=0 then physics:Command({type="player_death"}) player:SetHealth(player:GetMaxHealth()) player:SetPos(Vector(-128,128,8)) player:SetLocalVelocity(Vector(0,0,0)) protectedUntil=SysTime()+1 else player:SetHealth(health) end
     end
    end
   end
+  ragdolls:Receive(data,proxies,player)
   physics:Receive(data,session)
   receivePortals(data)
   scene:Receive(data,session)

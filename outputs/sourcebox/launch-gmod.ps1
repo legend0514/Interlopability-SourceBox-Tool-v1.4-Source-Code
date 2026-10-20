@@ -47,6 +47,7 @@ Copy-Item "$PSScriptRoot/adapters/gmod/lua/sourcebox/portals.lua" "$addon/lua/so
 Copy-Item "$PSScriptRoot/adapters/gmod/lua/sourcebox/portal-successor.lua" "$addon/lua/sourcebox/portal-successor.lua" -Force
 Copy-Item "$PSScriptRoot/sheets/portals.json" "$data/portals.json" -Force
 Copy-Item "$PSScriptRoot\adapters\gmod\lua\autorun\server\sourcebox.lua" "$addon\lua\autorun\server\sourcebox.lua" -Force
+Copy-Item "$PSScriptRoot\adapters\gmod\lua\sourcebox\ragdolls.lua" "$addon\lua\sourcebox\ragdolls.lua" -Force
 Copy-Item "$PSScriptRoot\adapters\gmod\lua\sourcebox\physics.lua" "$addon\lua\sourcebox\physics.lua" -Force
 Copy-Item "$PSScriptRoot\adapters\gmod\lua\sourcebox\scene.lua" "$addon\lua\sourcebox\scene.lua" -Force
 Copy-Item "$PSScriptRoot\sheets\gmod-scene.json" "$data\scene.json" -Force

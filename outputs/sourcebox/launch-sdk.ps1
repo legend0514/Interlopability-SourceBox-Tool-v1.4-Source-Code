@@ -1,4 +1,4 @@
-param([ValidateSet('hl2','tf2')][string[]]$Games=@('hl2','tf2'),[switch]$ReplaceRetail,[switch]$WithoutPlugin,[switch]$PortalProbe,[switch]$MomentumProbe,[switch]$WorldProbe)
+param([ValidateSet('hl2','tf2')][string[]]$Games=@('hl2','tf2'),[switch]$ReplaceRetail,[switch]$WithoutPlugin,[switch]$PortalProbe,[switch]$MomentumProbe,[switch]$WorldProbe,[switch]$JoinTestTeam)
 $ErrorActionPreference='Stop'
 & node "$PSScriptRoot/preflight.mjs"
 if($LASTEXITCODE -ne 0){throw 'Preflight failed'}
@@ -19,6 +19,7 @@ foreach($id in $Games){
  $args="-game `"$sdk/$mod`" -multirun -insecure -windowed -noborder -w 640 -h 540 -x $x -y 0 -novid +fps_max 60 -console -condebug -nojoy -port $port +sv_lan 1 +sv_cheats 1 +sv_allow_point_servercommand always +engine_no_focus_sleep 0 +plugin_load addons/sourcebox_$id +exec sourcebox_controls.cfg +map sourcebox_room_001"
  if($id -eq 'hl2'){$args=$args.Replace('+map sourcebox_room_001','+maxplayers 2 +sv_pure -1 +map sourcebox_room_001')}
  if($WithoutPlugin){$args=$args.Replace("+plugin_load addons/sourcebox_$id",'')}
+ if($JoinTestTeam -and $id -eq 'tf2'){$args+=' +jointeam red +joinclass soldier'}
  if($PortalProbe){$args+=' +sourcebox_portal_probe 1';if($id -eq 'tf2'){$args+=' +jointeam red +joinclass soldier'}}
  if($MomentumProbe){$args+=' +sourcebox_portal_probe 2';if($id -eq 'tf2'){$args+=' +jointeam red +joinclass soldier'}}
  if($WorldProbe){& node "$PSScriptRoot/tools/write-world-probe.mjs" $id "$sdk/$mod/cfg/sourcebox_world_probe.cfg";if($LASTEXITCODE -ne 0){throw 'World probe preparation failed'};Set-Content "$PSScriptRoot/logs/native-animation.log-world-fixture-$id" 'run';if($id -eq 'tf2'){$args+=' +jointeam red +joinclass soldier'}}

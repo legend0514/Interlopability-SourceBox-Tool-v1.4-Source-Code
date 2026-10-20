@@ -14,7 +14,7 @@ const startedAt=Date.now();
 if(!directory)throw Error('GMod data/sourcebox directory required');
 const bridgeLease=await acquireBridgeLease(config.gmod.bridgeLeasePort,{directory:path.resolve(directory),startedAt});
 fs.mkdirSync(directory,{recursive:true});
-let socket,connected=false,seq=0,lastCounter='',fresh=0,latest=null,buffer='',peers={},physics={},cube=null,freeze=null,notice='',commandAck=0,commandSession='',connection=randomUUID(),sceneActions=[],playerDamage=[],portalEvents=[];
+let socket,connected=false,seq=0,lastCounter='',fresh=0,latest=null,buffer='',peers={},physics={},cube=null,freeze=null,notice='',commandAck=0,commandSession='',connection=randomUUID(),sceneActions=[],playerDamage=[],portalEvents=[],deathBodies=[];
 function send(m){if(config.physics.cube.enabled===false&&m.type?.startsWith('cube_'))return true;if(!connected||socket.destroyed)return false;if(socket.writableLength>65536){socket.destroy();return false;}socket.write(JSON.stringify({...m,seq:++seq,timestamp:Math.floor(os.uptime()*1000)})+'\n');return true;}
 let worldPaused=false,worldResumedAt=startedAt;
 let worldReadErrorAt=0,worldReadySignature='';
@@ -30,6 +30,7 @@ function connect(){
  if(m.type==='remote')peers[m.game]={...m,received:Date.now()};
  if((m.type==='remote'||m.type==='physics')&&m.state.props)physics[m.game]={props:m.state.props,received:Date.now()};
  if(m.type==='remove'){delete peers[m.game];if(m.scope!=='player')delete physics[m.game];}
+ if(m.type==='player_ragdoll'){deathBodies.push({...m,received:Date.now()});if(deathBodies.length>32)deathBodies.shift();}
  if(m.type==='player_damage'){if(playerDamage.length<128)playerDamage.push({...m,event:randomUUID(),received:Date.now(),session:latest?.session});}
  if(m.type==='scene_interact'){if(sceneActions.length<128)sceneActions.push({...m,received:Date.now()});}
  if(m.type==='cube_owner'){cube=m;freeze=null;}
@@ -53,12 +54,13 @@ setInterval(()=>{
 
  portalEvents=portalEvents.filter(m=>now-m.received<1500&&!latest?.portalAck?.includes(m.event)&&m.localSession===latest?.session);
  sceneActions=sceneActions.filter(m=>now-m.received<2000);
+ deathBodies=deathBodies.filter(m=>now-m.received<2000);
  playerDamage=playerDamage.filter(m=>now-m.received<2000&&!latest?.damageAck?.includes(m.event));
  if(latest?.sceneAck)sceneActions=sceneActions.filter(m=>!latest.sceneAck.includes(m.event));
  try{if(worldPaused)throw Error('map excursion');const file=path.join(directory,'outgoing.json');if(fs.statSync(file).mtimeMs>=worldResumedAt){const sample=JSON.parse(fs.readFileSync(file,'utf8'));const key=sample.session+':'+sample.counter;if(key!==lastCounter){lastCounter=key;fresh=now;latest=sample;}}}catch{}
  for(const [id,p]of Object.entries(peers))if(now-p.received>config.gmod.timeoutMs)delete peers[id];
  for(const [id,p]of Object.entries(physics))if(now-p.received>config.gmod.timeoutMs)delete physics[id];
- try{fs.writeFileSync(path.join(directory,'incoming.tmp'),JSON.stringify({connected,connection,coreSession,portals:portalSnapshots.read(),portalsEnabled:config.portals?.enabled===true,revision:now,peers:Object.values(peers),physics,cube,freeze,notice,commandAck,commandSession,sceneActions,playerDamage,portalEvents}));fs.renameSync(path.join(directory,'incoming.tmp'),path.join(directory,'incoming.json'));}catch(e){if(e.code!=='EPERM'&&e.code!=='EBUSY')console.error(e.message);}
+ try{fs.writeFileSync(path.join(directory,'incoming.tmp'),JSON.stringify({connected,connection,coreSession,portals:portalSnapshots.read(),portalsEnabled:config.portals?.enabled===true,revision:now,peers:Object.values(peers),physics,cube,freeze,notice,commandAck,commandSession,sceneActions,playerDamage,portalEvents,deathBodies}));fs.renameSync(path.join(directory,'incoming.tmp'),path.join(directory,'incoming.json'));}catch(e){if(e.code!=='EPERM'&&e.code!=='EBUSY')console.error(e.message);}
  if(worldPaused||!connected||socket.destroyed)return;
  if(Array.isArray(world?.ready)){
   const ids=world.ready.filter(id=>config.destinationWorlds.worlds.some(w=>w.id===id)).sort(),signature=JSON.stringify(ids);
@@ -67,7 +69,7 @@ setInterval(()=>{
  if(latest&&now-fresh<config.gmod.timeoutMs){
   if(commandSession!==latest.session){commandSession=latest.session;commandAck=0;}
   const pending=pendingCommands(latest,connection,commandAck);commandAck=pending.acknowledged;
-  for(const command of pending.commands)if(['cube_take','cube_frozen','cube_ready','cube_sync','player_hit','portal_fire','portal_clear','portal_ack','portal_sync'].includes(command.message?.type)){const m=structuredClone(command.message);if(m.state)m.state.timestamp=Math.floor(os.uptime()*1000);if(send(m))commandAck=command.id;}
+  for(const command of pending.commands)if(['cube_take','cube_frozen','cube_ready','cube_sync','player_hit','player_death','portal_fire','portal_clear','portal_ack','portal_sync'].includes(command.message?.type)){const m=structuredClone(command.message);if(m.state)m.state.timestamp=Math.floor(os.uptime()*1000);if(send(m))commandAck=command.id;}
   if(latest.connection===connection&&latest.cube&&latest.cube.epoch===cube?.epoch&&cube?.owner==='gmod')send({type:'cube_state',epoch:latest.cube.epoch,state:{...latest.cube.state,timestamp:Math.floor(os.uptime()*1000)}});
   if(latest.scene){const objects=latest.scene.objects??[],live=objects.map(o=>o.id);for(let i=0;i<Math.max(1,objects.length);i+=config.gmodScene.batchSize)send({type:'scene',generation:latest.session,live,objects:objects.slice(i,i+config.gmodScene.batchSize)});}
   send(latest.state?{...latest.state,type:'state',entity:'player:gmod'}:{type:'heartbeat',playerUnavailable:true});

@@ -88,6 +88,8 @@ def build(game,profile=None):
  detail_models=json.loads((ROOT/'work/worlds/source1-detail/models.json').read_text())
  basegame='hl2' if game in ('gmod','hl1mp') else game
  host=parse((ROOT/f'outputs/sourcebox/maps/{basegame}/sourcebox_room_001.vmf').read_text());world=value(host,'world');pending=[];report=[]
+ # Portal 2 does not ship HL2's sky_day01_01. Use its own complete HDR sky.
+ if game=='portal2':setval(world,'skyname','sky_l4d_c4m1_hdr')
  for w in registry['worlds']:
   src=parse((ROOT/f"work/worlds/decompiled/{w['id']}.vmf").read_text());added=0;scenery=0
   placeholder=w['id'] in missing

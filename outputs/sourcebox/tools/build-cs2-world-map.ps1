@@ -3,6 +3,8 @@ $ErrorActionPreference='Stop'
 $project=Split-Path $PSScriptRoot
 $csRoot='C:/Program Files (x86)/Steam/steamapps/common/Counter-Strike Global Offensive'
 $content="$csRoot/content/csgo_addons/sourcebox"
+& "$PSScriptRoot/prepare-cs2-world-sky.ps1"
+if($LASTEXITCODE -ne 0){throw 'Native sky enclosure preparation failed'}
 & "$PSScriptRoot/build-cs2-worlds.ps1"
 if($LASTEXITCODE -ne 0){throw 'World model build failed'}
 & 'C:/SourceBox-dev/Documents/Codex/2026-10-10/make/work/python313/python.exe' "$PSScriptRoot/export-cs2-world-lights.py"

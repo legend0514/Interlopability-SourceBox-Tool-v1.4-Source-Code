@@ -28,6 +28,17 @@ if(game==='hl1mp'){
 }
 fs.writeFileSync(infoPath,info);
 let bsp=fs.readFileSync(host.map);
+if(game==='portal2'){
+ const offset=bsp.readInt32LE(8),length=bsp.readInt32LE(12);
+ if(offset<0||length<=0||offset+length>bsp.length)throw Error('Invalid native host entity lump');
+ let entities=bsp.toString('utf8',offset,offset+length).replace(/\0+$/,'');
+ let changed=false;
+ entities=entities.replace(/\{[^{}]*"classname"\s*"worldspawn"[^{}]*\}/g,block=>{
+  if(!/"skyname"\s*"sky_day01_01"/.test(block))return block;
+  changed=true;return block.replace(/"skyname"\s*"sky_day01_01"/,'"skyname" "sky_l4d_c4m1_hdr"');
+ });
+ if(changed){const data=Buffer.from(entities+'\0');bsp.writeInt32LE(bsp.length,8);bsp.writeInt32LE(data.length,12);bsp=Buffer.concat([bsp,data]);}
+}
 if(game==='hl1mp'){
  const spawn=JSON.parse(fs.readFileSync(path.join(project,'sheets/hl1mp.json'))).spawn;
  const offset=bsp.readInt32LE(8),length=bsp.readInt32LE(12);
