@@ -131,18 +131,24 @@ class SourceboxAdapter final:public IServerPluginCallbacks{
  void Track(edict_t*e){if(players&&e){auto*p=players->GetPlayerInfo(e);if(p&&p->IsPlayer()&&!p->IsFakeClient())player=e;}}
  bool portalScriptStarted=false,hl1PortalGranted=false;unsigned long long hl1PortalGrantAfter=0;
  IVEngineClient* hl1ProbeClient=nullptr;unsigned long long hl1ProbeStart=0;int hl1ProbeStage=0;bool hl1PropProbe=false,hl1DamageProbe=false;Json hl1PropEntry;Vector hl1PropSaved;QAngle hl1PropLook;bool hl1ProbeEnabled=false,hl1MonitorProbe=false,hl1FallProbe=false,hl1RespawnProbe=false;
- bool hl1LethalProbe=false;std::string hl1DamageTarget="gmod";int hl1DamageCount=0,hl1LastHealth=0;unsigned long long hl1DamageAt=0;
+ bool hl1WorldProbe=false;bool hl1LethalProbe=false;std::string hl1DamageTarget="gmod";int hl1DamageCount=0,hl1LastHealth=0;unsigned long long hl1DamageAt=0;
  void HL1PortalProbe(unsigned long long now){
   if(hl1ProbeClient&&!hl1ProbeEnabled){
    static unsigned long long nextCheck=0;if(now<nextCheck)return;nextCheck=now+1000;
    if(FILE*f=fopen(SOURCEBOX_DIAGNOSTIC_PATH "-hl1-fixture","r")){
     const int mode=fgetc(f);if(mode=='L'){char target[32]{};if(fscanf(f,"%31s",target)==1)hl1DamageTarget=target;hl1DamageCount=0;hl1LastHealth=0;hl1DamageAt=0;}hl1LethalProbe=mode=='L';fclose(f);remove(SOURCEBOX_DIAGNOSTIC_PATH "-hl1-fixture");
-    hl1DamageProbe=mode=='D';hl1PropProbe=mode=='P';hl1MonitorProbe=mode=='M';hl1FallProbe=mode=='F';hl1RespawnProbe=mode=='R';hl1ProbeEnabled=true;hl1ProbeStart=0;hl1ProbeStage=0;
+    hl1WorldProbe=mode=='T';hl1DamageProbe=mode=='D';hl1PropProbe=mode=='P';hl1MonitorProbe=mode=='M';hl1FallProbe=mode=='F';hl1RespawnProbe=mode=='R';hl1ProbeEnabled=true;hl1ProbeStart=0;hl1ProbeStage=0;
    }
   }
   if(!hl1ProbeEnabled||!hl1ProbeClient||hl1ProbeStage>=11)return;
   if(!hl1ProbeClient->IsInGame()||hl1ProbeClient->IsDrawingLoadingImage())return;
   if(!hl1ProbeStart)hl1ProbeStart=now;
+  if(hl1WorldProbe){
+   const unsigned long long times[]={2000,5000,7000,10000,12000,15000,17000,18500};
+   const char*commands[]={"setpos 7112 -1280 3776; setang 0 90 0; gameui_hide","jpeg sourcebox_hl1_2fort_courtyard","setpos 9000 0 3900; setang 5 180 0","jpeg sourcebox_hl1_2fort_bridge","setpos 7600 -2200 3700; setang 0 90 0","jpeg sourcebox_hl1_2fort_interior","setpos 9000 0 3200; setang 0 90 0","jpeg sourcebox_hl1_2fort_underwater"};
+   if(hl1ProbeStage>=8){hl1ProbeEnabled=false;hl1ProbeStart=0;return;}
+   if(now-hl1ProbeStart>=times[hl1ProbeStage]){hl1ProbeClient->ClientCmd_Unrestricted(commands[hl1ProbeStage]);hl1ProbeStage++;}return;
+  }
   if(hl1LethalProbe){
    std::string target;int health=0;
    if(hl1DamageTarget=="gmod"&&gmodPose.is_object()){target="sourcebox_gmod_player";health=gmodPose.value("health",0);}
@@ -248,7 +254,7 @@ public:
  bool Load(CreateInterfaceFn engine,CreateInterfaceFn factory)override{
   if(!strcmp(SOURCEBOX_GAME,"hl1mp")){
    hl1ProbeClient=(IVEngineClient*)engine(VENGINE_CLIENT_INTERFACE_VERSION,nullptr);
-   if(FILE*f=fopen(SOURCEBOX_DIAGNOSTIC_PATH "-hl1-fixture","r")){const int mode=fgetc(f);hl1DamageProbe=mode=='D';hl1PropProbe=mode=='P';hl1MonitorProbe=mode=='M';hl1FallProbe=mode=='F';hl1RespawnProbe=mode=='R';fclose(f);hl1ProbeEnabled=true;hl1ProbeClient=(IVEngineClient*)engine(VENGINE_CLIENT_INTERFACE_VERSION,nullptr);}
+   if(FILE*f=fopen(SOURCEBOX_DIAGNOSTIC_PATH "-hl1-fixture","r")){const int mode=fgetc(f);hl1WorldProbe=mode=='T';hl1DamageProbe=mode=='D';hl1PropProbe=mode=='P';hl1MonitorProbe=mode=='M';hl1FallProbe=mode=='F';hl1RespawnProbe=mode=='R';fclose(f);remove(SOURCEBOX_DIAGNOSTIC_PATH "-hl1-fixture");hl1ProbeEnabled=true;hl1ProbeClient=(IVEngineClient*)engine(VENGINE_CLIENT_INTERFACE_VERSION,nullptr);}
   }
   helpers=(IServerPluginHelpers*)engine(INTERFACEVERSION_ISERVERPLUGINHELPERS,nullptr);
   players=(IPlayerInfoManager*)factory(INTERFACEVERSION_PLAYERINFOMANAGER,nullptr);
@@ -313,7 +319,7 @@ public:
   }
   std::deque<Json> messages;messages.swap(pendingMessages);
   for(auto&j:messages){
-   // HLDM retail cannot safely network these custom ragdolls yet. Consume without spawning.
+   // HLDM retail cannot safely network these custom ragdolls yet. Consume without spawning.
    if(j.value("type","")=="player_ragdoll"){if(strcmp(SOURCEBOX_GAME,"hl1mp"))DeathMessage(j);continue;}
    if(j.value("type",std::string()).find("portal_")==0||j.value("type","")=="welcome"){PortalMessage(j);continue;}
    if(j.value("game","")=="portal2"||j.value("game","")=="cs2"||j.value("game","")=="hl1mp"||(!strcmp(SOURCEBOX_GAME,"hl1mp")&&(j.value("game","")=="hl2"||j.value("game","")=="tf2"))){ExtraMessage(j,now);continue;}

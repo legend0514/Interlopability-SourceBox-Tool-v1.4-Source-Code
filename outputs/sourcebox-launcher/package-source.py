@@ -3,7 +3,7 @@ from pathlib import Path
 import hashlib, json, re, shutil, subprocess, zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
-STAGE = ROOT / 'work/source-publication/sourcebox-beta-v1.5.1-source'
+STAGE = ROOT / 'work/source-publication/sourcebox-beta-v1.5.2-source'
 if STAGE.exists():
     raise SystemExit('Source staging directory already exists; review before rebuilding')
 STAGE.mkdir(parents=True)
@@ -35,7 +35,7 @@ project = ROOT / 'outputs/sourcebox'
 tree(launcher / 'src')
 for file in launcher.iterdir():
     if file.is_file() and file.suffix in {'.ps1', '.py'}: copy(file)
-for name in ('sourcebox.ico', 'sourcebox-intro.mp4'):
+for name in ('sourcebox.ico', 'sourcebox-intro.mp4', *(str(p.relative_to(launcher / 'src/Assets')) for p in (launcher / 'src/Assets/WeaponArt').glob('*.png'))):
     out = STAGE / 'outputs/sourcebox-launcher/src/Assets' / name
     out.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(launcher / 'src/Assets' / name, out)
@@ -48,7 +48,7 @@ for game in ('hl2', 'tf2', 'portal2', 'cs2'):
     copy(project / 'maps' / game / 'sourcebox_room_001.vmf')
 
 # Use the actual published configuration alongside development sheets.
-release = launcher / 'release-candidates/sourcebox-beta-v1.5.1.zip'
+release = launcher / 'release-candidates/sourcebox-beta-v1.5.2.zip'
 with zipfile.ZipFile(release) as z:
     for name in z.namelist():
         if name.startswith('runtime/sourcebox/sheets/') and name.endswith('.json'):
@@ -112,18 +112,18 @@ nlohmann/json retains its included MIT license in adapters/vendor/LICENSE.MIT.
 Separately acquired dependencies retain their own licenses. CounterStrikeSharp
 uses GPLv3 with a plugin licensing exception; Metamod:Source uses zlib/libpng.
 Their implementations are not bundled here.
-Game and Workshop assets are not included or licensed by this source release.
-The supplied launcher icon and intro are not covered by the code license.
+Game models, textures and Workshop packages are not included. Bundled weapon\nartwork consists of rendered game images; Valve retains rights to its designs.
+The supplied launcher icon, intro and weapon artwork are not covered by the code license.
 ''')
-(STAGE / 'README.md').write_text('''# SourceBox beta v1.5.1 source
+(STAGE / 'README.md').write_text('''# SourceBox beta v1.5.2 source
 
 Source snapshot for reviewing the six-game crossplay prototype. This is source
 code, not the playable download. Nothing runs merely by extracting this ZIP.
 
 - `outputs/sourcebox-launcher/src`: desktop launcher and its automated tests.
-- `outputs/sourcebox`: coordinator, adapters, portable v1.5.1 sheets and tools.
+- `outputs/sourcebox`: coordinator, adapters, portable v1.5.2 sheets and tools.
 - `development/sheets`: sanitized expanded-world development configuration.
-- `release-config/sheets`: the actual portable v1.5.1 configuration. Expanded
+- `release-config/sheets`: the actual portable v1.5.2 configuration. Expanded
   worlds are disabled in that download.
 - `sdk`: pinned Valve SDK patch and added source files.
 - `BUILD.md`: build prerequisites and current reproducibility limits.
@@ -239,7 +239,7 @@ or independent security audit is claimed.
   are fixed.
 - Settings, setup caches, process receipts and logs are written under the
   SourceBox local application-data directory. ConfigProtection.cs backs up
-  selected native cfg files and attempts restoration after exit. It does not
+  selected native cfg files and protects existing files during the session. Cleanup\n  preserves newer settings instead of restoring stale backups. It does not
   cover every Steam Cloud/userdata setting or recover from every interruption.
 - Support export is user-triggered. It redacts common paths/identifiers but
   users should still inspect an export before sharing it.
@@ -259,7 +259,7 @@ archive. Contact the person who distributed your copy privately for sensitive
 reports.
 ''')
 (STAGE / '.gitignore').write_text('**/bin/\n**/obj/\nwork/\nbuild/\n**/__pycache__/\n**/node_modules/\n*.mdmp\n*.dmp\n*.log\nsettings.json\n')
-provenance = {'version':'1.5.1-beta.1','sdkRepository':'https://github.com/ValveSoftware/source-sdk-2013',
+provenance = {'version':'1.5.2-beta.1','sdkRepository':'https://github.com/ValveSoftware/source-sdk-2013',
               'sdkCommit':head,'binaryZip':release.name,'binaryZipSha256':digest(release.read_bytes()),
               'independentReproducibleBuild':False,'independentSecurityAudit':False,
               'sanitizedFiles':sorted(changed),'sourceTests':'See source-validation.json when present'}

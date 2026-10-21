@@ -1,9 +1,13 @@
 {
-  "version": "1.5.1-beta.1",
-  "launcherChecks": "34/34 passed",
-  "coordinatorTests": "62/62 passed in development configuration",
-  "translationChecks": "passed",
-  "portableRagdolls": false,
-  "freshPcGameplay": "not tested",
-  "independentReproducibleBuild": false
+  "coordinatorTests": "62/62 passed",
+  "nativeChecks": [
+    "TF2 actual menu handler: two nine-class passes",
+    "CS2 room compiled",
+    "Portal 2 and CS2 fresh player telemetry"
+  ],
+  "freshPcGameplay": "not-tested",
+  "version": "1.5.2-beta.1",
+  "artwork": "All six embedded images loaded and rendered with absent development folder and corrupt override",
+  "independentSecurityAudit": false,
+  "packagedLauncherTests": "48/48 passed"
 }

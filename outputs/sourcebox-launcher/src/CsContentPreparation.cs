@@ -27,7 +27,7 @@ public static class CsContentPreparation {
   var roomRequest=Path.Combine(stage,"room-request.json");
   File.WriteAllText(roomRequest,JsonSerializer.Serialize(new{csRoot=cs.Root,hl2Root,outputRoot=room,nodePath=settings.NodePath}));
   log("Building the CS2 Shared Room with the installed Workshop Tools…");
-  await SharedAssetPreparation.Run(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System),"WindowsPowerShell/v1.0/powershell.exe"),new[]{"-NoProfile","-ExecutionPolicy","Bypass","-File",scripts[3],"-Request",roomRequest},Path.Combine(stage,"room.log"),ct);
+  await SharedAssetPreparation.Run(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System),"WindowsPowerShell/v1.0/powershell.exe"),new[]{"-NoProfile","-ExecutionPolicy","Bypass","-File",scripts[3],"-Request",roomRequest},Path.Combine(stage,"room.log"),ct,log);
   var jobs=Players.ToList();
   using var references=JsonDocument.Parse(File.ReadAllText(Path.Combine(settings.ProjectRoot,"sheets/asset-references.json")));
   using var scene=JsonDocument.Parse(File.ReadAllText(Path.Combine(settings.ProjectRoot,"sheets/cs2-scene-assets.json")));

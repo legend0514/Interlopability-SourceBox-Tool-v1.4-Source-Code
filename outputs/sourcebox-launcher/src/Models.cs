@@ -101,14 +101,22 @@ public static class Discovery {
   }return result;
  }
 }
-public record LiveGame(string State,string World,DateTime Seen,string Weapon);
+public record LiveGame(string State,string World,DateTime Seen,string Weapon,DateTime? PlayerSeen=null);
 public static class Telemetry {
  public static Dictionary<string,LiveGame> Read(string file,DateTime now){
   var result=new Dictionary<string,LiveGame>();if(!File.Exists(file))return result;
   try{using var fs=new FileStream(file,FileMode.Open,FileAccess.Read,FileShare.ReadWrite|FileShare.Delete);bool partial=fs.Length>2*1024*1024;fs.Seek(Math.Max(0,fs.Length-2*1024*1024),SeekOrigin.Begin);using var r=new StreamReader(fs);if(partial)r.ReadLine();string? line;
-   while((line=r.ReadLine())!=null)try{using var d=JsonDocument.Parse(line);var e=d.RootElement;if(!e.TryGetProperty("game",out var id)||!e.TryGetProperty("time",out var t)||!DateTime.TryParse(t.GetString(),null,System.Globalization.DateTimeStyles.AdjustToUniversal,out var at))continue;var g=id.GetString()??"";if(!Discovery.Defs.Any(x=>x.Id==g))continue;var type=e.GetProperty("type").GetString();if(type=="disconnected")result[g]=new("Disconnected","",at,"");else if(type is "state" or "heartbeat")result[g]=new(type=="state"?"Connected":"Connected / awaiting player",e.TryGetProperty("world",out var w)?w.GetString()??"":"",at,e.TryGetProperty("weapon",out var we)?we.GetString()??"":"");}catch(Exception ex) when(ex is JsonException or InvalidOperationException or KeyNotFoundException or FormatException){}
+   while((line=r.ReadLine())!=null)try{using var d=JsonDocument.Parse(line);var e=d.RootElement;if(!e.TryGetProperty("game",out var id)||!e.TryGetProperty("time",out var t)||!DateTime.TryParse(t.GetString(),null,System.Globalization.DateTimeStyles.AdjustToUniversal,out var at))continue;var g=id.GetString()??"";if(!Discovery.Defs.Any(x=>x.Id==g))continue;var type=e.GetProperty("type").GetString();if(type=="disconnected")result[g]=new("Disconnected","",at,"");else if(type=="state")result[g]=new("Connected",e.TryGetProperty("world",out var w)?w.GetString()??"":"",at,e.TryGetProperty("weapon",out var we)?we.GetString()??"":"",at);
+    else if(type=="heartbeat"){
+     var prior=result.GetValueOrDefault(g);
+     result[g]=new("Connected / awaiting player",prior?.World??"",at,prior?.Weapon??"",prior?.PlayerSeen);
+    }}catch(Exception ex) when(ex is JsonException or InvalidOperationException or KeyNotFoundException or FormatException){}
   }catch(IOException){}
-  foreach(var g in result.Keys.ToArray())if(now-result[g].Seen>TimeSpan.FromSeconds(5)||result[g].Seen>now.AddSeconds(3))result[g]=result[g] with {State="Stale / disconnected"};
+  foreach(var g in result.Keys.ToArray()){
+   var live=result[g];
+   if(now-live.Seen>TimeSpan.FromSeconds(5)||live.Seen>now.AddSeconds(3))result[g]=live with {State="Stale / disconnected"};
+   else if(live.State!="Disconnected")result[g]=live with {State=live.PlayerSeen is DateTime player&&now-player<=TimeSpan.FromSeconds(5)&&player<=now.AddSeconds(3)?"Connected":"Connected / awaiting player"};
+  }
   return result;
  }
  public static string Redact(string text,Settings settings){

@@ -4,19 +4,35 @@ namespace SourceBox;
 static class Tests {
  public static async Task<int> LaunchCheck(string[] ids){
   var runtime=new Runtime(Settings.Load());
+  runtime.TestClassMenu=Environment.GetEnvironmentVariable("SOURCEBOX_TEST_CLASS_MENU")=="1";
   var observedLog=Environment.GetEnvironmentVariable("SOURCEBOX_TEST_CORE_LOG");
   if(!string.IsNullOrEmpty(observedLog)&&Path.IsPathFullyQualified(observedLog)&&File.Exists(observedLog))runtime.CoreLog=observedLog;
   using var timeout=new CancellationTokenSource(TimeSpan.FromMinutes(20));
   try{
    await runtime.Start(ids,timeout.Token);
-   await Task.Delay(TimeSpan.FromSeconds(30),timeout.Token);runtime.Refresh();
-   var connected=ids.All(id=>runtime.Live.TryGetValue(id,out var state)&&state.State.StartsWith("Connected"));
+   // A bridge can connect before its game finishes loading models/lightmaps.
+   // Require actual player telemetry, with a bounded native-loading window.
+   for(int i=0;i<180;i++){
+    runtime.Refresh();
+    if(ids.All(id=>runtime.Live.TryGetValue(id,out var s)&&s.State=="Connected"&&s.PlayerSeen.HasValue))break;
+    await Task.Delay(1000,timeout.Token);
+   }
+   var observe=10;
+   if(int.TryParse(Environment.GetEnvironmentVariable("SOURCEBOX_TEST_OBSERVE_SECONDS"),out var seconds))observe=Math.Clamp(seconds,10,300);
+   await Task.Delay(TimeSpan.FromSeconds(observe),timeout.Token);runtime.Refresh();
+   var connected=ids.All(id=>runtime.Live.TryGetValue(id,out var state)&&state.State=="Connected"&&state.PlayerSeen.HasValue);
    File.WriteAllText(Path.Combine(Settings.Home,"launch-check.json"),JsonSerializer.Serialize(new{
-    status=connected?"passed":"failed",kind="Native launch and adapter connectivity only; not gameplay acceptance",
-    requested=ids,live=runtime.Live,processes=runtime.Owned.ToArray(),session=runtime.SessionDir
+    status=connected?"passed":"failed",kind="Native launch and fresh player telemetry only; not rendered gameplay acceptance",
+    completedUtc=DateTime.UtcNow,requested=ids,live=runtime.Live,processes=runtime.Owned.ToArray(),session=runtime.SessionDir
    },new JsonSerializerOptions{WriteIndented=true}));
    return connected?0:1;
-  }catch(Exception e){File.WriteAllText(Path.Combine(Settings.Home,"launch-check-error.txt"),e.ToString());return 1;}
+  }catch(Exception e){
+   File.WriteAllText(Path.Combine(Settings.Home,"launch-check-error.txt"),e.ToString());
+   File.WriteAllText(Path.Combine(Settings.Home,"launch-check.json"),JsonSerializer.Serialize(new{
+    status="failed",completedUtc=DateTime.UtcNow,requested=ids,session=runtime.SessionDir,error=e.ToString()
+   },new JsonSerializerOptions{WriteIndented=true}));
+   return 1;
+  }
   finally{await runtime.Stop();}
  }
  public static async Task<int> LiveCheck(){
@@ -33,8 +49,32 @@ static class Tests {
   }catch(Exception e){File.WriteAllText(Path.Combine(Settings.Home,"live-check-error.txt"),e.ToString());return 1;}
  }
  public static int Run(){var lines=new List<string>();var temp=Path.Combine(Path.GetTempPath(),"sourcebox-tests-"+Guid.NewGuid());Directory.CreateDirectory(temp);int failures=0;
-  void Test(string name,Action action){try{action();lines.Add("PASS "+name);}catch(Exception e){failures++;lines.Add("FAIL "+name+": "+e.Message);}}
+  void Test(string name,Action action){var context=SynchronizationContext.Current;try{action();lines.Add("PASS "+name);}catch(Exception e){failures++;lines.Add("FAIL "+name+": "+e.Message);}finally{SynchronizationContext.SetSynchronizationContext(context);}}
   void Check(bool value){if(!value)throw new Exception("Assertion failed");}
+   Test("six bundled weapon images load without development files and replace corrupt overrides",()=>{
+    using var canvas=new SceneCanvas();canvas.LoadWeaponArt(Path.Combine(temp,"absent-art"));Check(canvas.LoadedWeaponArtCount==6);
+    var art=Path.Combine(temp,"broken-art");Directory.CreateDirectory(art);File.WriteAllText(Path.Combine(art,"hl2.png"),"invalid image");canvas.LoadWeaponArt(art);Check(canvas.LoadedWeaponArtCount==6);
+    foreach(var id in Discovery.Defs.Select(g=>g.Id)){using var image=SceneCanvas.BundledWeaponArt(id);Check(image!=null&&image.Width>100&&image.Height>100);}
+    canvas.Characters=true;canvas.ReducedMotion=true;canvas.Size=new Size(1200,720);using var preview=new Bitmap(1200,720);canvas.DrawToBitmap(preview,new Rectangle(0,0,1200,720));preview.Save(Path.Combine(Settings.Home,"bundled-artwork-preview.png"));
+   });
+   Test("one failed game setup preserves other completed adapters",()=>{
+    var source=Path.Combine(temp,"adapter.bin");File.WriteAllText(source,"fixture adapter");
+    var root=Path.Combine(temp,"partial-setup");Directory.CreateDirectory(root);
+    var failed=new SetupPlan("cs2",new(),new(){"fixture room compilation failed"});
+    var good=new SetupPlan("hl2",new(){new(source,root,"adapter.dll",CrossplaySetup.Hash(source))},new());
+    var failures=Runtime.ApplySetupPlans(new[]{"cs2","hl2"},id=>id=="cs2"?failed:good,Path.Combine(temp,"partial-backups"),CancellationToken.None,_=>false,_=>{});
+    Check(failures.Count==1&&failures[0].Contains("room compilation failed"));
+    Check(File.ReadAllText(Path.Combine(root,"adapter.dll"))=="fixture adapter");
+   });
+   Test("content tools retain stderr warnings and report actual nonzero exit",()=>{
+    var node=Settings.Load().NodePath;var log=Path.Combine(temp,"content-warning.log");
+    SharedAssetPreparation.Run(node,new[]{"-e","console.error('warning: fixture');console.log('complete')"},log,CancellationToken.None).GetAwaiter().GetResult();
+    Check(File.ReadAllText(log).Contains("warning: fixture")&&File.ReadAllText(log).Contains("complete"));
+    bool failed=false;
+    try{SharedAssetPreparation.Run(node,new[]{"-e","console.error('ERROR: missing fixture input');process.exit(7)"},log,CancellationToken.None).GetAwaiter().GetResult();}
+    catch(IOException e){failed=e.Message.Contains("exit 7")&&e.Message.Contains("missing fixture input");}
+    Check(failed&&File.ReadAllText(log).Contains("missing fixture input"));
+   });
    Test("room lighting upgrades require an exact old-room hash and preserve custom maps",()=>{
     var root=Path.Combine(temp,"room-upgrades");Directory.CreateDirectory(Path.Combine(root,"sheets"));var file=Path.Combine(root,"room.bsp");File.WriteAllText(file,"old room");
     var settings=new Settings{ProjectRoot=root};
@@ -43,16 +83,93 @@ static class Tests {
     File.WriteAllText(file,"new room");Check(!CrossplaySetup.KnownOldRoom(settings,"hl2",file));
     File.WriteAllText(Path.Combine(root,"sheets/room-upgrades.json"),"invalid");Check(!CrossplaySetup.KnownOldRoom(settings,"hl2",file));
    });
-   Test("native configuration restoration preserves original settings and every session version",()=>{
-    var root=Path.Combine(temp,"native-config");Directory.CreateDirectory(Path.Combine(root,"cfg"));Directory.CreateDirectory(Path.Combine(root,"save"));
-    File.WriteAllText(Path.Combine(root,"cfg/config.cfg"),"original");File.WriteAllText(Path.Combine(root,"save/game.sav"),"save remains intact");
+   Test("session config guard permits reads, blocks overwrites and releases without stale restoration",()=>{
+    var root=Path.Combine(temp,"guard-config");Directory.CreateDirectory(Path.Combine(root,"cfg"));
+    var file=Path.Combine(root,"cfg/config.cfg");File.WriteAllText(file,"custom player bindings");
     var snapshot=ConfigProtection.Capture(root,Array.Empty<string>(),temp);
-    File.WriteAllText(Path.Combine(root,"cfg/config.cfg"),"session");File.WriteAllText(Path.Combine(root,"cfg/video.txt"),"created by game");
+    using(ConfigProtection.Protect(snapshot))using(ConfigProtection.Protect(snapshot)){
+     Check(File.ReadAllText(file)=="custom player bindings");bool blocked=false;
+     try{File.WriteAllText(file,"game defaults");}catch(IOException){blocked=true;}Check(blocked);
+     blocked=false;try{File.Delete(file);}catch(IOException){blocked=true;}Check(blocked);
+    }
+    File.WriteAllText(file,"new user change");ConfigProtection.Restore(snapshot);Check(File.ReadAllText(file)=="new user change");
+   });
+   Test("native and Steam config backups remain distinct and leave saves writable",()=>{
+    var native=Path.Combine(temp,"native-cloud");var cloud=Path.Combine(temp,"cloud-profile");
+    Directory.CreateDirectory(Path.Combine(native,"cfg"));Directory.CreateDirectory(Path.Combine(cloud,"cfg"));Directory.CreateDirectory(Path.Combine(cloud,"save"));
+    var a=Path.Combine(native,"cfg/config.cfg");var b=Path.Combine(cloud,"cfg/config.cfg");var c=Path.Combine(cloud,"cfg/cs2_user_keys_0_slot0.vcfg");
+    File.WriteAllText(a,"native binds");File.WriteAllText(b,"cloud binds");File.WriteAllText(c,"cs2 binds");
+    var snapshot=ConfigProtection.Capture(native,Array.Empty<string>(),temp,new[]{cloud});
+    using(ConfigProtection.Protect(snapshot)){
+     foreach(var file in new[]{a,b,c}){bool denied=false;try{File.WriteAllText(file,"overwrite");}catch(IOException){denied=true;}Check(denied);}
+     File.WriteAllText(Path.Combine(cloud,"save/test.sav"),"native save");
+    }
     ConfigProtection.Restore(snapshot);
-    Check(File.ReadAllText(Path.Combine(root,"cfg/config.cfg"))=="original");
-    Check(File.ReadAllText(Path.Combine(snapshot.Directory,"session-config.cfg"))=="session");
-    Check(File.ReadAllText(Path.Combine(snapshot.Directory,"created-video.txt"))=="created by game");
+    Check(snapshot.Files.Where(e=>e.Backup!=null).Select(e=>e.Backup).Distinct().Count()==3);
+    Check(File.ReadAllText(a)=="native binds"&&File.ReadAllText(b)=="cloud binds"&&File.ReadAllText(c)=="cs2 binds");
+   });
+   Test("configuration review never replaces newer user settings or moves new files",()=>{
+    var root=Path.Combine(temp,"native-config");Directory.CreateDirectory(Path.Combine(root,"cfg"));Directory.CreateDirectory(Path.Combine(root,"save"));
+    var config=Path.Combine(root,"cfg/config.cfg");var user=Path.Combine(root,"cfg/userconfig.cfg");
+    File.WriteAllText(config,"bind f flashlight");File.WriteAllText(user,"sensitivity 2.4");File.WriteAllText(Path.Combine(root,"save/game.sav"),"save remains intact");
+    var snapshot=ConfigProtection.Capture(root,Array.Empty<string>(),temp);
+    File.WriteAllText(config,"bind f user_new_choice");File.Delete(user);File.WriteAllText(Path.Combine(root,"cfg/video.txt"),"created by game");
+    ConfigProtection.Restore(snapshot);
+    Check(File.ReadAllText(config)=="bind f user_new_choice");Check(!File.Exists(user));
+    Check(File.ReadAllText(Path.Combine(root,"cfg/video.txt"))=="created by game");
+    Check(File.ReadAllText(snapshot.Files.Single(e=>e.Target==Path.GetFullPath(config)).Backup!)=="bind f flashlight");
+    Check(File.ReadAllText(snapshot.Files.Single(e=>e.Target==Path.GetFullPath(user)).Backup!)=="sensitivity 2.4");
+    File.WriteAllText(config,"newer Steam Cloud settings");ConfigProtection.Restore(snapshot);
+    Check(File.ReadAllText(config)=="newer Steam Cloud settings");
+    Check(Directory.GetDirectories(snapshot.Directory,"review-*").Length==2);
     Check(File.ReadAllText(Path.Combine(root,"save/game.sav"))=="save remains intact");
+    Check(!File.Exists(Path.Combine(snapshot.Directory,"restored.txt")));
+   });
+   Test("heartbeats preserve fresh player state but cannot conceal stalled player updates",()=>{
+    var file=Path.Combine(temp,"heartbeat-state.jsonl");var now=DateTime.UtcNow;
+    string Entry(string type,DateTime time)=>JsonSerializer.Serialize(new{type,time,game="hl2",world="sourcebox_room_001",weapon="weapon_crowbar"});
+    File.WriteAllLines(file,new[]{Entry("state",now.AddSeconds(-2)),Entry("heartbeat",now)});
+    var fresh=Telemetry.Read(file,now);Check(fresh["hl2"].State=="Connected");Check(fresh["hl2"].World=="sourcebox_room_001");
+    File.WriteAllLines(file,new[]{Entry("state",now.AddSeconds(-8)),Entry("heartbeat",now)});
+    Check(Telemetry.Read(file,now)["hl2"].State=="Connected / awaiting player");
+    File.AppendAllText(file,Entry("disconnected",now)+Environment.NewLine+Entry("heartbeat",now)+Environment.NewLine);
+    Check(Telemetry.Read(file,now)["hl2"].State=="Connected / awaiting player");
+    Check(Telemetry.Read(file,now)["hl2"].PlayerSeen==null);
+    var summary=Runtime.HealthSummary(Array.Empty<GameInstall>(),fresh);Check(summary.Contains("hl2=Connected"));Check(summary.Contains("1 sending player updates"));
+   });
+   Test("CS2 temporary gameinfo restore refuses to overwrite newer content",()=>{
+    var root=Path.Combine(temp,"cs2-restore");Directory.CreateDirectory(root);var file=Path.Combine(root,"gameinfo.gi");
+    var original=System.Text.Encoding.UTF8.GetBytes("original");var patched=System.Text.Encoding.UTF8.GetBytes("patched");
+    File.WriteAllBytes(file,patched);CsBootstrap.RestoreIfOwned(file,original,patched,root);Check(File.ReadAllText(file)=="original");
+    File.WriteAllText(file,"newer update");bool rejected=false;
+    try{CsBootstrap.RestoreIfOwned(file,original,patched,root);}catch(IOException){rejected=true;}
+    Check(rejected&&File.ReadAllText(file)=="newer update");Check(Directory.GetFiles(root,"cs2-gameinfo-newer-*.backup").Length==1);
+   });
+   Test("CS2 recovers an interrupted temporary patch without overwriting external edits",()=>{
+    var root=Path.Combine(temp,"cs2-recovery");Directory.CreateDirectory(root);var file=Path.Combine(root,"gameinfo.gi");
+    var original=System.Text.Encoding.UTF8.GetBytes("original");var patched=System.Text.Encoding.UTF8.GetBytes("patched");
+    File.WriteAllBytes(file,original);CsBootstrap.SaveRecovery(file,original,patched);
+    CsBootstrap.Recover(file,root);Check(File.ReadAllText(file)=="original"&&!File.Exists(CsBootstrap.RecoveryPath(file)));
+    CsBootstrap.SaveRecovery(file,original,patched);File.WriteAllBytes(file,patched);
+    CsBootstrap.Recover(file,root);Check(File.ReadAllText(file)=="original"&&!File.Exists(CsBootstrap.RecoveryPath(file)));
+    CsBootstrap.Recover(file,root);
+    CsBootstrap.SaveRecovery(file,original,patched);File.WriteAllText(file,"Steam update");bool refused=false;
+    try{CsBootstrap.Recover(file,root);}catch(IOException){refused=true;}
+    Check(refused&&File.ReadAllText(file)=="Steam update"&&File.Exists(CsBootstrap.RecoveryPath(file)));
+   });
+   Test("unselected Portal 2 cannot trigger Blender peer conversion for TF2-only setup",()=>{
+    Check(!SharedAssetPreparation.NeedsPortalPeers(new[]{"tf2"}));
+    Check(!SharedAssetPreparation.NeedsPortalPeers(new[]{"hl2","hl1mp","gmod"}));
+    Check(SharedAssetPreparation.NeedsPortalPeers(new[]{"portal2"}));
+    Check(SharedAssetPreparation.NeedsPortalPeers(new[]{"cs2","tf2"}));
+   });
+   Test("Portal Gun archive discovery accepts only GMA content for the requested addon",()=>{
+    var root=Path.Combine(temp,"addon-discovery");var workshop=Path.Combine(root,"steamapps/workshop/content/4000/1800764828");var addons=Path.Combine(root,"garrysmod/addons");Directory.CreateDirectory(workshop);Directory.CreateDirectory(addons);
+    File.WriteAllText(Path.Combine(workshop,"download.bin"),"GMADfixture");File.WriteAllText(Path.Combine(workshop,"broken.gma"),"incomplete");
+    File.WriteAllText(Path.Combine(addons,"1800764828_legacy.bin"),"GMADfixture");File.WriteAllText(Path.Combine(addons,"unrelated.gma"),"GMADfixture");
+    var found=SharedAssetPreparation.PortalArchives(root,new[]{root});Check(found.Length==2);Check(found.All(f=>!f.EndsWith("broken.gma")&&!f.EndsWith("unrelated.gma")));
+    Check(!SharedAssetPreparation.PortalAddonReady(root));Directory.CreateDirectory(Path.Combine(root,"lua/entities/prop_portal"));Directory.CreateDirectory(Path.Combine(root,"models/weapons"));
+    File.WriteAllText(Path.Combine(root,"lua/entities/prop_portal/init.lua"),"fixture");Check(!SharedAssetPreparation.PortalAddonReady(root));File.WriteAllText(Path.Combine(root,"models/weapons/c_portalgun.mdl"),"fixture");Check(SharedAssetPreparation.PortalAddonReady(root));
    });
    Test("unselected installed CS2 cannot require Workshop Tools during other-game preparation",()=>{
     var saved=File.ReadAllText(Settings.FilePath);
@@ -62,6 +179,18 @@ static class Tests {
      var cs=new GameInstall(Discovery.Defs.Single(d=>d.Id=="cs2"),Path.Combine(temp,"no-workshop-tools"),"missing.exe",true,false,"");
      SharedAssetPreparation.Prepare(settings,new[]{cs},CancellationToken.None,_=>{},new[]{"hl2"}).GetAwaiter().GetResult();
      Check(!settings.DependencyRoots.ContainsKey("metamod")&&!settings.LocalAssetCaches.ContainsKey("cs2"));
+    }finally{File.WriteAllText(Settings.FilePath,saved);}
+   });
+   Test("broken optional TF2 assets do not block a selected HL2 setup",()=>{
+    var saved=File.ReadAllText(Settings.FilePath);
+    try{
+     var root=Path.Combine(temp,"optional-provider");Directory.CreateDirectory(Path.Combine(root,"fallback"));File.WriteAllText(Path.Combine(root,"fallback/aliases.json"),"{}");
+     var settings=new Settings{ProjectRoot=root,SelectedGames=new[]{"hl2"}};var messages=new List<string>();
+     var tf=new GameInstall(Discovery.Defs.Single(d=>d.Id=="tf2"),Path.Combine(temp,"broken-tf2-provider"),"missing.exe",true,false,"");
+     SharedAssetPreparation.Prepare(settings,new[]{tf},CancellationToken.None,messages.Add,new[]{"hl2"}).GetAwaiter().GetResult();
+     Check(messages.Any(m=>m.Contains("Optional TF2"))&&settings.LocalAssetCaches.ContainsKey("fallback"));
+     bool rejected=false;try{SharedAssetPreparation.Prepare(settings,new[]{tf},CancellationToken.None,_=>{},new[]{"tf2"}).GetAwaiter().GetResult();}catch(IOException){rejected=true;}
+     Check(rejected);
     }finally{File.WriteAllText(Settings.FilePath,saved);}
    });
    Test("native executable selection validates game content and keeps SDK executable separate",()=>{
@@ -180,6 +309,15 @@ static class Tests {
    Check(File.ReadAllText(Path.Combine(root,"existing.dll"))=="new"&&File.ReadAllText(Path.Combine(root,"added.dll"))=="new");
    File.WriteAllText(source,"tampered");failed=false;try{CrossplaySetup.Apply(new[]{plan},Path.Combine(temp,"tampered-receipt"),CancellationToken.None,_=>false,_=>{});}catch(IOException){failed=true;}Check(failed);
   });
+  Test("setup rollback preserves edits made after its own write",()=>{
+   var root=Path.Combine(temp,"setup-newer-edit");Directory.CreateDirectory(root);
+   var source=Path.Combine(temp,"setup-newer-payload.txt");File.WriteAllText(source,"sourcebox");
+   var target=Path.Combine(root,"settings.txt");File.WriteAllText(target,"original");
+   var copy=new SetupCopy(source,root,"settings.txt",CrossplaySetup.Hash(source));bool failed=false;
+   try{CrossplaySetup.Apply(new[]{new SetupPlan("tf2",new(){copy},new())},Path.Combine(temp,"setup-newer-backup"),CancellationToken.None,_=>false,_=>{File.WriteAllText(target,"new user edit");throw new IOException("interrupted");});}catch(AggregateException){failed=true;}
+   Check(failed&&File.ReadAllText(target)=="new user edit");
+   Check(File.ReadAllText(Path.Combine(temp,"setup-newer-backup/0.original"))=="original");
+  });
   Test("two SDK adapters share identical files but reject conflicting writes",()=>{
    var root=Path.Combine(temp,"shared-sdk");var source=Path.Combine(temp,"shared-api.dll");File.WriteAllText(source,"same");
    var copy=new SetupCopy(source,root,"bin/api.dll",CrossplaySetup.Hash(source));
@@ -193,6 +331,21 @@ static class Tests {
    var text=SdkConfiguration.GameInfo("tf2",Path.Combine(temp,"Games TF"),Path.Combine(temp,"SDK"),new[]{Path.Combine(temp,"Local assets")});
    Check(text.Contains("SteamAppId 243750")&&text.Contains("DependsOnAppID 440")&&text.Contains("Local assets")&&!text.Contains("Program Files (x86)/Steam/steamapps/common"));
    bool rejected=false;try{SdkConfiguration.GameInfo("tf2","bad\"path","sdk",Array.Empty<string>());}catch(InvalidDataException){rejected=true;}Check(rejected);
+  });
+  Test("native mounts preserve quoted custom save/config paths and ignore misleading comments",()=>{
+   var original="GameInfo { FileSystem { \"SearchPaths\" { \"Game+Game_Write\" \"D:/Custom profile\" \"Default_Write_Path\" \"D:/Custom saves\" Game \"|gameinfo_path|.\" } } }";
+   var mounts=new[]{Path.Combine(temp,"cache")};var updated=SdkConfiguration.WithAssetMounts(original,mounts);
+   Check(!updated.Contains("   Game_Write"));Check(!updated.Contains("   Default_Write_Path"));
+   Check(updated.Contains("D:/Custom saves")&&updated.Contains("D:/Custom profile"));
+   Check(SdkConfiguration.WithAssetMounts(updated,mounts)==updated);
+   var conditional="SearchPaths { \"Game+Game_Write+Default_Write_Path\" \"D:/Custom profile\" [$WIN32] Game platform [!$X360] }";
+   var withCondition=SdkConfiguration.WithAssetMounts(conditional,mounts);
+   Check(withCondition.Contains("[$WIN32]")&&withCondition.Contains("[!$X360]"));
+   Check(!withCondition.Contains("   Default_Write_Path")&&!withCondition.Contains("   Game_Write"));
+   Check(SdkConfiguration.WithAssetMounts(withCondition,mounts)==withCondition);
+   var comment="GameInfo { FileSystem { SearchPaths { // default_write_path Game_Write fake\n Game \"|gameinfo_path|.\" } } }";
+   Check(SdkConfiguration.WithAssetMounts(comment,mounts).Contains("   Default_Write_Path"));
+   bool rejected=false;try{SdkConfiguration.WithAssetMounts("SearchPaths { Game",mounts);}catch(InvalidDataException){rejected=true;}Check(rejected);
   });
   Test("native asset mounts are idempotent and preserve game paths",()=>{
    var original="GameInfo { FileSystem { SearchPaths { Game |gameinfo_path|. } } }";
@@ -291,7 +444,23 @@ static class Tests {
   Test("ownership rejects PID reuse / mismatch; stops exact owned fixture",()=>{
    var exe=Environment.ProcessPath!;var pi=new ProcessStartInfo(exe){UseShellExecute=false,CreateNoWindow=true};if(Path.GetFileNameWithoutExtension(exe).Equals("dotnet",StringComparison.OrdinalIgnoreCase))pi.ArgumentList.Add(typeof(Tests).Assembly.Location);pi.ArgumentList.Add("--fixture");using var p=Process.Start(pi)!;
    Check(Runtime.ProcessAt(exe.Replace('\\','/')));Check(ProcessTree.Parent(p.Id)==Environment.ProcessId);
+   var observed=Runtime.ObserveStartedProcess(exe,p.StartTime.ToUniversalTime().Ticks);
+   Check(observed!=null&&observed.Pid==p.Id&&observed.Matches());
+   Check(Runtime.ObserveStartedProcess(exe,DateTime.UtcNow.AddMinutes(1).Ticks)==null);
    try{var r=new OwnedProcess{Component="fixture",Pid=p.Id,Exe=exe,StartTicks=p.StartTime.ToUniversalTime().Ticks+1};Check(!r.Matches());r.Stop();Check(!p.HasExited);r.StartTicks--;Check(r.Matches());r.Stop();Check(p.HasExited);}finally{if(!p.HasExited)p.Kill();}
+  });
+  Test("detached settings guard survives parent lease release and unlocks when its exact fixture exits",()=>{
+   var root=Path.Combine(temp,"detached-guard");Directory.CreateDirectory(Path.Combine(root,"cfg"));var file=Path.Combine(root,"cfg/config.cfg");File.WriteAllText(file,"keep binds");
+   var snapshot=ConfigProtection.Capture(root,Array.Empty<string>(),temp);
+   var exe=Environment.ProcessPath!;var pi=new ProcessStartInfo(exe){UseShellExecute=false,CreateNoWindow=true};if(Path.GetFileNameWithoutExtension(exe).Equals("dotnet",StringComparison.OrdinalIgnoreCase))pi.ArgumentList.Add(typeof(Tests).Assembly.Location);pi.ArgumentList.Add("--fixture");using var p=Process.Start(pi)!;
+   var owned=new OwnedProcess{Component="guard-fixture",Pid=p.Id,Exe=exe,StartTicks=p.StartTime.ToUniversalTime().Ticks};
+   try{
+    using(ConfigProtection.Protect(snapshot))ConfigProtection.Watch(snapshot,owned).GetAwaiter().GetResult();
+    bool blocked=false;try{File.WriteAllText(file,"bad defaults");}catch(IOException){blocked=true;}Check(blocked);
+    owned.Stop();bool released=false;
+    for(int i=0;i<80&&!released;i++){try{using var stream=new FileStream(file,FileMode.Open,FileAccess.ReadWrite,FileShare.Read);released=true;}catch(IOException){Thread.Sleep(100);}}
+    Check(released&&File.ReadAllText(file)=="keep binds");File.WriteAllText(file,"new normal-session binds");
+   }finally{owned.Stop();}
   });
   Test("real coordinator starts via detached host on an isolated ephemeral port",()=>{
    var config=Settings.Load();if(!File.Exists(config.NodePath)||!File.Exists(Path.Combine(config.ProjectRoot,"core.mjs")))throw new Exception("Existing coordinator prerequisite unavailable");

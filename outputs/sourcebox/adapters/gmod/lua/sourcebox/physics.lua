@@ -68,6 +68,8 @@ function P:Tick()
  end
 end
 hook.Add("KeyPress","SourceboxCubeUse",function(p,key)
+ local weapon=p:GetActiveWeapon()
+ if IsValid(weapon) and weapon:GetClass()=="weapon_sourcebox_portalgun" then return end
  if key==IN_USE and P.owner~="gmod" and IsValid(P.entity) and p:GetPos():Distance(P.entity:GetPos())<=160 then P:Command({type="cube_take"}) end
 end)
 local function requestPickup(p,e)

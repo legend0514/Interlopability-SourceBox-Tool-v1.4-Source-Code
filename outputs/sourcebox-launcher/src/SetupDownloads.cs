@@ -38,6 +38,7 @@ public static class SetupDownloads {
   using var deadline=CancellationTokenSource.CreateLinkedTokenSource(ct);
   deadline.CancelAfter(TimeSpan.FromMinutes(20));ct=deadline.Token;
   using var client=new HttpClient{Timeout=TimeSpan.FromMinutes(20)};
+  client.DefaultRequestHeaders.UserAgent.ParseAdd("SourceBox/1.5.2");
   using(var response=await client.GetAsync(url,HttpCompletionOption.ResponseHeadersRead,ct)){
    if(!response.IsSuccessStatusCode)throw new HttpRequestException("Download of "+name+" from "+new Uri(url).Host+" failed: HTTP "+(int)response.StatusCode+" ("+response.ReasonPhrase+"). This is a dependency download, not Steam authentication.",null,response.StatusCode);
    await using var stream=await response.Content.ReadAsStreamAsync(ct);await using var output=File.Create(archive);

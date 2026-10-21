@@ -58,7 +58,7 @@ timer.Create("SourceboxPropPortalProbe",1,0,function()
  local ply=player.GetHumans()[1]
  if not IsValid(ply) or not ply:Alive() or not ply:HasWeapon("weapon_sourcebox_portalgun") then return end
  file.Delete("sourcebox/prop_portal_probe.txt")
- for _,old in ipairs(ents.FindByName("sourcebox_acceptance_crate")) do old:Remove() end
+ for _,old in ipairs(ents.FindByName("acceptance_sourcebox_crate")) do old:Remove() end
  local original,angles,move=ply:GetPos(),ply:EyeAngles(),ply:GetMoveType() ply:SetMoveType(MOVETYPE_NOCLIP)
  ply:SelectWeapon("weapon_sourcebox_portalgun")
  ply:SetPos(Vector(0,-128,1)) ply:SetEyeAngles(Angle(90,0,0))
@@ -69,7 +69,7 @@ timer.Create("SourceboxPropPortalProbe",1,0,function()
   if IsValid(ply) then ply:SetPos(original) ply:SetEyeAngles(angles) ply:SetMoveType(move) end
   local ent=ents.Create("prop_physics")
   if not IsValid(ent) then return end
-  ent:SetName("sourcebox_acceptance_crate") ent:SetModel("models/props_junk/wood_crate001a.mdl") ent:SetPos(Vector(0,-128,170)) ent:Spawn()
+  ent:SetName("acceptance_sourcebox_crate") ent:SetModel("models/props_junk/wood_crate001a.mdl") ent:SetPos(Vector(0,-128,170)) ent:Spawn()
   local ph=ent:GetPhysicsObject() if IsValid(ph) then ph:Wake() end
   local samples={} local crossed=false local count=0
   timer.Create("SourceboxPropPortalSamples",0.05,100,function()
@@ -150,3 +150,18 @@ end)
 
 
 
+
+-- Verify that opening the native menu does not pause crossplay simulation.
+timer.Create("SourceboxMenuPauseProbe",1,0,function()
+ if not file.Exists("sourcebox/menu_pause_probe.txt","DATA") then return end
+ local p=player.GetHumans()[1] if not IsValid(p) then return end
+ file.Delete("sourcebox/menu_pause_probe.txt")
+ local started=SysTime() local ticks=0
+ hook.Add("Think","SourceboxMenuPauseTicks",function() ticks=ticks+1 end)
+ p:ConCommand("gameui_activate")
+ timer.Simple(5,function()
+  hook.Remove("Think","SourceboxMenuPauseTicks")
+  file.Write("sourcebox/menu_pause_result.json",util.TableToJSON({elapsed=SysTime()-started,ticks=ticks,passed=ticks>20}))
+  if IsValid(p) then p:ConCommand("gameui_hide") end
+ end)
+end)

@@ -11,7 +11,9 @@ public sealed class SceneCanvas:Control {
  static readonly Color cyan=Color.FromArgb(85,218,236),white=Color.FromArgb(226,228,230),muted=Color.FromArgb(129,135,140);
  float scale=1,offsetX,offsetY;
  public SceneCanvas(){SetStyle(ControlStyles.AllPaintingInWmPaint|ControlStyles.UserPaint|ControlStyles.OptimizedDoubleBuffer|ControlStyles.Selectable,true);TabStop=true;BackColor=Color.Black;AccessibleName="SourceBox";AccessibleDescription="Use arrow keys to choose an item and Enter to activate it. Escape returns home.";animation.Tick+=(_,_)=>{if(Visible&&!ReducedMotion&&FindForm()?.WindowState!=FormWindowState.Minimized)Invalidate();};animation.Start();}
- public void LoadWeaponArt(string directory){if(artDirectory==directory&&weaponArt.Count==6)return;if(artDirectory!=directory){foreach(var image in weaponArt.Values)image.Dispose();weaponArt.Clear();}artDirectory=directory;foreach(var id in Discovery.Defs.Select(g=>g.Id)){if(weaponArt.ContainsKey(id))continue;var file=Path.Combine(directory,id+".png");if(File.Exists(file))try{using var image=Image.FromFile(file);weaponArt[id]=new Bitmap(image);}catch{}}}
+ internal static Bitmap? BundledWeaponArt(string id){using var stream=typeof(SceneCanvas).Assembly.GetManifestResourceStream("SourceBox.Assets.WeaponArt."+id+".png");if(stream==null)return null;using var image=Image.FromStream(stream);return new Bitmap(image);}
+ internal int LoadedWeaponArtCount=>weaponArt.Count;
+ public void LoadWeaponArt(string directory){if(artDirectory==directory&&weaponArt.Count==6)return;if(artDirectory!=directory){foreach(var image in weaponArt.Values)image.Dispose();weaponArt.Clear();}artDirectory=directory;foreach(var id in Discovery.Defs.Select(g=>g.Id)){if(weaponArt.ContainsKey(id))continue;var file=Path.Combine(directory,id+".png");if(File.Exists(file))try{using var image=Image.FromFile(file);weaponArt[id]=new Bitmap(image);}catch{}if(!weaponArt.ContainsKey(id)&&BundledWeaponArt(id) is Bitmap bundled)weaponArt[id]=bundled;}}
  protected override void Dispose(bool disposing){if(disposing){animation.Dispose();foreach(var image in weaponArt.Values)image.Dispose();}base.Dispose(disposing);}
  void TextAt(Graphics g,string text,float x,float y,float size,Color color,bool bold=false){using var f=new Font("Segoe UI",size,bold?FontStyle.Bold:FontStyle.Regular,GraphicsUnit.Pixel);using var b=new SolidBrush(color);g.DrawString(Localization.T(text),f,b,x,y);}
  void CenterText(Graphics g,string text,float x,float y,float size,Color color){using var f=new Font("Segoe UI",size,FontStyle.Regular,GraphicsUnit.Pixel);using var b=new SolidBrush(color);text=Localization.T(text);var sz=g.MeasureString(text,f);g.DrawString(text,f,b,x-sz.Width/2,y);}
@@ -26,7 +28,7 @@ public sealed class SceneCanvas:Control {
   Nav(g,"HOME","home",782,42);Nav(g,"CHARACTERS","characters",855,42);Nav(g,"CONTROL CENTER","controls",982,42);
   double t=ReducedMotion?0:clock.Elapsed.TotalSeconds;
   if(Characters)DrawCharacters(g,t);else DrawHome(g,t);
-  TextAt(g,LiveSummary,46,680,11,muted);TextAt(g,"1.5.1-beta.1",996,680,10,muted);
+  TextAt(g,LiveSummary,46,680,11,muted);TextAt(g,"1.5.2-beta.1",996,680,10,muted);
   if(Focused&&!string.IsNullOrEmpty(focus)&&regions.TryGetValue(focus,out var box)){using var p=new Pen(Color.FromArgb(150,cyan),1){DashStyle=DashStyle.Dot};g.DrawRectangle(p,box.X,box.Y,box.Width,box.Height);}
  }
  void Nav(Graphics g,string label,string id,float x,float y){regions[id]=new(x-5,y-6,Math.Max(label.Length,Localization.T(label).Length)*7+13,30);TextAt(g,label,x,y,11,hover==id?cyan:muted);}

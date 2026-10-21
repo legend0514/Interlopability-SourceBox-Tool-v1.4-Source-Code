@@ -23,7 +23,7 @@ public partial class SourceboxCS2 {
  private void ClearPortals(){worldReadySent=false;nextWorldReadyProbe=0;propPortalPairs.Clear();cubePortalPrevious=null;ClearPortalPreviews();foreach(var e in portalMarkers)if(e.IsValid)e.Remove();portalMarkers.Clear();portalParts.Clear();portalApplied.Clear();portalOrder.Clear();portalRevision=portalPending=-1;portalSession="";portalsEnabled=false;}
  private static TraceOptions PortalTraceOptions()=>new(){InteractsWith=Contents.Solid|Contents.Window|Contents.PlayerClip|Contents.Player|Contents.Npc|Contents.PhysicsProp|Contents.WorldGeometry|Contents.StaticLevel};
  private bool PortalMessage(JsonElement m,string? type){
-  if(type=="welcome"){ClearPortals();portalSession=m.GetProperty("session").GetString()!;portalsEnabled=m.TryGetProperty("portalsEnabled",out var enabled)&&enabled.GetBoolean();return true;}
+  if(type=="welcome"){ClearPortals();cubeEnabled=m.TryGetProperty("cubeEnabled",out var cubeFlag)&&cubeFlag.GetBoolean();portalSession=m.GetProperty("session").GetString()!;portalsEnabled=m.TryGetProperty("portalsEnabled",out var enabled)&&enabled.GetBoolean();return true;}
   if(type==null||!type.StartsWith("portal_"))return false;
   if(type=="portal_notice"){foreach(var c in Utilities.GetPlayers().Where(c=>!c.IsBot))c.PrintToChat("Portal Gun: "+m.GetProperty("reason").GetString());return true;}
   if(m.GetProperty("session").GetString()!=portalSession)return true;

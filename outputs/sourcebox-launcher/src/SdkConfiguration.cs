@@ -30,12 +30,25 @@ public static class SdkConfiguration {
   text=Regex.Replace(text,@"\s*// sourcebox-managed-assets-begin[\s\S]*?// sourcebox-managed-assets-end","");
   var mounts=string.Join("\n",caches.Distinct(StringComparer.OrdinalIgnoreCase).Select(p=>"   Game "+Q(p)));
   if(mounts.Length==0)return text;
-  var anchor=Regex.Match(text,@"SearchPaths\s*\{",RegexOptions.IgnoreCase);
-  if(!anchor.Success)throw new InvalidDataException("Native content mount format changed; gameinfo was not edited.");
-  // Read-only asset providers must never become the default save/config target.
+  // Parse KeyValues tokens so quoted keys and comments cannot hide an existing
+  // custom write path. Only SearchPaths keys control this decision.
+  var tokens=Regex.Matches(text,@"//[^\r\n]*|""(?:\\.|[^""\\])*""|[{}]|[^\s{}""]+")
+   .Cast<Match>().Where(m=>!m.Value.StartsWith("//")).ToArray();
+  var start=Array.FindIndex(tokens,m=>m.Value.Trim('"').Equals("SearchPaths",StringComparison.OrdinalIgnoreCase));
+  if(start<0||start+1>=tokens.Length||tokens[start+1].Value!="{")throw new InvalidDataException("Native content mount format changed; gameinfo was not edited.");
+  var keys=new HashSet<string>(StringComparer.OrdinalIgnoreCase);int end=start+2;
+  while(end<tokens.Length&&tokens[end].Value!="}"){
+   if(end+1>=tokens.Length||tokens[end].Value=="{"||tokens[end+1].Value is "{" or "}")throw new InvalidDataException("Malformed native search paths; gameinfo was not edited.");
+   keys.Add(tokens[end].Value.Trim('"'));end+=2;
+   // Valve may append a platform condition to a search-path pair. Preserve it
+   // verbatim rather than interpreting it as the next path key.
+   if(end<tokens.Length&&Regex.IsMatch(tokens[end].Value,@"^\[!?\$[A-Za-z0-9_]+\]$"))end++;
+  }
+  if(end>=tokens.Length)throw new InvalidDataException("Unclosed native search paths; gameinfo was not edited.");
   var writes="";
-  if(!Regex.IsMatch(text,@"(?im)^\s*[^\r\n]*\bgame_write\b",RegexOptions.IgnoreCase))writes+="   Game_Write \"|gameinfo_path|.\"\n";
-  if(!Regex.IsMatch(text,@"(?im)^\s*default_write_path\b",RegexOptions.IgnoreCase))writes+="   Default_Write_Path \"|gameinfo_path|.\"\n";
+  if(!keys.Any(k=>k.Split('+').Contains("game_write",StringComparer.OrdinalIgnoreCase)))writes+="   Game_Write \"|gameinfo_path|.\"\n";
+  if(!keys.Any(k=>k.Split('+').Contains("default_write_path",StringComparer.OrdinalIgnoreCase)))writes+="   Default_Write_Path \"|gameinfo_path|.\"\n";
+  var anchor=tokens[start+1];
   return text.Insert(anchor.Index+anchor.Length,"\n// sourcebox-managed-assets-begin\n"+writes+mounts+"\n// sourcebox-managed-assets-end");
  }
  public static string Generated(string content){

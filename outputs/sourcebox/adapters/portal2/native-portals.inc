@@ -1,5 +1,6 @@
 // Use Portal 2's installed native portal renderer and traversal system.
 // The core remains the only placement authority; the adapter owns native movement.
+std::map<std::string,std::string> nativePortalPlacements;
 void PortalMessage(const Json&m){
  const auto type=m.value("type",std::string());
  if(type!="portal_snapshot"){LegacyPortalMessage(m);return;}
@@ -20,10 +21,18 @@ void PortalMessage(const Json&m){
    snprintf(origin,sizeof(origin),"%.4f %.4f %.4f",double(end["position"][0]),double(end["position"][1]),double(end["position"][2]));
    snprintf(angles,sizeof(angles),"%.4f %.4f 0",-asin(double(end["normal"][2]))*180/3.141592653589793,atan2(double(end["normal"][1]),double(end["normal"][0]))*180/3.141592653589793);
    if(created){tools->SetKeyValue(entity,"origin",origin);tools->SetKeyValue(entity,"angles",angles);tools->DispatchSpawn(entity);}
-   snprintf(location,sizeof(location),"\"%s %s\"",origin,angles);Input(name,"NewLocation",location);Input(name,"Resize","\"32 64\"");Input(name,"SetActivatedState","1");keep.push_back(name);Log(("native portal ready: "+name+" origin="+origin+" angles="+angles).c_str());
+   snprintf(location,sizeof(location),"\"%s %s\"",origin,angles);
+   // A snapshot includes other players' unchanged portals too. Replaying their
+   // activation restarts effects and audio whenever anyone places a portal.
+   if(created||nativePortalPlacements[name]!=location){
+    Input(name,"NewLocation",location);Input(name,"Resize","\"32 64\"");Input(name,"SetActivatedState","1");
+    nativePortalPlacements[name]=location;
+    Log(("native portal ready: "+name+" origin="+origin+" angles="+angles).c_str());
+   }
+   keep.push_back(name);
   }
  }
- for(const auto&name:portalMarkers)if(std::find(keep.begin(),keep.end(),name)==keep.end())PortalDelete(name);
+ for(const auto&name:portalMarkers)if(std::find(keep.begin(),keep.end(),name)==keep.end()){PortalDelete(name);nativePortalPlacements.erase(name);}
  portalMarkers.swap(keep);portalRevision=revision;portalParts.clear();Log("native canonical portal snapshot applied");
 }
 

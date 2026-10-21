@@ -1,4 +1,4 @@
-param([Parameter(Mandatory=$true)][string]$DotNet,[Parameter(Mandatory=$true)][string]$Python,[ValidatePattern('^[a-zA-Z0-9.-]+$')][string]$CandidateName='sourcebox-beta-v1.5.1',[switch]$ReleaseApproved)
+param([Parameter(Mandatory=$true)][string]$DotNet,[Parameter(Mandatory=$true)][string]$Python,[ValidatePattern('^[a-zA-Z0-9.-]+$')][string]$CandidateName='sourcebox-beta-v1.5.2',[switch]$ReleaseApproved)
 $ErrorActionPreference='Stop'
 $root=$PSScriptRoot
 $runtimeJson=& $Python "$root/build-beta-runtime.py"
@@ -38,7 +38,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0Install SourceBox.
 if errorlevel 1 pause
 '@ | Set-Content "$stage/Install SourceBox.cmd" -Encoding ascii
 @'
-SOURCEBOX BETA v1.5.1 - SHARED ROOM
+SOURCEBOX BETA v1.5.2 - SHARED ROOM
 Windows x64. Experimental beta. See release-readiness.json for publication status.
 
 Extract the whole ZIP and run Install SourceBox.cmd.
@@ -48,16 +48,12 @@ Open SourceBox from the desktop and select installed games under Characters.
 Games tile across the monitor containing SourceBox. Ctrl+Alt+Space releases
 the mouse to the launcher. Ctrl+Alt+Right switches to the next game.
 
-Changes in 1.5.1: launcher language selection (English, Spanish, French,
-German and Portuguese), automatic system-language detection and saved choice.
-Restored HLDM:S and Portal 2 after experimental corpse spawning caused client
-disconnections. Ragdolls are disabled in this public beta while testing continues.
-Native lethal-hit/respawn checks passed locally for those two games.
-Diagnostic logs and untranslated technical messages remain in English.
-
-Previous Shared Room lighting and TF2 loadout fixes remain included.
-Expanded-map lighting repairs are local development content and are not
-included in this portable download.
+Changes in 1.5.2: bundled launcher weapon artwork, independent per-game setup,
+better compiler diagnostics, TF2 class-menu replay guards, GMod background
+simulation and process recovery, Share Cube removal and portal snapshot fixes.
+Native TF2 menu tests and CS2 room compilation passed locally. This does not
+confirm every external crash or remaining portal visual/audio report is fixed.
+Ragdolls remain disabled in this public beta.
 
 Included: launcher, synchronization service, six adapter implementations,
 modified HL2/TF2 SDK binaries and original Shared Room geometry.
@@ -90,7 +86,7 @@ unverified. Source SDK Base tools are required for CS2 conversion without HL2.
 Source SDK license and third-party notices are in runtime/licenses.
 SDK-derived distribution must be free of charge. SourceBox is unsigned.
 '@ | Set-Content "$stage/READ ME FIRST.txt" -Encoding utf8
-@{publishable=[bool]$ReleaseApproved;publicationApproved=[bool]$ReleaseApproved;version='1.5.1-beta.1';status=$(if($ReleaseApproved){'public-beta'}else{'candidate'});scope='shared-room';freshPcGameplay='not-tested';gameAssetPreparation='partial';supportedGames=@('hl2','tf2','hl1mp','gmod','portal2','cs2');missingCharacterFallback='original-static-figures';reducedInstallGameplay='not-tested'}|ConvertTo-Json|Set-Content "$stage/release-readiness.json" -Encoding utf8
+@{publishable=[bool]$ReleaseApproved;publicationApproved=[bool]$ReleaseApproved;version='1.5.2-beta.1';status=$(if($ReleaseApproved){'public-beta'}else{'candidate'});scope='shared-room';freshPcGameplay='not-tested';gameAssetPreparation='partial';supportedGames=@('hl2','tf2','hl1mp','gmod','portal2','cs2');missingCharacterFallback='original-static-figures';reducedInstallGameplay='not-tested'}|ConvertTo-Json|Set-Content "$stage/release-readiness.json" -Encoding utf8
 $entries=@(Get-ChildItem -LiteralPath $stage -Recurse -File | Sort-Object FullName | ForEach-Object {@{Path=[IO.Path]::GetRelativePath($stage,$_.FullName);Sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash}})
 ConvertTo-Json -InputObject $entries -Depth 3 | Set-Content "$stage/package-manifest.json" -Encoding utf8NoBOM
 $zip=Join-Path $root ("release-candidates/"+$CandidateName+".zip")

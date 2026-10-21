@@ -54,7 +54,7 @@ public sealed class MainForm:Form {
   var limits=new Label{Text="Closing SourceBox leaves your games running.\nNetwork ports: 27841, 27842 and 27015–27020.",AutoSize=true,MaximumSize=new(700,0),Margin=new(3,14,3,14)};table.Controls.Add(limits,1,index++);
   var setButtons=new FlowLayoutPanel{AutoSize=true};table.Controls.Add(setButtons,1,index++);Add(setButtons,"Save settings",async()=>{SaveSettings();await RefreshAsync();});Add(setButtons,"Reset defaults",async()=>{if(File.Exists(Settings.FilePath))File.Copy(Settings.FilePath,Settings.FilePath+".before-reset",true);runtime.Settings=Settings.Defaults();runtime.Settings.Save();Localization.Set(runtime.Settings.Language);language.SelectedValue=runtime.Settings.Language;ApplyLanguage();foreach(var p in settingsFields)p.Value.Text=GetSetting(p.Key);fps.Value=60;preferred.SelectedValue=runtime.Settings.PreferredGame;scan.Checked=true;verbose.Checked=false;reduced.Checked=false;await RefreshAsync();});
   Add(setButtons,"Export app ZIP",async()=>{
-   var output=Path.Combine(Settings.Home,"exports","SourceBox-1.5.1-beta.1-"+DateTime.Now.ToString("yyyyMMdd-HHmmssfff")+".zip");
+   var output=Path.Combine(Settings.Home,"exports","SourceBox-1.5.2-beta.1-"+DateTime.Now.ToString("yyyyMMdd-HHmmssfff")+".zip");
    await Run(async ct=>{runtime.Log("Packaging SourceBox for sharing…");await Task.Run(()=>DesktopInstall.ExportZip(AppContext.BaseDirectory,output),ct);runtime.Log("Shareable app ZIP saved: "+output);});
    if(File.Exists(output))OpenFolder(Path.GetDirectoryName(output)!);
   });
@@ -99,7 +99,7 @@ public sealed class MainForm:Form {
  void Render(){
   bool old=refreshing;refreshing=true;try{
    scene.Selected.Clear();scene.Selected.UnionWith(selected);scene.Installed=runtime.Games.Where(g=>g.Installed).Select(g=>g.Def.Id).ToHashSet();scene.Available=runtime.Games.Where(g=>g.Ready).Select(g=>g.Def.Id).ToHashSet();scene.Connection=runtime.Live.ToDictionary(x=>x.Key,x=>x.Value.State);scene.Busy=busy;scene.ReducedMotion=runtime.Settings.ReducedMotion;scene.LoadWeaponArt(runtime.Settings.WeaponArtFolder);scene.LiveSummary=runtime.State+"  ·  "+Localization.Format("{0} connected",runtime.Live.Values.Count(x=>x.State.StartsWith("Connected")));scene.Invalidate();
-   status.Text="1.5.1-beta.1  ·  "+runtime.State+"  ·  "+Localization.T("Server")+": "+runtime.CoreStatus;
+   status.Text="1.5.2-beta.1  ·  "+runtime.State+"  ·  "+Localization.T("Server")+": "+runtime.CoreStatus;
    RenderDestinations();
    int connected=runtime.Live.Values.Count(x=>x.State.StartsWith("Connected"));hero.Text=connected>0?Localization.Format("{0} clients connected",connected):"SourceBox";
    engines.Text="Source 1  ·  "+Localization.Format("{0} games ready",runtime.Games.Count(g=>g.Def.Engine=="Source 1"&&g.Ready))+"     |     Source 2  ·  Counter-Strike 2\n"+runtime.CoreStatus;

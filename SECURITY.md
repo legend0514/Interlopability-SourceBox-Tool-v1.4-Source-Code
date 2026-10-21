@@ -26,7 +26,8 @@ or independent security audit is claimed.
   are fixed.
 - Settings, setup caches, process receipts and logs are written under the
   SourceBox local application-data directory. ConfigProtection.cs backs up
-  selected native cfg files and attempts restoration after exit. It does not
+  selected native cfg files and protects existing files during the session. Cleanup
+  preserves newer settings instead of restoring stale backups. It does not
   cover every Steam Cloud/userdata setting or recover from every interruption.
 - Support export is user-triggered. It redacts common paths/identifiers but
   users should still inspect an export before sharing it.

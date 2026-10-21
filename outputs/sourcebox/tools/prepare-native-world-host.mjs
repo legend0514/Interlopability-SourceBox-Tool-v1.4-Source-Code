@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 const project=fileURLToPath(new URL('../',import.meta.url));
 const workspace=path.resolve(project,'../..');
@@ -9,6 +10,13 @@ const hosts=JSON.parse(fs.readFileSync(path.join(project,'sheets/native-world-ho
 const host=hosts[game];
 if(!host?.enabled){console.log(`${game}: baseline room retained`);process.exit(0);}
 if(!fs.existsSync(host.map))throw Error('Missing compiled destination host');
+// The compiled host includes TF2 scenery omitted by runtime visibility filters. Prepare dependencies
+// from the owner's installed files, never from a distributable asset bundle.
+const tfRoot=path.join(path.dirname(path.dirname(gameDir)),'Team Fortress 2');
+if(fs.existsSync(path.join(tfRoot,'tf/tf2_misc_dir.vpk'))){
+ execFileSync(process.execPath,[path.join(project,'tools/prepare-native-tf2-scenery.cjs'),tfRoot,host.map,path.join(workspace,'work/runtime-assets/worlds-source1')],{stdio:'inherit'});
+}
+
 const infoPath=path.join(gameDir,'gameinfo.txt');
 let info=fs.readFileSync(infoPath,'utf8');
 const roots=['work/runtime-assets/worlds-source1','work/worlds/assets','work/worlds/scenery/source'].map(p=>path.join(workspace,p));

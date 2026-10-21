@@ -34,13 +34,10 @@ local function apply()
    previewCalls=previewCalls+1 previewSeconds=previewSeconds+SysTime()-started
   end
  end
- RunConsoleCommand("portal_rendertexture_scale",tostring(math.Clamp(settings.portalTextureScale or 0.5,0.25,1)))
- if settings.dynamicPortalLights==false then
-  RunConsoleCommand("portal_dynamic_light","0")
-  RunConsoleCommand("portal_dynamic_projecttexture","0")
- end
+ -- These addon convars are archived. Leave resolution and lighting under the
+ -- player's control: changing them here also changes normal GMod sessions.
  -- Keep destination images, player rendering, and all portal pairs enabled.
- print("[Sourcebox] Portal preview resolution scale "..tostring(settings.portalTextureScale or 0.5))
+ print("[Sourcebox] Portal preview resolution scale "..GetConVar("portal_rendertexture_scale"):GetString())
  return true
 end
 timer.Create("SourceboxPortalPerformanceSetup",1,30,function()

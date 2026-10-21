@@ -143,6 +143,11 @@ for game, mod in (('hl2', 'mod_hl2'), ('tf2', 'mod_tf')):
     for name in ('client.dll', 'server.dll'):
         copy(workspace / 'work/sourcebox-sdk/game' / mod / 'bin/x64' / name,
              sdk / mod / 'bin/x64' / name)
+# Stock public SDK UI overrides must accompany its client DLL. Retail TF2's
+# interfaces alone are not the complete SDK mod resource set.
+for relative in ('resource/mod_tf_english.txt', 'resource/ui/CharInfoLoadoutSubPanel.res',
+                 'resource/ui/CharInfoPanel.res', 'resource/ui/MatchMakingDashboard.res'):
+    copy(workspace / 'work/sourcebox-sdk/game/mod_tf' / relative, sdk / 'mod_tf' / relative)
 for name in ('LICENSE', 'thirdpartylegalnotices.txt'):
     copy(workspace / 'work/sourcebox-sdk' / name, stage / 'licenses' / ('SOURCE-SDK-' + name + '.txt'))
 

@@ -1,5 +1,14 @@
 import fs from 'node:fs';
 const sdk='work/sourcebox-sdk/src/game/';
+// Replay is optional in isolated SDK sessions. Menu selection does not follow
+// the console joinclass path, so both paths need to tolerate absent interfaces.
+edit(sdk+'client/tf/vgui/tf_classmenu.cpp',s=>s
+ .replace('if ( g_pReplay->IsReplayEnabled() &&','if ( g_pReplay && g_pEngineClientReplay && g_pReplay->IsReplayEnabled() &&')
+ .replace('\tg_pClientReplayContext->OnPlayerClassChanged();','\tif ( g_pClientReplayContext ) g_pClientReplayContext->OnPlayerClassChanged();'));
+edit(sdk+'client/tf/tf_hud_freezepanel.cpp',s=>s
+ .replaceAll('if ( g_pReplay->IsRecording()','if ( g_pReplay && g_pReplay->IsRecording()')
+ .replaceAll('if ( !g_pReplay->IsRecording() )','if ( !g_pReplay || !g_pReplay->IsRecording() )')
+ .replace('\t\t\tg_pReplayScreenshotManager->CaptureScreenshot( params );','\t\t\tif ( g_pReplayScreenshotManager ) g_pReplayScreenshotManager->CaptureScreenshot( params );'));
 // Class changes validate every inventory item, including custom carriers.
 edit(sdk+'server/tf/tf_player.cpp',s=>{
  if(s.includes('// Sourcebox: reject weapons without schema data'))return s;

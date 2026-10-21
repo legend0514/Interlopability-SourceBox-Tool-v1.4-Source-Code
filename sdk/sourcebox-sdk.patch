@@ -1,3 +1,62 @@
+diff --git a/src/game/client/tf/tf_hud_freezepanel.cpp b/src/game/client/tf/tf_hud_freezepanel.cpp
+index cc4f403..74116ef 100644
+--- a/src/game/client/tf/tf_hud_freezepanel.cpp
++++ b/src/game/client/tf/tf_hud_freezepanel.cpp
+@@ -259,20 +259,20 @@ void CTFFreezePanel::FireGameEvent( IGameEvent * event )
+ 		// If Replay is enabled on the server, show the replay download reminder.  If GetPendingReplay()
+ 		// returns NULL, we know we've already saved the replay.
+ 		CReplay *pCurLifeReplay = ( g_pReplayManager ) ? g_pReplayManager->GetReplayForCurrentLife() : NULL;
+-		if ( g_pReplay->IsRecording() && ( pCurLifeReplay && !pCurLifeReplay->m_bRequestedByUser && !pCurLifeReplay->m_bSaved ) )
++		if ( g_pReplay && g_pReplay->IsRecording() && ( pCurLifeReplay && !pCurLifeReplay->m_bRequestedByUser && !pCurLifeReplay->m_bSaved ) )
+ 		{
+ 			ShowSaveReplayPanelIn( 1.25 );
+ 		}
+ 
+ 		// Save the freezeframe for the replay browser
+-		if ( g_pReplay->IsRecording() )
++		if ( g_pReplay && g_pReplay->IsRecording() )
+ 		{
+ 			// Capture the freezecam in half a second
+ 			CaptureScreenshotParams_t params;
+ 			V_memset( &params, 0, sizeof( params ) );
+ 			params.m_flDelay = 0.0f;
+ 			params.m_bIgnoreMinTimeBetweenScreenshots = true;
+-			g_pReplayScreenshotManager->CaptureScreenshot( params );
++			if ( g_pReplayScreenshotManager ) g_pReplayScreenshotManager->CaptureScreenshot( params );
+ 		}
+ #endif
+ 
+@@ -1035,7 +1035,7 @@ void CTFFreezePanel::ShowSaveReplayPanel( bool bShow )
+ 		return;
+ 
+ 	// Make sure we're recording
+-	if ( !g_pReplay->IsRecording() )
++	if ( !g_pReplay || !g_pReplay->IsRecording() )
+ 		return;
+ 	
+ 	// Start animation if necessary
+diff --git a/src/game/client/tf/vgui/tf_classmenu.cpp b/src/game/client/tf/vgui/tf_classmenu.cpp
+index 3fd7eb0..0808721 100644
+--- a/src/game/client/tf/vgui/tf_classmenu.cpp
++++ b/src/game/client/tf/vgui/tf_classmenu.cpp
+@@ -1226,7 +1226,7 @@ void CTFClassMenu::Go()
+ #if defined( REPLAY_ENABLED )
+ 	// Display replay recording message if appropriate
+ 	int &nDisplayedConnectedRecording = CPlayerSpawnCache::Instance().m_Data.m_nDisplayedConnectedRecording;
+-	if ( g_pReplay->IsReplayEnabled() &&
++	if ( g_pReplay && g_pEngineClientReplay && g_pReplay->IsReplayEnabled() &&
+ 		 !g_pEngineClientReplay->IsPlayingReplayDemo() &&	// FIXME: We shouldn't need this here but for some reason the engine thinks a replay is recording during demo playback, even though replay_recording has a FCVAR_DONTRECORD flag
+ 		 !nDisplayedConnectedRecording &&
+ 		 replay_replaywelcomedlgcount.GetInt() <= MAX_TIMES_TO_SHOW_REPLAY_WELCOME_DLG )
+@@ -1257,7 +1257,7 @@ void CTFClassMenu::Go()
+ 
+ 	// This will complete any pending replay, commit if necessary, and clear - this way when the player respawns
+ 	// we will start with a fresh replay for the new life.
+-	g_pClientReplayContext->OnPlayerClassChanged();
++	if ( g_pClientReplayContext ) g_pClientReplayContext->OnPlayerClassChanged();
+ 
+ 	// Change class
+ 	BaseClass::OnCommand( CFmtStr( "joinclass %s", g_aRawPlayerClassNames[ iClass ] ).Access() );
 diff --git a/src/game/client/tf/vgui/tf_spectatorgui.cpp b/src/game/client/tf/vgui/tf_spectatorgui.cpp
 index 68a7a41..1fb60f8 100644
 --- a/src/game/client/tf/vgui/tf_spectatorgui.cpp

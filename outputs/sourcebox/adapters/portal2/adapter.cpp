@@ -83,9 +83,9 @@ public:
  void Unload()override{ClearPortalMarkers();Clear();bridge.Stop();}void Pause()override{active=false;bridge.Publish(nullptr);}void UnPause()override{active=true;}
  const char*GetPluginDescription()override{return "SOURCEBOX Portal 2 native portal replication candidate";}
  void LevelInit(const char*map)override{portalWorldsReady=false;portalWorldSelection=0;portalWorldCheck=0;peers.clear();player=nullptr;crossplayHealthCeiling=100;active=!strcmp(map,"sourcebox_room_001");bridge.Publish(nullptr);Log(map);}
- void ServerActivate(edict_t*,int,int)override{bridge.Command({{"type","portal_sync"}});bridge.Command({{"type","cube_sync"}});}
+ void ServerActivate(edict_t*,int,int)override{bridge.Command({{"type","portal_sync"}});if(SOURCEBOX_CUBE_ENABLED)bridge.Command({{"type","cube_sync"}});}
  void GameFrame(bool simulating)override{
-  if(!active||!simulating||!player)return;auto now=GetTickCount64();if(now-last<50)return;last=now;static unsigned long long retry=0;if(now-retry>1000){retry=now;if(portalEnabled&&portalRevision<0)bridge.Command({{"type","portal_sync"}});if(!cubeSnapshot.is_object())bridge.Command({{"type","cube_sync"}});}
+  if(!active||!simulating||!player)return;auto now=GetTickCount64();if(now-last<50)return;last=now;static unsigned long long retry=0;if(now-retry>1000){retry=now;if(portalEnabled&&portalRevision<0)bridge.Command({{"type","portal_sync"}});if(!cubeSnapshot.is_object())if(SOURCEBOX_CUBE_ENABLED)bridge.Command({{"type","cube_sync"}});}
   auto*info=players->GetPlayerInfo(player);if(info&&Local()&&info->GetHealth()>crossplayHealthCeiling)tools->SetKeyValue(Local(),"health",std::to_string(crossplayHealthCeiling).c_str());if(!info||!info->IsPlayer()||info->IsDead()){bridge.Publish(nullptr);return;}
   if(portalEnabled){char cls[128],a[16],b[16];for(auto*e=tools->FirstEntity();e;e=tools->NextEntity(e)){
    if(!tools->GetKeyValue(e,"classname",cls,sizeof(cls)))continue;

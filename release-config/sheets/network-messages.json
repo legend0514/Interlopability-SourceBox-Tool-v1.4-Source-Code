@@ -86,5 +86,11 @@
     "state": "lastValidatedPlayerState",
     "lifetimeMs": "boundedPositiveInteger",
     "maxBodies": "boundedPositiveInteger"
+  },
+  "welcome": {
+    "cubeEnabled": "boolean",
+    "session": "sessionId",
+    "protocol": "integer",
+    "portalsEnabled": "boolean"
   }
 }

@@ -133,7 +133,7 @@ public static class CrossplaySetup {
    targets.TryAdd(target,f);
   }
   var copies=targets.Values.ToArray();
-  Directory.CreateDirectory(backupRoot);var changed=new List<(string Target,string? Backup)>();
+  Directory.CreateDirectory(backupRoot);var changed=new List<(string Target,string? Backup)>();var writtenHashes=new Dictionary<string,string>(StringComparer.OrdinalIgnoreCase);
   File.WriteAllText(Path.Combine(backupRoot,"plan.json"),JsonSerializer.Serialize(all,new JsonSerializerOptions{WriteIndented=true}));
   try{
    foreach(var f in copies){
@@ -142,12 +142,17 @@ public static class CrossplaySetup {
     string? backup=null;if(File.Exists(target)){backup=Path.Combine(backupRoot,changed.Count+".original");File.Copy(target,backup,false);}
     changed.Add((target,backup));File.WriteAllText(Path.Combine(backupRoot,"changes.json"),JsonSerializer.Serialize(changed.Select(x=>new{x.Target,x.Backup})));
     var stage=target+".sourcebox-"+Guid.NewGuid().ToString("N");
-    try{File.Copy(f.Source,stage);if(Hash(stage)!=f.Sha256)throw new IOException("Copied adapter failed verification.");File.Move(stage,target,true);}finally{if(File.Exists(stage))File.Delete(stage);}
+    try{File.Copy(f.Source,stage);if(Hash(stage)!=f.Sha256)throw new IOException("Copied adapter failed verification.");File.Move(stage,target,true);writtenHashes[target]=f.Sha256;}finally{if(File.Exists(stage))File.Delete(stage);}
     log("Installed "+f.Relative);
    }
    File.WriteAllText(Path.Combine(backupRoot,"complete.txt"),DateTime.UtcNow.ToString("O"));
   }catch(Exception original){
-   var errors=new List<Exception>{original};foreach(var item in changed.AsEnumerable().Reverse())try{if(item.Backup!=null)File.Copy(item.Backup,item.Target,true);else if(File.Exists(item.Target))File.Delete(item.Target);}catch(Exception restore){errors.Add(restore);}
+   var errors=new List<Exception>{original};foreach(var item in changed.AsEnumerable().Reverse())try{
+    if(!writtenHashes.TryGetValue(item.Target,out var expected))continue;
+    var definition=targets[item.Target];Destination(definition.Root,definition.Relative);
+    if(!File.Exists(item.Target)||Hash(item.Target)!=expected)throw new IOException("Rollback preserved a newer or removed file: "+item.Target);
+    if(item.Backup!=null)File.Copy(item.Backup,item.Target,true);else File.Delete(item.Target);
+   }catch(Exception restore){errors.Add(restore);}
    if(errors.Count>1)throw new AggregateException("Setup failed and some files could not be restored. Backups: "+backupRoot,errors);throw;
   }
  }

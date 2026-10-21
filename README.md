@@ -1,14 +1,14 @@
-# SourceBox beta v1.5.1 source
+# SourceBox beta v1.5.2 source
 
-[Download v1.5.1](https://github.com/legend0514/Interlopability-SourceBox-Tool/releases/tag/v1.5.1) · [patch notes](CHANGELOG.md)
+[Download v1.5.2](https://github.com/legend0514/Interlopability-SourceBox-Tool/releases/tag/v1.5.2) · [patch notes](CHANGELOG.md)
 
 Source snapshot for reviewing the six-game crossplay prototype. This is source
 code, not the playable download. Nothing runs merely by extracting this ZIP.
 
 - `outputs/sourcebox-launcher/src`: desktop launcher and its automated tests.
-- `outputs/sourcebox`: coordinator, adapters, portable v1.5.1 sheets and tools.
+- `outputs/sourcebox`: coordinator, adapters, portable v1.5.2 sheets and tools.
 - `development/sheets`: sanitized expanded-world development configuration.
-- `release-config/sheets`: the actual portable v1.5.1 configuration. Expanded
+- `release-config/sheets`: the actual portable v1.5.2 configuration. Expanded
   worlds are disabled in that download.
 - `sdk`: pinned Valve SDK patch and added source files.
 - `BUILD.md`: build prerequisites and current reproducibility limits.
@@ -25,3 +25,4 @@ Source availability enables review. It does not certify that the program is
 malware-free or establish that every distributed binary was built from this
 snapshot. The full release has not passed an independent reproducible-build
 comparison or fresh-PC gameplay acceptance. See LICENSE.txt before reuse.
+

@@ -35,7 +35,7 @@ public sealed class Runtime {
   }
   Layout.Apply(Games);
   Live=Telemetry.Read(CoreLog,DateTime.UtcNow);
-  Log("Health poll: "+Live.Count+" observed clients; "+Games.Count(g=>g.Ready)+" prepared adapters.",true);
+  Log(HealthSummary(Games,Live),true);
   CoreStatus=PortListening(27841)?Live.Values.Any(x=>x.State.StartsWith("Connected"))?"Online":"Waiting for players":"Offline";
   foreach(var p in Owned.Where(p=>!p.Matches()).ToArray()){
    // Keep ownership receipts for restart eligibility, but never stop a reused PID.
@@ -43,7 +43,10 @@ public sealed class Runtime {
   }
   Changed?.Invoke();
  }
+ internal static string HealthSummary(IEnumerable<GameInstall> games,IReadOnlyDictionary<string,LiveGame> live)=>
+  "Health poll: "+games.Count(g=>g.Ready)+" prepared; "+live.Count+" observed; "+live.Count(p=>p.Value.State.StartsWith("Connected"))+" connected; "+live.Count(p=>p.Value.State=="Connected")+" sending player updates. "+string.Join("; ",live.OrderBy(p=>p.Key).Select(p=>p.Key+"="+p.Value.State+(p.Value.World.Length>0?" @ "+p.Value.World:"")))+". Player updates do not confirm remote rendering.";
  private readonly HashSet<int> reportedExits=new();
+ internal bool TestClassMenu;
  private OwnedProcess Spawn(string component,string exe,IEnumerable<string> args,string cwd,bool hidden=false,Dictionary<string,string>? env=null){
   if(hidden){
    var token=component+"-"+Guid.NewGuid().ToString("N");
@@ -60,12 +63,28 @@ public sealed class Runtime {
  public async Task PrepareCrossplay(string[] ids,CancellationToken ct){
   var games=Discovery.Scan(Settings).Where(g=>ids.Contains(g.Def.Id)).ToArray();
   if(games.Length!=ids.Distinct().Count())throw new Exception("Unknown game selection.");
-  if(games.Any(g=>!g.Ready)&&File.Exists(Settings.NodePath)){await SharedAssetPreparation.Prepare(Settings,Discovery.Scan(Settings),ct,line=>Log(line),ids);}
-  var plans=games.Select(g=>CrossplaySetup.Plan(Settings,g)).ToArray();
+  var failures=new List<string>();
+  if(games.Any(g=>!g.Ready)&&File.Exists(Settings.NodePath)){
+   try{await SharedAssetPreparation.Prepare(Settings,Discovery.Scan(Settings),ct,line=>Log(line),ids);}
+   catch(Exception e)when(e is IOException or TimeoutException or System.Net.Http.HttpRequestException){
+    ct.ThrowIfCancellationRequested();failures.Add(e.Message);Log("Content preparation stopped: "+e.Message+" Checking which games can still be set up.");
+   }
+  }
   var backup=Path.Combine(Settings.Home,"setup",DateTime.UtcNow.ToString("yyyyMMdd-HHmmssfff")+"-"+Guid.NewGuid().ToString("N"));
   bool Running(string id){var g=games.Single(g=>g.Def.Id==id);return ProcessAt(g.Exe)||(id=="gmod"&&ProcessAt(Path.Combine(g.Root,"bin/win64/gmod.exe")));}
-  CrossplaySetup.Apply(plans,backup,ct,Running,line=>Log(line));
-  Log("Adapter setup completed. Backups: "+backup);Refresh();
+  failures.AddRange(ApplySetupPlans(ids,id=>CrossplaySetup.Plan(Settings,games.Single(g=>g.Def.Id==id)),backup,ct,Running,line=>Log(line)));
+  Refresh();
+  if(failures.Count>0)throw new IOException("Some setup steps failed. Successfully prepared games were kept and can be started separately.\n\n"+string.Join("\n\n",failures.Distinct()));
+  Log("Adapter setup completed. Backups: "+backup);
+ }
+ internal static List<string> ApplySetupPlans(IEnumerable<string> ids,Func<string,SetupPlan> plan,string backup,CancellationToken ct,Func<string,bool> running,Action<string> log){
+  var failures=new List<string>();
+  foreach(var id in ids){
+   ct.ThrowIfCancellationRequested();
+   try{CrossplaySetup.Apply(new[]{plan(id)},Path.Combine(backup,id),ct,running,log);log(id+" adapter setup completed.");}
+   catch(Exception e)when(e is IOException or InvalidOperationException){failures.Add(id+": "+e.Message);log(id+" setup failed: "+e.Message);}
+  }
+  return failures;
  }
  public async Task Start(string[] ids,CancellationToken ct){
   if(!await gate.WaitAsync(0,ct))throw new Exception("Another session action is in progress.");
@@ -126,6 +145,7 @@ public sealed class Runtime {
   if(id is "hl2" or "tf2"){
    args.AddRange(new[]{"-game",Path.Combine(root,g.Def.Content),"+sv_cheats","1","+sv_allow_point_servercommand","always","+engine_no_focus_sleep","0","+plugin_load","addons/sourcebox_"+id,"+exec","sourcebox_controls.cfg"});
    if(id=="hl2")args.AddRange(new[]{"+maxplayers","2","+sv_pure","-1"});
+   if(id=="tf2"&&TestClassMenu)args.AddRange(new[]{"+sourcebox_class_probe","2"});
   }else if(id=="portal2")args.AddRange(new[]{"-game","portal2","-steam","-allowmultiple","+sv_cheats","1","+engine_no_focus_sleep","0","+r_portal_fastpath","0","+r_portal_stencil_depth","2","+plugin_load","addons/sourcebox_portal2"});
   else if(id=="hl1mp")args.AddRange(new[]{"-game","hl1mp","-tools","+sv_cheats","1","+sv_allow_point_servercommand","always","+engine_no_focus_sleep","0","+plugin_load","addons/sourcebox_hl1mp"});
   else if(id=="gmod"){
@@ -136,20 +156,38 @@ public sealed class Runtime {
     var bridge=Spawn("gmod-bridge",Settings.NodePath,new[]{"gmod-bridge.mjs",Path.Combine(root,"garrysmod/data/sourcebox")},Settings.ProjectRoot,true);
     await Wait(()=>bridge.Matches()&&PortListening(27842),"GMod bridge did not become ready.",ct,10);
    }
-   args.AddRange(new[]{"-noworkshop","+maxplayers","1","+gamemode","sandbox","+fps_max_nofocus","30"});
+   args.AddRange(new[]{"-noworkshop","+maxplayers","1","+gamemode","sandbox","+fps_max_nofocus","30","+sv_pause_sp","0"});
   }else if(id=="cs2"){
    await StartCsServer(g,ct);
    args=new(){"-insecure","-multirun","-windowed","-noborder","-w",tile.Width.ToString(),"-h",tile.Height.ToString(),"-x",tile.X.ToString(),"-y",tile.Y.ToString(),"-novid","-condebug","+fps_max",Settings.FpsLimit.ToString(),"+connect","127.0.0.1:27019"};
   }
   if(id!="cs2")args.AddRange(new[]{"+map","sourcebox_room_001","+sv_pausable","0"});
   if(id!="cs2")args.InsertRange(0,new[]{"-clientport",(g.Def.Port+200).ToString(),"+tv_port",(g.Def.Port+100).ToString()});
-  var configuration=id is "gmod" or "portal2"?ConfigProtection.Capture(Path.Combine(root,g.Def.Content),new[]{g.Exe,Path.Combine(root,"bin/win64/gmod.exe")},SessionDir):null;
-  var receipt=Spawn(id,g.Exe,args,id=="cs2"?Path.Combine(g.Root,"game"):root,false,id=="portal2"?new(){{"SteamAppId","620"}}:null);
+  var configuration=id is "gmod" or "portal2" or "hl1mp" or "cs2"?ConfigProtection.Capture(Path.Combine(root,g.Def.Content),id=="gmod"?new[]{g.Exe,Path.Combine(root,"bin/win64/gmod.exe")}:new[]{g.Exe},SessionDir,ConfigProtection.CloudRoots(Settings.SteamRoot,g.Def.App)):null;
+  using var protection=configuration==null?null:ConfigProtection.Protect(configuration);
+  var receipt=Spawn(id,g.Exe,args,id=="cs2"?Path.Combine(g.Root,"game"):root,false,id=="portal2"?new(){{"SteamAppId","620"},{"VPROJECT",Path.Combine(root,"portal2")}}:null);
+  OwnedProcess? observedChild=null;
   if(id=="gmod"&&!Path.GetFullPath(g.Exe).Equals(Path.GetFullPath(Path.Combine(root,"bin/win64/gmod.exe")),StringComparison.OrdinalIgnoreCase)){
    var childExe=Path.GetFullPath(Path.Combine(root,"bin/win64/gmod.exe"));
-   try{await Wait(()=>{foreach(var p in Process.GetProcessesByName("gmod"))using(p)try{if(p.Id!=receipt.Pid&&p.MainModule?.FileName.Equals(childExe,StringComparison.OrdinalIgnoreCase)==true&&ProcessTree.Parent(p.Id)==receipt.Pid&&p.StartTime.ToUniversalTime().Ticks>=receipt.StartTicks){Owned.Add(new(){Component="gmod",Exe=childExe,Pid=p.Id,StartTicks=p.StartTime.ToUniversalTime().Ticks});SaveReceipts();return true;}}catch{}return false;},"Could not verify ownership of GMod's child process; it will remain untouched.",ct,30);}catch(TimeoutException)when(ProcessAt(childExe)){Log("GMod is running, but its parent relationship changed. Observing it without stop permission; configuration backups remain available in session logs.");}
+   try{await Wait(()=>{foreach(var p in Process.GetProcessesByName("gmod"))using(p)try{if(p.Id!=receipt.Pid&&p.MainModule?.FileName.Equals(childExe,StringComparison.OrdinalIgnoreCase)==true&&ProcessTree.Parent(p.Id)==receipt.Pid&&p.StartTime.ToUniversalTime().Ticks>=receipt.StartTicks){Owned.Add(new(){Component="gmod",Exe=childExe,Pid=p.Id,StartTicks=p.StartTime.ToUniversalTime().Ticks});SaveReceipts();return true;}}catch{}return false;},"Could not verify ownership of GMod's child process; it will remain untouched.",ct,30);}catch(TimeoutException)when(ProcessAt(childExe)){
+    observedChild=ObserveStartedProcess(childExe,receipt.StartTicks);
+    Log("GMod is running, but its parent relationship changed. Observing it without stop permission; configuration backups remain available in session logs.");
+   }
   }
-  if(configuration!=null){var owner=Owned.Where(o=>o.Component==id&&o.Matches()).OrderByDescending(o=>o.StartTicks).FirstOrDefault();if(owner!=null){ConfigProtection.Watch(configuration,owner);Log("Native settings backed up and will be restored when "+g.Def.Title+" closes.");}}
+  if(configuration!=null){var owner=observedChild??Owned.Where(o=>o.Component==id&&o.Matches()).OrderByDescending(o=>o.StartTicks).FirstOrDefault()??receipt;
+   if(!owner.Matches())throw new IOException(g.Def.Title+" exited or could not be verified before settings protection was attached. Check its console log; no unrelated process was stopped.");
+   try{await ConfigProtection.Watch(configuration,owner);}catch{if(observedChild==null)owner.Stop();throw;}
+   Log("Existing native config files are protected for this session. Changes to those settings will not be saved by "+g.Def.Title+".");}
+ }
+ // A settings lease may follow an observed process without granting Stop ownership.
+ internal static OwnedProcess? ObserveStartedProcess(string exe,long earliest){
+  exe=Path.GetFullPath(exe);
+  foreach(var p in Process.GetProcessesByName(Path.GetFileNameWithoutExtension(exe)))using(p)try{
+   var ticks=p.StartTime.ToUniversalTime().Ticks;
+   if(ticks>=earliest&&string.Equals(p.MainModule?.FileName,exe,StringComparison.OrdinalIgnoreCase))
+    return new OwnedProcess{Component="observed",Exe=exe,Pid=p.Id,StartTicks=ticks};
+  }catch(System.ComponentModel.Win32Exception){}catch(InvalidOperationException){}
+  return null;
  }
  internal static bool ExistingBridgeReady(string file){
   try{
@@ -185,7 +223,7 @@ public sealed class Runtime {
   }finally{gate.Release();Changed?.Invoke();}
  }
  public async Task RestartFailed(string id,CancellationToken ct){if(!Owned.Any(p=>p.Component==id)||Owned.Any(p=>p.Component==id&&p.Matches()))throw new Exception("Restart applies only to a failed component this launcher started.");if(id=="core")await Start(Settings.SelectedGames,ct);else await Start(new[]{id=="cs2-server"?"cs2":id=="gmod-bridge"?"gmod":id},ct);}
- public string Diagnostics()=>Telemetry.Redact("SourceBox 1.5.1-beta.1 | "+State+" | "+CoreStatus+"\n"+string.Join("\n",Games.Select(g=>g.Def.Title+": "+(g.Ready?"prepared":"setup needed")+"; "+(Live.GetValueOrDefault(g.Def.Id)?.State??"No telemetry")))+"\n"+string.Join("\n",Lines()),Settings);
+ public string Diagnostics()=>Telemetry.Redact("SourceBox 1.5.2-beta.1 | "+State+" | "+CoreStatus+"\n"+string.Join("\n",Games.Select(g=>g.Def.Title+": "+(g.Ready?"prepared":"setup needed")+"; "+(Live.GetValueOrDefault(g.Def.Id)?.State??"No telemetry")))+"\n"+string.Join("\n",Lines()),Settings);
  public string Export(){
   var path=Path.Combine(Settings.Home,"support-"+DateTime.Now.ToString("yyyyMMdd-HHmmssfff")+".zip");
   using var zip=ZipFile.Open(path,ZipArchiveMode.Create);
