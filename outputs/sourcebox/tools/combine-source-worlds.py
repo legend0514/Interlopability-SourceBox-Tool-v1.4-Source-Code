@@ -82,12 +82,13 @@ def missing_worlds(profile):
    result.add(w['id'])
  return result
 
-def build(game,profile=None):
+def build(game,profile=None,portable=False,output_game=None,base_path=None):
  missing=missing_worlds(profile)
  registry=json.loads((ROOT/'outputs/sourcebox/sheets/worlds-expanded.json').read_text())
- detail_models=json.loads((ROOT/'work/worlds/source1-detail/models.json').read_text())
+ details=ROOT/'work/worlds/source1-detail/models.json'
+ detail_models=json.loads(details.read_text()) if details.exists() else []
  basegame='hl2' if game in ('gmod','hl1mp') else game
- host=parse((ROOT/f'outputs/sourcebox/maps/{basegame}/sourcebox_room_001.vmf').read_text());world=value(host,'world');pending=[];report=[]
+ host=parse((base_path or ROOT/f'outputs/sourcebox/maps/{basegame}/sourcebox_room_001.vmf').read_text());world=value(host,'world');pending=[];report=[]
  # Portal 2 does not ship HL2's sky_day01_01. Use its own complete HDR sky.
  if game=='portal2':setval(world,'skyname','sky_l4d_c4m1_hdr')
  for w in registry['worlds']:
@@ -116,8 +117,9 @@ def build(game,profile=None):
   report.append({'world':w['id'],'brushes':added,'sceneryAndLights':scenery,'contentMode':'topology-placeholder' if placeholder else 'installed-assets'})
  # One shared outdoor sun lights all native sky-enclosed destinations. Preserve
  # Flatgrass's installed daylight values instead of leaving outdoor maps unlit.
- daylight=parse((ROOT/'work/worlds/decompiled/gm_flatgrass.vmf').read_text())
- sun=next(copy.deepcopy(e) for k,e in daylight if k=='entity' and value(e,'classname')=='light_environment')
+ daylight_file=ROOT/'work/worlds/decompiled/gm_flatgrass.vmf'
+ daylight=parse(daylight_file.read_text()) if daylight_file.exists() else []
+ sun=next((copy.deepcopy(e) for k,e in daylight if k=='entity' and value(e,'classname')=='light_environment'),[('classname','light_environment'),('angles','45 0 0'),('_light','255 244 214 300'),('_ambient','180 200 255 100')])
  setval(sun,'origin','-512 576 8780')
  host.append(('entity',sun))
  for i,model in enumerate(detail_models):
@@ -147,7 +149,7 @@ def build(game,profile=None):
     if k in ('solid','side','entity') and value(v,'id') is None:counter+=1;v.insert(0,('id',str(counter)))
     ids(v)
  ids(host)
- out=ROOT/f'work/worlds/{"source1-fallback" if missing else "source1-host"}/{game}';out.mkdir(parents=True,exist_ok=True);(out/'sourcebox_room_001.vmf').write_text(serialize(host));(out/'report.json').write_text(json.dumps({'maps':report,'pendingGameplay':pending,'nativeTested':False},indent=2));print(game,report,'pendingGameplay',len(pending))
+ out=ROOT/f'work/worlds/{"source1-fallback" if missing else "source1-host"}/{output_game or game}';out.mkdir(parents=True,exist_ok=True);(out/'sourcebox_room_001.vmf').write_text(serialize(host));(out/'report.json').write_text(json.dumps({'maps':report,'pendingGameplay':pending,'nativeTested':False},indent=2));print(game,report,'pendingGameplay',len(pending))
  if missing:
   material=ROOT/'work/worlds/source1-host/materials/sourcebox/fallback/topology.vmt';material.parent.mkdir(parents=True,exist_ok=True)
   material.write_text('"LightmappedGeneric"\n{\n "$basetexture" "vgui/white"\n "$color" "[0.32 0.38 0.43]"\n}\n')

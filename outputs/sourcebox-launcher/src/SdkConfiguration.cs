@@ -3,6 +3,11 @@ using System.Text.RegularExpressions;
 namespace SourceBox;
 
 public static class SdkConfiguration {
+ public static IEnumerable<string> AssetMounts(Settings settings,string game)=>settings.LocalAssetCaches
+  // The TF cache contains downgraded cross-engine materials. Native TF2 must
+  // keep its own shaders and models instead of overriding them with that cache.
+  .Where(p=>p.Key!="cs2"&&!(game=="tf2"&&p.Key=="tf2")&&Directory.Exists(p.Value))
+  .OrderBy(p=>p.Key=="fallback"?1:0).Select(p=>p.Value);
  public static string FindRuntime(Settings settings){
   foreach(var library in Discovery.Libraries(settings.SteamRoot)){
    var manifest=Path.Combine(library,"steamapps/appmanifest_243750.acf");if(!File.Exists(manifest))continue;

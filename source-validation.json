@@ -1,13 +1,13 @@
 {
-  "coordinatorTests": "62/62 passed",
-  "nativeChecks": [
-    "TF2 actual menu handler: two nine-class passes",
-    "CS2 room compiled",
-    "Portal 2 and CS2 fresh player telemetry"
+  "version": "1.5.3-beta.1",
+  "packagedLauncherTests": "52/52 passed",
+  "archiveIntegrity": "passed",
+  "nativeCompilation": [
+    "GMod combined five destinations with HDR/LDR",
+    "CS2 room plus Triple Laser Chamber: 29 compiled, 0 failed"
   ],
+  "newDestinationGameplay": "not-tested",
+  "fullCs2Destinations": "not-tested",
   "freshPcGameplay": "not-tested",
-  "version": "1.5.2-beta.1",
-  "artwork": "All six embedded images loaded and rendered with absent development folder and corrupt override",
-  "independentSecurityAudit": false,
-  "packagedLauncherTests": "48/48 passed"
+  "independentSecurityAudit": false
 }

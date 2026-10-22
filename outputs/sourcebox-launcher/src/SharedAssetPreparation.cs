@@ -3,7 +3,7 @@ using System.Text.Json;
 namespace SourceBox;
 
 public static class SharedAssetPreparation {
- internal static async Task Run(string exe,IEnumerable<string> args,string logFile,CancellationToken ct,Action<string>? progress=null){
+ internal static async Task Run(string exe,IEnumerable<string> args,string logFile,CancellationToken ct,Action<string>? progress=null,int timeoutMinutes=10){
   var info=new ProcessStartInfo(exe){UseShellExecute=false,CreateNoWindow=true,RedirectStandardOutput=true,RedirectStandardError=true};foreach(var arg in args)info.ArgumentList.Add(arg);
   Directory.CreateDirectory(Path.GetDirectoryName(logFile)!);
   using var writer=new StreamWriter(logFile,false){AutoFlush=true};var sync=new object();
@@ -11,7 +11,7 @@ public static class SharedAssetPreparation {
   try{process.PriorityClass=ProcessPriorityClass.BelowNormal;}catch(System.ComponentModel.Win32Exception){}catch(InvalidOperationException){}
   async Task Drain(StreamReader reader){string? line;while((line=await reader.ReadLineAsync())!=null){lock(sync)writer.WriteLine(line);if(line.StartsWith("[SourceBox] "))progress?.Invoke(line[12..]);}}
   var output=Drain(process.StandardOutput);var error=Drain(process.StandardError);
-  try{await process.WaitForExitAsync(ct).WaitAsync(TimeSpan.FromMinutes(10),ct);}
+  try{await process.WaitForExitAsync(ct).WaitAsync(TimeSpan.FromMinutes(timeoutMinutes),ct);}
   catch{if(!process.HasExited)process.Kill(true);await process.WaitForExitAsync();await Task.WhenAll(output,error);throw;}
   await Task.WhenAll(output,error);writer.Flush();
   if(process.ExitCode!=0)throw new IOException("Content preparation failed (exit "+process.ExitCode+").\n"+FailureDetail(logFile)+"\nDetails: "+logFile);

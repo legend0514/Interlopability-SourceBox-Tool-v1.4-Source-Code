@@ -3,6 +3,7 @@ using System.Net.Http;
 namespace SourceBox;
 
 public static class SetupDownloads {
+ public static Task<string> BspSource(CancellationToken ct,Action<string> log)=>Dependency("bspsrc-1.4.8","https://github.com/ata4/bspsrc/releases/download/v1.4.8/bspsrc-windows.zip","6297F7FA567ADBAF72738B0A707FF45916EDC920C66543098408E4B9D41EC4A9",ct,log);
  public static async Task<string> Blender(CancellationToken ct,Action<string> log){
   var installed=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),"Blender Foundation/Blender 5.2/blender.exe");
   if(File.Exists(installed))return installed;

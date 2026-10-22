@@ -114,6 +114,10 @@ for file in (project / 'adapters/gmod/lua').rglob('*.lua'):
 for name in ('prepare-portable-tf-assets.cjs', 'prepare-portable-hl1-assets.cjs', 'prepare-portable-portal-assets.mjs', 'prepare-portable-p2-peers.py', 'prepare-portable-chell-input.cjs', 'prepare-portable-cs2-room.ps1', 'prepare-portable-room-materials.cjs', 'cs2-room-native.cjs', 'prepare-portable-cs2-models.cjs', 'prepare-portable-cs2-textures.py', 'prepare-portable-cs2-portal-surfaces.py', 'installed-assets.cjs'):
     copy(project / 'tools' / name, core / 'tools' / name)
 copy(project / 'maps/cs2/sourcebox_room_001.vmf', core / 'maps/cs2/sourcebox_room_001.vmf')
+for game in ('hl2','tf2','portal2'):
+    copy(project / f'maps/{game}/sourcebox_room_001.vmf', core / f'maps/{game}/sourcebox_room_001.vmf')
+for name in ('prepare-portable-worlds.py','combine-source-worlds.py','export-worlds.py','verify-world-lighting.py','cs2-worlds-portable.cjs','verify-portable-worlds.mjs'):
+    copy(project / 'tools' / name, core / 'tools' / name)
 # First-party ring geometry from tools/make-portal-ring.mjs, not a Valve model.
 for suffix in ('.mdl', '.vvd', '.dx90.vtx', '.dx80.vtx', '.sw.vtx'):
     relative = 'models/sourcebox/portal2/portal_ring' + suffix

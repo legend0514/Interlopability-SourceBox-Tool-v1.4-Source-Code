@@ -125,6 +125,30 @@ static class Tests {
     Check(File.ReadAllText(Path.Combine(root,"save/game.sav"))=="save remains intact");
     Check(!File.Exists(Path.Combine(snapshot.Directory,"restored.txt")));
    });
+   Test("disk preflight accounts for staged files and backups before installation",()=>{
+    var source=Path.Combine(temp,"space-source");File.WriteAllBytes(source,new byte[1024]);
+    var folder=Path.Combine(temp,"space-target");Directory.CreateDirectory(folder);File.WriteAllBytes(Path.Combine(folder,"adapter.dll"),new byte[2048]);
+    var required=SetupSpace.Required(new[]{new SetupCopy(source,folder,"adapter.dll",CrossplaySetup.Hash(source))},folder);
+    Check(required.Values.Sum()==3072);bool refused=false;
+    var combined=SetupSpace.Combined((source,4096L),(folder,8192L));Check(combined.Count==1&&combined.Values.Single()==12288);
+    bool scratchRefused=false;try{SetupSpace.Check(combined,"compiler scratch",_=>64L*1024*1024+10000);}catch(IOException){scratchRefused=true;}Check(scratchRefused);
+    try{SetupSpace.Check(required,"fixture",_=>1024);}catch(IOException e){refused=e.Message.Contains("Not enough free disk space")&&e.Message.Contains("retry");}
+    Check(refused);Check(new FileInfo(Path.Combine(folder,"adapter.dll")).Length==2048);SetupSpace.Check(required,"fixture",_=>1024L*1024*1024);
+   });
+   Test("multi-game session status recovers when a late client connects",()=>{
+    var ids=new[]{"hl2","tf2","hl1mp","gmod","portal2","cs2"};
+    var live=ids.Where(id=>id!="portal2").ToDictionary(id=>id,id=>new LiveGame("Connected","room",DateTime.UtcNow,""));
+    Check(Runtime.ConnectionSummary(ids,live)=="Partially connected: portal2");
+    live["portal2"]=new("Connected / awaiting player","",DateTime.UtcNow,"");Check(Runtime.ConnectionSummary(ids,live)=="Running");
+    live["tf2"]=live["tf2"] with {State="Disconnected"};Check(Runtime.ConnectionSummary(ids,live)=="Partially connected: tf2");
+    live.Clear();Check(Runtime.ConnectionSummary(ids,live).StartsWith("Waiting for players:"));
+   });
+   Test("native TF2 does not mount its downgraded cross-engine materials",()=>{
+    var settings=new Settings();
+    foreach(var key in new[]{"tf2","shared-source1","fallback","cs2"}){var path=Path.Combine(temp,"mount-test",key);Directory.CreateDirectory(path);settings.LocalAssetCaches[key]=path;}
+    var tf=SdkConfiguration.AssetMounts(settings,"tf2").ToArray();Check(!tf.Contains(settings.LocalAssetCaches["tf2"]));Check(!tf.Contains(settings.LocalAssetCaches["cs2"]));Check(tf.Last()==settings.LocalAssetCaches["fallback"]);
+    Check(SdkConfiguration.AssetMounts(settings,"hl2").Contains(settings.LocalAssetCaches["tf2"]));
+   });
    Test("heartbeats preserve fresh player state but cannot conceal stalled player updates",()=>{
     var file=Path.Combine(temp,"heartbeat-state.jsonl");var now=DateTime.UtcNow;
     string Entry(string type,DateTime time)=>JsonSerializer.Serialize(new{type,time,game="hl2",world="sourcebox_room_001",weapon="weapon_crowbar"});
@@ -415,6 +439,17 @@ static class Tests {
    var missing=SharedContent.Scan(temp,Array.Empty<GameInstall>(),catalog);Check(missing.Worlds[0].Mode=="topology-placeholder"&&!missing.Worlds[0].TopologyCached);
    Directory.CreateDirectory(Path.Combine(temp,"worlds"));File.WriteAllText(Path.Combine(temp,"worlds/ctf_2fort.json"),"{}");
    Check(SharedContent.Scan(temp,Array.Empty<GameInstall>(),catalog).Worlds[0].TopologyCached);
+  });
+  Test("portable world sources resolve installed libraries and reject absent maps",()=>{
+   var project=Path.Combine(temp,"portable-world-project");Directory.CreateDirectory(Path.Combine(project,"sheets"));
+   var games=new Dictionary<string,GameInstall>();
+   foreach(var p in WorldPreparation.Providers.Values){var root=Path.Combine(temp,"another-drive",p.Game);var map=Path.Combine(root,p.Map);Directory.CreateDirectory(Path.GetDirectoryName(map)!);File.WriteAllText(map,"fixture BSP");games[p.Game]=new(Discovery.Defs.Single(g=>g.Id==p.Game),root,"fixture.exe",true,false,"");}
+   var file=Path.Combine(project,"sheets/worlds-expanded.json");
+   File.WriteAllText(file,JsonSerializer.Serialize(new{enabled=false,nativeMap="sourcebox_room_001",worlds=WorldPreparation.Providers.Select(p=>new{id=p.Key,label=p.Key,source="installed-content/invalid.bsp"}).ToArray()}));
+   var result=WorldPreparation.ResolveRegistry(project,games);Check(result["enabled"]!.GetValue<bool>());Check(result["worlds"]!.AsArray().All(w=>File.Exists(w!["source"]!.GetValue<string>())));
+   Check(!File.ReadAllText(file).Contains("another-drive"));
+   File.Delete(Path.Combine(games["tf2"].Root,"tf/maps/ctf_2fort.bsp"));bool refused=false;
+   try{WorldPreparation.ResolveRegistry(project,games);}catch(IOException e){refused=e.Message.Contains("ctf_2fort");}Check(refused);
   });
   Test("destination registry follows manifest and rejects traversal and duplicate IDs",()=>{
    var root=Path.Combine(temp,"world-project");var sheets=Path.Combine(root,"sheets");Directory.CreateDirectory(sheets);

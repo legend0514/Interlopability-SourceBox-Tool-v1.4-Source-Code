@@ -1,1862 +1,1510 @@
 [
   {
-    "path": ".gitignore",
-    "sha256": "f38b0372d9c47a1eefdfa59f3dbea4d24f67ae33d35572c615e14a522178f53b",
-    "bytes": 105
+    "Path": ".gitignore",
+    "Sha256": "f38b0372d9c47a1eefdfa59f3dbea4d24f67ae33d35572c615e14a522178f53b"
   },
   {
-    "path": "BUILD.md",
-    "sha256": "fc5baba9aac0b395d09daf66443807790bff86dee4aa4fcfd25f66b1303d6a47",
-    "bytes": 3315
+    "Path": "BUILD.md",
+    "Sha256": "fc5baba9aac0b395d09daf66443807790bff86dee4aa4fcfd25f66b1303d6a47"
   },
   {
-    "path": "CHANGELOG.md",
-    "sha256": "34703bd9497e700f8c81a9d694679b9cbf14690a62bda14a673f0f5c68f20c94",
-    "bytes": 2791
+    "Path": "CHANGELOG-v1.5.3.md",
+    "Sha256": "374a55288b3e6435d1231e68abc6cd1ee9ae3ef166ecaa31907aa1cc2b8de93c"
   },
   {
-    "path": "development/sheets/asset-references.json",
-    "sha256": "85fd5d0d9275736ad4cf42586690e6e58796777a48132103e3c055cfc5ac106f",
-    "bytes": 16900
+    "Path": "development/sheets/asset-references.json",
+    "Sha256": "85fd5d0d9275736ad4cf42586690e6e58796777a48132103e3c055cfc5ac106f"
   },
   {
-    "path": "development/sheets/combat.json",
-    "sha256": "8d0456427fc6e965006c1de55fd05a0f32de2511ea6e33397a1fb45f3c398f02",
-    "bytes": 1213
+    "Path": "development/sheets/combat.json",
+    "Sha256": "8d0456427fc6e965006c1de55fd05a0f32de2511ea6e33397a1fb45f3c398f02"
   },
   {
-    "path": "development/sheets/connectivity.json",
-    "sha256": "2014a3edb4e576149cac06f1d58cac1f46fee3015505b705425029c911e68d71",
-    "bytes": 838
+    "Path": "development/sheets/connectivity.json",
+    "Sha256": "2014a3edb4e576149cac06f1d58cac1f46fee3015505b705425029c911e68d71"
   },
   {
-    "path": "development/sheets/coordinate-mappings.json",
-    "sha256": "a617828f72d9a254d7972946d5b1dc6cd5efa155705ced77b37899a8425508aa",
-    "bytes": 333
+    "Path": "development/sheets/coordinate-mappings.json",
+    "Sha256": "a617828f72d9a254d7972946d5b1dc6cd5efa155705ced77b37899a8425508aa"
   },
   {
-    "path": "development/sheets/cs2-models.json",
-    "sha256": "d52203a027f414dacf8837d3135ae7eaf22d156187444f9d1de95461b1bbd3d1",
-    "bytes": 1937
+    "Path": "development/sheets/cs2-models.json",
+    "Sha256": "d52203a027f414dacf8837d3135ae7eaf22d156187444f9d1de95461b1bbd3d1"
   },
   {
-    "path": "development/sheets/cs2-performance.json",
-    "sha256": "705a67d365c52ca3e5f22321f9c1566e9fccd17b62a0f24760f853573fc16080",
-    "bytes": 322
+    "Path": "development/sheets/cs2-performance.json",
+    "Sha256": "705a67d365c52ca3e5f22321f9c1566e9fccd17b62a0f24760f853573fc16080"
   },
   {
-    "path": "development/sheets/cs2-scene-assets.json",
-    "sha256": "ca2368775ec2f6db567d1f97e4bc84b38360091463467e167ce63485325b03fb",
-    "bytes": 160353
+    "Path": "development/sheets/cs2-scene-assets.json",
+    "Sha256": "ca2368775ec2f6db567d1f97e4bc84b38360091463467e167ce63485325b03fb"
   },
   {
-    "path": "development/sheets/cs2-world-lighting.json",
-    "sha256": "c384dfbeb36eaed04846f61370ff7c78c4c41e062e535af7df4591661f1e0739",
-    "bytes": 401
+    "Path": "development/sheets/cs2-world-lighting.json",
+    "Sha256": "c384dfbeb36eaed04846f61370ff7c78c4c41e062e535af7df4591661f1e0739"
   },
   {
-    "path": "development/sheets/cs2-world-material-overrides.json",
-    "sha256": "d1972fd90f7f32707eae2738a7414130625f708a25d4200bb37347d3c0a1d1f9",
-    "bytes": 58016
+    "Path": "development/sheets/cs2-world-material-overrides.json",
+    "Sha256": "d1972fd90f7f32707eae2738a7414130625f708a25d4200bb37347d3c0a1d1f9"
   },
   {
-    "path": "development/sheets/cs2-world-materials.json",
-    "sha256": "f2a7d17a57a1f2134ccda36e684b17d418035f206560a3f2fad3759174e155a0",
-    "bytes": 774
+    "Path": "development/sheets/cs2-world-materials.json",
+    "Sha256": "f2a7d17a57a1f2134ccda36e684b17d418035f206560a3f2fad3759174e155a0"
   },
   {
-    "path": "development/sheets/cs2-world-scenery-assets.json",
-    "sha256": "88aa71f7d67a62b8363fc8b069be19d2cd4ff35d7d71374e175d8cd0c188a972",
-    "bytes": 37298
+    "Path": "development/sheets/cs2-world-scenery-assets.json",
+    "Sha256": "88aa71f7d67a62b8363fc8b069be19d2cd4ff35d7d71374e175d8cd0c188a972"
   },
   {
-    "path": "development/sheets/cs2.json",
-    "sha256": "47e91ee51265abba90eb3c4982df72d14b6deac555939d0bfa0d683f3aec2bd0",
-    "bytes": 2731
+    "Path": "development/sheets/cs2.json",
+    "Sha256": "47e91ee51265abba90eb3c4982df72d14b6deac555939d0bfa0d683f3aec2bd0"
   },
   {
-    "path": "development/sheets/expansion-requirements.json",
-    "sha256": "612613db30117e8f9962dd9a98bc9d63e0f8485ce4a1d29e85a9aca9d780d5b4",
-    "bytes": 1141
+    "Path": "development/sheets/expansion-requirements.json",
+    "Sha256": "612613db30117e8f9962dd9a98bc9d63e0f8485ce4a1d29e85a9aca9d780d5b4"
   },
   {
-    "path": "development/sheets/games-adapters.json",
-    "sha256": "4f3882b4f2dc24693eb9ffdb002f201795c65f9be6774bb76cc8ed3f7b86271c",
-    "bytes": 279
+    "Path": "development/sheets/games-adapters.json",
+    "Sha256": "4f3882b4f2dc24693eb9ffdb002f201795c65f9be6774bb76cc8ed3f7b86271c"
   },
   {
-    "path": "development/sheets/gmod-scene.json",
-    "sha256": "13c874d7c562cae95bc647b56d3d23de7f890bd794281bbcd780c595db807ee9",
-    "bytes": 86153
+    "Path": "development/sheets/gmod-scene.json",
+    "Sha256": "13c874d7c562cae95bc647b56d3d23de7f890bd794281bbcd780c595db807ee9"
   },
   {
-    "path": "development/sheets/gmod.json",
-    "sha256": "960c01161d928b8bfa774b8aa123723e1509a83a6340b7a1c14a48a63264c560",
-    "bytes": 688
+    "Path": "development/sheets/gmod.json",
+    "Sha256": "960c01161d928b8bfa774b8aa123723e1509a83a6340b7a1c14a48a63264c560"
   },
   {
-    "path": "development/sheets/hl1mp.json",
-    "sha256": "99b8b7bba8c0bea4d2762f3f687fb031fd8ac2b928b14647089d960ff7786fad",
-    "bytes": 8174
+    "Path": "development/sheets/hl1mp.json",
+    "Sha256": "99b8b7bba8c0bea4d2762f3f687fb031fd8ac2b928b14647089d960ff7786fad"
   },
   {
-    "path": "development/sheets/hl2-gameplay.json",
-    "sha256": "8e3b8b8c9f86fa71dc41b6187f90b62332e5107672680e92c3b9fc678567ccf7",
-    "bytes": 1330
+    "Path": "development/sheets/hl2-gameplay.json",
+    "Sha256": "8e3b8b8c9f86fa71dc41b6187f90b62332e5107672680e92c3b9fc678567ccf7"
   },
   {
-    "path": "development/sheets/map-travel.json",
-    "sha256": "cd8aaa7cf9650e20535ff9c08b3b53734d40800fc3940032124a34dcea83c467",
-    "bytes": 397
+    "Path": "development/sheets/map-travel.json",
+    "Sha256": "cd8aaa7cf9650e20535ff9c08b3b53734d40800fc3940032124a34dcea83c467"
   },
   {
-    "path": "development/sheets/native-world-hosts.json",
-    "sha256": "8810f1eb5e3d791599183533def41dbbb59ac96c66d5f5dc160aaf0fafcd412a",
-    "bytes": 1049
+    "Path": "development/sheets/native-world-hosts.json",
+    "Sha256": "8810f1eb5e3d791599183533def41dbbb59ac96c66d5f5dc160aaf0fafcd412a"
   },
   {
-    "path": "development/sheets/network-messages.json",
-    "sha256": "ae7d4aa2b6db184c09bb8530e2d6c202c664f82d458e2ec18906570cb01b483f",
-    "bytes": 3243
+    "Path": "development/sheets/network-messages.json",
+    "Sha256": "ae7d4aa2b6db184c09bb8530e2d6c202c664f82d458e2ec18906570cb01b483f"
   },
   {
-    "path": "development/sheets/physics-objects.json",
-    "sha256": "1cf42d6dd018bc063c3a5baad04004ea293603f117283ae08f634c4e4015596a",
-    "bytes": 2488
+    "Path": "development/sheets/physics-objects.json",
+    "Sha256": "1cf42d6dd018bc063c3a5baad04004ea293603f117283ae08f634c4e4015596a"
   },
   {
-    "path": "development/sheets/player-movement.json",
-    "sha256": "6e1c082666f987f951ccefe98b2ab146d9291399214c223cba57afd4b59a31df",
-    "bytes": 818
+    "Path": "development/sheets/player-movement.json",
+    "Sha256": "6e1c082666f987f951ccefe98b2ab146d9291399214c223cba57afd4b59a31df"
   },
   {
-    "path": "development/sheets/portal-hub-roadmap.json",
-    "sha256": "2aae0d6d394d2a56e0c24798c92d746dbc1f5f564da9d505901548c5b4cdc2a7",
-    "bytes": 1020
+    "Path": "development/sheets/portal-hub-roadmap.json",
+    "Sha256": "2aae0d6d394d2a56e0c24798c92d746dbc1f5f564da9d505901548c5b4cdc2a7"
   },
   {
-    "path": "development/sheets/portal2.json",
-    "sha256": "ee500aed9940a9a5c65ac049762fb99618d46cc953da59e24a8002985e6b74ea",
-    "bytes": 677
+    "Path": "development/sheets/portal2.json",
+    "Sha256": "ee500aed9940a9a5c65ac049762fb99618d46cc953da59e24a8002985e6b74ea"
   },
   {
-    "path": "development/sheets/portals.json",
-    "sha256": "a10dfc1ff344fcfe16d0ad5aef7ca0be95373a79ba8ee37aa3194624a28d0da1",
-    "bytes": 3317
+    "Path": "development/sheets/portals.json",
+    "Sha256": "a10dfc1ff344fcfe16d0ad5aef7ca0be95373a79ba8ee37aa3194624a28d0da1"
   },
   {
-    "path": "development/sheets/room-upgrades.json",
-    "sha256": "ea89ceedeb21b3d55b5bdf02f6ce766b261758d20c834e9d5a6f82b0e007a017",
-    "bytes": 1518
+    "Path": "development/sheets/room-upgrades.json",
+    "Sha256": "ea89ceedeb21b3d55b5bdf02f6ce766b261758d20c834e9d5a6f82b0e007a017"
   },
   {
-    "path": "development/sheets/room.json",
-    "sha256": "037f3f563f6c663a099878ff6f70257f8244a1fabd775b863fe6759cc3188964",
-    "bytes": 480
+    "Path": "development/sheets/room.json",
+    "Sha256": "037f3f563f6c663a099878ff6f70257f8244a1fabd775b863fe6759cc3188964"
   },
   {
-    "path": "development/sheets/roster.json",
-    "sha256": "6835d58dae91c05f259fa2e911366ea750aae1d8a8b4ff665766bca165c51c24",
-    "bytes": 1572
+    "Path": "development/sheets/roster.json",
+    "Sha256": "6835d58dae91c05f259fa2e911366ea750aae1d8a8b4ff665766bca165c51c24"
   },
   {
-    "path": "development/sheets/runtime.json",
-    "sha256": "c34f1ccb04e993068893f9d63c8276e0d06b0270f0da5a466eab9eb1466abaf4",
-    "bytes": 153
+    "Path": "development/sheets/runtime.json",
+    "Sha256": "c34f1ccb04e993068893f9d63c8276e0d06b0270f0da5a466eab9eb1466abaf4"
   },
   {
-    "path": "development/sheets/sdk-builds.json",
-    "sha256": "eee8f83bd5055171458dd160bbf1fef029b91d88e05aa588bfe1ccaa67256188",
-    "bytes": 1268
+    "Path": "development/sheets/sdk-builds.json",
+    "Sha256": "eee8f83bd5055171458dd160bbf1fef029b91d88e05aa588bfe1ccaa67256188"
   },
   {
-    "path": "development/sheets/shared-entities.json",
-    "sha256": "89e49829f1422e51d2d0defe636955e9d090b9b2380e8f979e3a3ae772e0d9b6",
-    "bytes": 161
+    "Path": "development/sheets/shared-entities.json",
+    "Sha256": "89e49829f1422e51d2d0defe636955e9d090b9b2380e8f979e3a3ae772e0d9b6"
   },
   {
-    "path": "development/sheets/test-cases.json",
-    "sha256": "64ffbe7c2f71783cb633e3e6290b8dbac6e8770d55d4e8abb668f1eb02b3ba39",
-    "bytes": 5698
+    "Path": "development/sheets/test-cases.json",
+    "Sha256": "64ffbe7c2f71783cb633e3e6290b8dbac6e8770d55d4e8abb668f1eb02b3ba39"
   },
   {
-    "path": "development/sheets/window-layout.json",
-    "sha256": "39cae705764c68daacf36619ec021974aab895faa7a13bcccd8e994c9956ed90",
-    "bytes": 933
+    "Path": "development/sheets/window-layout.json",
+    "Sha256": "39cae705764c68daacf36619ec021974aab895faa7a13bcccd8e994c9956ed90"
   },
   {
-    "path": "development/sheets/worlds-expanded.json",
-    "sha256": "9d33e2ffa583c9ff0f9cea475e98c41e80f4a7847d5171794999def63ed4ea7f",
-    "bytes": 2259
+    "Path": "development/sheets/worlds-expanded.json",
+    "Sha256": "9d33e2ffa583c9ff0f9cea475e98c41e80f4a7847d5171794999def63ed4ea7f"
   },
   {
-    "path": "development/sheets/worlds.json",
-    "sha256": "4115d8318140bb4aee7a3f3d21c4cb4aeaa9e3a204710495ce09d64d9f911587",
-    "bytes": 2446
+    "Path": "development/sheets/worlds.json",
+    "Sha256": "4115d8318140bb4aee7a3f3d21c4cb4aeaa9e3a204710495ce09d64d9f911587"
   },
   {
-    "path": "LICENSE.txt",
-    "sha256": "cf50e12ed24c04adf820e33bf5fba4c797fde94cc607874af0c8f312743c0860",
-    "bytes": 1263
+    "Path": "LICENSE.txt",
+    "Sha256": "cf50e12ed24c04adf820e33bf5fba4c797fde94cc607874af0c8f312743c0860"
   },
   {
-    "path": "licenses/MIT-SourceBox.txt",
-    "sha256": "a401dd97e09498f7d6a934095ba132907fd5c6da5f2975b80e1a97516e8e5051",
-    "bytes": 1100
+    "Path": "licenses/MIT-SourceBox.txt",
+    "Sha256": "a401dd97e09498f7d6a934095ba132907fd5c6da5f2975b80e1a97516e8e5051"
   },
   {
-    "path": "licenses/source-sdk/LICENSE",
-    "sha256": "02377c317bda3a13e2e6eb1b61fed0703f824e62673b5e155205610ed8677cef",
-    "bytes": 1926
+    "Path": "licenses/source-sdk/LICENSE",
+    "Sha256": "02377c317bda3a13e2e6eb1b61fed0703f824e62673b5e155205610ed8677cef"
   },
   {
-    "path": "licenses/source-sdk/README.md",
-    "sha256": "12d0a96361ab427db534304107aab106ec51f2be8779462e179d4c35fc355407",
-    "bytes": 2529
+    "Path": "licenses/source-sdk/README.md",
+    "Sha256": "12d0a96361ab427db534304107aab106ec51f2be8779462e179d4c35fc355407"
   },
   {
-    "path": "licenses/source-sdk/thirdpartylegalnotices.txt",
-    "sha256": "5c19116d965d2a5b883e78530b2b69ea9f92b59414b7ab06d151a80f0cc0356b",
-    "bytes": 50995
+    "Path": "licenses/source-sdk/thirdpartylegalnotices.txt",
+    "Sha256": "5c19116d965d2a5b883e78530b2b69ea9f92b59414b7ab06d151a80f0cc0356b"
   },
   {
-    "path": "outputs/sourcebox/adapters/combat.inc",
-    "sha256": "ccdf3dd3d09fc19d5e61c71d90dec7d3b283f1b74ac3e5ed9f16ae97dd2878ac",
-    "bytes": 2229
+    "Path": "outputs/sourcebox/adapters/combat.inc",
+    "Sha256": "ccdf3dd3d09fc19d5e61c71d90dec7d3b283f1b74ac3e5ed9f16ae97dd2878ac"
   },
   {
-    "path": "outputs/sourcebox/adapters/connectivity.cpp",
-    "sha256": "47da01673eb8d86c03411434264b655fe11237d6f08b41aecbd69f81e835487b",
-    "bytes": 3348
+    "Path": "outputs/sourcebox/adapters/connectivity.cpp",
+    "Sha256": "47da01673eb8d86c03411434264b655fe11237d6f08b41aecbd69f81e835487b"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/CubePhysics.cs",
-    "sha256": "0f8e99beb23c7544c712829e2c83226e9e9bdb5e7a548847c44c30bd601d627d",
-    "bytes": 5280
+    "Path": "outputs/sourcebox/adapters/cs2/CubePhysics.cs",
+    "Sha256": "0f8e99beb23c7544c712829e2c83226e9e9bdb5e7a548847c44c30bd601d627d"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/HeldWeapons.cs",
-    "sha256": "c7099090520aa84f9dc61f7346e829f045d3cee7855f0c87249f702f16642976",
-    "bytes": 1106
+    "Path": "outputs/sourcebox/adapters/cs2/HeldWeapons.cs",
+    "Sha256": "c7099090520aa84f9dc61f7346e829f045d3cee7855f0c87249f702f16642976"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/LocalContent.cs",
-    "sha256": "bf6d6f72b737a4f0f4a0376c3ae62ee472c6de8ae2a1a65a41ec3afe2e70026e",
-    "bytes": 684
+    "Path": "outputs/sourcebox/adapters/cs2/LocalContent.cs",
+    "Sha256": "bf6d6f72b737a4f0f4a0376c3ae62ee472c6de8ae2a1a65a41ec3afe2e70026e"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/MonitorProbe.cs",
-    "sha256": "43948d82674b3365f284fbad39a4f6a6dc39c32215feee9f8ee5b1e08d4245a2",
-    "bytes": 1442
+    "Path": "outputs/sourcebox/adapters/cs2/MonitorProbe.cs",
+    "Sha256": "43948d82674b3365f284fbad39a4f6a6dc39c32215feee9f8ee5b1e08d4245a2"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/PlayerModels.g.cs",
-    "sha256": "36b3b7a9886706eaba2fe188666ef736d31e309fbdebc9d7f1d7bad0e68c5db5",
-    "bytes": 866
+    "Path": "outputs/sourcebox/adapters/cs2/PlayerModels.g.cs",
+    "Sha256": "36b3b7a9886706eaba2fe188666ef736d31e309fbdebc9d7f1d7bad0e68c5db5"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/PortalMomentumProbe.cs",
-    "sha256": "2243b09269bb0a51d042ab05622755d13209d32bd234540136b1b00d79ceca58",
-    "bytes": 1511
+    "Path": "outputs/sourcebox/adapters/cs2/PortalMomentumProbe.cs",
+    "Sha256": "2243b09269bb0a51d042ab05622755d13209d32bd234540136b1b00d79ceca58"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/PortalPreviews.cs",
-    "sha256": "dfd49c42b2ccd85ffb0916b4ec7cc457f77400c5bb64a9c5ff2d8fc11a1a6014",
-    "bytes": 4175
+    "Path": "outputs/sourcebox/adapters/cs2/PortalPreviews.cs",
+    "Sha256": "dfd49c42b2ccd85ffb0916b4ec7cc457f77400c5bb64a9c5ff2d8fc11a1a6014"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/Portals.cs",
-    "sha256": "40a51b726dacd4e9518c2c397e2546d163f97efc34bd26023e7616ed456199c1",
-    "bytes": 8018
+    "Path": "outputs/sourcebox/adapters/cs2/Portals.cs",
+    "Sha256": "40a51b726dacd4e9518c2c397e2546d163f97efc34bd26023e7616ed456199c1"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/PropPortals.cs",
-    "sha256": "bd3a65231c4bf73926e28e16d40ec16bdbb45bc8edcadb7ce2f8b4ef0d0cd204",
-    "bytes": 7183
+    "Path": "outputs/sourcebox/adapters/cs2/PropPortals.cs",
+    "Sha256": "bd3a65231c4bf73926e28e16d40ec16bdbb45bc8edcadb7ce2f8b4ef0d0cd204"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/Ragdolls.cs",
-    "sha256": "6d61430a00e3935a2663107a0d1ab35c2ddfd8c5fc2d9eeb592ae055c04783f3",
-    "bytes": 2384
+    "Path": "outputs/sourcebox/adapters/cs2/Ragdolls.cs",
+    "Sha256": "6d61430a00e3935a2663107a0d1ab35c2ddfd8c5fc2d9eeb592ae055c04783f3"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/SceneAssets.g.cs",
-    "sha256": "754ac9fed88d6dc57b5cc51e51817b0110d98e24e3c794087c0192e73987048e",
-    "bytes": 192860
+    "Path": "outputs/sourcebox/adapters/cs2/SceneAssets.g.cs",
+    "Sha256": "754ac9fed88d6dc57b5cc51e51817b0110d98e24e3c794087c0192e73987048e"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/SharedProps.cs",
-    "sha256": "050a126e7e4e0f9bfefa13b615f3b1d5998583f8d053d11afa96d4a3ccc923eb",
-    "bytes": 3870
+    "Path": "outputs/sourcebox/adapters/cs2/SharedProps.cs",
+    "Sha256": "050a126e7e4e0f9bfefa13b615f3b1d5998583f8d053d11afa96d4a3ccc923eb"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/SourceboxCS2.cs",
-    "sha256": "f309c5878a8c62c66b6a63344f14d1504e4832660e1d2f01998003c4adbd2386",
-    "bytes": 11725
+    "Path": "outputs/sourcebox/adapters/cs2/SourceboxCS2.cs",
+    "Sha256": "f309c5878a8c62c66b6a63344f14d1504e4832660e1d2f01998003c4adbd2386"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/SourceboxCS2.csproj",
-    "sha256": "cc57fe8d5dbc51004808de823adc34a7a53dc7fc3647d3e9b5517a3f68112222",
-    "bytes": 876
+    "Path": "outputs/sourcebox/adapters/cs2/SourceboxCS2.csproj",
+    "Sha256": "cc57fe8d5dbc51004808de823adc34a7a53dc7fc3647d3e9b5517a3f68112222"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/WorldBounds.g.cs",
-    "sha256": "a4fa8ef4dd542ea8c9fcb65884bce572bb9a8d60fc51c7549673278fda7ca135",
-    "bytes": 707
+    "Path": "outputs/sourcebox/adapters/cs2/WorldBounds.g.cs",
+    "Sha256": "a4fa8ef4dd542ea8c9fcb65884bce572bb9a8d60fc51c7549673278fda7ca135"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/WorldDestinations.cs",
-    "sha256": "3e5e5a550fd56827db0d22ee8b07fb8d5ed98a51c930155c4c1d563b6272a712",
-    "bytes": 1696
+    "Path": "outputs/sourcebox/adapters/cs2/WorldDestinations.cs",
+    "Sha256": "3e5e5a550fd56827db0d22ee8b07fb8d5ed98a51c930155c4c1d563b6272a712"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/WorldDestinations.g.cs",
-    "sha256": "77c459b8a6333c25b05b3728badac5207d4aabcb4613918d98fff5f016ab5f92",
-    "bytes": 360
+    "Path": "outputs/sourcebox/adapters/cs2/WorldDestinations.g.cs",
+    "Sha256": "77c459b8a6333c25b05b3728badac5207d4aabcb4613918d98fff5f016ab5f92"
   },
   {
-    "path": "outputs/sourcebox/adapters/cs2/WorldTravelProbe.cs",
-    "sha256": "88f9da4090bf2a6195c2c951f8c5683c1a48f9aa38472c6a2a0b184f6a002fc4",
-    "bytes": 5923
+    "Path": "outputs/sourcebox/adapters/cs2/WorldTravelProbe.cs",
+    "Sha256": "88f9da4090bf2a6195c2c951f8c5683c1a48f9aa38472c6a2a0b184f6a002fc4"
   },
   {
-    "path": "outputs/sourcebox/adapters/cube.inc",
-    "sha256": "9cefbf08fcc5277ecb7f2c767aed1e3f638dc2680475e1738ff85517b5e2b8e0",
-    "bytes": 7722
+    "Path": "outputs/sourcebox/adapters/cube.inc",
+    "Sha256": "9cefbf08fcc5277ecb7f2c767aed1e3f638dc2680475e1738ff85517b5e2b8e0"
   },
   {
-    "path": "outputs/sourcebox/adapters/extra-players.inc",
-    "sha256": "26f280680d0e47370a9ed534ea765a1ed15fe6f3df205103ecb6cfb8894edc89",
-    "bytes": 6909
+    "Path": "outputs/sourcebox/adapters/extra-players.inc",
+    "Sha256": "26f280680d0e47370a9ed534ea765a1ed15fe6f3df205103ecb6cfb8894edc89"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod/lua/autorun/client/sourcebox_performance.lua",
-    "sha256": "d59a90e27f14ab73d5289715065ad49f39aef7d89ea6367e2e0f81d868295169",
-    "bytes": 4068
+    "Path": "outputs/sourcebox/adapters/gmod/lua/autorun/client/sourcebox_performance.lua",
+    "Sha256": "d59a90e27f14ab73d5289715065ad49f39aef7d89ea6367e2e0f81d868295169"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod/lua/autorun/server/sourcebox.lua",
-    "sha256": "7838c81aae6fc1aa2870748220c8b19788482ee48ffff96a2a43590003680b00",
-    "bytes": 12826
+    "Path": "outputs/sourcebox/adapters/gmod/lua/autorun/server/sourcebox.lua",
+    "Sha256": "7838c81aae6fc1aa2870748220c8b19788482ee48ffff96a2a43590003680b00"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod/lua/autorun/sourcebox_maptravel.lua",
-    "sha256": "4c5b4a62757c1b151d6a5bc12df593536c504f52777d02c7800bc2cb875bec38",
-    "bytes": 8447
+    "Path": "outputs/sourcebox/adapters/gmod/lua/autorun/sourcebox_maptravel.lua",
+    "Sha256": "4c5b4a62757c1b151d6a5bc12df593536c504f52777d02c7800bc2cb875bec38"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod/lua/autorun/sourcebox_portal_momentum.lua",
-    "sha256": "803c85a0feafcf9c94aa61b3155a3926b9649b74c860d03a03010120b0811f7d",
-    "bytes": 1128
+    "Path": "outputs/sourcebox/adapters/gmod/lua/autorun/sourcebox_portal_momentum.lua",
+    "Sha256": "803c85a0feafcf9c94aa61b3155a3926b9649b74c860d03a03010120b0811f7d"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod/lua/autorun/sourcebox_worlds.lua",
-    "sha256": "11b0c21d08580e8859a2928f4bff27964be43a88e60711337a145046ab15e3ed",
-    "bytes": 10095
+    "Path": "outputs/sourcebox/adapters/gmod/lua/autorun/sourcebox_worlds.lua",
+    "Sha256": "11b0c21d08580e8859a2928f4bff27964be43a88e60711337a145046ab15e3ed"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/physics.lua",
-    "sha256": "0657704f2a4a5093270d65ee74796db7c47b8498cf1e7ce640a633277cc51997",
-    "bytes": 6973
+    "Path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/physics.lua",
+    "Sha256": "0657704f2a4a5093270d65ee74796db7c47b8498cf1e7ce640a633277cc51997"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/portal-acceptance.lua",
-    "sha256": "82eaaacb3cf35b12c4a7e23670e515271b7f1a80e490f09dfa416460616f2613",
-    "bytes": 9944
+    "Path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/portal-acceptance.lua",
+    "Sha256": "82eaaacb3cf35b12c4a7e23670e515271b7f1a80e490f09dfa416460616f2613"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/portal-successor.lua",
-    "sha256": "c6154855d43679cf5620c46895cddb6e252f9b7702310826ec49888b8c82dc38",
-    "bytes": 5831
+    "Path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/portal-successor.lua",
+    "Sha256": "c6154855d43679cf5620c46895cddb6e252f9b7702310826ec49888b8c82dc38"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/portals.lua",
-    "sha256": "cc2e2cc1207aadb922e77d761d680dd09155576d1ea2f4fa72e47037dfdeedbe",
-    "bytes": 1693
+    "Path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/portals.lua",
+    "Sha256": "cc2e2cc1207aadb922e77d761d680dd09155576d1ea2f4fa72e47037dfdeedbe"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/ragdolls.lua",
-    "sha256": "6028225483356ba12b6ceb8e9a550175fb535ab32b983e2b72b618dcd782fda4",
-    "bytes": 1948
+    "Path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/ragdolls.lua",
+    "Sha256": "6028225483356ba12b6ceb8e9a550175fb535ab32b983e2b72b618dcd782fda4"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/scene.lua",
-    "sha256": "7e73ea48fd095fe441c2b695c3be0d2febc211272583b696da3450de93fd2b85",
-    "bytes": 3580
+    "Path": "outputs/sourcebox/adapters/gmod/lua/sourcebox/scene.lua",
+    "Sha256": "7e73ea48fd095fe441c2b695c3be0d2febc211272583b696da3450de93fd2b85"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod/lua/weapons/weapon_sourcebox_portalgun.lua",
-    "sha256": "08ffb39d6432176271abc2e3232197d97609e86e474fc3a2633045b68f9c5c73",
-    "bytes": 2326
+    "Path": "outputs/sourcebox/adapters/gmod/lua/weapons/weapon_sourcebox_portalgun.lua",
+    "Sha256": "08ffb39d6432176271abc2e3232197d97609e86e474fc3a2633045b68f9c5c73"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod-scene.inc",
-    "sha256": "d210f4b579722df9964f5adcdd47a7530e6b948b105ec3cd8b14b2d625c9a2ea",
-    "bytes": 3969
+    "Path": "outputs/sourcebox/adapters/gmod-scene.inc",
+    "Sha256": "d210f4b579722df9964f5adcdd47a7530e6b948b105ec3cd8b14b2d625c9a2ea"
   },
   {
-    "path": "outputs/sourcebox/adapters/gmod.inc",
-    "sha256": "63e9e8928927425aee3dd27ee679f23b21676cf7706385396f5060b2a9716a61",
-    "bytes": 4374
+    "Path": "outputs/sourcebox/adapters/gmod.inc",
+    "Sha256": "63e9e8928927425aee3dd27ee679f23b21676cf7706385396f5060b2a9716a61"
   },
   {
-    "path": "outputs/sourcebox/adapters/hl1-preview-renderer.inc",
-    "sha256": "1f2d0f6f1e94b305ec03af95a97eed8c3a67da191568f3a189d0e8fbf377d2bd",
-    "bytes": 6235
+    "Path": "outputs/sourcebox/adapters/hl1-preview-renderer.inc",
+    "Sha256": "1f2d0f6f1e94b305ec03af95a97eed8c3a67da191568f3a189d0e8fbf377d2bd"
   },
   {
-    "path": "outputs/sourcebox/adapters/hl1-preview.cpp",
-    "sha256": "a286a5b278e2853cce3b0cca330c7d1447d7e21907467d5084d3f2d3ba2b72e5",
-    "bytes": 4577
+    "Path": "outputs/sourcebox/adapters/hl1-preview.cpp",
+    "Sha256": "a286a5b278e2853cce3b0cca330c7d1447d7e21907467d5084d3f2d3ba2b72e5"
   },
   {
-    "path": "outputs/sourcebox/adapters/hl1mp/sourcebox_prop_portals.nut",
-    "sha256": "3eb92a2213bd023a579f3218264a0528ea98f930e18e9eec825ad390a75a547d",
-    "bytes": 2720
+    "Path": "outputs/sourcebox/adapters/hl1mp/sourcebox_prop_portals.nut",
+    "Sha256": "3eb92a2213bd023a579f3218264a0528ea98f930e18e9eec825ad390a75a547d"
   },
   {
-    "path": "outputs/sourcebox/adapters/movement.cpp",
-    "sha256": "47ae26360de88557d303f6297912443708bc153bc6ca28d40e096a122d0a8945",
-    "bytes": 39672
+    "Path": "outputs/sourcebox/adapters/movement.cpp",
+    "Sha256": "47ae26360de88557d303f6297912443708bc153bc6ca28d40e096a122d0a8945"
   },
   {
-    "path": "outputs/sourcebox/adapters/portal-preview-wire.h",
-    "sha256": "8866161dcc4e9ef7877f1e0cce1ed12ae337eaf48b03f0794cffa03068f7e41a",
-    "bytes": 390
+    "Path": "outputs/sourcebox/adapters/portal-preview-wire.h",
+    "Sha256": "8866161dcc4e9ef7877f1e0cce1ed12ae337eaf48b03f0794cffa03068f7e41a"
   },
   {
-    "path": "outputs/sourcebox/adapters/portal2/adapter.cpp",
-    "sha256": "d825c51f58f320436fafac1e81cd8742bd22eaa1d3e9e19f2fce548069c26ebe",
-    "bytes": 14918
+    "Path": "outputs/sourcebox/adapters/portal2/adapter.cpp",
+    "Sha256": "d825c51f58f320436fafac1e81cd8742bd22eaa1d3e9e19f2fce548069c26ebe"
   },
   {
-    "path": "outputs/sourcebox/adapters/portal2/interactions.inc",
-    "sha256": "5f42ce3a10ac23bc69bdb6a5dc9b30df7dfd6477fca1753326f415a27b47802f",
-    "bytes": 7187
+    "Path": "outputs/sourcebox/adapters/portal2/interactions.inc",
+    "Sha256": "5f42ce3a10ac23bc69bdb6a5dc9b30df7dfd6477fca1753326f415a27b47802f"
   },
   {
-    "path": "outputs/sourcebox/adapters/portal2/iplayerinfo.h",
-    "sha256": "ab64eaccaf54ce31d1805046e1651bf162cb85e2de4db161c4b67f071c480273",
-    "bytes": 5673
+    "Path": "outputs/sourcebox/adapters/portal2/iplayerinfo.h",
+    "Sha256": "ab64eaccaf54ce31d1805046e1651bf162cb85e2de4db161c4b67f071c480273"
   },
   {
-    "path": "outputs/sourcebox/adapters/portal2/iserverplugin.h",
-    "sha256": "f5f8654e174dcd6102752f7e216dcc932130b41ba5161ef0dad4f112a3564a77",
-    "bytes": 7085
+    "Path": "outputs/sourcebox/adapters/portal2/iserverplugin.h",
+    "Sha256": "f5f8654e174dcd6102752f7e216dcc932130b41ba5161ef0dad4f112a3564a77"
   },
   {
-    "path": "outputs/sourcebox/adapters/portal2/native-portals.inc",
-    "sha256": "2f3a1dcb4c300ca04082c80339adbeb0580f2255027088764c1ceba3b44fdb91",
-    "bytes": 3111
+    "Path": "outputs/sourcebox/adapters/portal2/native-portals.inc",
+    "Sha256": "2f3a1dcb4c300ca04082c80339adbeb0580f2255027088764c1ceba3b44fdb91"
   },
   {
-    "path": "outputs/sourcebox/adapters/portal2/tools-prefix.h",
-    "sha256": "684240128505e9945a3a2e1601886998a877b300fd56fd23c11958b845745cc3",
-    "bytes": 1021
+    "Path": "outputs/sourcebox/adapters/portal2/tools-prefix.h",
+    "Sha256": "684240128505e9945a3a2e1601886998a877b300fd56fd23c11958b845745cc3"
   },
   {
-    "path": "outputs/sourcebox/adapters/portal2/trace-prefix.h",
-    "sha256": "3354c46fa72ad473f7be966869f615ad6bc5ac2c9a1384d10bcf7a5fa7f20b10",
-    "bytes": 1317
+    "Path": "outputs/sourcebox/adapters/portal2/trace-prefix.h",
+    "Sha256": "3354c46fa72ad473f7be966869f615ad6bc5ac2c9a1384d10bcf7a5fa7f20b10"
   },
   {
-    "path": "outputs/sourcebox/adapters/portals.inc",
-    "sha256": "b3ba6f62199612482a90011961381bc161b70b45e4701e577d10e5b75f68cf63",
-    "bytes": 10378
+    "Path": "outputs/sourcebox/adapters/portals.inc",
+    "Sha256": "b3ba6f62199612482a90011961381bc161b70b45e4701e577d10e5b75f68cf63"
   },
   {
-    "path": "outputs/sourcebox/adapters/ragdolls.inc",
-    "sha256": "5468e9df2d61fb73bc20614fe9f3ecc19dba80ecbf8d5fb2d964f52ea46695fd",
-    "bytes": 3251
+    "Path": "outputs/sourcebox/adapters/ragdolls.inc",
+    "Sha256": "5468e9df2d61fb73bc20614fe9f3ecc19dba80ecbf8d5fb2d964f52ea46695fd"
   },
   {
-    "path": "outputs/sourcebox/adapters/sdk/sourcebox_portal_client.inc",
-    "sha256": "752366e5188ae972ce193a6e0c8c93e75669d84f07313d6b41e1f4876362da4c",
-    "bytes": 12044
+    "Path": "outputs/sourcebox/adapters/sdk/sourcebox_portal_client.inc",
+    "Sha256": "752366e5188ae972ce193a6e0c8c93e75669d84f07313d6b41e1f4876362da4c"
   },
   {
-    "path": "outputs/sourcebox/adapters/sdk/sourcebox_portal_gun.inc",
-    "sha256": "660017924221ef517d816941c236a805753eafdbf6cb86f63b1595c70a90a489",
-    "bytes": 574
+    "Path": "outputs/sourcebox/adapters/sdk/sourcebox_portal_gun.inc",
+    "Sha256": "660017924221ef517d816941c236a805753eafdbf6cb86f63b1595c70a90a489"
   },
   {
-    "path": "outputs/sourcebox/adapters/sdk/sourcebox_portal_server.inc",
-    "sha256": "a7925b0559b2000043130686e435d309b8568327b4127c4b18c94d69f7efc03c",
-    "bytes": 6311
+    "Path": "outputs/sourcebox/adapters/sdk/sourcebox_portal_server.inc",
+    "Sha256": "a7925b0559b2000043130686e435d309b8568327b4127c4b18c94d69f7efc03c"
   },
   {
-    "path": "outputs/sourcebox/adapters/sdk/sourcebox_prop_portals.inc",
-    "sha256": "7821b4deda2cbea165a6a378b77c00b1d6b3bfed6f65d21b96ddd98c82001c62",
-    "bytes": 6502
+    "Path": "outputs/sourcebox/adapters/sdk/sourcebox_prop_portals.inc",
+    "Sha256": "7821b4deda2cbea165a6a378b77c00b1d6b3bfed6f65d21b96ddd98c82001c62"
   },
   {
-    "path": "outputs/sourcebox/adapters/tf2/sourcebox_portals.nut",
-    "sha256": "67a8a0d65e0abdbae8eb79e7c44fd88306f9782371e7e398cb6177892d9e4695",
-    "bytes": 2726
+    "Path": "outputs/sourcebox/adapters/tf2/sourcebox_portals.nut",
+    "Sha256": "67a8a0d65e0abdbae8eb79e7c44fd88306f9782371e7e398cb6177892d9e4695"
   },
   {
-    "path": "outputs/sourcebox/adapters/transport.h",
-    "sha256": "889d00c03e4889d338f4293f6ea65c528ead14135735570d796dc4d828e52dc0",
-    "bytes": 6348
+    "Path": "outputs/sourcebox/adapters/transport.h",
+    "Sha256": "889d00c03e4889d338f4293f6ea65c528ead14135735570d796dc4d828e52dc0"
   },
   {
-    "path": "outputs/sourcebox/adapters/vendor/json.hpp",
-    "sha256": "5f09d1eebe9b3557f21df155869af13bcde79b74a0748f82ca946e8cc088aaa0",
-    "bytes": 978962
+    "Path": "outputs/sourcebox/adapters/vendor/json.hpp",
+    "Sha256": "5f09d1eebe9b3557f21df155869af13bcde79b74a0748f82ca946e8cc088aaa0"
   },
   {
-    "path": "outputs/sourcebox/adapters/vendor/LICENSE.MIT",
-    "sha256": "b9715282b2f1db1359a919bb3a542dd4362fd9e38ae72d421367eb11abe62eec",
-    "bytes": 1097
+    "Path": "outputs/sourcebox/adapters/vendor/LICENSE.MIT",
+    "Sha256": "b9715282b2f1db1359a919bb3a542dd4362fd9e38ae72d421367eb11abe62eec"
   },
   {
-    "path": "outputs/sourcebox/adapters/weapon-factory.h",
-    "sha256": "2123fb65368797efae891168162aff34de905612f7bf006a410162c2b5daf017",
-    "bytes": 700
+    "Path": "outputs/sourcebox/adapters/weapon-factory.h",
+    "Sha256": "2123fb65368797efae891168162aff34de905612f7bf006a410162c2b5daf017"
   },
   {
-    "path": "outputs/sourcebox/bridge-lease.mjs",
-    "sha256": "7665c08b114ef9d94587b569e4c00dc7840713c2ed0f026dbd699c3d5647c8fb",
-    "bytes": 1008
+    "Path": "outputs/sourcebox/bridge-lease.mjs",
+    "Sha256": "7665c08b114ef9d94587b569e4c00dc7840713c2ed0f026dbd699c3d5647c8fb"
   },
   {
-    "path": "outputs/sourcebox/build-cs2-room.ps1",
-    "sha256": "ef164daea192f5b6ed16344824bf349a2f10299f050de36cf5a8fdb8c14904c7",
-    "bytes": 3199
+    "Path": "outputs/sourcebox/build-cs2-room.ps1",
+    "Sha256": "ef164daea192f5b6ed16344824bf349a2f10299f050de36cf5a8fdb8c14904c7"
   },
   {
-    "path": "outputs/sourcebox/build-hl1-preview.ps1",
-    "sha256": "60142094b27ebc8d4271fa4dc1c3ebfc6c9ccc9b75945a6d6a3914c2a5671004",
-    "bytes": 1154
+    "Path": "outputs/sourcebox/build-hl1-preview.ps1",
+    "Sha256": "60142094b27ebc8d4271fa4dc1c3ebfc6c9ccc9b75945a6d6a3914c2a5671004"
   },
   {
-    "path": "outputs/sourcebox/build-portal2-room.ps1",
-    "sha256": "668abed9c8b0255679cf688362d7f3d6a84b032f2917fd7e242455eefe67c3a5",
-    "bytes": 891
+    "Path": "outputs/sourcebox/build-portal2-room.ps1",
+    "Sha256": "668abed9c8b0255679cf688362d7f3d6a84b032f2917fd7e242455eefe67c3a5"
   },
   {
-    "path": "outputs/sourcebox/build-portal2.ps1",
-    "sha256": "a02ebaea8265a2724fb1a10ea897d88d325f25f3a8cda6cb0d9aa3646134d740",
-    "bytes": 1106
+    "Path": "outputs/sourcebox/build-portal2.ps1",
+    "Sha256": "a02ebaea8265a2724fb1a10ea897d88d325f25f3a8cda6cb0d9aa3646134d740"
   },
   {
-    "path": "outputs/sourcebox/build.ps1",
-    "sha256": "68a11cb6f7a9172a6eb3fbe9964f1afc73770641393a83260c2a883fab35dad2",
-    "bytes": 2106
+    "Path": "outputs/sourcebox/build.ps1",
+    "Sha256": "68a11cb6f7a9172a6eb3fbe9964f1afc73770641393a83260c2a883fab35dad2"
   },
   {
-    "path": "outputs/sourcebox/compile-rooms.ps1",
-    "sha256": "0471d8091fea62ac78ddefc99028ed724efb9280b4dbb9b5d96e156a467386e3",
-    "bytes": 762
+    "Path": "outputs/sourcebox/compile-rooms.ps1",
+    "Sha256": "0471d8091fea62ac78ddefc99028ed724efb9280b4dbb9b5d96e156a467386e3"
   },
   {
-    "path": "outputs/sourcebox/core.mjs",
-    "sha256": "d16c78db799e0c05493e4c196262b6fa63aa9ec3854251e610ad9c50ec3412ec",
-    "bytes": 14568
+    "Path": "outputs/sourcebox/core.mjs",
+    "Sha256": "d16c78db799e0c05493e4c196262b6fa63aa9ec3854251e610ad9c50ec3412ec"
   },
   {
-    "path": "outputs/sourcebox/cube.mjs",
-    "sha256": "22ba3ee2b5bfbcafc379086d97fb5928f01f31827cbc15c58c7311d6fbb817a5",
-    "bytes": 3487
+    "Path": "outputs/sourcebox/cube.mjs",
+    "Sha256": "22ba3ee2b5bfbcafc379086d97fb5928f01f31827cbc15c58c7311d6fbb817a5"
   },
   {
-    "path": "outputs/sourcebox/draft-manifest.json",
-    "sha256": "f8d22b29d07a1e4ad25d6948762106ce35c2d4a03243d18002ba9ec35e18f6ad",
-    "bytes": 695
+    "Path": "outputs/sourcebox/draft-manifest.json",
+    "Sha256": "f8d22b29d07a1e4ad25d6948762106ce35c2d4a03243d18002ba9ec35e18f6ad"
   },
   {
-    "path": "outputs/sourcebox/generate.mjs",
-    "sha256": "75583521f619df78090e6d6f5b000042da3e361dbb66717a387df70db8169de6",
-    "bytes": 5489
+    "Path": "outputs/sourcebox/generate.mjs",
+    "Sha256": "75583521f619df78090e6d6f5b000042da3e361dbb66717a387df70db8169de6"
   },
   {
-    "path": "outputs/sourcebox/generated/combat_config.h",
-    "sha256": "d3cc511e0fccda238d82b17581781ff3b373f53666b559a4196dd36fe37e3486",
-    "bytes": 141
+    "Path": "outputs/sourcebox/generated/combat_config.h",
+    "Sha256": "d3cc511e0fccda238d82b17581781ff3b373f53666b559a4196dd36fe37e3486"
   },
   {
-    "path": "outputs/sourcebox/generated/generated_config.h",
-    "sha256": "5bc0ba8ae309459d3b6a14c4c3d4f9b75ea5253af6b8f989fc75c4600fa8ad4a",
-    "bytes": 630
+    "Path": "outputs/sourcebox/generated/generated_config.h",
+    "Sha256": "5bc0ba8ae309459d3b6a14c4c3d4f9b75ea5253af6b8f989fc75c4600fa8ad4a"
   },
   {
-    "path": "outputs/sourcebox/generated/hl1mp_config.h",
-    "sha256": "c0d09806701675282b9411874bef07c35ec7f8de8f143e46751f72537c4ba8dd",
-    "bytes": 4922
+    "Path": "outputs/sourcebox/generated/hl1mp_config.h",
+    "Sha256": "c0d09806701675282b9411874bef07c35ec7f8de8f143e46751f72537c4ba8dd"
   },
   {
-    "path": "outputs/sourcebox/generated/physics_config.h",
-    "sha256": "a8bb526bb94751470de44fb97e88da7e3dd6c06573232c272fb62186baecef5b",
-    "bytes": 734
+    "Path": "outputs/sourcebox/generated/physics_config.h",
+    "Sha256": "a8bb526bb94751470de44fb97e88da7e3dd6c06573232c272fb62186baecef5b"
   },
   {
-    "path": "outputs/sourcebox/generated/portal_preview_config.h",
-    "sha256": "e6b5e99e432fccf8ab22e4fd1a45896ac2db6fee1dfaf1561e90ee5dca8971b3",
-    "bytes": 159
+    "Path": "outputs/sourcebox/generated/portal_preview_config.h",
+    "Sha256": "e6b5e99e432fccf8ab22e4fd1a45896ac2db6fee1dfaf1561e90ee5dca8971b3"
   },
   {
-    "path": "outputs/sourcebox/generated/proxy_config.h",
-    "sha256": "d4f87a17239dbfeda6b47782b391ae364fa765c04f9161e6316c266c72dbf03a",
-    "bytes": 1507
+    "Path": "outputs/sourcebox/generated/proxy_config.h",
+    "Sha256": "d4f87a17239dbfeda6b47782b391ae364fa765c04f9161e6316c266c72dbf03a"
   },
   {
-    "path": "outputs/sourcebox/generated/weapon_config.h",
-    "sha256": "5065889bc07cd43ee38696ebebe2cb1955ac71eea49922142e2bffdc269d7b48",
-    "bytes": 2590
+    "Path": "outputs/sourcebox/generated/weapon_config.h",
+    "Sha256": "5065889bc07cd43ee38696ebebe2cb1955ac71eea49922142e2bffdc269d7b48"
   },
   {
-    "path": "outputs/sourcebox/generated/world_destinations.h",
-    "sha256": "83a5e95d476221851804fd695ec831132f2e1ed2d14a502e943b551814c9ec7c",
-    "bytes": 392
+    "Path": "outputs/sourcebox/generated/world_destinations.h",
+    "Sha256": "83a5e95d476221851804fd695ec831132f2e1ed2d14a502e943b551814c9ec7c"
   },
   {
-    "path": "outputs/sourcebox/gmod-bridge.mjs",
-    "sha256": "f327fb9b7d13ba886cc88d159394dc323639fef759736155ef7b3af392777257",
-    "bytes": 7730
+    "Path": "outputs/sourcebox/gmod-bridge.mjs",
+    "Sha256": "f327fb9b7d13ba886cc88d159394dc323639fef759736155ef7b3af392777257"
   },
   {
-    "path": "outputs/sourcebox/gmod-commands.mjs",
-    "sha256": "0e6d9d90410533c4ce3a78a1b2bcc4d24d2e39a31607cf93ae3c6567a19f98ed",
-    "bytes": 533
+    "Path": "outputs/sourcebox/gmod-commands.mjs",
+    "Sha256": "0e6d9d90410533c4ce3a78a1b2bcc4d24d2e39a31607cf93ae3c6567a19f98ed"
   },
   {
-    "path": "outputs/sourcebox/launch-cs2.ps1",
-    "sha256": "1975b91f0cc41807285b998cb62332a843f25a5c04e18cbb045584a237dc2aeb",
-    "bytes": 2459
+    "Path": "outputs/sourcebox/launch-cs2.ps1",
+    "Sha256": "1975b91f0cc41807285b998cb62332a843f25a5c04e18cbb045584a237dc2aeb"
   },
   {
-    "path": "outputs/sourcebox/launch-gmod.ps1",
-    "sha256": "eeac1bf057930740fa2be75e8b0d611480dd89dab9d8b0abb9d60a16f3ade145",
-    "bytes": 9496
+    "Path": "outputs/sourcebox/launch-gmod.ps1",
+    "Sha256": "eeac1bf057930740fa2be75e8b0d611480dd89dab9d8b0abb9d60a16f3ade145"
   },
   {
-    "path": "outputs/sourcebox/launch-hl1mp.ps1",
-    "sha256": "30eb0e232061cfdcad9c028db2fcae4ea2a6fdeb0fc567c33d2f37b6ef4e5042",
-    "bytes": 5021
+    "Path": "outputs/sourcebox/launch-hl1mp.ps1",
+    "Sha256": "30eb0e232061cfdcad9c028db2fcae4ea2a6fdeb0fc567c33d2f37b6ef4e5042"
   },
   {
-    "path": "outputs/sourcebox/launch-phase-a.ps1",
-    "sha256": "9446d1a2e28cc025146cd3947629b8d1a949712c0cea2bd2128112e0abe84684",
-    "bytes": 3183
+    "Path": "outputs/sourcebox/launch-phase-a.ps1",
+    "Sha256": "9446d1a2e28cc025146cd3947629b8d1a949712c0cea2bd2128112e0abe84684"
   },
   {
-    "path": "outputs/sourcebox/launch-portal2.ps1",
-    "sha256": "8346d1d70f3194e6615b0f45a5affc2dcae7db1f1f65452ca2a3031406a0886d",
-    "bytes": 3994
+    "Path": "outputs/sourcebox/launch-portal2.ps1",
+    "Sha256": "8346d1d70f3194e6615b0f45a5affc2dcae7db1f1f65452ca2a3031406a0886d"
   },
   {
-    "path": "outputs/sourcebox/launch-sdk.ps1",
-    "sha256": "3267322e7caa9e63dbb9c495e5f12f79eab0b22299ccdfaed27a4e2b3776f1ce",
-    "bytes": 2982
+    "Path": "outputs/sourcebox/launch-sdk.ps1",
+    "Sha256": "3267322e7caa9e63dbb9c495e5f12f79eab0b22299ccdfaed27a4e2b3776f1ce"
   },
   {
-    "path": "outputs/sourcebox/map-travel.mjs",
-    "sha256": "43d0bcc2fa6d4c2b4fdacc2044243e30fbb78b3004cd7150192b8d49c1584243",
-    "bytes": 527
+    "Path": "outputs/sourcebox/map-travel.mjs",
+    "Sha256": "43d0bcc2fa6d4c2b4fdacc2044243e30fbb78b3004cd7150192b8d49c1584243"
   },
   {
-    "path": "outputs/sourcebox/maps/cs2/sourcebox_room_001.vmf",
-    "sha256": "83efb44bffbc1a4130156de580e9e7153f4947b1eeadfb8406f92952c616fba8",
-    "bytes": 9001
+    "Path": "outputs/sourcebox/maps/cs2/sourcebox_room_001.vmf",
+    "Sha256": "83efb44bffbc1a4130156de580e9e7153f4947b1eeadfb8406f92952c616fba8"
   },
   {
-    "path": "outputs/sourcebox/maps/hl2/sourcebox_room_001.vmf",
-    "sha256": "889ac393c978f0523fec0e8269c10690724573305b5cdd67ac5bf482592ff30b",
-    "bytes": 9882
+    "Path": "outputs/sourcebox/maps/hl2/sourcebox_room_001.vmf",
+    "Sha256": "889ac393c978f0523fec0e8269c10690724573305b5cdd67ac5bf482592ff30b"
   },
   {
-    "path": "outputs/sourcebox/maps/portal2/sourcebox_room_001.vmf",
-    "sha256": "a0f4fb8422518296ad1c5f954b542cfcf09e8d556d3510a34bb0ec1181bec268",
-    "bytes": 9005
+    "Path": "outputs/sourcebox/maps/portal2/sourcebox_room_001.vmf",
+    "Sha256": "a0f4fb8422518296ad1c5f954b542cfcf09e8d556d3510a34bb0ec1181bec268"
   },
   {
-    "path": "outputs/sourcebox/maps/tf2/sourcebox_room_001.vmf",
-    "sha256": "272a075d1be9df2b594aca3b04c11105660129903eb700a67c24f737b2fdcba0",
-    "bytes": 9764
+    "Path": "outputs/sourcebox/maps/tf2/sourcebox_room_001.vmf",
+    "Sha256": "272a075d1be9df2b594aca3b04c11105660129903eb700a67c24f737b2fdcba0"
   },
   {
-    "path": "outputs/sourcebox/measure.mjs",
-    "sha256": "3f4fdeafebdf4a8c2e1018b02604d5c05569654b5cb5db181825ea616fe34ec2",
-    "bytes": 1461
+    "Path": "outputs/sourcebox/measure.mjs",
+    "Sha256": "3f4fdeafebdf4a8c2e1018b02604d5c05569654b5cb5db181825ea616fe34ec2"
   },
   {
-    "path": "outputs/sourcebox/package.json",
-    "sha256": "01de50437ec7c7b17ce2ac6bf45e43f653b3a9173120bd95931130a483dd745a",
-    "bytes": 204
+    "Path": "outputs/sourcebox/package.json",
+    "Sha256": "01de50437ec7c7b17ce2ac6bf45e43f653b3a9173120bd95931130a483dd745a"
   },
   {
-    "path": "outputs/sourcebox/portal-math.mjs",
-    "sha256": "61e4c0c9653b873246354645c1ed19e9aa1fcf5ca788ba16abdc98546bfe0593",
-    "bytes": 5211
+    "Path": "outputs/sourcebox/portal-math.mjs",
+    "Sha256": "61e4c0c9653b873246354645c1ed19e9aa1fcf5ca788ba16abdc98546bfe0593"
   },
   {
-    "path": "outputs/sourcebox/portal-snapshot.mjs",
-    "sha256": "a97ef73ec7fe9e2662a435a1d91a5dbf31578d5339b4a059034ae4ab9ff94362",
-    "bytes": 1299
+    "Path": "outputs/sourcebox/portal-snapshot.mjs",
+    "Sha256": "a97ef73ec7fe9e2662a435a1d91a5dbf31578d5339b4a059034ae4ab9ff94362"
   },
   {
-    "path": "outputs/sourcebox/portals.mjs",
-    "sha256": "06515d7da1dc5eccce6005132ec77cc16938164d1d4422b6068dba8db55beb86",
-    "bytes": 9474
+    "Path": "outputs/sourcebox/portals.mjs",
+    "Sha256": "06515d7da1dc5eccce6005132ec77cc16938164d1d4422b6068dba8db55beb86"
   },
   {
-    "path": "outputs/sourcebox/preflight.mjs",
-    "sha256": "b4fa1ee3650df31821b2b4247f6e62da7f2d513b785b5429f3ad27f701c9154b",
-    "bytes": 14415
+    "Path": "outputs/sourcebox/preflight.mjs",
+    "Sha256": "b4fa1ee3650df31821b2b4247f6e62da7f2d513b785b5429f3ad27f701c9154b"
   },
   {
-    "path": "outputs/sourcebox/prepare-hl1mp-assets.cjs",
-    "sha256": "bcbf1604cc8edea3a507ce6e5c04576f5f4c6ba0d0fc249686eec83abf844108",
-    "bytes": 5869
+    "Path": "outputs/sourcebox/prepare-hl1mp-assets.cjs",
+    "Sha256": "bcbf1604cc8edea3a507ce6e5c04576f5f4c6ba0d0fc249686eec83abf844108"
   },
   {
-    "path": "outputs/sourcebox/prepare-hl1mp-room.mjs",
-    "sha256": "072741a668d779466aaca150c78303fc898787b5eea97db6ab9f587ab6c3849b",
-    "bytes": 1207
+    "Path": "outputs/sourcebox/prepare-hl1mp-room.mjs",
+    "Sha256": "072741a668d779466aaca150c78303fc898787b5eea97db6ab9f587ab6c3849b"
   },
   {
-    "path": "outputs/sourcebox/prepare-hl2-hud.cjs",
-    "sha256": "67bb3cffcf4c0208bd6bfb827646e12f4b24866ae0f0db018047cde088f3a598",
-    "bytes": 753
+    "Path": "outputs/sourcebox/prepare-hl2-hud.cjs",
+    "Sha256": "67bb3cffcf4c0208bd6bfb827646e12f4b24866ae0f0db018047cde088f3a598"
   },
   {
-    "path": "outputs/sourcebox/prepare-labs.ps1",
-    "sha256": "1072256be7a205ee19f6c9c430bc3f8496e081ff6034dc63e09d08a46fe83a8e",
-    "bytes": 4821
+    "Path": "outputs/sourcebox/prepare-labs.ps1",
+    "Sha256": "1072256be7a205ee19f6c9c430bc3f8496e081ff6034dc63e09d08a46fe83a8e"
   },
   {
-    "path": "outputs/sourcebox/prepare-portal-inventory.mjs",
-    "sha256": "a249a5b5cb5e2e7aef80fbc4f290e81d0f4fabe2254addc46cdac4d460b9f08e",
-    "bytes": 1760
+    "Path": "outputs/sourcebox/prepare-portal-inventory.mjs",
+    "Sha256": "a249a5b5cb5e2e7aef80fbc4f290e81d0f4fabe2254addc46cdac4d460b9f08e"
   },
   {
-    "path": "outputs/sourcebox/prepare-portal2-assets.cjs",
-    "sha256": "a59ecc94abe89894f2f3e09de8624507fa4a7da035af2e2d17521c6cf328afac",
-    "bytes": 2811
+    "Path": "outputs/sourcebox/prepare-portal2-assets.cjs",
+    "Sha256": "a59ecc94abe89894f2f3e09de8624507fa4a7da035af2e2d17521c6cf328afac"
   },
   {
-    "path": "outputs/sourcebox/prepare-soldier-assets.cjs",
-    "sha256": "7b4c1648f9979110f901bcbb140db388bec97fe480302bdd3737e01b68f91371",
-    "bytes": 3571
+    "Path": "outputs/sourcebox/prepare-soldier-assets.cjs",
+    "Sha256": "7b4c1648f9979110f901bcbb140db388bec97fe480302bdd3737e01b68f91371"
   },
   {
-    "path": "outputs/sourcebox/relaunch-cs2-client.ps1",
-    "sha256": "652de9788e9f14f8b9e247c055e59ee5c8b15cad2506497567ccc9948c40ae7e",
-    "bytes": 171
+    "Path": "outputs/sourcebox/relaunch-cs2-client.ps1",
+    "Sha256": "652de9788e9f14f8b9e247c055e59ee5c8b15cad2506497567ccc9948c40ae7e"
   },
   {
-    "path": "outputs/sourcebox/report-acceptance.mjs",
-    "sha256": "965f281064d4baada170ce28df81aeb688b442c4938445e63a459c907baea8e8",
-    "bytes": 1566
+    "Path": "outputs/sourcebox/report-acceptance.mjs",
+    "Sha256": "965f281064d4baada170ce28df81aeb688b442c4938445e63a459c907baea8e8"
   },
   {
-    "path": "outputs/sourcebox/room.mjs",
-    "sha256": "0c3cb22af3b82151f00ab2dc80a04980863dda95224ddbaf1f59492094101da1",
-    "bytes": 3486
+    "Path": "outputs/sourcebox/room.mjs",
+    "Sha256": "0c3cb22af3b82151f00ab2dc80a04980863dda95224ddbaf1f59492094101da1"
   },
   {
-    "path": "outputs/sourcebox/sheets/asset-references.json",
-    "sha256": "a82d9b1cfbbdf2445a6b8036ec04495e97981927aaeb3e82f69815bdb6498646",
-    "bytes": 14667
+    "Path": "outputs/sourcebox/sheets/asset-references.json",
+    "Sha256": "a82d9b1cfbbdf2445a6b8036ec04495e97981927aaeb3e82f69815bdb6498646"
   },
   {
-    "path": "outputs/sourcebox/sheets/combat.json",
-    "sha256": "6caf74d0541f13e7ccd285cafa36a54665f31f442b0070efb133effe472fd5c9",
-    "bytes": 1168
+    "Path": "outputs/sourcebox/sheets/combat.json",
+    "Sha256": "6caf74d0541f13e7ccd285cafa36a54665f31f442b0070efb133effe472fd5c9"
   },
   {
-    "path": "outputs/sourcebox/sheets/connectivity.json",
-    "sha256": "dadd6b0af7521403cc11e08450c2611c27fbbfa0d18f88991eb6acc7b335dd3c",
-    "bytes": 809
+    "Path": "outputs/sourcebox/sheets/connectivity.json",
+    "Sha256": "dadd6b0af7521403cc11e08450c2611c27fbbfa0d18f88991eb6acc7b335dd3c"
   },
   {
-    "path": "outputs/sourcebox/sheets/coordinate-mappings.json",
-    "sha256": "f9f31c74c0ffa7025b1e5fcadc86410584bee8d79a21383630fe4e0c299cd7c0",
-    "bytes": 331
+    "Path": "outputs/sourcebox/sheets/coordinate-mappings.json",
+    "Sha256": "f9f31c74c0ffa7025b1e5fcadc86410584bee8d79a21383630fe4e0c299cd7c0"
   },
   {
-    "path": "outputs/sourcebox/sheets/cs2-models.json",
-    "sha256": "696d40b32982e9b5c2cb7867f0849243fe48935008119ca9098de63db9512daa",
-    "bytes": 1935
+    "Path": "outputs/sourcebox/sheets/cs2-models.json",
+    "Sha256": "696d40b32982e9b5c2cb7867f0849243fe48935008119ca9098de63db9512daa"
   },
   {
-    "path": "outputs/sourcebox/sheets/cs2-performance.json",
-    "sha256": "705a67d365c52ca3e5f22321f9c1566e9fccd17b62a0f24760f853573fc16080",
-    "bytes": 322
+    "Path": "outputs/sourcebox/sheets/cs2-performance.json",
+    "Sha256": "705a67d365c52ca3e5f22321f9c1566e9fccd17b62a0f24760f853573fc16080"
   },
   {
-    "path": "outputs/sourcebox/sheets/cs2-scene-assets.json",
-    "sha256": "ca2368775ec2f6db567d1f97e4bc84b38360091463467e167ce63485325b03fb",
-    "bytes": 160353
+    "Path": "outputs/sourcebox/sheets/cs2-scene-assets.json",
+    "Sha256": "ca2368775ec2f6db567d1f97e4bc84b38360091463467e167ce63485325b03fb"
   },
   {
-    "path": "outputs/sourcebox/sheets/cs2-world-lighting.json",
-    "sha256": "c384dfbeb36eaed04846f61370ff7c78c4c41e062e535af7df4591661f1e0739",
-    "bytes": 401
+    "Path": "outputs/sourcebox/sheets/cs2-world-lighting.json",
+    "Sha256": "c384dfbeb36eaed04846f61370ff7c78c4c41e062e535af7df4591661f1e0739"
   },
   {
-    "path": "outputs/sourcebox/sheets/cs2-world-material-overrides.json",
-    "sha256": "d1972fd90f7f32707eae2738a7414130625f708a25d4200bb37347d3c0a1d1f9",
-    "bytes": 58016
+    "Path": "outputs/sourcebox/sheets/cs2-world-material-overrides.json",
+    "Sha256": "d1972fd90f7f32707eae2738a7414130625f708a25d4200bb37347d3c0a1d1f9"
   },
   {
-    "path": "outputs/sourcebox/sheets/cs2-world-materials.json",
-    "sha256": "f2a7d17a57a1f2134ccda36e684b17d418035f206560a3f2fad3759174e155a0",
-    "bytes": 774
+    "Path": "outputs/sourcebox/sheets/cs2-world-materials.json",
+    "Sha256": "f2a7d17a57a1f2134ccda36e684b17d418035f206560a3f2fad3759174e155a0"
   },
   {
-    "path": "outputs/sourcebox/sheets/cs2-world-scenery-assets.json",
-    "sha256": "88aa71f7d67a62b8363fc8b069be19d2cd4ff35d7d71374e175d8cd0c188a972",
-    "bytes": 37298
+    "Path": "outputs/sourcebox/sheets/cs2-world-scenery-assets.json",
+    "Sha256": "88aa71f7d67a62b8363fc8b069be19d2cd4ff35d7d71374e175d8cd0c188a972"
   },
   {
-    "path": "outputs/sourcebox/sheets/cs2.json",
-    "sha256": "6a0d53d578780d4f141a1f5aeb026c20e449352b5e4858cad2feef2051ec4e58",
-    "bytes": 2541
+    "Path": "outputs/sourcebox/sheets/cs2.json",
+    "Sha256": "6a0d53d578780d4f141a1f5aeb026c20e449352b5e4858cad2feef2051ec4e58"
   },
   {
-    "path": "outputs/sourcebox/sheets/expansion-requirements.json",
-    "sha256": "612613db30117e8f9962dd9a98bc9d63e0f8485ce4a1d29e85a9aca9d780d5b4",
-    "bytes": 1141
+    "Path": "outputs/sourcebox/sheets/expansion-requirements.json",
+    "Sha256": "612613db30117e8f9962dd9a98bc9d63e0f8485ce4a1d29e85a9aca9d780d5b4"
   },
   {
-    "path": "outputs/sourcebox/sheets/games-adapters.json",
-    "sha256": "b38e44e4ed8fc09a7ec843d59acc745a746a903f19181979e0e10bbe004682e3",
-    "bytes": 277
+    "Path": "outputs/sourcebox/sheets/games-adapters.json",
+    "Sha256": "b38e44e4ed8fc09a7ec843d59acc745a746a903f19181979e0e10bbe004682e3"
   },
   {
-    "path": "outputs/sourcebox/sheets/gmod-scene.json",
-    "sha256": "4181bf851a840ada1a76ba332b7edd03ce04ea43deae61b4ce6260d3494ad2d2",
-    "bytes": 86005
+    "Path": "outputs/sourcebox/sheets/gmod-scene.json",
+    "Sha256": "4181bf851a840ada1a76ba332b7edd03ce04ea43deae61b4ce6260d3494ad2d2"
   },
   {
-    "path": "outputs/sourcebox/sheets/gmod.json",
-    "sha256": "fee494fbd66d9f2a564f74a60c38f4afda3b9d4322c76d02db3bacb2e5cec96b",
-    "bytes": 653
+    "Path": "outputs/sourcebox/sheets/gmod.json",
+    "Sha256": "fee494fbd66d9f2a564f74a60c38f4afda3b9d4322c76d02db3bacb2e5cec96b"
   },
   {
-    "path": "outputs/sourcebox/sheets/hl1mp.json",
-    "sha256": "8ca24a8f7253b276feeaa9ad7b96f8f26857b595fdc83e542c3ed567845c4281",
-    "bytes": 7730
+    "Path": "outputs/sourcebox/sheets/hl1mp.json",
+    "Sha256": "8ca24a8f7253b276feeaa9ad7b96f8f26857b595fdc83e542c3ed567845c4281"
   },
   {
-    "path": "outputs/sourcebox/sheets/hl2-gameplay.json",
-    "sha256": "b1de40adedcaacd8c9ed08f19232944ec75e7f597e8131a6d9f034912cea8757",
-    "bytes": 1338
+    "Path": "outputs/sourcebox/sheets/hl2-gameplay.json",
+    "Sha256": "b1de40adedcaacd8c9ed08f19232944ec75e7f597e8131a6d9f034912cea8757"
   },
   {
-    "path": "outputs/sourcebox/sheets/map-travel.json",
-    "sha256": "e889752231985fd7fc823382c5b4710a95bf1d97844707ba7adff60979e6b7c4",
-    "bytes": 375
+    "Path": "outputs/sourcebox/sheets/map-travel.json",
+    "Sha256": "e889752231985fd7fc823382c5b4710a95bf1d97844707ba7adff60979e6b7c4"
   },
   {
-    "path": "outputs/sourcebox/sheets/native-world-hosts.json",
-    "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
-    "bytes": 2
+    "Path": "outputs/sourcebox/sheets/native-world-hosts.json",
+    "Sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
   },
   {
-    "path": "outputs/sourcebox/sheets/network-messages.json",
-    "sha256": "dfb4b5bf1887130d69069aa26a5272c93ed86576cb2fa06151aea8b902825dcb",
-    "bytes": 3145
+    "Path": "outputs/sourcebox/sheets/network-messages.json",
+    "Sha256": "dfb4b5bf1887130d69069aa26a5272c93ed86576cb2fa06151aea8b902825dcb"
   },
   {
-    "path": "outputs/sourcebox/sheets/physics-objects.json",
-    "sha256": "b32839dc7017055dabba96dffbaeaf223a1cb5000d5f8dc3aa6753ed12ffcf54",
-    "bytes": 2389
+    "Path": "outputs/sourcebox/sheets/physics-objects.json",
+    "Sha256": "b32839dc7017055dabba96dffbaeaf223a1cb5000d5f8dc3aa6753ed12ffcf54"
   },
   {
-    "path": "outputs/sourcebox/sheets/player-movement.json",
-    "sha256": "bf9ab7b0b72b1f95954e12433d655397889402d7bedceed68fc52e24995c69f7",
-    "bytes": 816
+    "Path": "outputs/sourcebox/sheets/player-movement.json",
+    "Sha256": "bf9ab7b0b72b1f95954e12433d655397889402d7bedceed68fc52e24995c69f7"
   },
   {
-    "path": "outputs/sourcebox/sheets/portal-hub-roadmap.json",
-    "sha256": "2aae0d6d394d2a56e0c24798c92d746dbc1f5f564da9d505901548c5b4cdc2a7",
-    "bytes": 1020
+    "Path": "outputs/sourcebox/sheets/portal-hub-roadmap.json",
+    "Sha256": "2aae0d6d394d2a56e0c24798c92d746dbc1f5f564da9d505901548c5b4cdc2a7"
   },
   {
-    "path": "outputs/sourcebox/sheets/portal2.json",
-    "sha256": "c24e65c4ea8c47c3287fe45876b131b3aed86750ff69efc11cf41e8e72decdb6",
-    "bytes": 640
+    "Path": "outputs/sourcebox/sheets/portal2.json",
+    "Sha256": "c24e65c4ea8c47c3287fe45876b131b3aed86750ff69efc11cf41e8e72decdb6"
   },
   {
-    "path": "outputs/sourcebox/sheets/portals.json",
-    "sha256": "d73a2082049519448dcec97c465a4507bf92f5dc1d57de4771dc0164d575323e",
-    "bytes": 3216
+    "Path": "outputs/sourcebox/sheets/portals.json",
+    "Sha256": "d73a2082049519448dcec97c465a4507bf92f5dc1d57de4771dc0164d575323e"
   },
   {
-    "path": "outputs/sourcebox/sheets/room-upgrades.json",
-    "sha256": "afe2ed906d11745e1726b22e8783d95ceee1862318ed7c48c3c856accdaed1c0",
-    "bytes": 1461
+    "Path": "outputs/sourcebox/sheets/room-upgrades.json",
+    "Sha256": "afe2ed906d11745e1726b22e8783d95ceee1862318ed7c48c3c856accdaed1c0"
   },
   {
-    "path": "outputs/sourcebox/sheets/room.json",
-    "sha256": "037f3f563f6c663a099878ff6f70257f8244a1fabd775b863fe6759cc3188964",
-    "bytes": 480
+    "Path": "outputs/sourcebox/sheets/room.json",
+    "Sha256": "037f3f563f6c663a099878ff6f70257f8244a1fabd775b863fe6759cc3188964"
   },
   {
-    "path": "outputs/sourcebox/sheets/roster.json",
-    "sha256": "e99839c7a9238dc70c1c8e29ea7c9d840490723aeb6670a46497cda0a0a7f8df",
-    "bytes": 1570
+    "Path": "outputs/sourcebox/sheets/roster.json",
+    "Sha256": "e99839c7a9238dc70c1c8e29ea7c9d840490723aeb6670a46497cda0a0a7f8df"
   },
   {
-    "path": "outputs/sourcebox/sheets/runtime.json",
-    "sha256": "1f650700d7f3f9b239823c539eb6b4a81cddca6b1196a2202de6d72941f6b0f4",
-    "bytes": 143
+    "Path": "outputs/sourcebox/sheets/runtime.json",
+    "Sha256": "1f650700d7f3f9b239823c539eb6b4a81cddca6b1196a2202de6d72941f6b0f4"
   },
   {
-    "path": "outputs/sourcebox/sheets/sdk-builds.json",
-    "sha256": "eee8f83bd5055171458dd160bbf1fef029b91d88e05aa588bfe1ccaa67256188",
-    "bytes": 1268
+    "Path": "outputs/sourcebox/sheets/sdk-builds.json",
+    "Sha256": "eee8f83bd5055171458dd160bbf1fef029b91d88e05aa588bfe1ccaa67256188"
   },
   {
-    "path": "outputs/sourcebox/sheets/shared-entities.json",
-    "sha256": "89e49829f1422e51d2d0defe636955e9d090b9b2380e8f979e3a3ae772e0d9b6",
-    "bytes": 161
+    "Path": "outputs/sourcebox/sheets/shared-entities.json",
+    "Sha256": "89e49829f1422e51d2d0defe636955e9d090b9b2380e8f979e3a3ae772e0d9b6"
   },
   {
-    "path": "outputs/sourcebox/sheets/test-cases.json",
-    "sha256": "a9d55711dff373b786a3ab945d8e26131eb6368f25f1cdbe49b4a006e324fe2c",
-    "bytes": 4538
+    "Path": "outputs/sourcebox/sheets/test-cases.json",
+    "Sha256": "a9d55711dff373b786a3ab945d8e26131eb6368f25f1cdbe49b4a006e324fe2c"
   },
   {
-    "path": "outputs/sourcebox/sheets/window-layout.json",
-    "sha256": "39cae705764c68daacf36619ec021974aab895faa7a13bcccd8e994c9956ed90",
-    "bytes": 933
+    "Path": "outputs/sourcebox/sheets/window-layout.json",
+    "Sha256": "39cae705764c68daacf36619ec021974aab895faa7a13bcccd8e994c9956ed90"
   },
   {
-    "path": "outputs/sourcebox/sheets/worlds-expanded.json",
-    "sha256": "a90652da81604c7a5bab51de80cdf2fbd2d4e57aa853caac00dc30954d52a34e",
-    "bytes": 2028
+    "Path": "outputs/sourcebox/sheets/worlds-expanded.json",
+    "Sha256": "a90652da81604c7a5bab51de80cdf2fbd2d4e57aa853caac00dc30954d52a34e"
   },
   {
-    "path": "outputs/sourcebox/sheets/worlds.json",
-    "sha256": "bcc0a881c9e83f1c621c956e15c98f3f6042d7f22c4d41981672cc417fb9f928",
-    "bytes": 2056
+    "Path": "outputs/sourcebox/sheets/worlds.json",
+    "Sha256": "bcc0a881c9e83f1c621c956e15c98f3f6042d7f22c4d41981672cc417fb9f928"
   },
   {
-    "path": "outputs/sourcebox/test/bridge-lease.test.mjs",
-    "sha256": "581ea3e7a414660991cff7097645c2b640e94e6d5e481b0e3c379958e96cea87",
-    "bytes": 1270
+    "Path": "outputs/sourcebox/test/bridge-lease.test.mjs",
+    "Sha256": "581ea3e7a414660991cff7097645c2b640e94e6d5e481b0e3c379958e96cea87"
   },
   {
-    "path": "outputs/sourcebox/test/classes.test.mjs",
-    "sha256": "fa74c9b5413f918670777b816490f36bd24c06e7c9328dab8fa3b4b259bbda30",
-    "bytes": 1600
+    "Path": "outputs/sourcebox/test/classes.test.mjs",
+    "Sha256": "fa74c9b5413f918670777b816490f36bd24c06e7c9328dab8fa3b4b259bbda30"
   },
   {
-    "path": "outputs/sourcebox/test/combat.test.mjs",
-    "sha256": "98746c53ac1366669b0c2304a280f61c29eaf274dc93d098573a5d5cedeb1b4a",
-    "bytes": 2418
+    "Path": "outputs/sourcebox/test/combat.test.mjs",
+    "Sha256": "98746c53ac1366669b0c2304a280f61c29eaf274dc93d098573a5d5cedeb1b4a"
   },
   {
-    "path": "outputs/sourcebox/test/core.test.mjs",
-    "sha256": "abf907383fcf2a3bfd0a4e5dde676a6397b3dce2769c59b54dd02b2b1349dfb1",
-    "bytes": 1591
+    "Path": "outputs/sourcebox/test/core.test.mjs",
+    "Sha256": "abf907383fcf2a3bfd0a4e5dde676a6397b3dce2769c59b54dd02b2b1349dfb1"
   },
   {
-    "path": "outputs/sourcebox/test/cs2-movement.test.mjs",
-    "sha256": "a5bde8893d8bccb0c9963e4342de555ae3cffd921a8a23c309c4fd0411f5a6e6",
-    "bytes": 2862
+    "Path": "outputs/sourcebox/test/cs2-movement.test.mjs",
+    "Sha256": "a5bde8893d8bccb0c9963e4342de555ae3cffd921a8a23c309c4fd0411f5a6e6"
   },
   {
-    "path": "outputs/sourcebox/test/cs2.test.mjs",
-    "sha256": "926ffe439be49ff600052362af5edd10180c645dbe972e6326f2002fa9b37414",
-    "bytes": 1193
+    "Path": "outputs/sourcebox/test/cs2.test.mjs",
+    "Sha256": "926ffe439be49ff600052362af5edd10180c645dbe972e6326f2002fa9b37414"
   },
   {
-    "path": "outputs/sourcebox/test/cube-tcp.test.mjs",
-    "sha256": "ab51bcd42a3ba5b17ef221446b1b336ce93c015cf9e5f149a41b1c34864d45dc",
-    "bytes": 2090
+    "Path": "outputs/sourcebox/test/cube-tcp.test.mjs",
+    "Sha256": "ab51bcd42a3ba5b17ef221446b1b336ce93c015cf9e5f149a41b1c34864d45dc"
   },
   {
-    "path": "outputs/sourcebox/test/cube.test.mjs",
-    "sha256": "ffea196ad8122a5633825bb06d185acbc582488c2975355206ee49891bf0b442",
-    "bytes": 5424
+    "Path": "outputs/sourcebox/test/cube.test.mjs",
+    "Sha256": "ffea196ad8122a5633825bb06d185acbc582488c2975355206ee49891bf0b442"
   },
   {
-    "path": "outputs/sourcebox/test/five-game-combat.test.mjs",
-    "sha256": "d58b8f6bf010605b439c4c0313ad608436e837b7ee9b3252cff23250d0876d0a",
-    "bytes": 2166
+    "Path": "outputs/sourcebox/test/five-game-combat.test.mjs",
+    "Sha256": "d58b8f6bf010605b439c4c0313ad608436e837b7ee9b3252cff23250d0876d0a"
   },
   {
-    "path": "outputs/sourcebox/test/framing.test.mjs",
-    "sha256": "639c0c0dcc24fca6e0d5c08b49383e3e11b8bcd9c163d5a8d4f482e06b3c2f84",
-    "bytes": 711
+    "Path": "outputs/sourcebox/test/framing.test.mjs",
+    "Sha256": "639c0c0dcc24fca6e0d5c08b49383e3e11b8bcd9c163d5a8d4f482e06b3c2f84"
   },
   {
-    "path": "outputs/sourcebox/test/gmod-commands.test.mjs",
-    "sha256": "8a3f8d9d9c883b510f18bda377d89f6454d45a3c07a82909605ef213a599c7ec",
-    "bytes": 926
+    "Path": "outputs/sourcebox/test/gmod-commands.test.mjs",
+    "Sha256": "8a3f8d9d9c883b510f18bda377d89f6454d45a3c07a82909605ef213a599c7ec"
   },
   {
-    "path": "outputs/sourcebox/test/gmod-scene.test.mjs",
-    "sha256": "f014904dd04f3b9025bf9c331ce4610367c6ecd55b8631a8850058a039c630eb",
-    "bytes": 1528
+    "Path": "outputs/sourcebox/test/gmod-scene.test.mjs",
+    "Sha256": "f014904dd04f3b9025bf9c331ce4610367c6ecd55b8631a8850058a039c630eb"
   },
   {
-    "path": "outputs/sourcebox/test/gmod.test.mjs",
-    "sha256": "57e8a8385caf0854add0109cfb6c4fc4247fdeaf2fc404b7e714020cc4322a96",
-    "bytes": 1716
+    "Path": "outputs/sourcebox/test/gmod.test.mjs",
+    "Sha256": "57e8a8385caf0854add0109cfb6c4fc4247fdeaf2fc404b7e714020cc4322a96"
   },
   {
-    "path": "outputs/sourcebox/test/hl1mp.test.mjs",
-    "sha256": "96050f609342b440f9bab901993b55e180453894e395ce31b28f3f959c76678e",
-    "bytes": 1306
+    "Path": "outputs/sourcebox/test/hl1mp.test.mjs",
+    "Sha256": "96050f609342b440f9bab901993b55e180453894e395ce31b28f3f959c76678e"
   },
   {
-    "path": "outputs/sourcebox/test/map-travel.test.mjs",
-    "sha256": "6672562c277f13b05d6313ddfdb98f1df14a3c497b4a89b026e06ae6ea7d2017",
-    "bytes": 1770
+    "Path": "outputs/sourcebox/test/map-travel.test.mjs",
+    "Sha256": "6672562c277f13b05d6313ddfdb98f1df14a3c497b4a89b026e06ae6ea7d2017"
   },
   {
-    "path": "outputs/sourcebox/test/movement.test.mjs",
-    "sha256": "648c9bdc2259bd3ffeae05f7bc192b86570e18ba6f52220b729ec3a01bfe2024",
-    "bytes": 2626
+    "Path": "outputs/sourcebox/test/movement.test.mjs",
+    "Sha256": "648c9bdc2259bd3ffeae05f7bc192b86570e18ba6f52220b729ec3a01bfe2024"
   },
   {
-    "path": "outputs/sourcebox/test/physics.test.mjs",
-    "sha256": "99fc8639b65ae9f46a630ad78a89bfa04dbd90cd2aea2834bf6eade4afe7a990",
-    "bytes": 1626
+    "Path": "outputs/sourcebox/test/physics.test.mjs",
+    "Sha256": "99fc8639b65ae9f46a630ad78a89bfa04dbd90cd2aea2834bf6eade4afe7a990"
   },
   {
-    "path": "outputs/sourcebox/test/portal-authority.test.mjs",
-    "sha256": "cd284e774ac5e3643e9531bd2140a2793dc5e9f952ea190113300b82391da9e4",
-    "bytes": 8397
+    "Path": "outputs/sourcebox/test/portal-authority.test.mjs",
+    "Sha256": "cd284e774ac5e3643e9531bd2140a2793dc5e9f952ea190113300b82391da9e4"
   },
   {
-    "path": "outputs/sourcebox/test/portal-math.test.mjs",
-    "sha256": "3be2c71298e0488eea5bb6500b8c0e137bf5d0ce646b86a93720a5269a46f18c",
-    "bytes": 4345
+    "Path": "outputs/sourcebox/test/portal-math.test.mjs",
+    "Sha256": "3be2c71298e0488eea5bb6500b8c0e137bf5d0ce646b86a93720a5269a46f18c"
   },
   {
-    "path": "outputs/sourcebox/test/portal-worlds.test.mjs",
-    "sha256": "f0ffa842fec5e83141e57c0042d16b642a51b50cbbf63ed4990b8b14f3889ab5",
-    "bytes": 3499
+    "Path": "outputs/sourcebox/test/portal-worlds.test.mjs",
+    "Sha256": "f0ffa842fec5e83141e57c0042d16b642a51b50cbbf63ed4990b8b14f3889ab5"
   },
   {
-    "path": "outputs/sourcebox/test/portal2-movement.test.mjs",
-    "sha256": "99545ec9cdbf256fc2133ce123780908f942bcd2fe0f16bf6ad6782519acd3c4",
-    "bytes": 2685
+    "Path": "outputs/sourcebox/test/portal2-movement.test.mjs",
+    "Sha256": "99545ec9cdbf256fc2133ce123780908f942bcd2fe0f16bf6ad6782519acd3c4"
   },
   {
-    "path": "outputs/sourcebox/test/preflight.test.mjs",
-    "sha256": "14f2f7a8c8f1559af054239e94dc97835d6d4ddd478d106643cf92d1ef7cb166",
-    "bytes": 481
+    "Path": "outputs/sourcebox/test/preflight.test.mjs",
+    "Sha256": "14f2f7a8c8f1559af054239e94dc97835d6d4ddd478d106643cf92d1ef7cb166"
   },
   {
-    "path": "outputs/sourcebox/test/ragdolls.test.mjs",
-    "sha256": "e55914a7ca586d9aff1eba0488244f9f47f62ef73b0f34d196639b6d3b18a81d",
-    "bytes": 2825
+    "Path": "outputs/sourcebox/test/ragdolls.test.mjs",
+    "Sha256": "e55914a7ca586d9aff1eba0488244f9f47f62ef73b0f34d196639b6d3b18a81d"
   },
   {
-    "path": "outputs/sourcebox/test/recovery.test.mjs",
-    "sha256": "af71eaa69f2160fff1f703ec87259fa3eb2a6d060ce7d12701d876130969434a",
-    "bytes": 2352
+    "Path": "outputs/sourcebox/test/recovery.test.mjs",
+    "Sha256": "af71eaa69f2160fff1f703ec87259fa3eb2a6d060ce7d12701d876130969434a"
   },
   {
-    "path": "outputs/sourcebox/test/scene-interactions.test.mjs",
-    "sha256": "5c0be2bc4ae8edf00c72a70bfc758ee303f5b5d64bfad1b811bc5e090ec379b1",
-    "bytes": 3661
+    "Path": "outputs/sourcebox/test/scene-interactions.test.mjs",
+    "Sha256": "5c0be2bc4ae8edf00c72a70bfc758ee303f5b5d64bfad1b811bc5e090ec379b1"
   },
   {
-    "path": "outputs/sourcebox/test/six-game-combat.test.mjs",
-    "sha256": "70b09b90f8578902b869a186410af5b62b127f2f8e4aedb8436e628a5c7602c5",
-    "bytes": 2179
+    "Path": "outputs/sourcebox/test/six-game-combat.test.mjs",
+    "Sha256": "70b09b90f8578902b869a186410af5b62b127f2f8e4aedb8436e628a5c7602c5"
   },
   {
-    "path": "outputs/sourcebox/test/world-data.test.mjs",
-    "sha256": "500ba6ce13388331c60b74b09bf570e820da44064359e1d344fc419166012819",
-    "bytes": 1302
+    "Path": "outputs/sourcebox/test/world-data.test.mjs",
+    "Sha256": "500ba6ce13388331c60b74b09bf570e820da44064359e1d344fc419166012819"
   },
   {
-    "path": "outputs/sourcebox/test/world-placement.test.mjs",
-    "sha256": "c57e55902fdcfa622522b3ff92fc6140dd8b8b06c856cce98db505bef990b546",
-    "bytes": 1347
+    "Path": "outputs/sourcebox/test/world-placement.test.mjs",
+    "Sha256": "c57e55902fdcfa622522b3ff92fc6140dd8b8b06c856cce98db505bef990b546"
   },
   {
-    "path": "outputs/sourcebox/test/world-routing.test.mjs",
-    "sha256": "31fe5ae4d9a131f4d00538a057a79e223bd7d962bb5ae9f0108f66643a6361ec",
-    "bytes": 854
+    "Path": "outputs/sourcebox/test/world-routing.test.mjs",
+    "Sha256": "31fe5ae4d9a131f4d00538a057a79e223bd7d962bb5ae9f0108f66643a6361ec"
   },
   {
-    "path": "outputs/sourcebox/tools/build-cs2-world-map.ps1",
-    "sha256": "ae93a48778b03429635c6ae17c837a07858af77f08960c781e3146ce52b931a9",
-    "bytes": 1629
+    "Path": "outputs/sourcebox/tools/build-cs2-world-map.ps1",
+    "Sha256": "ae93a48778b03429635c6ae17c837a07858af77f08960c781e3146ce52b931a9"
   },
   {
-    "path": "outputs/sourcebox/tools/build-cs2-worlds.ps1",
-    "sha256": "51124e96346f9a71d7ecd71354c7e054a8fe75a493ef6cc8e45caaf9d1770960",
-    "bytes": 2571
+    "Path": "outputs/sourcebox/tools/build-cs2-worlds.ps1",
+    "Sha256": "51124e96346f9a71d7ecd71354c7e054a8fe75a493ef6cc8e45caaf9d1770960"
   },
   {
-    "path": "outputs/sourcebox/tools/build-fallback-models.py",
-    "sha256": "fe0fab83021096d2a56a1f53e15036a09c37cf453c7fb87c3e3fd58971402d80",
-    "bytes": 4648
+    "Path": "outputs/sourcebox/tools/build-fallback-models.py",
+    "Sha256": "fe0fab83021096d2a56a1f53e15036a09c37cf453c7fb87c3e3fd58971402d80"
   },
   {
-    "path": "outputs/sourcebox/tools/build-sdk-baseline.py",
-    "sha256": "41e0740b3780d5625d7aa5043500c4937f78c8160b91c6af14c145bdce1a05bd",
-    "bytes": 1222
+    "Path": "outputs/sourcebox/tools/build-sdk-baseline.py",
+    "Sha256": "41e0740b3780d5625d7aa5043500c4937f78c8160b91c6af14c145bdce1a05bd"
   },
   {
-    "path": "outputs/sourcebox/tools/build-source1-world-host.ps1",
-    "sha256": "ef7dc4b270f56499b9775075c99ddebc459b2bb0b888e7d6ff2b8fa39cc4f910",
-    "bytes": 4107
+    "Path": "outputs/sourcebox/tools/build-source1-world-host.ps1",
+    "Sha256": "ef7dc4b270f56499b9775075c99ddebc459b2bb0b888e7d6ff2b8fa39cc4f910"
   },
   {
-    "path": "outputs/sourcebox/tools/combine-source-worlds.py",
-    "sha256": "c58eb832e1d099e41162a10063890f7ea8ee791aef2daf7e8d5232ece68d18eb",
-    "bytes": 10275
+    "Path": "outputs/sourcebox/tools/combine-source-worlds.py",
+    "Sha256": "7c64254cf0559922f4b7ea17c2d5f8285e624228d8eb4aec29d3563c17f1b842"
   },
   {
-    "path": "outputs/sourcebox/tools/convert-chell-textures.py",
-    "sha256": "c4b0ded5fbca687d982dfeeeda313d97bf31813ec3cba9d0bc166440e02bd66c",
-    "bytes": 2071
+    "Path": "outputs/sourcebox/tools/convert-chell-textures.py",
+    "Sha256": "c4b0ded5fbca687d982dfeeeda313d97bf31813ec3cba9d0bc166440e02bd66c"
   },
   {
-    "path": "outputs/sourcebox/tools/convert-cs2-catalog.cjs",
-    "sha256": "85a320c9b1541b12e4481b3c0a8c3fc28376bf60f30c7383e929725d545a2951",
-    "bytes": 5074
+    "Path": "outputs/sourcebox/tools/convert-cs2-catalog.cjs",
+    "Sha256": "85a320c9b1541b12e4481b3c0a8c3fc28376bf60f30c7383e929725d545a2951"
   },
   {
-    "path": "outputs/sourcebox/tools/convert-cs2-world-materials.py",
-    "sha256": "927516df994b666c6b857de816cb13436b272c4e4522b885ab9b2d31b78b15a6",
-    "bytes": 2484
+    "Path": "outputs/sourcebox/tools/convert-cs2-world-materials.py",
+    "Sha256": "927516df994b666c6b857de816cb13436b272c4e4522b885ab9b2d31b78b15a6"
   },
   {
-    "path": "outputs/sourcebox/tools/convert-cs2-world-scenery.cjs",
-    "sha256": "b62351cb0c5d91818dca9d6084ed523fb81eb6385d9dcc1b4843fba97ebc7172",
-    "bytes": 4779
+    "Path": "outputs/sourcebox/tools/convert-cs2-world-scenery.cjs",
+    "Sha256": "b62351cb0c5d91818dca9d6084ed523fb81eb6385d9dcc1b4843fba97ebc7172"
   },
   {
-    "path": "outputs/sourcebox/tools/convert-world-legacy-textures.py",
-    "sha256": "2650b7819fb1b9432d201346152c78104c8694d3adde9be53d6fe43f298f6e9e",
-    "bytes": 4180
+    "Path": "outputs/sourcebox/tools/convert-world-legacy-textures.py",
+    "Sha256": "2650b7819fb1b9432d201346152c78104c8694d3adde9be53d6fe43f298f6e9e"
   },
   {
-    "path": "outputs/sourcebox/tools/create-cs2-world-probe.mjs",
-    "sha256": "54cadfb1f987617839f40424041d980e892e88dfe522c7106275a0be38da0457",
-    "bytes": 6955
+    "Path": "outputs/sourcebox/tools/create-cs2-world-probe.mjs",
+    "Sha256": "54cadfb1f987617839f40424041d980e892e88dfe522c7106275a0be38da0457"
   },
   {
-    "path": "outputs/sourcebox/tools/cs2-room-native.cjs",
-    "sha256": "2589a5acafd07a6576a3a75585c1f3882ee7697bda22af8b6ee1b106a0529ec8",
-    "bytes": 1915
+    "Path": "outputs/sourcebox/tools/cs2-room-native.cjs",
+    "Sha256": "2589a5acafd07a6576a3a75585c1f3882ee7697bda22af8b6ee1b106a0529ec8"
   },
   {
-    "path": "outputs/sourcebox/tools/cs2-worldprobe/Probe.cs",
-    "sha256": "2ae8869327e05d63ec1cc4598382c68acbdd9edbd6aed4f61d39fa6abb67ebfe",
-    "bytes": 3781
+    "Path": "outputs/sourcebox/tools/cs2-worldprobe/Probe.cs",
+    "Sha256": "2ae8869327e05d63ec1cc4598382c68acbdd9edbd6aed4f61d39fa6abb67ebfe"
   },
   {
-    "path": "outputs/sourcebox/tools/cs2-worldprobe/SourceboxWorldProbe.csproj",
-    "sha256": "938cdeba4cdb8202238055ec2b59ab72f150b95638e8ebce428b25a814942ed8",
-    "bytes": 397
+    "Path": "outputs/sourcebox/tools/cs2-worldprobe/SourceboxWorldProbe.csproj",
+    "Sha256": "938cdeba4cdb8202238055ec2b59ab72f150b95638e8ebce428b25a814942ed8"
   },
   {
-    "path": "outputs/sourcebox/tools/deploy-world-lighting-repair.ps1",
-    "sha256": "7a074d59e972b70a8c08a97a0f6a06e0e032d49c115f575e700fb54d58f0c521",
-    "bytes": 3616
+    "Path": "outputs/sourcebox/tools/cs2-worlds-portable.cjs",
+    "Sha256": "5a916d374d3917eff843125e841809d13ebcb3fd624adf83e5a94a473240ad98"
   },
   {
-    "path": "outputs/sourcebox/tools/enable-sdk-hl2.mjs",
-    "sha256": "4fa56b57c0bc3ee0cf48b3873f62a9d0079e8b97bff152c05e50b08af9c0a159",
-    "bytes": 851
+    "Path": "outputs/sourcebox/tools/deploy-world-lighting-repair.ps1",
+    "Sha256": "7a074d59e972b70a8c08a97a0f6a06e0e032d49c115f575e700fb54d58f0c521"
   },
   {
-    "path": "outputs/sourcebox/tools/export-chell.py",
-    "sha256": "2210470ec61e649133b03077c4cf49ab1c771d782da3600fb3344629dae1f380",
-    "bytes": 4561
+    "Path": "outputs/sourcebox/tools/enable-sdk-hl2.mjs",
+    "Sha256": "4fa56b57c0bc3ee0cf48b3873f62a9d0079e8b97bff152c05e50b08af9c0a159"
   },
   {
-    "path": "outputs/sourcebox/tools/export-cs2-arm-fallback.py",
-    "sha256": "e2072b3351c1734b06c7b449702dbf3ef4704493b079ee2eb18c79de1432286d",
-    "bytes": 1902
+    "Path": "outputs/sourcebox/tools/export-chell.py",
+    "Sha256": "2210470ec61e649133b03077c4cf49ab1c771d782da3600fb3344629dae1f380"
   },
   {
-    "path": "outputs/sourcebox/tools/export-cs2-gmod.py",
-    "sha256": "e277407f23ac15d356113ecdb906d1f933a047cb1d3d7eb038f1940d829d6898",
-    "bytes": 1937
+    "Path": "outputs/sourcebox/tools/export-cs2-arm-fallback.py",
+    "Sha256": "e2072b3351c1734b06c7b449702dbf3ef4704493b079ee2eb18c79de1432286d"
   },
   {
-    "path": "outputs/sourcebox/tools/export-cs2-goblin.py",
-    "sha256": "09be1ae1033a572d268137eecc9b8411b846c5e6d76bd9031c68b882b1141843",
-    "bytes": 1943
+    "Path": "outputs/sourcebox/tools/export-cs2-gmod.py",
+    "Sha256": "e277407f23ac15d356113ecdb906d1f933a047cb1d3d7eb038f1940d829d6898"
   },
   {
-    "path": "outputs/sourcebox/tools/export-cs2-heavy.py",
-    "sha256": "6b07c742354caa0aa24c4b5c776a30452f19555efc3383ea4a9be49a4ef66fa0",
-    "bytes": 1924
+    "Path": "outputs/sourcebox/tools/export-cs2-goblin.py",
+    "Sha256": "09be1ae1033a572d268137eecc9b8411b846c5e6d76bd9031c68b882b1141843"
   },
   {
-    "path": "outputs/sourcebox/tools/export-cs2-world-lights.py",
-    "sha256": "7c548ac868b60d2a462134e6b6b5456dbdba2422c4e1c274b6e87fba9b32efe8",
-    "bytes": 3203
+    "Path": "outputs/sourcebox/tools/export-cs2-heavy.py",
+    "Sha256": "6b07c742354caa0aa24c4b5c776a30452f19555efc3383ea4a9be49a4ef66fa0"
   },
   {
-    "path": "outputs/sourcebox/tools/export-cs2-worlds-fbx.py",
-    "sha256": "d6ca363b453c8b221de952e3432bb01c0a2a33b190f7cd02e2cffc5ad12587cc",
-    "bytes": 3524
+    "Path": "outputs/sourcebox/tools/export-cs2-world-lights.py",
+    "Sha256": "7c548ac868b60d2a462134e6b6b5456dbdba2422c4e1c274b6e87fba9b32efe8"
   },
   {
-    "path": "outputs/sourcebox/tools/export-cs2-worlds.mjs",
-    "sha256": "61e8f2924c09c98e5977606c0052726adf1ec615a08144015ee501f0379248be",
-    "bytes": 3495
+    "Path": "outputs/sourcebox/tools/export-cs2-worlds-fbx.py",
+    "Sha256": "d6ca363b453c8b221de952e3432bb01c0a2a33b190f7cd02e2cffc5ad12587cc"
   },
   {
-    "path": "outputs/sourcebox/tools/export-p2-tf-players.py",
-    "sha256": "65a61b15332fbb3a6279b18da664a8a66c2d7ca0049b04da9d8e77ca85ffe43d",
-    "bytes": 3186
+    "Path": "outputs/sourcebox/tools/export-cs2-worlds.mjs",
+    "Sha256": "61e8f2924c09c98e5977606c0052726adf1ec615a08144015ee501f0379248be"
   },
   {
-    "path": "outputs/sourcebox/tools/export-source1-detail-models.py",
-    "sha256": "e5774e26b764f6d41c5a966b97214300d0dab8ead925d7567a0e874816b983f0",
-    "bytes": 5531
+    "Path": "outputs/sourcebox/tools/export-p2-tf-players.py",
+    "Sha256": "65a61b15332fbb3a6279b18da664a8a66c2d7ca0049b04da9d8e77ca85ffe43d"
   },
   {
-    "path": "outputs/sourcebox/tools/export-world-scenery.py",
-    "sha256": "39cd314928f2540bf207be305bf9a03bb6427de0185e0b95118dfd6aacfdfa96",
-    "bytes": 4066
+    "Path": "outputs/sourcebox/tools/export-source1-detail-models.py",
+    "Sha256": "e5774e26b764f6d41c5a966b97214300d0dab8ead925d7567a0e874816b983f0"
   },
   {
-    "path": "outputs/sourcebox/tools/export-worlds.py",
-    "sha256": "02eb7669b901f14e1cfdbedeab2c5ee6ac29017dd4c8b309429f12bc949b2b72",
-    "bytes": 8731
+    "Path": "outputs/sourcebox/tools/export-world-scenery.py",
+    "Sha256": "39cd314928f2540bf207be305bf9a03bb6427de0185e0b95118dfd6aacfdfa96"
   },
   {
-    "path": "outputs/sourcebox/tools/extract-cs2-world-materials.cjs",
-    "sha256": "d51d61a035121b824d6de3af1dd5f7a09221b09a011f4d1a94b6687b0334cd57",
-    "bytes": 2581
+    "Path": "outputs/sourcebox/tools/export-worlds.py",
+    "Sha256": "02eb7669b901f14e1cfdbedeab2c5ee6ac29017dd4c8b309429f12bc949b2b72"
   },
   {
-    "path": "outputs/sourcebox/tools/extract-world-legacy-textures.cjs",
-    "sha256": "61e254c8a14247a003e37d421cccec14931b2f6cd33ed673ad67851a013864da",
-    "bytes": 3654
+    "Path": "outputs/sourcebox/tools/extract-cs2-world-materials.cjs",
+    "Sha256": "d51d61a035121b824d6de3af1dd5f7a09221b09a011f4d1a94b6687b0334cd57"
   },
   {
-    "path": "outputs/sourcebox/tools/generate-cs2-models.cjs",
-    "sha256": "90b301a9dd1795eda31f79c3405d28e84031fedafa8799bdb96c50ce395ce039",
-    "bytes": 3741
+    "Path": "outputs/sourcebox/tools/extract-world-legacy-textures.cjs",
+    "Sha256": "61e254c8a14247a003e37d421cccec14931b2f6cd33ed673ad67851a013864da"
   },
   {
-    "path": "outputs/sourcebox/tools/install-sdk-portals.mjs",
-    "sha256": "06184818c7a4d6cc9eecc8e066462ce4d41d18e78fdf35ca1748ad411c49d06f",
-    "bytes": 6109
+    "Path": "outputs/sourcebox/tools/generate-cs2-models.cjs",
+    "Sha256": "90b301a9dd1795eda31f79c3405d28e84031fedafa8799bdb96c50ce395ce039"
   },
   {
-    "path": "outputs/sourcebox/tools/installed-assets.cjs",
-    "sha256": "ab67122bdb3160e7e7238bb48c78f313c6afd01612e23dc3b5b67eca582f600b",
-    "bytes": 1688
+    "Path": "outputs/sourcebox/tools/install-sdk-portals.mjs",
+    "Sha256": "06184818c7a4d6cc9eecc8e066462ce4d41d18e78fdf35ca1748ad411c49d06f"
   },
   {
-    "path": "outputs/sourcebox/tools/make-portal-ring.mjs",
-    "sha256": "2174ea68e5d7ef50c44dfaacb4153fee96af78e0919e21b97848982f7b97bb12",
-    "bytes": 1262
+    "Path": "outputs/sourcebox/tools/installed-assets.cjs",
+    "Sha256": "ab67122bdb3160e7e7238bb48c78f313c6afd01612e23dc3b5b67eca582f600b"
   },
   {
-    "path": "outputs/sourcebox/tools/measure-portal-momentum.mjs",
-    "sha256": "53c72c53b4bcc231db04a006ef6abdf0f2c26dc225f5d8b0d7f146720d8fd30f",
-    "bytes": 2105
+    "Path": "outputs/sourcebox/tools/make-portal-ring.mjs",
+    "Sha256": "2174ea68e5d7ef50c44dfaacb4153fee96af78e0919e21b97848982f7b97bb12"
   },
   {
-    "path": "outputs/sourcebox/tools/patch-sdk-tools.mjs",
-    "sha256": "c7e714db4e78c4e520350ee11a71041764b45f6a5dd5ef87d3e62c5ce5fa5a68",
-    "bytes": 532
+    "Path": "outputs/sourcebox/tools/measure-portal-momentum.mjs",
+    "Sha256": "53c72c53b4bcc231db04a006ef6abdf0f2c26dc225f5d8b0d7f146720d8fd30f"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-cs2-hand-attachments.ps1",
-    "sha256": "02a57a1552c6b4b2ea5c4908b6fd45a35015d4f656695e917bff2737715af85e",
-    "bytes": 1871
+    "Path": "outputs/sourcebox/tools/patch-sdk-tools.mjs",
+    "Sha256": "c7e714db4e78c4e520350ee11a71041764b45f6a5dd5ef87d3e62c5ce5fa5a68"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-cs2-world-sky.ps1",
-    "sha256": "9134096188327d3ab4b12d071ae7b8336641492b68fcb6d620d7aae7c7e889de",
-    "bytes": 1437
+    "Path": "outputs/sourcebox/tools/prepare-cs2-hand-attachments.ps1",
+    "Sha256": "02a57a1552c6b4b2ea5c4908b6fd45a35015d4f656695e917bff2737715af85e"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-cs2-world-sky.py",
-    "sha256": "d0f6f627e0d3fbe5deeae623be258d85fb217a106a26d94b163c6125a42fe3d0",
-    "bytes": 1789
+    "Path": "outputs/sourcebox/tools/prepare-cs2-world-sky.ps1",
+    "Sha256": "9134096188327d3ab4b12d071ae7b8336641492b68fcb6d620d7aae7c7e889de"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-gmod-native-host.mjs",
-    "sha256": "a266d65eea30e0f4c83d76c5d2069c0fac4f074e3e86e443a3e5b72d248f655b",
-    "bytes": 1207
+    "Path": "outputs/sourcebox/tools/prepare-cs2-world-sky.py",
+    "Sha256": "d0f6f627e0d3fbe5deeae623be258d85fb217a106a26d94b163c6125a42fe3d0"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-gmod-world-metadata.mjs",
-    "sha256": "49f588db9fa1eef2daf2b5093e153157c4f727ead3eef3bb445322dfd53584f2",
-    "bytes": 745
+    "Path": "outputs/sourcebox/tools/prepare-gmod-native-host.mjs",
+    "Sha256": "a266d65eea30e0f4c83d76c5d2069c0fac4f074e3e86e443a3e5b72d248f655b"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-hl1-portal-carrier.cjs",
-    "sha256": "c4f55550c11932e24c94305fb524f8ef9507b904a4ea1bdf6849936f3a690c9d",
-    "bytes": 1305
+    "Path": "outputs/sourcebox/tools/prepare-gmod-world-metadata.mjs",
+    "Sha256": "49f588db9fa1eef2daf2b5093e153157c4f727ead3eef3bb445322dfd53584f2"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-hl1-world-materials.py",
-    "sha256": "b701b3300afb7959539a00bba4b38e8cc655040f8c9093377ee7c542934760ff",
-    "bytes": 3718
+    "Path": "outputs/sourcebox/tools/prepare-hl1-portal-carrier.cjs",
+    "Sha256": "c4f55550c11932e24c94305fb524f8ef9507b904a4ea1bdf6849936f3a690c9d"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-native-tf2-scenery.cjs",
-    "sha256": "47f16fd15b45a62afa3dd951ad9174f0adc9e91c1d60227ee4985e61f2f6e44b",
-    "bytes": 3583
+    "Path": "outputs/sourcebox/tools/prepare-hl1-world-materials.py",
+    "Sha256": "b701b3300afb7959539a00bba4b38e8cc655040f8c9093377ee7c542934760ff"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-native-world-host.mjs",
-    "sha256": "63daf8d0cd91fe45013d06e02af286fd81d69c079b4534308b573c9a7294ab2a",
-    "bytes": 4241
+    "Path": "outputs/sourcebox/tools/prepare-native-tf2-scenery.cjs",
+    "Sha256": "47f16fd15b45a62afa3dd951ad9174f0adc9e91c1d60227ee4985e61f2f6e44b"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-portable-chell-input.cjs",
-    "sha256": "0a05a12759c3006722b237916bc16729170d4179762afe07b71e6ea893e36eda",
-    "bytes": 1846
+    "Path": "outputs/sourcebox/tools/prepare-native-world-host.mjs",
+    "Sha256": "63daf8d0cd91fe45013d06e02af286fd81d69c079b4534308b573c9a7294ab2a"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-portable-cs2-models.cjs",
-    "sha256": "66f2d3e3c997c96072b5b781ca2cf728895d1e312691a243533da309da62a5fe",
-    "bytes": 8928
+    "Path": "outputs/sourcebox/tools/prepare-portable-chell-input.cjs",
+    "Sha256": "0a05a12759c3006722b237916bc16729170d4179762afe07b71e6ea893e36eda"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-portable-cs2-portal-surfaces.py",
-    "sha256": "aed46b981a7d186794413f971718c419df5152b52c70f73eb9ffabf8291b48a5",
-    "bytes": 1420
+    "Path": "outputs/sourcebox/tools/prepare-portable-cs2-models.cjs",
+    "Sha256": "66f2d3e3c997c96072b5b781ca2cf728895d1e312691a243533da309da62a5fe"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-portable-cs2-room.ps1",
-    "sha256": "4ac8b4bb6038bdf761991bf49be9a5a4b382743e105c62bd8b43d5ec97970335",
-    "bytes": 4257
+    "Path": "outputs/sourcebox/tools/prepare-portable-cs2-portal-surfaces.py",
+    "Sha256": "aed46b981a7d186794413f971718c419df5152b52c70f73eb9ffabf8291b48a5"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-portable-cs2-textures.py",
-    "sha256": "c1558d0f04d7f970b23a470fcff5b195885c12b97bef2bcec5d3720f258c147d",
-    "bytes": 2255
+    "Path": "outputs/sourcebox/tools/prepare-portable-cs2-room.ps1",
+    "Sha256": "d100216111c1e0253340020d05c87ab121699f8af9d9d6c5555b64af06465e25"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-portable-hl1-assets.cjs",
-    "sha256": "6e957703b3802e79b1e96c55161797e45bd00132b763a2dfcdcc324000a0d45d",
-    "bytes": 8229
+    "Path": "outputs/sourcebox/tools/prepare-portable-cs2-textures.py",
+    "Sha256": "c1558d0f04d7f970b23a470fcff5b195885c12b97bef2bcec5d3720f258c147d"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-portable-p2-peers.py",
-    "sha256": "ef3c45a867b1d39848299364b3658a4a92963e33bea81baaf7b13b729b7a762a",
-    "bytes": 7562
+    "Path": "outputs/sourcebox/tools/prepare-portable-hl1-assets.cjs",
+    "Sha256": "6e957703b3802e79b1e96c55161797e45bd00132b763a2dfcdcc324000a0d45d"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-portable-portal-assets.mjs",
-    "sha256": "41fc6b533c74efe72e2c06eee9fd30f1fe72063e5b1f93a8cc1dce0e9f029f09",
-    "bytes": 2698
+    "Path": "outputs/sourcebox/tools/prepare-portable-p2-peers.py",
+    "Sha256": "ef3c45a867b1d39848299364b3658a4a92963e33bea81baaf7b13b729b7a762a"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-portable-room-materials.cjs",
-    "sha256": "0ca70ad10130f19f88348c0b0a178ab177812e8e09cf720a0a3cfc6765642b14",
-    "bytes": 989
+    "Path": "outputs/sourcebox/tools/prepare-portable-portal-assets.mjs",
+    "Sha256": "41fc6b533c74efe72e2c06eee9fd30f1fe72063e5b1f93a8cc1dce0e9f029f09"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-portable-tf-assets.cjs",
-    "sha256": "0ed8e45e705054b4c9e7447a5ccf58714e314eafaeb107524d556ff03981373b",
-    "bytes": 4833
+    "Path": "outputs/sourcebox/tools/prepare-portable-room-materials.cjs",
+    "Sha256": "0ca70ad10130f19f88348c0b0a178ab177812e8e09cf720a0a3cfc6765642b14"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-ragdoll-models.py",
-    "sha256": "91c0467d83c06f7eaab42c00d6a72a509e9267cece7ac7bc2bc29706401146ea",
-    "bytes": 5500
+    "Path": "outputs/sourcebox/tools/prepare-portable-tf-assets.cjs",
+    "Sha256": "0ed8e45e705054b4c9e7447a5ccf58714e314eafaeb107524d556ff03981373b"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-sdk-mods.mjs",
-    "sha256": "3dfb997f56eb0a9de09d95b325574d9d60507db7e4257ad2080fa295ab82c5f5",
-    "bytes": 4523
+    "Path": "outputs/sourcebox/tools/prepare-portable-worlds.py",
+    "Sha256": "06652b6e388cfaa890f0eb5711fffdb376fdc8e4fb1036b6f0ed5e2b4a89652e"
   },
   {
-    "path": "outputs/sourcebox/tools/prepare-successor-gun.mjs",
-    "sha256": "b028c963ef17fd9998c509248d343e1682ab5435308ed1e4d4d705c1cae07187",
-    "bytes": 2627
+    "Path": "outputs/sourcebox/tools/prepare-ragdoll-models.py",
+    "Sha256": "91c0467d83c06f7eaab42c00d6a72a509e9267cece7ac7bc2bc29706401146ea"
   },
   {
-    "path": "outputs/sourcebox/tools/repair-cs2-catalog.cjs",
-    "sha256": "181bff211728be059b7697f4693a7d08c2d02edcc28d3cfdd717e5f65c6d2d6a",
-    "bytes": 3464
+    "Path": "outputs/sourcebox/tools/prepare-sdk-mods.mjs",
+    "Sha256": "3dfb997f56eb0a9de09d95b325574d9d60507db7e4257ad2080fa295ab82c5f5"
   },
   {
-    "path": "outputs/sourcebox/tools/repair-native-detail-placement.py",
-    "sha256": "ace51eb555c3e788a08cad2f8fe4b05c4f7b160ac9fd4a6026671d8a903e3c16",
-    "bytes": 1912
+    "Path": "outputs/sourcebox/tools/prepare-successor-gun.mjs",
+    "Sha256": "b028c963ef17fd9998c509248d343e1682ab5435308ed1e4d4d705c1cae07187"
   },
   {
-    "path": "outputs/sourcebox/tools/report-damage-props.mjs",
-    "sha256": "67e9fd1e01cfc7e5339a7dd2f553241e6ed687375412a494ccd5677372e32720",
-    "bytes": 3447
+    "Path": "outputs/sourcebox/tools/repair-cs2-catalog.cjs",
+    "Sha256": "181bff211728be059b7697f4693a7d08c2d02edcc28d3cfdd717e5f65c6d2d6a"
   },
   {
-    "path": "outputs/sourcebox/tools/report-live-portals.mjs",
-    "sha256": "1cc2844a1dc4d479d3c6d7f588fb567d37337e427a6f583544b876a8e29a075c",
-    "bytes": 2024
+    "Path": "outputs/sourcebox/tools/repair-native-detail-placement.py",
+    "Sha256": "ace51eb555c3e788a08cad2f8fe4b05c4f7b160ac9fd4a6026671d8a903e3c16"
   },
   {
-    "path": "outputs/sourcebox/tools/test-cs2-room-runner.ps1",
-    "sha256": "15a8c3390aee30952b58d3a03f04988df148d9ef83279b8e958a61002e308ff3",
-    "bytes": 1276
+    "Path": "outputs/sourcebox/tools/report-damage-props.mjs",
+    "Sha256": "67e9fd1e01cfc7e5339a7dd2f553241e6ed687375412a494ccd5677372e32720"
   },
   {
-    "path": "outputs/sourcebox/tools/test-world-lighting.py",
-    "sha256": "f7e49fe01d376d66ede82b6839bf81b82f27a506f4d4db72b3b113fe53b7961a",
-    "bytes": 3230
+    "Path": "outputs/sourcebox/tools/report-live-portals.mjs",
+    "Sha256": "1cc2844a1dc4d479d3c6d7f588fb567d37337e427a6f583544b876a8e29a075c"
   },
   {
-    "path": "outputs/sourcebox/tools/verify-portal-ring.mjs",
-    "sha256": "7ed869a930a4ad90ec8c23e243f1a2506b8cad2210dfbdf08970139e970bbaed",
-    "bytes": 1084
+    "Path": "outputs/sourcebox/tools/test-cs2-room-runner.ps1",
+    "Sha256": "15a8c3390aee30952b58d3a03f04988df148d9ef83279b8e958a61002e308ff3"
   },
   {
-    "path": "outputs/sourcebox/tools/verify-world-lighting.py",
-    "sha256": "cdb1ececd8e12b576d48c9e7ebce21ebb30bade50e14df585d9c86b1b9b4c2b9",
-    "bytes": 1907
+    "Path": "outputs/sourcebox/tools/test-world-lighting.py",
+    "Sha256": "f7e49fe01d376d66ede82b6839bf81b82f27a506f4d4db72b3b113fe53b7961a"
   },
   {
-    "path": "outputs/sourcebox/tools/write-world-probe.mjs",
-    "sha256": "c3d5d7ba06cac57fc3d3d7392f1a5bf1715068d470725671da183ac1c87d8aa9",
-    "bytes": 1386
+    "Path": "outputs/sourcebox/tools/verify-portable-worlds.mjs",
+    "Sha256": "d35c1231c407a93789ccf93a67658cde1f2e224c959c926b703ba7cfce1234c3"
   },
   {
-    "path": "outputs/sourcebox/verify-assets.mjs",
-    "sha256": "f2b40b60684f57dcada2d9bd33bb1c535c8e354c940d12ab84cee45a63564412",
-    "bytes": 2161
+    "Path": "outputs/sourcebox/tools/verify-portal-ring.mjs",
+    "Sha256": "7ed869a930a4ad90ec8c23e243f1a2506b8cad2210dfbdf08970139e970bbaed"
   },
   {
-    "path": "outputs/sourcebox/verify-model-aliases.cjs",
-    "sha256": "7be35355a87ac635455cd2c543730f871a1d8e1d82e5706abdf77c7fc109ed0e",
-    "bytes": 1346
+    "Path": "outputs/sourcebox/tools/verify-world-lighting.py",
+    "Sha256": "cdb1ececd8e12b576d48c9e7ebce21ebb30bade50e14df585d9c86b1b9b4c2b9"
   },
   {
-    "path": "outputs/sourcebox/world-portal-placement.mjs",
-    "sha256": "8568ccec2f07b2c4865528d1b38a27cd2beb1fa4f21062d6639c680efb48739a",
-    "bytes": 2216
+    "Path": "outputs/sourcebox/tools/write-world-probe.mjs",
+    "Sha256": "c3d5d7ba06cac57fc3d3d7392f1a5bf1715068d470725671da183ac1c87d8aa9"
   },
   {
-    "path": "outputs/sourcebox/world-preflight.mjs",
-    "sha256": "f7b0f454622d51f421f3f61a62bee7266be23245d11626124776c3fa4f70ea6a",
-    "bytes": 2113
+    "Path": "outputs/sourcebox/verify-assets.mjs",
+    "Sha256": "f2b40b60684f57dcada2d9bd33bb1c535c8e354c940d12ab84cee45a63564412"
   },
   {
-    "path": "outputs/sourcebox/world-routing.mjs",
-    "sha256": "4e863b9b0eb1d8ffcc259492f597b77045b2b928705fb7db56a0e4a7ab17c249",
-    "bytes": 719
+    "Path": "outputs/sourcebox/verify-model-aliases.cjs",
+    "Sha256": "7be35355a87ac635455cd2c543730f871a1d8e1d82e5706abdf77c7fc109ed0e"
   },
   {
-    "path": "outputs/sourcebox-launcher/build-beta-runtime.py",
-    "sha256": "441126e5ac0338bb7909aced0cd0b0a13d1b873a2e006a1050cdf400522b1245",
-    "bytes": 10232
+    "Path": "outputs/sourcebox/world-portal-placement.mjs",
+    "Sha256": "8568ccec2f07b2c4865528d1b38a27cd2beb1fa4f21062d6639c680efb48739a"
   },
   {
-    "path": "outputs/sourcebox-launcher/build.ps1",
-    "sha256": "65f338ff3004051dc11012f936a7473061c8075a66f3c8ee5eccfc6a9b3168eb",
-    "bytes": 296
+    "Path": "outputs/sourcebox/world-preflight.mjs",
+    "Sha256": "f7b0f454622d51f421f3f61a62bee7266be23245d11626124776c3fa4f70ea6a"
   },
   {
-    "path": "outputs/sourcebox-launcher/finalize-source.py",
-    "sha256": "b24c93cbddcc7acc76f4a9c45c10a04219e146db827da869604a2609c0a36345",
-    "bytes": 2867
+    "Path": "outputs/sourcebox/world-routing.mjs",
+    "Sha256": "4e863b9b0eb1d8ffcc259492f597b77045b2b928705fb7db56a0e4a7ab17c249"
   },
   {
-    "path": "outputs/sourcebox-launcher/installer-beta.ps1",
-    "sha256": "f56098d9bc036f2afb36e4abcae57aa16553f06b16dad02a72076807e4b6f0a4",
-    "bytes": 3759
+    "Path": "outputs/sourcebox-launcher/build-beta-runtime.py",
+    "Sha256": "26bb6631e81d57fbba2e6fc93738cb5c8f6da205940589a8c1149dd705b9d2c9"
   },
   {
-    "path": "outputs/sourcebox-launcher/package-beta.ps1",
-    "sha256": "95a7e7d53744ff050eba0cf7028b45224c59c07d7f0de91d0cbc85ea1b8038f0",
-    "bytes": 6897
+    "Path": "outputs/sourcebox-launcher/build.ps1",
+    "Sha256": "65f338ff3004051dc11012f936a7473061c8075a66f3c8ee5eccfc6a9b3168eb"
   },
   {
-    "path": "outputs/sourcebox-launcher/package-small.ps1",
-    "sha256": "43900e8cd96222cb0568190f83f72663f6c6dfe23d91edeea2b1a11195edacc6",
-    "bytes": 4034
+    "Path": "outputs/sourcebox-launcher/finalize-source.py",
+    "Sha256": "b24c93cbddcc7acc76f4a9c45c10a04219e146db827da869604a2609c0a36345"
   },
   {
-    "path": "outputs/sourcebox-launcher/package-source.py",
-    "sha256": "a1ba7557ba82ab58cc2709426267599968d03517660f08046996f8c1f3dc577a",
-    "bytes": 14907
+    "Path": "outputs/sourcebox-launcher/installer-beta.ps1",
+    "Sha256": "f56098d9bc036f2afb36e4abcae57aa16553f06b16dad02a72076807e4b6f0a4"
   },
   {
-    "path": "outputs/sourcebox-launcher/package.ps1",
-    "sha256": "e600a8e9718f271ddee30f0a147cad52a5a9b6f47479fe4f8e97f0402591c069",
-    "bytes": 3562
+    "Path": "outputs/sourcebox-launcher/package-beta.ps1",
+    "Sha256": "0319ccb4da757184ec47a589c8407132152add1f00de016685cdf2f31875a66b"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Assets/sourcebox-intro.mp4",
-    "sha256": "618498f956c4dfad20cbd568f46acd200ee70ddd9e2647a37709ed2a93034e8f",
-    "bytes": 165130
+    "Path": "outputs/sourcebox-launcher/package-small.ps1",
+    "Sha256": "43900e8cd96222cb0568190f83f72663f6c6dfe23d91edeea2b1a11195edacc6"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Assets/sourcebox.ico",
-    "sha256": "ce5dfdda6b231e6fa9c9ec8262cfd7d86ece11ead07a15b5ef88f2b32641c62f",
-    "bytes": 85818
+    "Path": "outputs/sourcebox-launcher/package-source.py",
+    "Sha256": "2f696dc778d74d68914cf1ec8504d7409c4d39d066ec5414ca414d133aabbd36"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Assets/WeaponArt/cs2.png",
-    "sha256": "3d0c94da23c8e2b3235c0f79b10dadb2d24464d4b5b3f0c89649074e8888b541",
-    "bytes": 137537
+    "Path": "outputs/sourcebox-launcher/package.ps1",
+    "Sha256": "e600a8e9718f271ddee30f0a147cad52a5a9b6f47479fe4f8e97f0402591c069"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Assets/WeaponArt/gmod.png",
-    "sha256": "c695f2aaa870c4f011f3c3493684172d683a3c1a55150909ea0c27776caae695",
-    "bytes": 188021
+    "Path": "outputs/sourcebox-launcher/src/Assets/sourcebox-intro.mp4",
+    "Sha256": "618498f956c4dfad20cbd568f46acd200ee70ddd9e2647a37709ed2a93034e8f"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Assets/WeaponArt/hl1mp.png",
-    "sha256": "962fbf661943b59cbf2e732f4e50b322abcc86172c42b0c127e806c2c56efe2d",
-    "bytes": 94600
+    "Path": "outputs/sourcebox-launcher/src/Assets/sourcebox.ico",
+    "Sha256": "ce5dfdda6b231e6fa9c9ec8262cfd7d86ece11ead07a15b5ef88f2b32641c62f"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Assets/WeaponArt/hl2.png",
-    "sha256": "61eae0bfe9789435b494ffcd5ed4f572dd2b5d24ed0381ca60ae9d9288f6467d",
-    "bytes": 187986
+    "Path": "outputs/sourcebox-launcher/src/Assets/WeaponArt/cs2.png",
+    "Sha256": "3d0c94da23c8e2b3235c0f79b10dadb2d24464d4b5b3f0c89649074e8888b541"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Assets/WeaponArt/portal2.png",
-    "sha256": "98d4184173472749a023b2414aa1816686b2abc46eb65c940fadf76f9ac2151a",
-    "bytes": 186935
+    "Path": "outputs/sourcebox-launcher/src/Assets/WeaponArt/gmod.png",
+    "Sha256": "c695f2aaa870c4f011f3c3493684172d683a3c1a55150909ea0c27776caae695"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Assets/WeaponArt/tf2.png",
-    "sha256": "a9314d619ea6555916091c9b4d808dcc8b0cdfa35809bd7a95b54d314c0642cc",
-    "bytes": 133233
+    "Path": "outputs/sourcebox-launcher/src/Assets/WeaponArt/hl1mp.png",
+    "Sha256": "962fbf661943b59cbf2e732f4e50b322abcc86172c42b0c127e806c2c56efe2d"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/AutoDiscovery.cs",
-    "sha256": "4cb77f97276808aecebd2382d9f42e661060b84dafe3ba2e83e2ff13ba62e832",
-    "bytes": 3649
+    "Path": "outputs/sourcebox-launcher/src/Assets/WeaponArt/hl2.png",
+    "Sha256": "61eae0bfe9789435b494ffcd5ed4f572dd2b5d24ed0381ca60ae9d9288f6467d"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/BridgeHealth.cs",
-    "sha256": "7c05ad3061df870bd26371b13c8454ef1de124225679297b62f823380543b760",
-    "bytes": 3023
+    "Path": "outputs/sourcebox-launcher/src/Assets/WeaponArt/portal2.png",
+    "Sha256": "98d4184173472749a023b2414aa1816686b2abc46eb65c940fadf76f9ac2151a"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/ConfigProtection.cs",
-    "sha256": "f2498a6d846601a7fcf0bc8fae850b84ec27dbe92e05a7870708e97400d6e60f",
-    "bytes": 6438
+    "Path": "outputs/sourcebox-launcher/src/Assets/WeaponArt/tf2.png",
+    "Sha256": "a9314d619ea6555916091c9b4d808dcc8b0cdfa35809bd7a95b54d314c0642cc"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/CrossplaySetup.cs",
-    "sha256": "689d4aaee142b0bf315b7f5b06c44649232163a9ee086a936091031285005b52",
-    "bytes": 14119
+    "Path": "outputs/sourcebox-launcher/src/AutoDiscovery.cs",
+    "Sha256": "4cb77f97276808aecebd2382d9f42e661060b84dafe3ba2e83e2ff13ba62e832"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/CsBootstrap.cs",
-    "sha256": "34add4616a55cfcc354d52a569014e6bc1b42a4f35d6c591eddb25a8f8cda2f7",
-    "bytes": 6234
+    "Path": "outputs/sourcebox-launcher/src/BridgeHealth.cs",
+    "Sha256": "7c05ad3061df870bd26371b13c8454ef1de124225679297b62f823380543b760"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/CsContentPreparation.cs",
-    "sha256": "12adfd694926461132ea93af0210ab9351cf50231a1cc4cfd223d87c751f2bf5",
-    "bytes": 5828
+    "Path": "outputs/sourcebox-launcher/src/ConfigProtection.cs",
+    "Sha256": "f2498a6d846601a7fcf0bc8fae850b84ec27dbe92e05a7870708e97400d6e60f"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/CsLoaderPreparation.cs",
-    "sha256": "8c9e69df6cb9057aa205ca24c9596cc76c7571f5fe2fa968b7583bdc3255f6f3",
-    "bytes": 1111
+    "Path": "outputs/sourcebox-launcher/src/CrossplaySetup.cs",
+    "Sha256": "0b36324c133f3e35123a9ad038f86c4ed931242dc36ca233d4373769bba19055"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/DesktopInstall.cs",
-    "sha256": "f27f73d536dbc6cb296fc7f8534f89563528bdd45b15d19d9929aba0f19518bf",
-    "bytes": 6873
+    "Path": "outputs/sourcebox-launcher/src/CsBootstrap.cs",
+    "Sha256": "34add4616a55cfcc354d52a569014e6bc1b42a4f35d6c591eddb25a8f8cda2f7"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Destinations.cs",
-    "sha256": "111b0a020baf3116eac708497e303ef8037bb1fb61637de0c62fb97122bf80cf",
-    "bytes": 2248
+    "Path": "outputs/sourcebox-launcher/src/CsContentPreparation.cs",
+    "Sha256": "2f9ba39100bad9032cb3ff1e8ef5348c14696bcd320e0ea10b38d4113af3513c"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/FallbackAssets.cs",
-    "sha256": "7a2c69b80d6ba5d1de268f8aff65dce2d1464296a9aa996decfe540309ffbdd1",
-    "bytes": 2177
+    "Path": "outputs/sourcebox-launcher/src/CsLoaderPreparation.cs",
+    "Sha256": "8c9e69df6cb9057aa205ca24c9596cc76c7571f5fe2fa968b7583bdc3255f6f3"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/GameWindowLayout.cs",
-    "sha256": "b791e381bfd77a83d1411ea60abf83648cf431f147778aa8c04c6d0274a9fd92",
-    "bytes": 5490
+    "Path": "outputs/sourcebox-launcher/src/DesktopInstall.cs",
+    "Sha256": "f27f73d536dbc6cb296fc7f8534f89563528bdd45b15d19d9929aba0f19518bf"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/GlobalUsings.cs",
-    "sha256": "7588689c551d3b43bad9777d20be635cedfe3f6d3652c8a9fe97f91d25ab0fd9",
-    "bytes": 26
+    "Path": "outputs/sourcebox-launcher/src/Destinations.cs",
+    "Sha256": "111b0a020baf3116eac708497e303ef8037bb1fb61637de0c62fb97122bf80cf"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/LocalAssetPreparation.cs",
-    "sha256": "05860ddbf94f88225e820054b4fbaa700063d9abd447298cddba1236b437a3be",
-    "bytes": 3360
+    "Path": "outputs/sourcebox-launcher/src/FallbackAssets.cs",
+    "Sha256": "7a2c69b80d6ba5d1de268f8aff65dce2d1464296a9aa996decfe540309ffbdd1"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Localization.cs",
-    "sha256": "4c36cbdd217dc29ad17914eaa52f5e7748e00b860c7d7e45f37c7f088666748a",
-    "bytes": 2877
+    "Path": "outputs/sourcebox-launcher/src/GameWindowLayout.cs",
+    "Sha256": "b791e381bfd77a83d1411ea60abf83648cf431f147778aa8c04c6d0274a9fd92"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/MainForm.cs",
-    "sha256": "ab1077a264680663d7478c68537cd8de2eaeb16cb12d397f3a084eef64fe11d5",
-    "bytes": 23571
+    "Path": "outputs/sourcebox-launcher/src/GlobalUsings.cs",
+    "Sha256": "7588689c551d3b43bad9777d20be635cedfe3f6d3652c8a9fe97f91d25ab0fd9"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Models.cs",
-    "sha256": "1afd5b04e5bd966771f10cd58b9a44bded07a4cd3b3ac1acf78565e52d180915",
-    "bytes": 11755
+    "Path": "outputs/sourcebox-launcher/src/LocalAssetPreparation.cs",
+    "Sha256": "05860ddbf94f88225e820054b4fbaa700063d9abd447298cddba1236b437a3be"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/PortalPeerPreparation.cs",
-    "sha256": "85af697b24e35f0112012dc513a0a489daefc08048cad5c6bcbbc369f5ebec28",
-    "bytes": 3845
+    "Path": "outputs/sourcebox-launcher/src/Localization.cs",
+    "Sha256": "4c36cbdd217dc29ad17914eaa52f5e7748e00b860c7d7e45f37c7f088666748a"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Program.cs",
-    "sha256": "9275704bb623d3b799408caa2592a1d7f5b6b95460c39f98c219239184218687",
-    "bytes": 4477
+    "Path": "outputs/sourcebox-launcher/src/MainForm.cs",
+    "Sha256": "38423bc6eb027ebc134011d65a83980f811d7663dd424a019ff925957cd20d6b"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/ReleaseRequirements.cs",
-    "sha256": "586a6cbe78fce8d652336709b84997f2dfab9b56c97813f144c6349202e32d81",
-    "bytes": 832
+    "Path": "outputs/sourcebox-launcher/src/Models.cs",
+    "Sha256": "1afd5b04e5bd966771f10cd58b9a44bded07a4cd3b3ac1acf78565e52d180915"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Runtime.cs",
-    "sha256": "f8230621c93d76bd62d7a0a1de0088835c936ee87f1ed4b451a87c511f01f914",
-    "bytes": 25104
+    "Path": "outputs/sourcebox-launcher/src/PortalPeerPreparation.cs",
+    "Sha256": "85af697b24e35f0112012dc513a0a489daefc08048cad5c6bcbbc369f5ebec28"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/SceneCanvas.cs",
-    "sha256": "926d7562fa0eb50405ec5312f42e75165f65be8d54d2727475169b2a18e5d1f2",
-    "bytes": 10470
+    "Path": "outputs/sourcebox-launcher/src/Program.cs",
+    "Sha256": "9275704bb623d3b799408caa2592a1d7f5b6b95460c39f98c219239184218687"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/SdkConfiguration.cs",
-    "sha256": "71d46252054fa6404c12d7a259eb5825e2071bcf8bb0c3447094f84daffae0ad",
-    "bytes": 5010
+    "Path": "outputs/sourcebox-launcher/src/ReleaseRequirements.cs",
+    "Sha256": "586a6cbe78fce8d652336709b84997f2dfab9b56c97813f144c6349202e32d81"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/ServiceHost.cs",
-    "sha256": "32cbb20df23a73ab034158faa7fc4ee87ad78c6052df279f9afc49a89c6b241b",
-    "bytes": 2117
+    "Path": "outputs/sourcebox-launcher/src/Runtime.cs",
+    "Sha256": "ecaaf6b4fa5ba5c11463963a19edd82b4025ee4929bf1cca75e50c0dfacc106a"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/SetupDownloads.cs",
-    "sha256": "00786c8e225e28eaf1e1d4fb3c252ae001303d8561efc712d8e9f07517c37b30",
-    "bytes": 4426
+    "Path": "outputs/sourcebox-launcher/src/SceneCanvas.cs",
+    "Sha256": "926d7562fa0eb50405ec5312f42e75165f65be8d54d2727475169b2a18e5d1f2"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/SharedAssetPreparation.cs",
-    "sha256": "cb17ff3f589da4e12582ca23671fc9bc73700eb2ecb0ccf60b24422fa246bb68",
-    "bytes": 10593
+    "Path": "outputs/sourcebox-launcher/src/SdkConfiguration.cs",
+    "Sha256": "e118fb8a3a3d653a5f01113829951c51a3dbb2edc4e32de852fdcf7e61493871"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/SharedContent.cs",
-    "sha256": "e2c78f2e4726587f106dcfca4b635fb7358fe5706e1898496c0cf3f4bebf829c",
-    "bytes": 1734
+    "Path": "outputs/sourcebox-launcher/src/ServiceHost.cs",
+    "Sha256": "32cbb20df23a73ab034158faa7fc4ee87ad78c6052df279f9afc49a89c6b241b"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/SourceBox.csproj",
-    "sha256": "459420c56b7df89c5bd046a64e74d1f2482183ec9cc8eb3aa6052a4709ca1fb1",
-    "bytes": 1025
+    "Path": "outputs/sourcebox-launcher/src/SetupDownloads.cs",
+    "Sha256": "db889aef75a7fcc8cfccbf36409c9ae98502d86415d43f3645b4f8c45f15faa9"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/SplashForm.cs",
-    "sha256": "eb86503bec713f46dc2bc1640f3258e14161153ec6f2400ea4d7f9ca7421e2d2",
-    "bytes": 2092
+    "Path": "outputs/sourcebox-launcher/src/SetupSpace.cs",
+    "Sha256": "33635815514ebcd91cd10635d70ceb7f15feeb6e1526fe2c7e7cf71fa523b093"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Tests.cs",
-    "sha256": "bcd6d7224e9a9c004d712cdf381551c5fdae8ccfec8e4117348674bedaf51c5b",
-    "bytes": 48699
+    "Path": "outputs/sourcebox-launcher/src/SharedAssetPreparation.cs",
+    "Sha256": "64e19c7a733d2b33cae90bc770e9e2a76ccd22c0f81b73aa6a7c6885dfbef9ea"
   },
   {
-    "path": "outputs/sourcebox-launcher/src/Translations.json",
-    "sha256": "773a7c71ff747e28cd0ade1d174a4c613ce0a5fea50aaae4698be69c8f155b08",
-    "bytes": 14161
+    "Path": "outputs/sourcebox-launcher/src/SharedContent.cs",
+    "Sha256": "e2c78f2e4726587f106dcfca4b635fb7358fe5706e1898496c0cf3f4bebf829c"
   },
   {
-    "path": "outputs/sourcebox-launcher/verify-beta-package.py",
-    "sha256": "c58b8f8c536ef277af38484ec74c1167114a4cb5370bd53176aa8ecac3ddaa39",
-    "bytes": 3250
+    "Path": "outputs/sourcebox-launcher/src/SourceBox.csproj",
+    "Sha256": "c5fa50511209b6be71971a034722ee06a2daa5cc6e77e8d195af0b87709e7e1f"
   },
   {
-    "path": "README.md",
-    "sha256": "489c29cec227ad6460fe4b7239a42cd15c47a07bc5b0618dae38bd95c3cde91c",
-    "bytes": 1629
+    "Path": "outputs/sourcebox-launcher/src/SplashForm.cs",
+    "Sha256": "eb86503bec713f46dc2bc1640f3258e14161153ec6f2400ea4d7f9ca7421e2d2"
   },
   {
-    "path": "release-config/sheets/asset-references.json",
-    "sha256": "a82d9b1cfbbdf2445a6b8036ec04495e97981927aaeb3e82f69815bdb6498646",
-    "bytes": 14667
+    "Path": "outputs/sourcebox-launcher/src/Tests.cs",
+    "Sha256": "f9aad3ec1c17035c3e2e879f93db82edfe7a4ddae0564c06bf467bcf1dd1999d"
   },
   {
-    "path": "release-config/sheets/combat.json",
-    "sha256": "6caf74d0541f13e7ccd285cafa36a54665f31f442b0070efb133effe472fd5c9",
-    "bytes": 1168
+    "Path": "outputs/sourcebox-launcher/src/Translations.json",
+    "Sha256": "773a7c71ff747e28cd0ade1d174a4c613ce0a5fea50aaae4698be69c8f155b08"
   },
   {
-    "path": "release-config/sheets/connectivity.json",
-    "sha256": "dadd6b0af7521403cc11e08450c2611c27fbbfa0d18f88991eb6acc7b335dd3c",
-    "bytes": 809
+    "Path": "outputs/sourcebox-launcher/src/WorldPreparation.cs",
+    "Sha256": "314fb65c9ef41a894f583077e046b188d9b7cddc28b773c46be368aa18abdacc"
   },
   {
-    "path": "release-config/sheets/coordinate-mappings.json",
-    "sha256": "f9f31c74c0ffa7025b1e5fcadc86410584bee8d79a21383630fe4e0c299cd7c0",
-    "bytes": 331
+    "Path": "outputs/sourcebox-launcher/verify-beta-package.py",
+    "Sha256": "c58b8f8c536ef277af38484ec74c1167114a4cb5370bd53176aa8ecac3ddaa39"
   },
   {
-    "path": "release-config/sheets/cs2-models.json",
-    "sha256": "696d40b32982e9b5c2cb7867f0849243fe48935008119ca9098de63db9512daa",
-    "bytes": 1935
+    "Path": "README.md",
+    "Sha256": "411d6d373b6314fdb6c0f36dc68933fbad3425a38eee13a319a4ba2b0d268342"
   },
   {
-    "path": "release-config/sheets/cs2-scene-assets.json",
-    "sha256": "ca2368775ec2f6db567d1f97e4bc84b38360091463467e167ce63485325b03fb",
-    "bytes": 160353
+    "Path": "release-config/sheets/asset-references.json",
+    "Sha256": "a82d9b1cfbbdf2445a6b8036ec04495e97981927aaeb3e82f69815bdb6498646"
   },
   {
-    "path": "release-config/sheets/cs2.json",
-    "sha256": "6a0d53d578780d4f141a1f5aeb026c20e449352b5e4858cad2feef2051ec4e58",
-    "bytes": 2541
+    "Path": "release-config/sheets/combat.json",
+    "Sha256": "6caf74d0541f13e7ccd285cafa36a54665f31f442b0070efb133effe472fd5c9"
   },
   {
-    "path": "release-config/sheets/games-adapters.json",
-    "sha256": "b38e44e4ed8fc09a7ec843d59acc745a746a903f19181979e0e10bbe004682e3",
-    "bytes": 277
+    "Path": "release-config/sheets/connectivity.json",
+    "Sha256": "dadd6b0af7521403cc11e08450c2611c27fbbfa0d18f88991eb6acc7b335dd3c"
   },
   {
-    "path": "release-config/sheets/gmod-scene.json",
-    "sha256": "4181bf851a840ada1a76ba332b7edd03ce04ea43deae61b4ce6260d3494ad2d2",
-    "bytes": 86005
+    "Path": "release-config/sheets/coordinate-mappings.json",
+    "Sha256": "f9f31c74c0ffa7025b1e5fcadc86410584bee8d79a21383630fe4e0c299cd7c0"
   },
   {
-    "path": "release-config/sheets/gmod.json",
-    "sha256": "fee494fbd66d9f2a564f74a60c38f4afda3b9d4322c76d02db3bacb2e5cec96b",
-    "bytes": 653
+    "Path": "release-config/sheets/cs2-models.json",
+    "Sha256": "696d40b32982e9b5c2cb7867f0849243fe48935008119ca9098de63db9512daa"
   },
   {
-    "path": "release-config/sheets/hl1mp.json",
-    "sha256": "8ca24a8f7253b276feeaa9ad7b96f8f26857b595fdc83e542c3ed567845c4281",
-    "bytes": 7730
+    "Path": "release-config/sheets/cs2-scene-assets.json",
+    "Sha256": "ca2368775ec2f6db567d1f97e4bc84b38360091463467e167ce63485325b03fb"
   },
   {
-    "path": "release-config/sheets/hl2-gameplay.json",
-    "sha256": "b1de40adedcaacd8c9ed08f19232944ec75e7f597e8131a6d9f034912cea8757",
-    "bytes": 1338
+    "Path": "release-config/sheets/cs2.json",
+    "Sha256": "6a0d53d578780d4f141a1f5aeb026c20e449352b5e4858cad2feef2051ec4e58"
   },
   {
-    "path": "release-config/sheets/map-travel.json",
-    "sha256": "e889752231985fd7fc823382c5b4710a95bf1d97844707ba7adff60979e6b7c4",
-    "bytes": 375
+    "Path": "release-config/sheets/games-adapters.json",
+    "Sha256": "b38e44e4ed8fc09a7ec843d59acc745a746a903f19181979e0e10bbe004682e3"
   },
   {
-    "path": "release-config/sheets/native-world-hosts.json",
-    "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
-    "bytes": 2
+    "Path": "release-config/sheets/gmod-scene.json",
+    "Sha256": "4181bf851a840ada1a76ba332b7edd03ce04ea43deae61b4ce6260d3494ad2d2"
   },
   {
-    "path": "release-config/sheets/network-messages.json",
-    "sha256": "dfb4b5bf1887130d69069aa26a5272c93ed86576cb2fa06151aea8b902825dcb",
-    "bytes": 3145
+    "Path": "release-config/sheets/gmod.json",
+    "Sha256": "fee494fbd66d9f2a564f74a60c38f4afda3b9d4322c76d02db3bacb2e5cec96b"
   },
   {
-    "path": "release-config/sheets/physics-objects.json",
-    "sha256": "b32839dc7017055dabba96dffbaeaf223a1cb5000d5f8dc3aa6753ed12ffcf54",
-    "bytes": 2389
+    "Path": "release-config/sheets/hl1mp.json",
+    "Sha256": "8ca24a8f7253b276feeaa9ad7b96f8f26857b595fdc83e542c3ed567845c4281"
   },
   {
-    "path": "release-config/sheets/player-movement.json",
-    "sha256": "bf9ab7b0b72b1f95954e12433d655397889402d7bedceed68fc52e24995c69f7",
-    "bytes": 816
+    "Path": "release-config/sheets/hl2-gameplay.json",
+    "Sha256": "b1de40adedcaacd8c9ed08f19232944ec75e7f597e8131a6d9f034912cea8757"
   },
   {
-    "path": "release-config/sheets/portal2.json",
-    "sha256": "c24e65c4ea8c47c3287fe45876b131b3aed86750ff69efc11cf41e8e72decdb6",
-    "bytes": 640
+    "Path": "release-config/sheets/map-travel.json",
+    "Sha256": "e889752231985fd7fc823382c5b4710a95bf1d97844707ba7adff60979e6b7c4"
   },
   {
-    "path": "release-config/sheets/portals.json",
-    "sha256": "d73a2082049519448dcec97c465a4507bf92f5dc1d57de4771dc0164d575323e",
-    "bytes": 3216
+    "Path": "release-config/sheets/native-world-hosts.json",
+    "Sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
   },
   {
-    "path": "release-config/sheets/room-upgrades.json",
-    "sha256": "afe2ed906d11745e1726b22e8783d95ceee1862318ed7c48c3c856accdaed1c0",
-    "bytes": 1461
+    "Path": "release-config/sheets/network-messages.json",
+    "Sha256": "dfb4b5bf1887130d69069aa26a5272c93ed86576cb2fa06151aea8b902825dcb"
   },
   {
-    "path": "release-config/sheets/roster.json",
-    "sha256": "e99839c7a9238dc70c1c8e29ea7c9d840490723aeb6670a46497cda0a0a7f8df",
-    "bytes": 1570
+    "Path": "release-config/sheets/physics-objects.json",
+    "Sha256": "b32839dc7017055dabba96dffbaeaf223a1cb5000d5f8dc3aa6753ed12ffcf54"
   },
   {
-    "path": "release-config/sheets/runtime.json",
-    "sha256": "1f650700d7f3f9b239823c539eb6b4a81cddca6b1196a2202de6d72941f6b0f4",
-    "bytes": 143
+    "Path": "release-config/sheets/player-movement.json",
+    "Sha256": "bf9ab7b0b72b1f95954e12433d655397889402d7bedceed68fc52e24995c69f7"
   },
   {
-    "path": "release-config/sheets/shared-entities.json",
-    "sha256": "89e49829f1422e51d2d0defe636955e9d090b9b2380e8f979e3a3ae772e0d9b6",
-    "bytes": 161
+    "Path": "release-config/sheets/portal2.json",
+    "Sha256": "c24e65c4ea8c47c3287fe45876b131b3aed86750ff69efc11cf41e8e72decdb6"
   },
   {
-    "path": "release-config/sheets/test-cases.json",
-    "sha256": "a9d55711dff373b786a3ab945d8e26131eb6368f25f1cdbe49b4a006e324fe2c",
-    "bytes": 4538
+    "Path": "release-config/sheets/portals.json",
+    "Sha256": "d73a2082049519448dcec97c465a4507bf92f5dc1d57de4771dc0164d575323e"
   },
   {
-    "path": "release-config/sheets/worlds-expanded.json",
-    "sha256": "a90652da81604c7a5bab51de80cdf2fbd2d4e57aa853caac00dc30954d52a34e",
-    "bytes": 2028
+    "Path": "release-config/sheets/room-upgrades.json",
+    "Sha256": "afe2ed906d11745e1726b22e8783d95ceee1862318ed7c48c3c856accdaed1c0"
   },
   {
-    "path": "release-config/sheets/worlds.json",
-    "sha256": "bcc0a881c9e83f1c621c956e15c98f3f6042d7f22c4d41981672cc417fb9f928",
-    "bytes": 2056
+    "Path": "release-config/sheets/roster.json",
+    "Sha256": "e99839c7a9238dc70c1c8e29ea7c9d840490723aeb6670a46497cda0a0a7f8df"
   },
   {
-    "path": "release-provenance.json",
-    "sha256": "1c7ecdc25757db8c54a36b00317c7a8c4b0c5f371fa8ada1ad90bb4396fb4928",
-    "bytes": 938
+    "Path": "release-config/sheets/runtime.json",
+    "Sha256": "1f650700d7f3f9b239823c539eb6b4a81cddca6b1196a2202de6d72941f6b0f4"
   },
   {
-    "path": "sdk/overlay/src/game/client/sourcebox_portal_client.inc",
-    "sha256": "752366e5188ae972ce193a6e0c8c93e75669d84f07313d6b41e1f4876362da4c",
-    "bytes": 12044
+    "Path": "release-config/sheets/shared-entities.json",
+    "Sha256": "89e49829f1422e51d2d0defe636955e9d090b9b2380e8f979e3a3ae772e0d9b6"
   },
   {
-    "path": "sdk/overlay/src/game/server/sourcebox_portal_gun.inc",
-    "sha256": "660017924221ef517d816941c236a805753eafdbf6cb86f63b1595c70a90a489",
-    "bytes": 574
+    "Path": "release-config/sheets/test-cases.json",
+    "Sha256": "a9d55711dff373b786a3ab945d8e26131eb6368f25f1cdbe49b4a006e324fe2c"
   },
   {
-    "path": "sdk/overlay/src/game/server/sourcebox_portal_server.inc",
-    "sha256": "a7925b0559b2000043130686e435d309b8568327b4127c4b18c94d69f7efc03c",
-    "bytes": 6311
+    "Path": "release-config/sheets/worlds-expanded.json",
+    "Sha256": "a90652da81604c7a5bab51de80cdf2fbd2d4e57aa853caac00dc30954d52a34e"
   },
   {
-    "path": "sdk/overlay/src/game/server/sourcebox_prop_portals.inc",
-    "sha256": "7821b4deda2cbea165a6a378b77c00b1d6b3bfed6f65d21b96ddd98c82001c62",
-    "bytes": 6502
+    "Path": "release-config/sheets/worlds.json",
+    "Sha256": "bcc0a881c9e83f1c621c956e15c98f3f6042d7f22c4d41981672cc417fb9f928"
   },
   {
-    "path": "sdk/overlay/src/launcher_main/launcher_main_mod_hl2.vpc",
-    "sha256": "27c613513594bb5cf5378bfd64db79a96bd6d96795d584c3be9616cc4c3401d4",
-    "bytes": 449
+    "Path": "release-provenance.json",
+    "Sha256": "c0b0dbc4de9df5d8cd3b9435273719753bab2f348753a52909b943920852a36c"
   },
   {
-    "path": "sdk/sourcebox-sdk.patch",
-    "sha256": "8846014109da3299da50669c4389a961684fb1a89cc128d8b03545d00fc05d40",
-    "bytes": 16811
+    "Path": "sdk/overlay/src/game/client/sourcebox_portal_client.inc",
+    "Sha256": "752366e5188ae972ce193a6e0c8c93e75669d84f07313d6b41e1f4876362da4c"
   },
   {
-    "path": "SECURITY.md",
-    "sha256": "fc8749b82c613ae5d3a72de7598c41ff009a158f52729ee9e4b25046022d4134",
-    "bytes": 2740
+    "Path": "sdk/overlay/src/game/server/sourcebox_portal_gun.inc",
+    "Sha256": "660017924221ef517d816941c236a805753eafdbf6cb86f63b1595c70a90a489"
   },
   {
-    "path": "source-validation.json",
-    "sha256": "24e2e9fc5c0503f98707fb10bee6ac8c43b54070972c382ed98ae206154a15fe",
-    "bytes": 460
+    "Path": "sdk/overlay/src/game/server/sourcebox_portal_server.inc",
+    "Sha256": "a7925b0559b2000043130686e435d309b8568327b4127c4b18c94d69f7efc03c"
+  },
+  {
+    "Path": "sdk/overlay/src/game/server/sourcebox_prop_portals.inc",
+    "Sha256": "7821b4deda2cbea165a6a378b77c00b1d6b3bfed6f65d21b96ddd98c82001c62"
+  },
+  {
+    "Path": "sdk/overlay/src/launcher_main/launcher_main_mod_hl2.vpc",
+    "Sha256": "27c613513594bb5cf5378bfd64db79a96bd6d96795d584c3be9616cc4c3401d4"
+  },
+  {
+    "Path": "sdk/sourcebox-sdk.patch",
+    "Sha256": "8846014109da3299da50669c4389a961684fb1a89cc128d8b03545d00fc05d40"
+  },
+  {
+    "Path": "SECURITY.md",
+    "Sha256": "fc8749b82c613ae5d3a72de7598c41ff009a158f52729ee9e4b25046022d4134"
+  },
+  {
+    "Path": "source-validation.json",
+    "Sha256": "d3e462a2b9c74eb58a466d40ec8997c895972794ba13e8669344b80504a0e59a"
   }
 ]

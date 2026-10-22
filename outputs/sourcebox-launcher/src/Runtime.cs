@@ -35,6 +35,7 @@ public sealed class Runtime {
   }
   Layout.Apply(Games);
   Live=Telemetry.Read(CoreLog,DateTime.UtcNow);
+  if(State=="Running"||State.StartsWith("Waiting for players:")||State.StartsWith("Partially connected:"))State=ConnectionSummary(Layout.Selected,Live);
   Log(HealthSummary(Games,Live),true);
   CoreStatus=PortListening(27841)?Live.Values.Any(x=>x.State.StartsWith("Connected"))?"Online":"Waiting for players":"Offline";
   foreach(var p in Owned.Where(p=>!p.Matches()).ToArray()){
@@ -46,6 +47,12 @@ public sealed class Runtime {
  internal static string HealthSummary(IEnumerable<GameInstall> games,IReadOnlyDictionary<string,LiveGame> live)=>
   "Health poll: "+games.Count(g=>g.Ready)+" prepared; "+live.Count+" observed; "+live.Count(p=>p.Value.State.StartsWith("Connected"))+" connected; "+live.Count(p=>p.Value.State=="Connected")+" sending player updates. "+string.Join("; ",live.OrderBy(p=>p.Key).Select(p=>p.Key+"="+p.Value.State+(p.Value.World.Length>0?" @ "+p.Value.World:"")))+". Player updates do not confirm remote rendering.";
  private readonly HashSet<int> reportedExits=new();
+ internal static string ConnectionSummary(IEnumerable<string> ids,IReadOnlyDictionary<string,LiveGame> live){
+  var requested=ids.Distinct().ToArray();
+  var missing=requested.Where(id=>!live.TryGetValue(id,out var state)||!state.State.StartsWith("Connected",StringComparison.Ordinal)).ToArray();
+  if(missing.Length==0)return "Running";
+  return (missing.Length==requested.Length?"Waiting for players: ":"Partially connected: ")+string.Join(", ",missing);
+ }
  internal bool TestClassMenu;
  private OwnedProcess Spawn(string component,string exe,IEnumerable<string> args,string cwd,bool hidden=false,Dictionary<string,string>? env=null){
   if(hidden){
@@ -86,6 +93,21 @@ public sealed class Runtime {
   }
   return failures;
  }
+ public async Task PrepareWorldDestinations(string[] ids,CancellationToken ct){
+  if(!await gate.WaitAsync(0,ct))throw new IOException("Another session action is in progress.");
+  try{
+   if(ids.Length==0)throw new IOException("Select the games that will use destinations in Library.");
+   Refresh();
+   if(PortListening(27841)||Games.Any(g=>ProcessAt(g.Exe)||(g.Def.Id=="gmod"&&ProcessAt(Path.Combine(g.Root,"bin/win64/gmod.exe")))))throw new IOException("Stop the crossplay session before preparing destination maps. Existing games were left running.");
+   State="Preparing destinations";Changed?.Invoke();
+   await PrepareCrossplay(ids,ct);
+   await WorldPreparation.Prepare(Settings,Games.ToArray(),ids,ct,line=>Log(line));
+   var plans=ids.Select(id=>CrossplaySetup.Plan(Settings,Games.Single(g=>g.Def.Id==id))).ToArray();
+   CrossplaySetup.Apply(plans,Path.Combine(Settings.Home,"setup","worlds-"+Guid.NewGuid().ToString("N")),ct,id=>ProcessAt(Games.Single(g=>g.Def.Id==id).Exe),line=>Log(line));
+   WorldPreparation.Activate(Settings);State="Idle";Refresh();Log("Destination maps installed. Launch the selected games to test destination portals.");
+  }catch(Exception e){State="Error";Log("Destination setup stopped: "+e.Message);throw;}
+  finally{gate.Release();Changed?.Invoke();}
+ }
  public async Task Start(string[] ids,CancellationToken ct){
   if(!await gate.WaitAsync(0,ct))throw new Exception("Another session action is in progress.");
   try{
@@ -110,17 +132,26 @@ public sealed class Runtime {
     await Wait(()=>core.Matches()&&File.Exists(CoreLog)&&File.ReadAllText(CoreLog).Contains("\"listening\""),"Coordinator did not report listening.",ct,15);
    }else if(!Live.Values.Any(x=>x.State.StartsWith("Connected"))&&!Owned.Any(x=>x.Component=="core"&&x.Matches()))throw new Exception("Port 27841 is occupied, but no fresh Sourcebox log confirms its identity. Select the correct project; existing process was left untouched.");
    else Log("Using existing coordinator; it remains external unless this launcher started it.");
-   // Initialize Portal 2 before the newer clients contend for startup resources.
+   // Start every selected client before waiting for player telemetry. A slow
+   // or crashed client must not prevent the remaining games from opening.
+   var launchFailures=new List<string>();
    foreach(var id in ids.OrderBy(id=>id=="portal2"?0:id==Settings.PreferredGame?1:2)){
     ct.ThrowIfCancellationRequested();var g=Games.Single(x=>x.Def.Id==id);
     var running=ProcessAt(g.Exe)||(id=="gmod"&&ProcessAt(Path.Combine(g.Root,"bin/win64/gmod.exe")));
     if(running){Log(g.Def.Title+" is already running; observing without taking ownership.");continue;}
-    await LaunchGame(g,ct);
-    State="Connecting";Changed?.Invoke();
-    await Wait(()=>{Live=Telemetry.Read(CoreLog,DateTime.UtcNow);return Live.TryGetValue(id,out var state)&&state.State.StartsWith("Connected");},g.Def.Title+" started but did not connect within 120 seconds. Check its native console and adapter setup.",ct);
-    Log(g.Def.Title+" connected (fresh coordinator event).");
+    State="Starting "+g.Def.Title;Changed?.Invoke();
+    try{await LaunchGame(g,ct);}
+    catch(Exception e)when(e is not OperationCanceledException){launchFailures.Add(g.Def.Title+": "+e.Message);Log("Could not start "+g.Def.Title+": "+e.Message+" Continuing with the other selected games.");}
+    await Task.Delay(2000,ct);
    }
-   Refresh();State=ids.All(id=>Live.TryGetValue(id,out var l)&&l.State.StartsWith("Connected"))?"Running":"Connecting / external clients";
+   for(var attempt=0;attempt<120;attempt++){
+    ct.ThrowIfCancellationRequested();Live=Telemetry.Read(CoreLog,DateTime.UtcNow);State=ConnectionSummary(ids,Live);Changed?.Invoke();
+    if(State=="Running")break;
+    await Task.Delay(1000,ct);
+   }
+   Refresh();State=ConnectionSummary(ids,Live);
+   if(State!="Running")Log(State+". Check the named games' console logs. Other connected clients remain usable; status will update when these games connect.");
+   foreach(var failure in launchFailures)Log("Launch failure: "+failure);
   }catch(OperationCanceledException){State="Idle";Log("Launch cancelled. Already started components remain owned; Stop closes them.");throw;}catch(Exception e){State="Error";Log(e.Message);throw;}finally{gate.Release();Changed?.Invoke();}
  }
  private async Task EnsureSteam(CancellationToken ct){
@@ -233,6 +264,22 @@ public sealed class Runtime {
    var file=Path.Combine(SessionDir,name);if(!File.Exists(file))continue;
    try{using var stream=new FileStream(file,FileMode.Open,FileAccess.Read,FileShare.ReadWrite|FileShare.Delete);bool tail=stream.Length>1024*1024;stream.Seek(Math.Max(0,stream.Length-1024*1024),SeekOrigin.Begin);using var reader=new StreamReader(stream);if(tail)reader.ReadLine();Add(name,(tail?"[Last 1 MiB of log]\n":"")+reader.ReadToEnd());}
    catch(IOException e){Add(name+".error.txt",e.Message);}
+  }
+  foreach(var game in Games){
+   var content=Path.Combine(game.IdRoot(),game.Def.Content);
+   foreach(var name in new[]{"console.log",game.Def.Id=="cs2"?"gameinfo.gi":"gameinfo.txt"}){
+    var file=Path.Combine(content,name);if(!File.Exists(file))continue;
+    try{using var stream=new FileStream(file,FileMode.Open,FileAccess.Read,FileShare.ReadWrite|FileShare.Delete);bool tail=stream.Length>1024*1024;stream.Seek(Math.Max(0,stream.Length-1024*1024),SeekOrigin.Begin);using var reader=new StreamReader(stream);if(tail)reader.ReadLine();Add("games/"+game.Def.Id+"/"+name,(tail?"[Last 1 MiB]\n":"")+reader.ReadToEnd());}
+    catch(IOException e){Add("games/"+game.Def.Id+"/"+name+".error.txt",e.Message);}
+   }
+  }
+  var assets=Path.Combine(Settings.Home,"assets");
+  if(Directory.Exists(assets))foreach(var cache in Directory.GetDirectories(assets,"cs2-*").OrderByDescending(Directory.GetLastWriteTimeUtc).Take(2)){
+   foreach(var name in new[]{"room.log","room/map-compile.log","room/map-import.log","models.log"}){
+    var file=Path.Combine(cache,name);if(!File.Exists(file))continue;
+    try{using var stream=new FileStream(file,FileMode.Open,FileAccess.Read,FileShare.ReadWrite|FileShare.Delete);bool tail=stream.Length>1024*1024;stream.Seek(Math.Max(0,stream.Length-1024*1024),SeekOrigin.Begin);using var reader=new StreamReader(stream);if(tail)reader.ReadLine();Add("preparation/"+Path.GetFileName(cache)+"/"+name,(tail?"[Last 1 MiB]\n":"")+reader.ReadToEnd());}
+    catch(IOException e){Add("preparation/"+Path.GetFileName(cache)+"/"+name+".error.txt",e.Message);}
+   }
   }
   return path;
  }

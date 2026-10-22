@@ -1,9 +1,9 @@
 {
-  "version": "1.5.2-beta.1",
+  "version": "1.5.3-beta.1",
   "sdkRepository": "https://github.com/ValveSoftware/source-sdk-2013",
   "sdkCommit": "be57e3d01ac7d7aa6a2cacbfef187c0b46616db0",
-  "binaryZip": "sourcebox-beta-v1.5.2.zip",
-  "binaryZipSha256": "3d34cdbfd52ba1b1033ba088ca935d4a19d3b4016647b9f6b2e61ec158da62ee",
+  "binaryZip": "sourcebox-beta-v1.5.3.zip",
+  "binaryZipSha256": "bda122a6bb34805139caa407c2e9886178b0ccf26efb58ca36f276f2933b959a",
   "independentReproducibleBuild": false,
   "independentSecurityAudit": false,
   "sanitizedFiles": [

@@ -22,6 +22,8 @@ public static class CsContentPreparation {
   var scripts=new[]{script,Path.Combine(settings.ProjectRoot,"tools/prepare-portable-cs2-textures.py"),Path.Combine(settings.ProjectRoot,"tools/prepare-portable-cs2-portal-surfaces.py"),Path.Combine(settings.ProjectRoot,"tools/prepare-portable-cs2-room.ps1"),Path.Combine(settings.ProjectRoot,"tools/prepare-portable-room-materials.cjs")};
   var fingerprint=string.Join("",scripts.Select(CrossplaySetup.Hash))+string.Join("",settings.LocalAssetCaches.OrderBy(p=>p.Key).Where(p=>p.Key!="cs2").Select(p=>p.Value));
   if(settings.LocalAssetCaches.TryGetValue("cs2",out var previous)&&SharedAssetPreparation.Valid(previous,fingerprint))return;
+  // Compilers need scratch space beyond the final compressed map size.
+  SetupSpace.Check(SetupSpace.Combined((Settings.Home,4L*1024*1024*1024),(cs.Root,4L*1024*1024*1024)),"CS2 conversion and Workshop compiler output");
   var stage=Path.Combine(Settings.Home,"assets","cs2-"+Guid.NewGuid().ToString("N"));Directory.CreateDirectory(stage);
   var room=Path.Combine(stage,"room");var models=Path.Combine(stage,"converted");
   var roomRequest=Path.Combine(stage,"room-request.json");

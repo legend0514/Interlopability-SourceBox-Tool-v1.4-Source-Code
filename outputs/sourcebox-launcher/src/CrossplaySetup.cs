@@ -46,7 +46,7 @@ public static class CrossplaySetup {
     var engine=SdkConfiguration.FindRuntime(settings);
     if(engine.Length==0)missing.Add("Install Source SDK Base 2013 Multiplayer (Steam app 243750).");
     else{
-     Copy(SdkConfiguration.Generated(SdkConfiguration.GameInfo(game.Def.Id,game.Root,engine,settings.LocalAssetCaches.Values.Where(Directory.Exists))),content+"/gameinfo.txt");
+     Copy(SdkConfiguration.Generated(SdkConfiguration.GameInfo(game.Def.Id,game.Root,engine,SdkConfiguration.AssetMounts(settings,game.Def.Id))),content+"/gameinfo.txt");
      Copy(Path.Combine(engine,"bin/x64/steam_api64.dll"),"bin/x64/steam_api64.dll",true);
      Copy(SdkConfiguration.Generated("243750\n"),"steam_appid.txt",true);
      Copy(SdkConfiguration.Generated("exec config.cfg\nexec sourcebox_controls.cfg\nstuffcmds\n"),content+"/cfg/valve.rc",true);
@@ -63,6 +63,7 @@ public static class CrossplaySetup {
    foreach(var name in new[]{"client.dll","server.dll"})Need(Path.Combine(root,content,"bin/x64",name),"SDK "+name);
   }
   if(game.Def.Id=="cs2"){
+   var worldHost=WorldPreparation.Prepared(settings)?["hosts"]?["cs2"];
    foreach(var dependency in new[]{("metamod","addons/metamod.vdf"),("counterstrikesharp","addons/counterstrikesharp/api/CounterStrikeSharp.API.dll")}){
     if(File.Exists(Path.Combine(root,"game/csgo",dependency.Item2)))continue;
     if(settings.DependencyRoots.TryGetValue(dependency.Item1,out var prepared)&&File.Exists(Path.Combine(prepared,dependency.Item2))){
@@ -74,9 +75,24 @@ public static class CrossplaySetup {
    }else Need(Path.Combine(root,"game/csgo/maps/sourcebox_room_001.vpk"),"Locally compiled Source 2 room and converted assets");
    Copy(Project("adapters/cs2/bin/Release/net10.0/SourceboxCS2.dll"),"game/csgo/addons/counterstrikesharp/plugins/SourceboxCS2/SourceboxCS2.dll");
    Copy(Project("adapters/cs2/bin/Release/net10.0/SourceboxCS2.deps.json"),"game/csgo/addons/counterstrikesharp/plugins/SourceboxCS2/SourceboxCS2.deps.json");
+   if(worldHost!=null){
+    var map=worldHost["map"]!.GetValue<string>();
+    if(!File.Exists(map)||!Hash(map).Equals(worldHost["sha256"]!.GetValue<string>(),StringComparison.OrdinalIgnoreCase))missing.Add("CS2 destination map checksum mismatch");
+    else{
+     // Replace a pending baseline map copy with the validated world map.
+     files.RemoveAll(f=>f.Relative=="game/csgo/maps/sourcebox_room_001.vpk");
+     foreach(var folder in new[]{"maps","models","materials","lighting"}){var source=Path.Combine(worldHost["content"]!.GetValue<string>(),folder);if(!Directory.Exists(source))continue;foreach(var file in Directory.GetFiles(source,"*",SearchOption.AllDirectories)){var relative="game/csgo/"+folder+"/"+Path.GetRelativePath(source,file);files.RemoveAll(f=>f.Relative==relative);Copy(file,relative);}}
+    }
+   }
   }else{
    // Update only positively identified old first-party rooms; preserve custom/multiverse maps.
-   if(!File.Exists(Path.Combine(root,content,"maps/sourcebox_room_001.bsp"))||KnownOldRoom(settings,game.Def.Id,Path.Combine(root,content,"maps/sourcebox_room_001.bsp"))){
+   var preparedWorlds=WorldPreparation.Prepared(settings);
+   var preparedHost=preparedWorlds?["hosts"]?[game.Def.Id];
+   if(preparedHost!=null){
+    var map=preparedHost["map"]!.GetValue<string>();
+    if(!File.Exists(map)||!Hash(map).Equals(preparedHost["sha256"]!.GetValue<string>(),StringComparison.OrdinalIgnoreCase))missing.Add("Destination map checksum mismatch: "+game.Def.Id);
+    else Copy(map,content+"/maps/sourcebox_room_001.bsp");
+   }else if(!File.Exists(Path.Combine(root,content,"maps/sourcebox_room_001.bsp"))||KnownOldRoom(settings,game.Def.Id,Path.Combine(root,content,"maps/sourcebox_room_001.bsp"))){
     var hosts=Project("sheets/native-world-hosts.json");string map=Project("maps/"+game.Def.Id+"/sourcebox_room_001.bsp");
     if(File.Exists(hosts)){using var doc=JsonDocument.Parse(File.ReadAllText(hosts));if(doc.RootElement.TryGetProperty(game.Def.Id,out var host)&&host.TryGetProperty("enabled",out var enabled)&&enabled.GetBoolean())map=host.GetProperty("map").GetString()!;}
     var worlds=Project("sheets/worlds.json");
@@ -84,6 +100,10 @@ public static class CrossplaySetup {
     Copy(map,content+"/maps/sourcebox_room_001.bsp");
    }
    if(game.Def.Id=="gmod"){
+    if(preparedHost!=null){
+     Copy(SdkConfiguration.Generated(preparedWorlds!["registry"]!.ToJsonString()),content+"/data/sourcebox/worlds.json");
+     foreach(var metadata in Directory.GetFiles(preparedWorlds["metadata"]!.GetValue<string>(),"*.metadata.json"))Copy(metadata,content+"/data/sourcebox/worlds/"+Path.GetFileName(metadata));
+    }
     var dependencyTarget=Path.Combine(root,content,"addons/sourcebox_portal_dependency/lua/entities/prop_portal/init.lua");
     if(!File.Exists(dependencyTarget)){
      if(settings.DependencyRoots.TryGetValue("portal-addon",out var addon)&&File.Exists(Path.Combine(addon,"lua/entities/prop_portal/init.lua"))){
@@ -114,7 +134,14 @@ public static class CrossplaySetup {
    var info=Path.Combine(root,content,"gameinfo.txt");
    if(!File.Exists(info)){if(game.Def.Id is "hl1mp" or "portal2" or "gmod")missing.Add("Native gameinfo.txt");}
    else{
-    var text=File.ReadAllText(info);var updated=SdkConfiguration.WithAssetMounts(text,settings.LocalAssetCaches.Values.Where(Directory.Exists));
+    var mounts=SdkConfiguration.AssetMounts(settings,game.Def.Id).ToList();
+    var worlds=WorldPreparation.Prepared(settings);
+    if(worlds?["hosts"]?[game.Def.Id]!=null){mounts.Insert(0,worlds["assets"]!.GetValue<string>());mounts.AddRange(worlds["mounts"]!.AsArray().Select(p=>p!.GetValue<string>()));}
+    var text=File.ReadAllText(info);var updated=SdkConfiguration.WithAssetMounts(text,mounts);
+    if((game.Def.Id is "hl2" or "tf2")&&text.Contains("game \"SourceBox\"",StringComparison.Ordinal)){
+     var engine=SdkConfiguration.FindRuntime(settings);
+     if(engine.Length>0)updated=SdkConfiguration.GameInfo(game.Def.Id,game.Root,engine,mounts);
+    }
     if(updated!=text)Copy(SdkConfiguration.Generated(updated),content+"/gameinfo.txt");
    }
   }
@@ -133,6 +160,7 @@ public static class CrossplaySetup {
    targets.TryAdd(target,f);
   }
   var copies=targets.Values.ToArray();
+  SetupSpace.Check(SetupSpace.Required(copies,backupRoot),"crossplay installation and backups");
   Directory.CreateDirectory(backupRoot);var changed=new List<(string Target,string? Backup)>();var writtenHashes=new Dictionary<string,string>(StringComparer.OrdinalIgnoreCase);
   File.WriteAllText(Path.Combine(backupRoot,"plan.json"),JsonSerializer.Serialize(all,new JsonSerializerOptions{WriteIndented=true}));
   try{
