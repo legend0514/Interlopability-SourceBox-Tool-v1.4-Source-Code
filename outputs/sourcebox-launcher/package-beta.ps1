@@ -1,4 +1,4 @@
-param([Parameter(Mandatory=$true)][string]$DotNet,[Parameter(Mandatory=$true)][string]$Python,[ValidatePattern('^[a-zA-Z0-9.-]+$')][string]$CandidateName='sourcebox-beta-v1.5.3',[switch]$ReleaseApproved)
+param([Parameter(Mandatory=$true)][string]$DotNet,[Parameter(Mandatory=$true)][string]$Python,[ValidatePattern('^[a-zA-Z0-9.-]+$')][string]$CandidateName='sourcebox-beta-v1.5.4',[switch]$ReleaseApproved)
 $ErrorActionPreference='Stop'
 $root=$PSScriptRoot
 $runtimeJson=& $Python "$root/build-beta-runtime.py"
@@ -38,7 +38,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0Install SourceBox.
 if errorlevel 1 pause
 '@ | Set-Content "$stage/Install SourceBox.cmd" -Encoding ascii
 @'
-SOURCEBOX BETA v1.5.3 - SHARED ROOM
+SOURCEBOX BETA v1.5.4 - SHARED ROOM
 Windows x64. Experimental beta. See release-readiness.json for publication status.
 
 Extract the whole ZIP and run Install SourceBox.cmd.
@@ -48,14 +48,15 @@ Open SourceBox from the desktop and select installed games under Characters.
 Games tile across the monitor containing SourceBox. Ctrl+Alt+Space releases
 the mouse to the launcher. Ctrl+Alt+Right switches to the next game.
 
-Changes in 1.5.3: portable destination preparation, disk-space checks before
-installation, clearer CS2 compiler diagnostics and recovery from late connections.
+Changes in 1.5.4: corrected TF2 material mounts during destination preparation,
+GMod original-process startup handling and tested independent client launch errors.
+53 launcher regression checks pass. The tester's exact process failure has not
+been reproduced on their PC.
 Use Prepare destinations in the Destinations tab with all game sessions stopped.
-Preparation needs installed maps from GMod, TF2, Portal 2 and HL Deathmatch: Source,
-native map compilers and extra disk space. CS2 requires Workshop Tools.
-The combined GMod host and a CS2 chamber smoke test compiled locally. Native
-gameplay of these new hosts and a full CS2 destination build are not verified.
-External TF2 class-selection and Portal 2 startup crashes remain under investigation.
+Preparation still requires all five source maps, native compilers and disk space.
+Missing Frenzy requires Half-Life Deathmatch: Source (Steam app 360).
+Native gameplay of new destination hosts and the full CS2 destination build remain
+unverified. External TF2 class-selection and Portal 2 crashes remain under review.
 Ragdolls remain disabled in this public beta.
 
 Included: launcher, synchronization service, six adapter implementations,
@@ -89,7 +90,7 @@ unverified. Source SDK Base tools are required for CS2 conversion without HL2.
 Source SDK license and third-party notices are in runtime/licenses.
 SDK-derived distribution must be free of charge. SourceBox is unsigned.
 '@ | Set-Content "$stage/READ ME FIRST.txt" -Encoding utf8
-@{publishable=[bool]$ReleaseApproved;publicationApproved=[bool]$ReleaseApproved;version='1.5.3-beta.1';status=$(if($ReleaseApproved){'public-beta'}else{'candidate'});scope='shared-room-and-experimental-local-destination-preparation';freshPcGameplay='not-tested';gameAssetPreparation='partial';supportedGames=@('hl2','tf2','hl1mp','gmod','portal2','cs2');missingCharacterFallback='original-static-figures';reducedInstallGameplay='not-tested'}|ConvertTo-Json|Set-Content "$stage/release-readiness.json" -Encoding utf8
+@{publishable=[bool]$ReleaseApproved;publicationApproved=[bool]$ReleaseApproved;version='1.5.4-beta.1';status=$(if($ReleaseApproved){'public-beta'}else{'candidate'});scope='shared-room-and-experimental-local-destination-preparation';freshPcGameplay='not-tested';gameAssetPreparation='partial';supportedGames=@('hl2','tf2','hl1mp','gmod','portal2','cs2');missingCharacterFallback='original-static-figures';reducedInstallGameplay='not-tested'}|ConvertTo-Json|Set-Content "$stage/release-readiness.json" -Encoding utf8
 $entries=@(Get-ChildItem -LiteralPath $stage -Recurse -File | Sort-Object FullName | ForEach-Object {@{Path=[IO.Path]::GetRelativePath($stage,$_.FullName);Sha256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash}})
 ConvertTo-Json -InputObject $entries -Depth 3 | Set-Content "$stage/package-manifest.json" -Encoding utf8NoBOM
 $zip=Join-Path $root ("release-candidates/"+$CandidateName+".zip")

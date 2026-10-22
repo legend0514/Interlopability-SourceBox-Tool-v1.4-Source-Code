@@ -8,8 +8,8 @@
     "Sha256": "fc5baba9aac0b395d09daf66443807790bff86dee4aa4fcfd25f66b1303d6a47"
   },
   {
-    "Path": "CHANGELOG-v1.5.3.md",
-    "Sha256": "374a55288b3e6435d1231e68abc6cd1ee9ae3ef166ecaa31907aa1cc2b8de93c"
+    "Path": "CHANGELOG-v1.5.4.md",
+    "Sha256": "68fd36acaed44267b224e1bd36cabce1fdbf41dfc768fbb1b25b557c07182570"
   },
   {
     "Path": "development/sheets/asset-references.json",
@@ -1185,7 +1185,7 @@
   },
   {
     "Path": "outputs/sourcebox-launcher/package-beta.ps1",
-    "Sha256": "0319ccb4da757184ec47a589c8407132152add1f00de016685cdf2f31875a66b"
+    "Sha256": "ba2e915659e78b5d1f7187a3f1001f936b94dd2c6a0ba2ad4a0aca963c5ee169"
   },
   {
     "Path": "outputs/sourcebox-launcher/package-small.ps1",
@@ -1193,7 +1193,7 @@
   },
   {
     "Path": "outputs/sourcebox-launcher/package-source.py",
-    "Sha256": "2f696dc778d74d68914cf1ec8504d7409c4d39d066ec5414ca414d133aabbd36"
+    "Sha256": "4f89212848e8e9dd6011f4f8559350b9054b1e7f939da0cd87fdf91b2e3e463b"
   },
   {
     "Path": "outputs/sourcebox-launcher/package.ps1",
@@ -1309,7 +1309,7 @@
   },
   {
     "Path": "outputs/sourcebox-launcher/src/Runtime.cs",
-    "Sha256": "ecaaf6b4fa5ba5c11463963a19edd82b4025ee4929bf1cca75e50c0dfacc106a"
+    "Sha256": "e39a9fb2bec67e672f744ce7ec6a60cb4d59aa0d439e39950b8285d0385f9163"
   },
   {
     "Path": "outputs/sourcebox-launcher/src/SceneCanvas.cs",
@@ -1341,7 +1341,7 @@
   },
   {
     "Path": "outputs/sourcebox-launcher/src/SourceBox.csproj",
-    "Sha256": "c5fa50511209b6be71971a034722ee06a2daa5cc6e77e8d195af0b87709e7e1f"
+    "Sha256": "b330288f0a0a87d2ccb602c1d93ef93b89d2abe7c36004cd43689c7584b51895"
   },
   {
     "Path": "outputs/sourcebox-launcher/src/SplashForm.cs",
@@ -1349,7 +1349,7 @@
   },
   {
     "Path": "outputs/sourcebox-launcher/src/Tests.cs",
-    "Sha256": "f9aad3ec1c17035c3e2e879f93db82edfe7a4ddae0564c06bf467bcf1dd1999d"
+    "Sha256": "871d7c091334cdf28968412f13944aedadd387a048fd0475219f56f661da731f"
   },
   {
     "Path": "outputs/sourcebox-launcher/src/Translations.json",
@@ -1357,7 +1357,7 @@
   },
   {
     "Path": "outputs/sourcebox-launcher/src/WorldPreparation.cs",
-    "Sha256": "314fb65c9ef41a894f583077e046b188d9b7cddc28b773c46be368aa18abdacc"
+    "Sha256": "2b26d3e4b6cf4550d623de041cc6af29cab945cd479926a148737eae0f9addff"
   },
   {
     "Path": "outputs/sourcebox-launcher/verify-beta-package.py",
@@ -1365,7 +1365,7 @@
   },
   {
     "Path": "README.md",
-    "Sha256": "411d6d373b6314fdb6c0f36dc68933fbad3425a38eee13a319a4ba2b0d268342"
+    "Sha256": "57b8472cc6671fc7228208abf013a85eec300709685e0e7fd32c8d89923b292f"
   },
   {
     "Path": "release-config/sheets/asset-references.json",
@@ -1473,7 +1473,7 @@
   },
   {
     "Path": "release-provenance.json",
-    "Sha256": "c0b0dbc4de9df5d8cd3b9435273719753bab2f348753a52909b943920852a36c"
+    "Sha256": "ac641c1fef7c55152efee5ca60ecaf42d334ba0172feeb2e405d05dac8ad555f"
   },
   {
     "Path": "sdk/overlay/src/game/client/sourcebox_portal_client.inc",
@@ -1505,6 +1505,6 @@
   },
   {
     "Path": "source-validation.json",
-    "Sha256": "d3e462a2b9c74eb58a466d40ec8997c895972794ba13e8669344b80504a0e59a"
+    "Sha256": "55dc52f5ed505fb43e666449ef48a1be67a5bfae5015580c0f9b6cd73bbbde5f"
   }
 ]

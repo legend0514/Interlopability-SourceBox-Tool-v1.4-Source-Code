@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-<PropertyGroup><OutputType>WinExe</OutputType><TargetFramework>net8.0-windows</TargetFramework><UseWindowsForms>true</UseWindowsForms><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><AssemblyName>SourceBox</AssemblyName><Version>1.5.3-beta.1</Version></PropertyGroup>
+<PropertyGroup><OutputType>WinExe</OutputType><TargetFramework>net8.0-windows</TargetFramework><UseWindowsForms>true</UseWindowsForms><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><AssemblyName>SourceBox</AssemblyName><Version>1.5.4-beta.1</Version></PropertyGroup>
 <PropertyGroup><UseWPF>true</UseWPF><ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode><ApplicationIcon>Assets/sourcebox.ico</ApplicationIcon><DebugType>none</DebugType><DebugSymbols>false</DebugSymbols></PropertyGroup>
 <ItemGroup><Content Include="Assets/sourcebox-intro.mp4" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
 <ItemGroup><Content Include="Assets/sourcebox.ico" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>

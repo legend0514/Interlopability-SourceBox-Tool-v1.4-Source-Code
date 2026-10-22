@@ -1,12 +1,12 @@
-# SourceBox beta v1.5.3 source
+# SourceBox beta v1.5.4 source
 
 Source snapshot for reviewing the six-game crossplay prototype. This is source
 code, not the playable download. Nothing runs merely by extracting this ZIP.
 
 - `outputs/sourcebox-launcher/src`: desktop launcher and its automated tests.
-- `outputs/sourcebox`: coordinator, adapters, portable v1.5.3 sheets and tools.
+- `outputs/sourcebox`: coordinator, adapters, portable v1.5.4 sheets and tools.
 - `development/sheets`: sanitized expanded-world development configuration.
-- `release-config/sheets`: the actual portable v1.5.3 configuration. Expanded
+- `release-config/sheets`: the actual portable v1.5.4 configuration. Expanded
   worlds are disabled in that download.
 - `sdk`: pinned Valve SDK patch and added source files.
 - `BUILD.md`: build prerequisites and current reproducibility limits.

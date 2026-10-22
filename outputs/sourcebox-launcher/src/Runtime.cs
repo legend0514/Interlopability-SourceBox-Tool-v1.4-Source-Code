@@ -140,8 +140,8 @@ public sealed class Runtime {
     var running=ProcessAt(g.Exe)||(id=="gmod"&&ProcessAt(Path.Combine(g.Root,"bin/win64/gmod.exe")));
     if(running){Log(g.Def.Title+" is already running; observing without taking ownership.");continue;}
     State="Starting "+g.Def.Title;Changed?.Invoke();
-    try{await LaunchGame(g,ct);}
-    catch(Exception e)when(e is not OperationCanceledException){launchFailures.Add(g.Def.Title+": "+e.Message);Log("Could not start "+g.Def.Title+": "+e.Message+" Continuing with the other selected games.");}
+    var failure=await AttemptClientLaunch(g.Def.Title,()=>LaunchGame(g,ct),ct);
+    if(failure!=null){launchFailures.Add(failure);Log(failure+" Continuing with the other selected games.");}
     await Task.Delay(2000,ct);
    }
    for(var attempt=0;attempt<120;attempt++){
@@ -153,6 +153,11 @@ public sealed class Runtime {
    if(State!="Running")Log(State+". Check the named games' console logs. Other connected clients remain usable; status will update when these games connect.");
    foreach(var failure in launchFailures)Log("Launch failure: "+failure);
   }catch(OperationCanceledException){State="Idle";Log("Launch cancelled. Already started components remain owned; Stop closes them.");throw;}catch(Exception e){State="Error";Log(e.Message);throw;}finally{gate.Release();Changed?.Invoke();}
+ }
+ internal static async Task<string?> AttemptClientLaunch(string title,Func<Task> launch,CancellationToken ct){
+  ct.ThrowIfCancellationRequested();
+  try{await launch();return null;}
+  catch(Exception e)when(e is not OperationCanceledException){return "Could not start "+title+": "+e.Message;}
  }
  private async Task EnsureSteam(CancellationToken ct){
   var exe=Path.Combine(Settings.SteamRoot,"steam.exe");
@@ -200,9 +205,9 @@ public sealed class Runtime {
   OwnedProcess? observedChild=null;
   if(id=="gmod"&&!Path.GetFullPath(g.Exe).Equals(Path.GetFullPath(Path.Combine(root,"bin/win64/gmod.exe")),StringComparison.OrdinalIgnoreCase)){
    var childExe=Path.GetFullPath(Path.Combine(root,"bin/win64/gmod.exe"));
-   try{await Wait(()=>{foreach(var p in Process.GetProcessesByName("gmod"))using(p)try{if(p.Id!=receipt.Pid&&p.MainModule?.FileName.Equals(childExe,StringComparison.OrdinalIgnoreCase)==true&&ProcessTree.Parent(p.Id)==receipt.Pid&&p.StartTime.ToUniversalTime().Ticks>=receipt.StartTicks){Owned.Add(new(){Component="gmod",Exe=childExe,Pid=p.Id,StartTicks=p.StartTime.ToUniversalTime().Ticks});SaveReceipts();return true;}}catch{}return false;},"Could not verify ownership of GMod's child process; it will remain untouched.",ct,30);}catch(TimeoutException)when(ProcessAt(childExe)){
+   try{await Wait(()=>{foreach(var p in Process.GetProcessesByName("gmod"))using(p)try{if(p.Id!=receipt.Pid&&p.MainModule?.FileName.Equals(childExe,StringComparison.OrdinalIgnoreCase)==true&&ProcessTree.Parent(p.Id)==receipt.Pid&&p.StartTime.ToUniversalTime().Ticks>=receipt.StartTicks){Owned.Add(new(){Component="gmod",Exe=childExe,Pid=p.Id,StartTicks=p.StartTime.ToUniversalTime().Ticks});SaveReceipts();return true;}}catch{}return false;},"Could not verify ownership of GMod's child process; it will remain untouched.",ct,30);}catch(TimeoutException)when(ProcessAt(childExe)||receipt.Matches()){
     observedChild=ObserveStartedProcess(childExe,receipt.StartTicks);
-    Log("GMod is running, but its parent relationship changed. Observing it without stop permission; configuration backups remain available in session logs.");
+    Log(observedChild!=null?"GMod is running, but its parent relationship changed. Observing it without stop permission; configuration backups remain available in session logs.":"GMod remains in its original verified process; no child process is required.");
    }
   }
   if(configuration!=null){var owner=observedChild??Owned.Where(o=>o.Component==id&&o.Matches()).OrderByDescending(o=>o.StartTicks).FirstOrDefault()??receipt;

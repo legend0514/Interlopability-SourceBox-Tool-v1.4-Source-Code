@@ -1,13 +1,9 @@
 {
-  "version": "1.5.3-beta.1",
-  "packagedLauncherTests": "52/52 passed",
+  "version": "1.5.4-beta.1",
+  "packagedLauncherTests": "53/53 passed",
   "archiveIntegrity": "passed",
-  "nativeCompilation": [
-    "GMod combined five destinations with HDR/LDR",
-    "CS2 room plus Triple Laser Chamber: 29 compiled, 0 failed"
-  ],
-  "newDestinationGameplay": "not-tested",
-  "fullCs2Destinations": "not-tested",
+  "testerProcessFailureReproduced": false,
   "freshPcGameplay": "not-tested",
+  "newDestinationGameplay": "not-tested",
   "independentSecurityAudit": false
 }

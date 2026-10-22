@@ -135,6 +135,16 @@ static class Tests {
     try{SetupSpace.Check(required,"fixture",_=>1024);}catch(IOException e){refused=e.Message.Contains("Not enough free disk space")&&e.Message.Contains("retry");}
     Check(refused);Check(new FileInfo(Path.Combine(folder,"adapter.dll")).Length==2048);SetupSpace.Check(required,"fixture",_=>1024L*1024*1024);
    });
+   Test("GMod ownership failure does not block the other selected clients",()=>{
+    var launched=new List<string>();var failures=new List<string>();
+    foreach(var id in new[]{"gmod","hl2","tf2","portal2"}){
+     var failure=Runtime.AttemptClientLaunch(id,()=>{launched.Add(id);if(id=="gmod")throw new IOException("Could not verify ownership of GMod child process");return Task.CompletedTask;},CancellationToken.None).GetAwaiter().GetResult();
+     if(failure!=null)failures.Add(failure);
+    }
+    Check(launched.SequenceEqual(new[]{"gmod","hl2","tf2","portal2"}));Check(failures.Count==1&&failures[0].Contains("ownership"));
+    using var cancel=new CancellationTokenSource();cancel.Cancel();bool cancelled=false;
+    try{Runtime.AttemptClientLaunch("hl2",()=>throw new Exception("must not launch"),cancel.Token).GetAwaiter().GetResult();}catch(OperationCanceledException){cancelled=true;}Check(cancelled);
+   });
    Test("multi-game session status recovers when a late client connects",()=>{
     var ids=new[]{"hl2","tf2","hl1mp","gmod","portal2","cs2"};
     var live=ids.Where(id=>id!="portal2").ToDictionary(id=>id,id=>new LiveGame("Connected","room",DateTime.UtcNow,""));
